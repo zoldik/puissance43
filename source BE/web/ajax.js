@@ -13,16 +13,31 @@ function updateMenu(string)
                {
                if(string.toString().indexOf("Accueil",0)!=-1)
                     updateDivContent("menu", "Menu \"Accueil\"");
+                
                 else if(string.toString().indexOf("Mon compte",0)!=-1)
                     updateDivContent("menu", "<input type=\"button\" value=\"Mon Internet\" onclick=updateMain(this.value) align=\"left\" /><br><input type=\"button\" value=\"WebMail\" onclick=updateMain(this.value) align=\"left\" />");
+                
                 else if(string.toString().indexOf("VOD",0)!=-1)
                     updateDivContent("menu", "Menu \"VOD\"");
+                
                 else if(string.toString().indexOf("VoIP",0)!=-1)
                     updateDivContent("menu", "Menu \"VoIP\"");
+                
                 else if(string.toString().indexOf("WebMail",0)!=-1)
                     updateDivContent("menu", "Menu \"Webmail\"");
+                
                 else if(string.toString().indexOf("Assistance",0)!=-1)
                     updateDivContent("menu", "Menu \"Assistance\"");
+                
+                else if(string.toString().indexOf("Assistance",0)!=-1)
+                    updateDivContent("menu", "Menu \"Assistance\"");
+                
+                else if(string.toString().indexOf("Equipements Réseaux") != -1)
+                    updateDivContent("menu", "Menu \"Equipements Réseaux\"");
+                
+                else if(string.toString().indexOf("Installation Services") != -1)
+                    updateDivContent("menu", "Menu \"Installation Services\"");
+                
                 else updateDivContent("menu", "<FONT SIZE=1 color=\"green\">vide</font>");
                }
 }

@@ -25,6 +25,8 @@
    <td width="16%"><div align="center"><input type="button" value="VoIP" onclick=updateMenu(this.value) align="left" /><br></div></td>
    <td width="16%"><div align="center"><input type="button" value="WebMail" onclick=updateMenu(this.value) align="left" /><br></div></td>
    <td width="16%"><div align="center"><input type="button" value="Assistance" onclick=updateMenu(this.value) align="left" /><br></div></td>
+   <td width="16%"><div align="center"><input type="button" value="Equipements Réseaux" onclick=updateMenu(this.value) align="left" /><br></div></td>
+   <td width="16%"><div align="center"><input type="button" value="Installation Services" onclick=updateMenu(this.value) align="left" /><br></div></td>
   </tr>
 </table>
 </div>
