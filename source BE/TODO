@@ -1,0 +1,24 @@
+/*******************************************
+ * FONCTIONNALITE / COMMANTAIRE / PAGE ...
+ * 
+ *******************************************/
+
+
+
+Partie VOIP :
+-------------
+
+* Partie Administrateur :
+    - Gestion des utilisateurs (Ajout/suppression/Modification)
+    - Gestion Annuaire
+    - Reporting d'appel
+    - Gestion des numeros spéciaux
+    - 
+
+
+* Partie Utilisateur :
+    - Inscription Flux RSS
+    - Acces Annuaire
+    - Consultation des historiques d'appels
+    - Personnalisation des appels
+    
