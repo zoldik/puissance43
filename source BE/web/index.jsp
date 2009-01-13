@@ -20,7 +20,8 @@
 				if (helloRequest.status == 200) {
 					var xmlDoc = helloRequest.responseXML;
 					var root = xmlDoc.getElementsByTagName('root').item(0);
-					message = root.getElementsByTagName(menu).item(0).firstChild.nodeValue;
+                                        message = root.getElementsByTagName(menu).item(0).getAttribute('name');
+                                        //message2 = root.getElementsByTagName(menu).item(0).firstChild.nodeValue;
 					var html = message;
 					updateDivContent("menu", html);
 				} 

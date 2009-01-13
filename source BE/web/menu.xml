@@ -1,11 +1,28 @@
 <?xml version="1.0"?>
 <root>
-	<Accueil>Menu accueil</Accueil>
-        <Compte>menu internet</Compte>
-        <VOD>menu vod</VOD>
-        <VoIP>menu voip</VoIP>
-        <WebMail>menu webmail</WebMail>
-        <Assistance>menu assistance</Assistance>
-        <Réseaux>menu equipement réseau</Réseaux>
-        <Services>menu équipement service</Services>                
+	<Accueil name="Menu Accueil">
+            <link>Mon internet</link>
+            <link>WebMail</link>
+        </Accueil>
+        <Compte name="menu internet">
+            <link></link>
+        </Compte>
+        <VOD name="menu vod">
+            <link></link>
+        </VOD>
+        <VoIP name="menu voip">
+            <link></link>
+        </VoIP>
+        <WebMail name="menu webmail">
+            <link></link>
+        </WebMail>
+        <Assistance name="menu assistance">
+            <link></link>
+        </Assistance>
+        <Réseaux name="menu equipement réseau">
+            <link></link>
+        </Réseaux>
+        <Services name="menu équipement service">
+            <link></link>
+        </Services>                
 </root>
