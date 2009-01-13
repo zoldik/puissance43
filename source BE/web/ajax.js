@@ -7,7 +7,7 @@ function updateDivContent(divName, text)
 	document.getElementById(divName).innerHTML = text;
 }
 
-function updateMenu(string)
+/*function updateMenu(string)
 {
     if(string != '')
                {
@@ -52,4 +52,47 @@ function updateMain(string)
                     updateDivContent("contenu", "blabla WebMail");
                 else updateDivContent("contenu", "<FONT SIZE=1 color=\"green\">vide</font>");
                }
+}*/
+
+function getDataAsynchronous(URL, alertFunction)
+{
+	var request = createXMLHttpRequest();
+	request.onreadystatechange = alertFunction;
+	request.open('GET', URL, true);
+	request.send(null);
+	return request;
+}
+
+function createXMLHttpRequest()
+{
+	var request = false;
+	if (window.XMLHttpRequest)
+	{ // Mozilla, Safari,...
+		request = new XMLHttpRequest();
+		if (request.overrideMimeType)
+		{
+			request.overrideMimeType('text/xml');
+		}
+	}
+	else if (window.ActiveXObject)
+	{ // IE
+		try
+		{
+			request = new ActiveXObject("Msxml2.XMLHTTP");
+		}
+		catch (e)
+		{
+			try
+			{
+				request = new ActiveXObject("Microsoft.XMLHTTP");
+			}
+			catch (e) {}
+		}
+	}
+	if (!request)
+	{
+		alert('Cannot create XMLHTTP instance');
+		return false;
+	}
+	return request;
 }

@@ -1,0 +1,11 @@
+<?xml version="1.0"?>
+<root>
+	<Accueil>Menu accueil</Accueil>
+        <Compte>menu internet</Compte>
+        <VOD>menu vod</VOD>
+        <VoIP>menu voip</VoIP>
+        <WebMail>menu webmail</WebMail>
+        <Assistance>menu assistance</Assistance>
+        <Réseaux>menu equipement réseau</Réseaux>
+        <Services>menu équipement service</Services>                
+</root>

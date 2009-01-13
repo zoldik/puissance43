@@ -9,6 +9,24 @@
    "http://www.w3.org/TR/html4/loose.dtd">
 <link rel="stylesheet" href="style.css">
 <script language="JavaScript" src="ajax.js"></script>
+	<script language="JavaScript">
+		var helloRequest = false;
+		function fonctionMenu(menu) {
+			helloRequest = getDataAsynchronous('./menu.xml', alertMenu(menu));
+		}
+
+		function alertMenu(menu) {
+			if (helloRequest.readyState == 4) {
+				if (helloRequest.status == 200) {
+					var xmlDoc = helloRequest.responseXML;
+					var root = xmlDoc.getElementsByTagName('root').item(0);
+					message = root.getElementsByTagName(menu).item(0).firstChild.nodeValue;
+					var html = message;
+					updateDivContent("menu", html);
+				} 
+			}
+		}
+	</script>
 
 <html>
 <head>
@@ -19,19 +37,26 @@
 <div id="bandeau">
 <table width="50%" border="0" align="center">    
   <tr> 
-   <td width="16%"><div align="center"><input type="button" value="Accueil" onclick=updateMenu(this.value) align="left" /><br></div></td>
-   <td width="16%"><div align="center"><input type="button" value="Mon compte" onclick=updateMenu(this.value) align="left" /><br></div></td>
-   <td width="16%"><div align="center"><input type="button" value="VOD" onclick=updateMenu(this.value) align="left" /><br></div></td>
-   <td width="16%"><div align="center"><input type="button" value="VoIP" onclick=updateMenu(this.value) align="left" /><br></div></td>
-   <td width="16%"><div align="center"><input type="button" value="WebMail" onclick=updateMenu(this.value) align="left" /><br></div></td>
-   <td width="16%"><div align="center"><input type="button" value="Assistance" onclick=updateMenu(this.value) align="left" /><br></div></td>
-   <td width="16%"><div align="center"><input type="button" value="Equipements Réseaux" onclick=updateMenu(this.value) align="left" /><br></div></td>
-   <td width="16%"><div align="center"><input type="button" value="Installation Services" onclick=updateMenu(this.value) align="left" /><br></div></td>
+   <td width="16%"><div align="center"><input type="button" value="Accueil" onclick=fonctionMenu(this.value) align="left" /><br></div></td>
+   <td width="16%"><div align="center"><input type="button" value="Compte" onclick=fonctionMenu(this.value) align="left" /><br></div></td>
+   <td width="16%"><div align="center"><input type="button" value="VOD" onclick=fonctionMenu(this.value) align="left" /><br></div></td>
+   <td width="16%"><div align="center"><input type="button" value="VoIP" onclick=fonctionMenu(this.value) align="left" /><br></div></td>
+   <td width="16%"><div align="center"><input type="button" value="WebMail" onclick=fonctionMenu(this.value) align="left" /><br></div></td>
+   <td width="16%"><div align="center"><input type="button" value="Assistance" onclick=fonctionMenu(this.value) align="left" /><br></div></td>
+   <td width="16%"><div align="center"><input type="button" value="Réseaux" onclick=fonctionMenu(this.value) align="left" /><br></div></td>
+   <td width="16%"><div align="center"><input type="button" value="Services" onclick=fonctionMenu(this.value) align="left" /><br></div></td>
   </tr>
 </table>
 </div>
 <div id="menu">Ceci est le pied de page</div>
 <div id="contenu">Ceci est le contenu</div>
 <body>
+    
+<form action="">
+        <input type="button" value="Accueil" onClick="fonctionMenu(this.value); return false;">
+</form>
+
+<div id="hello_ajax"></div>
+    
 </body>
 </html>
