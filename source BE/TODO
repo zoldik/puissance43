@@ -13,12 +13,16 @@ Partie VOIP :
     - Gestion Annuaire
     - Reporting d'appel
     - Gestion des numeros spéciaux
-    - 
-
+    
 
 * Partie Utilisateur :
-    - Inscription Flux RSS
-    - Acces Annuaire
-    - Consultation des historiques d'appels
-    - Personnalisation des appels
+    - Inscription Flux RSS                                          (communaute)
+    - Acces Annuaire                                                (communaute)
+    - Consultation des historiques d'appels                         (mon compte)
+    - Personnalisation des appels                                   (mon compte)
+    - transfert d'appel                                             (mon compte)
+    - personalisation du repondeur ?                                (mon compte)
+    - Faire un tutorial                                             (support)
+    - Assistance                                                    (support)
+    - Telechargement de softphone pre-installer                     (telechargement)
     
