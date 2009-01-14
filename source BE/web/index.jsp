@@ -7,57 +7,66 @@
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"
    "http://www.w3.org/TR/html4/loose.dtd">
-<link rel="stylesheet" href="style.css">
-<script language="JavaScript" src="ajax.js"></script>
-	<script language="JavaScript">
+    <script language="JavaScript" src="ajax.js"></script>
+    <script language="JavaScript">
 		var helloRequest = false;
-		function fonctionMenu(menu) {
-			helloRequest = getDataAsynchronous('./menu.xml', alertMenu(menu));
-		}
+                var temp=" ";
+                function fonctionClean(keep){
+                    updateDivContent(temp,temp);
+                    temp=keep;
+                }
 
-		function alertMenu(menu) {
+		function fonctionMenu(menu) {
+                        temp=menu;
+			updateDivContent(menu, "<b>"+menu+"</b>");
+		}
+		function fonctionContenu(menu) {
+			helloRequest = getDataAsynchronous('./menu2.xml', alertContenu(menu));
+		}
+                
+		function alertContenu(menu) {
 			if (helloRequest.readyState == 4) {
 				if (helloRequest.status == 200) {
 					var xmlDoc = helloRequest.responseXML;
 					var root = xmlDoc.getElementsByTagName('root').item(0);
                                         message = root.getElementsByTagName(menu).item(0).getAttribute('name');
+                                        /*           
+                                            //On recupere le premier element project issu du noeud projects
+                                            ListeNoeuds = ((Element)xmlDoc.getElementsByTagName("projects").item(0)).getElementsByTagName("project");
+                                            for (int i = 0; i < ListeNoeuds.getLength(); i++) {
+                                                this.addProject(new Project(ListeNoeuds.item(i), this.users));
+                                            }
+                                         */
+                                        //Element ListeMenu=root.getElementsByName('name').item(0).getElementsByName('links');
+                                        //for (int i=0;i<ListeMenu.)
                                         //message2 = root.getElementsByTagName(menu).item(0).firstChild.nodeValue;
-					var html = message;
-					updateDivContent("menu", html);
+                                        //message2=root.getElementsByTagName(menu).item(0).nextSibling.getAttribute('name');
+					var html = "test : "+message;
+					updateDivContent("main", html);
 				} 
 			}
 		}
-	</script>
+</script>
+<link rel="stylesheet" href="style.css">
 
 <html>
 <head>
 <title>Accueil</title>
 <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
 </head>
-<include src="header.htm"/>
-<div id="bandeau">
-<table width="50%" border="0" align="center">    
-  <tr> 
-   <td width="16%"><div align="center"><input type="button" value="Accueil" onclick=fonctionMenu(this.value) align="left" /><br></div></td>
-   <td width="16%"><div align="center"><input type="button" value="Compte" onclick=fonctionMenu(this.value) align="left" /><br></div></td>
-   <td width="16%"><div align="center"><input type="button" value="VOD" onclick=fonctionMenu(this.value) align="left" /><br></div></td>
-   <td width="16%"><div align="center"><input type="button" value="VoIP" onclick=fonctionMenu(this.value) align="left" /><br></div></td>
-   <td width="16%"><div align="center"><input type="button" value="WebMail" onclick=fonctionMenu(this.value) align="left" /><br></div></td>
-   <td width="16%"><div align="center"><input type="button" value="Assistance" onclick=fonctionMenu(this.value) align="left" /><br></div></td>
-   <td width="16%"><div align="center"><input type="button" value="Réseaux" onclick=fonctionMenu(this.value) align="left" /><br></div></td>
-   <td width="16%"><div align="center"><input type="button" value="Services" onclick=fonctionMenu(this.value) align="left" /><br></div></td>
-  </tr>
-</table>
-</div>
-<div id="menu">Ceci est le pied de page</div>
-<div id="contenu">Ceci est le contenu</div>
-<body>
-    
-<form action="">
-        <input type="button" value="Accueil" onClick="fonctionMenu(this.value); return false;">
-</form>
 
-<div id="hello_ajax"></div>
-    
+<body>
+<div class="menu"> <!-- début de la boite contenant les onglets -->
+  <a class="onglet" href="test.jsp" onclick="fonctionContenu('Accueil'); fonctionClean('Accueil'); fonctionMenu('Accueil'); return false;"><div id="Accueil">Accueil</div></a>
+  <a class="onglet" href="test.jsp" onclick="fonctionContenu('VOD'); fonctionClean('VOD'); fonctionMenu('VOD'); return false;"><div id="VOD">VOD</div></a>
+  <a class="onglet" href="test.jsp" onclick="fonctionContenu('VoIP'); fonctionClean('VoIP'); fonctionMenu('VoIP'); return false;"><div id="VoIP">VoIP</div></a>
+  <a class="onglet" href="test.jsp" onclick="fonctionContenu('WebMail'); fonctionClean('WebMail'); fonctionMenu('WebMail'); return false;"><div id="WebMail">WebMail</div></a>
+  <a class="onglet" href="test.jsp" onclick="fonctionContenu('Assistance');fonctionClean('Assistance'); fonctionMenu('Assistance'); return false;"><div id="Assistance">Assistance</div></a>
+  <a class="onglet" href="test.jsp" onclick="fonctionContenu('Réseaux'); fonctionClean('Réseaux'); fonctionMenu('Réseaux'); return false;"><div id="Réseaux">Réseaux</div></a>
+  <a class="onglet" href="test.jsp" onclick="fonctionContenu('Services'); fonctionClean('Services'); fonctionMenu('Services'); return false;"><div id="Services">Services</div></a>
+  <div class="spacer"></div> <!-- permet le retour à la ligne à la fin des boites float -->
+</div>
+<div id="main"></div>
+<div id=" "></div>
 </body>
 </html>

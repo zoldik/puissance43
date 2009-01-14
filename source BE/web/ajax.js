@@ -50,7 +50,7 @@ function updateMain(string)
                     updateDivContent("contenu", "blabla Mon Internet");
                 else if(string.toString().indexOf("WebMail",0)!=-1)
                     updateDivContent("contenu", "blabla WebMail");
-                else updateDivContent("contenu", "<FONT SIZE=1 color=\"green\">vide</font>");
+                else updateDivContent("contenu", "<object data="test.jsp" type="text/html"/>");
                }
 }*/
 

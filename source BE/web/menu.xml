@@ -1,28 +1,42 @@
 <?xml version="1.0"?>
 <root>
-	<Accueil name="Menu Accueil">
-            <link>Mon internet</link>
-            <link>WebMail</link>
+    <menu>
+	<Accueil>
+            <name>Accueil</name>
+            <links>
+                <link name="Internet">internet.jsp</link>
+                <link name="WebMail">webmail.jsp</link>
+                <link name="Gestion">gestion.jsp</link>
+            </links>    
         </Accueil>
-        <Compte name="menu internet">
-            <link></link>
+        
+        <Compte>
+            <name></name>
+            <links></links>
         </Compte>
-        <VOD name="menu vod">
-            <link></link>
+        <VOD>
+            <name></name>
+            <links></links>
         </VOD>
-        <VoIP name="menu voip">
-            <link></link>
+        <VoIP>
+            <name></name>
+            <links></links>
         </VoIP>
-        <WebMail name="menu webmail">
-            <link></link>
+        <WebMail>
+            <name></name>
+            <links></links>
         </WebMail>
-        <Assistance name="menu assistance">
-            <link></link>
+        <Assistance>
+            <name></name>
+            <links></links>
         </Assistance>
-        <Réseaux name="menu equipement réseau">
-            <link></link>
+        <Réseaux>
+            <name></name>
+            <links></links>
         </Réseaux>
-        <Services name="menu équipement service">
-            <link></link>
-        </Services>                
+        <Services>
+            <name></name>
+            <links></links>
+        </Services>       
+    </menu>
 </root>
