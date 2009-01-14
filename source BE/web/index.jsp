@@ -21,7 +21,7 @@
 			updateDivContent(menu, "<b>"+menu+"</b>");
 		}
 		function fonctionContenu(menu) {
-			helloRequest = getDataAsynchronous('./menu2.xml', alertContenu(menu));
+			helloRequest = getDataAsynchronous('./menu.xml', alertContenu(menu));
 		}
                 
 		function alertContenu(menu) {
@@ -30,7 +30,7 @@
 					var xmlDoc = helloRequest.responseXML;
 					var root = xmlDoc.getElementsByTagName('root').item(0);
                                         message = root.getElementsByTagName(menu).item(0).getAttribute('name');
-                                        /*           
+                                         /*           
                                             //On recupere le premier element project issu du noeud projects
                                             ListeNoeuds = ((Element)xmlDoc.getElementsByTagName("projects").item(0)).getElementsByTagName("project");
                                             for (int i = 0; i < ListeNoeuds.getLength(); i++) {
@@ -39,6 +39,9 @@
                                          */
                                         //Element ListeMenu=root.getElementsByName('name').item(0).getElementsByName('links');
                                         //for (int i=0;i<ListeMenu.)
+                                        //message2 = root.getElementsByTagName(menu).item(0).firstChild.nodeValue;
+                                        //message2=root.getElementsByTagName(menu).item(0).nextSibling.getAttribute('name');
+					
                                         //message2 = root.getElementsByTagName(menu).item(0).firstChild.nodeValue;
                                         //message2=root.getElementsByTagName(menu).item(0).nextSibling.getAttribute('name');
 					var html = "test : "+message;
