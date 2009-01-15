@@ -46,8 +46,9 @@ function updateMain(string)
 {
     if(string != '')
                {
-               if(string.toString().indexOf("Mon Internet",0)!=-1)
-                    updateDivContent("contenu", "blabla Mon Internet");
+               if(string.toString().indexOf("Accueil",0)!=-1)
+                    //updateDivContent("contenu", "<jsp:include page=\"./accueil.jsp\" />");
+                    window.location="accueil.jsp";
                 else if(string.toString().indexOf("WebMail",0)!=-1)
                     updateDivContent("contenu", "blabla WebMail");
                 else updateDivContent("contenu", "<object data="test.jsp" type="text/html"/>");
