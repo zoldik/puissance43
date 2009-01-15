@@ -9,9 +9,17 @@ Partie VOIP :
 -------------
 
 * Partie Administrateur :
-    - Gestion des utilisateurs (Ajout/suppression/Modification)
-    - Gestion Annuaire
+    - Annuaire / Gestion des utilisateurs
+        - lister utilisateurs
+        - ajouter/modifier utilisateur
+            - username
+            - mdp
+            - numéro (est-il déja attribué?)
+            - email
+        - supprimer utilisateur
+        - ???gestion des groupes de téléconférence???
     - Reporting d'appel
+        - CDR http://www.areski.net/asterisk-stat-v2/
     - Gestion des numeros spéciaux
     
 
