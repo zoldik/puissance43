@@ -11,6 +11,16 @@
     <script language="JavaScript">
 		var helloRequest = false;
                 var temp=" ";
+                var temp2=" ";
+                var keepcontenu=" ";
+                /*function fonctionCleanMain()
+                {
+                   updateDivContent("main",""); 
+                }
+                function fonctionCleanSubMenu()
+                {
+                   updateDivContent("submenu",""); 
+                }*/
                 function fonctionClean(keep){
                     updateDivContent(temp,temp);
                     temp=keep;
@@ -24,9 +34,18 @@
 			helloRequest = getDataAsynchronous('./menu.xml', alertContenu(menu));
 		}
                 
-                function fonctionOpenPage(page){
-                    updateDivContent("main", page)
+                function fonctionOpenPage(url){
+                    updateDivContent("main", "<object data='"+url+"' type='text/html'/>");
                 }
+                function fonctionSubClean(keep2,contenu){
+                    updateDivContent(temp2,keepcontenu);
+                    temp2=keep2;
+                    keepcontenu=contenu;
+                }
+		function fonctionSubMenu(menu2,contenu2) {
+                        temp2=contenu2;
+			updateDivContent(menu2, "<b>"+contenu2+"</b>");
+		}
                 
 		function alertContenu(menu) {
 			if (helloRequest.readyState == 4) {
@@ -38,7 +57,13 @@
                                         message2="";
                                         for (i=0; i<subMenu.length;++i)
                                             {
-                                               message2+="<a class=\"onglet\" href=\""+subMenu.item(i).getAttribute('url')+"\" onclick=\"fonctionOpenPage('"+subMenu.item(i).getAttribute('url')+"'); fonctionCleanSub('Accueil'); fonctionSubMenu('Accueil'); return false;\"><div id=\"idSubMenu"+i+"\">"+subMenu.item(i).getAttribute('name')+"</div></a>";
+                                               var name=subMenu.item(i).getAttribute('name');
+                                               var url=subMenu.item(i).getAttribute('url');
+                                               message2+="<a class=\"onglet2\" href=\"test.jsp\" onclick=\"\n\
+                                                           fonctionOpenPage('"+url+"');\n\
+                                                           return false;\"><div id=\"subMenu"+i+"\">"+name+"</div></a>";
+                                               //fonctionSubClean('subMenu"+i+"','"+name+"');\n\
+                                               //fonctionSubMenu('subMenu"+i+"','"+name+"');\n\
                                             }
 					updateDivContent("submenu", message2);
 				} 
@@ -60,12 +85,12 @@
   <a class="onglet" href="test.jsp" onclick="fonctionContenu('VOD'); fonctionClean('VOD'); fonctionMenu('VOD'); return false;"><div id="VOD">VOD</div></a>
   <a class="onglet" href="test.jsp" onclick="fonctionContenu('VoIP'); fonctionClean('VoIP'); fonctionMenu('VoIP'); return false;"><div id="VoIP">VoIP</div></a>
   <a class="onglet" href="test.jsp" onclick="fonctionContenu('WebMail'); fonctionClean('WebMail'); fonctionMenu('WebMail'); return false;"><div id="WebMail">WebMail</div></a>
-  <a class="onglet" href="test.jsp" onclick="fonctionContenu('Assistance');fonctionClean('Assistance'); fonctionMenu('Assistance'); return false;"><div id="Assistance">Assistance</div></a>
+  <a class="onglet" href="test.jsp" onclick="fonctionContenu('Assistance'); fonctionClean('Assistance'); fonctionMenu('Assistance'); return false;"><div id="Assistance">Assistance</div></a>
   <a class="onglet" href="test.jsp" onclick="fonctionContenu('Réseaux'); fonctionClean('Réseaux'); fonctionMenu('Réseaux'); return false;"><div id="Réseaux">Réseaux</div></a>
   <a class="onglet" href="test.jsp" onclick="fonctionContenu('Services'); fonctionClean('Services'); fonctionMenu('Services'); return false;"><div id="Services">Services</div></a>
   <div class="spacer"></div> <!-- permet le retour à la ligne à la fin des boites float -->
 </div>
-<div class="menu" id="submenu"/>
+ <div class="menu2" id="submenu"></div>
 <div id="main"></div>
 <div id=" "></div>
 </body>
