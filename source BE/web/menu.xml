@@ -1,28 +1,29 @@
 <?xml version="1.0"?>
 <root>
 	<Accueil name="Accueil">
-            <link name="Mon internet">Mon internet</link>
-            <link name="WebMail">WebMail</link>
+            <link name="Mon internet" url="internet.jsp"/>
+            <link name="WebMail" url="Webmail.jsp"/>
         </Accueil>
         <Compte name="Compte">
-            <link></link>
+            <link name="Gestion" url="gestion-compte.jsp"/>
+            <link name="Resiliation" url="resiliation-compte.jsp"/>
         </Compte>
         <VOD name="VOD">
-            <link></link>
+            <link/>
         </VOD>
         <VoIP name="VoIP">
-            <link></link>
+            <link/>
         </VoIP>
         <WebMail name="WebMail">
-            <link></link>
+            <link/>
         </WebMail>
         <Assistance name="menu assistance">
-            <link></link>
+            <link/>
         </Assistance>
         <Réseaux name="menu equipement réseau">
-            <link></link>
+            <link/>
         </Réseaux>
         <Services name="menu équipement service">
-            <link></link>
+            <link/>
         </Services>                
 </root>

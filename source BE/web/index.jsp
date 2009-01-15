@@ -30,21 +30,13 @@
 					var xmlDoc = helloRequest.responseXML;
 					var root = xmlDoc.getElementsByTagName('root').item(0);
                                         message = root.getElementsByTagName(menu).item(0).getAttribute('name');
-                                         /*           
-                                            //On recupere le premier element project issu du noeud projects
-                                            ListeNoeuds = ((Element)xmlDoc.getElementsByTagName("projects").item(0)).getElementsByTagName("project");
-                                            for (int i = 0; i < ListeNoeuds.getLength(); i++) {
-                                                this.addProject(new Project(ListeNoeuds.item(i), this.users));
+                                        var subMenu=xmlDoc.getElementsByTagName(menu).item(0).getElementsByTagName('link');
+                                        message2="Sous menu :<br>";
+                                        for (i=0; i<subMenu.length;++i)
+                                            {
+                                                message2+="Nom du lien : "+subMenu.item(i).getAttribute('name')+" d'url : "+subMenu.item(i).getAttribute('url')+"<br>";
                                             }
-                                         */
-                                        //Element ListeMenu=root.getElementsByName('name').item(0).getElementsByName('links');
-                                        //for (int i=0;i<ListeMenu.)
-                                        //message2 = root.getElementsByTagName(menu).item(0).firstChild.nodeValue;
-                                        //message2=root.getElementsByTagName(menu).item(0).nextSibling.getAttribute('name');
-					
-                                        //message2 = root.getElementsByTagName(menu).item(0).firstChild.nodeValue;
-                                        //message2=root.getElementsByTagName(menu).item(0).nextSibling.getAttribute('name');
-					var html = "test : "+message;
+                                        var html = "test : "+message +"<br>"+ message2;
 					updateDivContent("main", html);
 				} 
 			}
@@ -61,6 +53,7 @@
 <body>
 <div class="menu"> <!-- début de la boite contenant les onglets -->
   <a class="onglet" href="test.jsp" onclick="fonctionContenu('Accueil'); fonctionClean('Accueil'); fonctionMenu('Accueil'); return false;"><div id="Accueil">Accueil</div></a>
+  <a class="onglet" href="test.jsp" onclick="fonctionContenu('Compte'); fonctionClean('Compte'); fonctionMenu('Compte'); return false;"><div id="Compte">Compte</div></a>
   <a class="onglet" href="test.jsp" onclick="fonctionContenu('VOD'); fonctionClean('VOD'); fonctionMenu('VOD'); return false;"><div id="VOD">VOD</div></a>
   <a class="onglet" href="test.jsp" onclick="fonctionContenu('VoIP'); fonctionClean('VoIP'); fonctionMenu('VoIP'); return false;"><div id="VoIP">VoIP</div></a>
   <a class="onglet" href="test.jsp" onclick="fonctionContenu('WebMail'); fonctionClean('WebMail'); fonctionMenu('WebMail'); return false;"><div id="WebMail">WebMail</div></a>
