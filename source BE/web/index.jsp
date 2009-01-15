@@ -24,6 +24,10 @@
 			helloRequest = getDataAsynchronous('./menu.xml', alertContenu(menu));
 		}
                 
+                function fonctionOpenPage(page){
+                    updateDivContent("main", page)
+                }
+                
 		function alertContenu(menu) {
 			if (helloRequest.readyState == 4) {
 				if (helloRequest.status == 200) {
@@ -31,13 +35,12 @@
 					var root = xmlDoc.getElementsByTagName('root').item(0);
                                         message = root.getElementsByTagName(menu).item(0).getAttribute('name');
                                         var subMenu=xmlDoc.getElementsByTagName(menu).item(0).getElementsByTagName('link');
-                                        message2="Sous menu :<br>";
+                                        message2="";
                                         for (i=0; i<subMenu.length;++i)
                                             {
-                                                message2+="Nom du lien : "+subMenu.item(i).getAttribute('name')+" d'url : "+subMenu.item(i).getAttribute('url')+"<br>";
+                                               message2+="<a class=\"onglet\" href=\""+subMenu.item(i).getAttribute('url')+"\" onclick=\"fonctionOpenPage('"+subMenu.item(i).getAttribute('url')+"'); fonctionCleanSub('Accueil'); fonctionSubMenu('Accueil'); return false;\"><div id=\"idSubMenu"+i+"\">"+subMenu.item(i).getAttribute('name')+"</div></a>";
                                             }
-                                        var html = "test : "+message +"<br>"+ message2;
-					updateDivContent("main", html);
+					updateDivContent("submenu", message2);
 				} 
 			}
 		}
@@ -62,6 +65,7 @@
   <a class="onglet" href="test.jsp" onclick="fonctionContenu('Services'); fonctionClean('Services'); fonctionMenu('Services'); return false;"><div id="Services">Services</div></a>
   <div class="spacer"></div> <!-- permet le retour à la ligne à la fin des boites float -->
 </div>
+<div class="menu" id="submenu"/>
 <div id="main"></div>
 <div id=" "></div>
 </body>

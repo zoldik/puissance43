@@ -1,11 +1,11 @@
 <?xml version="1.0"?>
 <root>
 	<Accueil name="Accueil">
-            <link name="Mon internet" url="internet.jsp"/>
+            <link name="Internet" url="internet.jsp"/>
             <link name="WebMail" url="Webmail.jsp"/>
         </Accueil>
         <Compte name="Compte">
-            <link name="Gestion" url="gestion-compte.jsp"/>
+            <link name="Gestion" url="compte/compte.jsp"/>
             <link name="Resiliation" url="resiliation-compte.jsp"/>
         </Compte>
         <VOD name="VOD">
