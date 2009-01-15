@@ -18,22 +18,40 @@ Partie VOIP :
             - email
         - supprimer utilisateur
         - ???gestion des groupes de téléconférence???
+        - ??gestion des numeros spéciaux??
     - Reporting d'appel
         - CDR http://www.areski.net/asterisk-stat-v2/
-    - Gestion des numeros spéciaux
     
 
 * Partie Utilisateur :
+    - Paramètres personnels
+        
     - Inscription Flux RSS                                          (communaute)
+        - Construction Flux RSS:
+            - appel manqué
+            - message répondeur
+        - Affichage Flux RSS
     - Acces Annuaire                                                (communaute)
         - exportation des données pour annuaire softphone
-    - Consultation des historiques d'appels                         (mon compte)
+    - Consultation de ses historiques d'appels                      (mon compte)
+        - son propre historique
+        - statistiques
     - Personnalisation des appels                                   (mon compte)
         - Présentation du numéro ou nom de l'appelant
-    - Transfert d'appel                                             (mon compte)
-    - Personalisation du repondeur ?                                (mon compte)
+        - Transfert d'appel
+        - Personalisation du répondeur
+            - Changement de la langue
+            - Changement d'email pour la réception des messages répondeur (Mail FAI par défaut?)
+            - Activer/Désactiver envoi message répondeur sur l'email
+                -> Stockage des messages répondeur sur le serveur
+                -> ???Mise en place interface répondeur???
     - Faire un tutorial softphone (lequel?)                         (support)
     - Contact                                                       (support)
+        - Formulaire basique -> envoi email
     - FAQ                                                           (support)
-    - Telechargement de softphone pre-installer                     (telechargement)
+    - Telechargement de softphone + conf Red Neck                   (telechargement)
     
+Asterisk:
+    - Annuaire : conf + BDD
+    - Groupes : possible ou pas?
+    - Répondeur : fichier audio, langage, log
