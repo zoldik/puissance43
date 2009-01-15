@@ -18,11 +18,14 @@ Partie VOIP :
 * Partie Utilisateur :
     - Inscription Flux RSS                                          (communaute)
     - Acces Annuaire                                                (communaute)
+        - exportation des données pour annuaire softphone
     - Consultation des historiques d'appels                         (mon compte)
     - Personnalisation des appels                                   (mon compte)
-    - transfert d'appel                                             (mon compte)
-    - personalisation du repondeur ?                                (mon compte)
-    - Faire un tutorial                                             (support)
-    - Assistance                                                    (support)
+        - Présentation du numéro ou nom de l'appelant
+    - Transfert d'appel                                             (mon compte)
+    - Personalisation du repondeur ?                                (mon compte)
+    - Faire un tutorial softphone (lequel?)                         (support)
+    - Contact                                                       (support)
+    - FAQ                                                           (support)
     - Telechargement de softphone pre-installer                     (telechargement)
     
