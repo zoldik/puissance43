@@ -29,7 +29,7 @@
         <a href="./annuaire.jsp">telechargement</a><br/>
         
          <h4></h4>
-        <a href="./admin.jsp">admimnistration</a><br/>
+        <a href="./admin.jsp">administration</a><br/>
         
     </body>
 </html>
