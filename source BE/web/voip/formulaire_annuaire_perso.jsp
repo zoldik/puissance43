@@ -11,9 +11,14 @@
 <html>
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-        <title>JSP Page</title>
+        <title>Entrer un contact personnel</title>
     </head>
     <body>
-        <h2>Hello World!</h2>
+        <input type="text" name="Nom" value="" />
+        <input type="text" name="Prénom" value="" />
+        <input type="text" name="Téléphone" value="" />
+        <input type="text" name="Email" value="" />
+        <input type="submit" value="Valider" />
+
     </body>
 </html>
