@@ -14,6 +14,12 @@
         <title>JSP Page</title>
     </head>
     <body>
-        <h2>Hello World!</h2>
+        <input type="text" name="Nom" value="" />
+        <input type="text" name="Prénom" value="" />
+        <input type="text" name="Titre" value="" />
+        <input type="text" name="Catégorie" value="" />
+        <input type="text" name="Téléphone" value="" />
+        <input type="text" name="Email" value="" />
+        <input type="submit" value="Valider" />
     </body>
 </html>
