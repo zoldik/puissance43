@@ -16,6 +16,8 @@
             <link name="Communauté" url="voip/communaute.jsp"/>
             <link name="Telechargement" url="voip/telechargement.jsp"/>
             <link name="Support" url="voip/support.jsp"/>
+            <link name="Annuaire" url="voip/annuaire.jsp"/>
+
         </VoIP>
         <WebMail name="WebMail">
             <link/>
