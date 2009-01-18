@@ -1,8 +1,12 @@
 DROP TABLE voip_user;
 
-DROP TABLE user_contact;
+DROP TABLE contact_perso;
 
-DROP TABLE a_contact;
+DROP TABLE contact_pro;
+
+DROP TABLE a_contact_perso;
+
+DROP TABLE a_contact_pro;
 
 DROP TABLE flux_rss;
 
