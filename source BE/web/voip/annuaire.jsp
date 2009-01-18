@@ -14,6 +14,8 @@
         <title>JSP Page</title>
     </head>
     <body>
-        <h2>Hello World!</h2>
+        <h2>Annuaire personnel</h2>
+        <h2>Annuaire professionnel</h2>
+
     </body>
 </html>
