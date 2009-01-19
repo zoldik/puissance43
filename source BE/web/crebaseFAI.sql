@@ -18,7 +18,7 @@ drop table if exists MAIL_ADDRESSE;
 
 drop table if exists MAIL_PJ;
 
-drop table if exists "OPTION";
+drop table if exists LIST_OPTIONS;
 
 drop table if exists POSSEDE_ABONNEMENT;
 
@@ -116,9 +116,9 @@ create table MAIL_PJ
 );
 
 /*==============================================================*/
-/* Table: "OPTION"                                              */
+/* Table: LIST_OPTIONS                                          */
 /*==============================================================*/
-create table "OPTION"
+create table LIST_OPTIONS
 (
    ID_OPTION            bigint not null,
    TYPE                 varchar(15),
@@ -230,7 +230,7 @@ alter table POSSEDE_MAIL_ADDRESSE add constraint FK_POSSEDE_MAIL_ADDRESSE2 forei
       references USER_FAI (USER_ID) on delete restrict on update restrict;
 
 alter table POSSEDE_OPTION add constraint FK_POSSEDE_OPTION foreign key (OPT_ID_OPTION)
-      references "OPTION" (ID_OPTION) on delete restrict on update restrict;
+      references LIST_OPTIONS (ID_OPTION) on delete restrict on update restrict;
 
 alter table POSSEDE_OPTION add constraint FK_POSSEDE_OPTION2 foreign key (USE_USER_ID)
       references USER_FAI (USER_ID) on delete restrict on update restrict;
