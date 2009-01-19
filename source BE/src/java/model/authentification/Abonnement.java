@@ -6,7 +6,7 @@
 package model.authentification;
 
 /**
- *
+ * Classe de gestion des abonnements (affiche site + facturation)
  * @author orthank
  */
 public class Abonnement {

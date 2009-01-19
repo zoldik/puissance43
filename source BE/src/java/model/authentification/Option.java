@@ -6,13 +6,14 @@
 package model.authentification;
 
 /**
- *
+ * Class de gestion des options (infos sites + facturation mensuelle/annuelle)
  * @author orthank
  */
 public class Option {
     String name;
     String price;
     String quantity;
+    String paiement;
     String description;
     
     /**
@@ -20,12 +21,14 @@ public class Option {
      * @param name
      * @param price
      * @param quantity
+     * @param paiement
      * @param description
      */
-    public Option(String name, String price, String quantity, String description){
+    public Option(String name, String price, String quantity, String paiement, String description){
         this.name=name;
         this.price=price;
         this.quantity=quantity;
+        this.paiement=paiement;
         this.description=description;
     }
 }

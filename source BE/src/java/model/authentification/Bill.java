@@ -8,7 +8,7 @@ package model.authentification;
 import java.util.ArrayList;
 
 /**
- *
+ * Classe gestion des factures (récupère arraylist des abonnements & options)
  * @author orthank
  */
 public class Bill {
