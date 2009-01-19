@@ -37,6 +37,8 @@ create table ABONNEMENT
 (
    ID_ABONNEMENT        bigint not null,
    NOM_ABONNEMENT       varchar(32),
+   PRICE                float(8,2),
+   OVERLOAD             float(8,2),
    DESCRIPTION_ABONNEMENT text,
    primary key (ID_ABONNEMENT)
 );
