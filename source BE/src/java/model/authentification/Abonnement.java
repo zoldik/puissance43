@@ -9,23 +9,23 @@ package model.authentification;
  *
  * @author orthank
  */
-public class Option {
+public class Abonnement {
     String name;
     String price;
-    String quantity;
+    String overload;
     String description;
-    
+
     /**
-     * Constructor option
+     * Constructor Abonnement
      * @param name
      * @param price
-     * @param quantity
-     * @param description
+     * @param overload : sert pour la partie facturation
+     * @param description : sert pour le site afin de décrire l'Abonnement
      */
-    public Option(String name, String price, String quantity, String description){
+    public Abonnement(String name, String price, String overload, String description){
         this.name=name;
         this.price=price;
-        this.quantity=quantity;
+        this.overload=overload;
         this.description=description;
     }
 }
