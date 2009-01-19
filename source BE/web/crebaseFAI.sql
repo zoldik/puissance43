@@ -124,7 +124,7 @@ create table "OPTION"
    TYPE                 varchar(15),
    QUANTITY             numeric(8,0),
    PRICE                float(8,0),
-   TYPE_FACTURATION     varchar(15);
+   TYPE_FACTURATION     varchar(15),
    primary key (ID_OPTION)
 );
 
