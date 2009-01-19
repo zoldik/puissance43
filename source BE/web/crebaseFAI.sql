@@ -75,6 +75,7 @@ create table FACTURE
    ID_FACTURE           bigint not null,
    MONTANT              float(8,2),
    HAS_OPTION           bool,
+   DATE                 varchar(10),
    primary key (ID_FACTURE)
 );
 
@@ -121,6 +122,7 @@ create table "OPTION"
    TYPE                 varchar(15),
    QUANTITY             numeric(8,0),
    PRICE                float(8,0),
+   TYPE_FACTURATION     varchar(15);
    primary key (ID_OPTION)
 );
 
