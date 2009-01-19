@@ -3,7 +3,13 @@
  * 
  *******************************************/
 
+Sécurité :
+-------------
 
+faire l'addition avec un cryptage md5
+reécriture de l'url en https lors d'un accès à une page où il faut être connecté
+(utilisation de captcha ??)
+reprise de l'ajax en live (pour les logins déjà utilisés, mais compromis avec la sécurité)
 
 Partie VoIP :
 -------------
