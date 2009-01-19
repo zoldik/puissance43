@@ -3,7 +3,7 @@
  * and open the template in the editor.
  */
 
-package model.authentification;
+package model.bill;
 
 import java.util.ArrayList;
 

@@ -3,7 +3,7 @@
  * and open the template in the editor.
  */
 
-package model.authentification;
+package model.bill;
 
 /**
  * Class de gestion des options (infos sites + facturation mensuelle/annuelle)
