@@ -6,11 +6,11 @@
 package model.authentification;
 
 /**
- *
+ * Classe de gestion des accounts (inscription, identification, modification infos personnelles)
  * @author orthank
  */
 public class Account {
-    private String id;
+    private int id;
     private String log;
     private String pw;
     private String name;
@@ -25,6 +25,7 @@ public class Account {
     private String tel;
     private String gsm;
     private String born;
+    private boolean allowed;
     
     /**
      * Constructeur Account
@@ -44,7 +45,7 @@ public class Account {
      * @param gsm
      * @param naissance
      */
-    public Account(String id, String login, String mdp, String nom, String prenom, String societe, String mail, String sexe, String user_type, String account_level, String typeUserVOD, String creditVOD, String tel, String gsm, String naissance) {
+    public Account(int id, String login, String mdp, String nom, String prenom, String societe, String mail, String sexe, String user_type, String account_level, String typeUserVOD, String creditVOD, String tel, String gsm, String naissance) {
         this.id=id;
         this.log=login;
         this.pw=mdp;
@@ -60,9 +61,10 @@ public class Account {
         this.tel=tel;
         this.gsm=gsm;
         this.born=naissance;
+        this.allowed=false;
     }
 
-    public String getId() {
+    public int getId() {
         return id;
     }
 
@@ -120,5 +122,9 @@ public class Account {
 
     public String getBorn() {
         return born;
+    }
+
+    public boolean isAllowed() {
+        return allowed;
     }
 }
