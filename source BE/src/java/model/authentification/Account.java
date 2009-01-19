@@ -61,8 +61,7 @@ public class Account {
         this.tel=tel;
         this.gsm=gsm;
         this.born=naissance;
-        this.allowed=false;
-    }
+        this.allowed=false;    }
 
     public int getId() {
         return id;
