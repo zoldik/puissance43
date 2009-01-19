@@ -3,7 +3,7 @@
  * and open the template in the editor.
  */
 
-package model.authentification;
+package model.account;
 
 /**
  * Classe de gestion des accounts (inscription, identification, modification infos personnelles)

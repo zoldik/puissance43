@@ -1,4 +1,4 @@
-package model.authentification;
+package model.account;
 
 //import fr.isen.jeen5_0809.group8.SQL.*;
 
