@@ -18,10 +18,10 @@ public class Account {
     private String societe;
     private String mail;
     private String sexe;
-    private String user_type;
-    private String account_level;
-    private String type_user_vod;
-    private String credit_vod;
+    private String userType;
+    private String accountLevel;
+    private String typeUserVod;
+    private String creditVod;
     private String tel;
     private String gsm;
     private String born;
@@ -54,10 +54,10 @@ public class Account {
         this.societe=societe;
         this.mail=mail;
         this.sexe=sexe;
-        this.user_type=user_type;
-        this.account_level=account_level;
-        this.type_user_vod=typeUserVOD;
-        this.credit_vod=creditVOD;
+        this.userType=user_type;
+        this.accountLevel=account_level;
+        this.typeUserVod=typeUserVOD;
+        this.creditVod=creditVOD;
         this.tel=tel;
         this.gsm=gsm;
         this.born=naissance;
@@ -95,20 +95,20 @@ public class Account {
         return sexe;
     }
 
-    public String getUser_type() {
-        return user_type;
+    public String getUserType() {
+        return userType;
     }
 
-    public String getAccount_level() {
-        return account_level;
+    public String getAccountLevel() {
+        return accountLevel;
     }
 
-    public String getType_user_vod() {
-        return type_user_vod;
+    public String getTypeUserVod() {
+        return typeUserVod;
     }
 
-    public String getCredit_vod() {
-        return credit_vod;
+    public String getCreditVod() {
+        return creditVod;
     }
 
     public String getTel() {
