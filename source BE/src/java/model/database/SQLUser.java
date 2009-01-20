@@ -12,27 +12,77 @@ import java.sql.*;
  */
 public class SQLUser {
        
-     /** Inscrit l'utilisateur dans la base de donnée.
+     /**
+      * Inscrit l'utilisateur dans la base de donnée.
       * 
-     * Si absence de gsm, remplacer par le string null.
-     * Si absence de fixe, remplacer par le string null. 
+      * Si absence de gsm, remplacer par le string null.
+      * Si absence de fixe, remplacer par le string null.
+      * Si absence de societe, remplacer par le string null.
+      * Si absence de date de naissance, remplacer par le string null.
       * @param login
       * @param pw
       * @param prenom
       * @param nom
       * @param naissance
+      * @param societe
       * @param mail
       * @param sexe
       * @param fixe
       * @param gsm
-      * @return boolean
+      * @param user_type
+      * @param account_level
+      * @param debit_vod
+      * @return
       */
+    public static boolean insert(String login, String pw, String prenom, String nom, String naissance, String societe ,String mail, String sexe, String fixe, String gsm, String user_type, String account_level, String debit_vod)
+    {     
+        boolean okay=true;
+        Statement stmt;
+        SQLObjet connexion=new SQLObjet();
+        String insert="insert into CUSTOMER (LOGIN,PASSWORD,PRENOM,NOM,MAIL,SEXE,USER_TYPE,ACCOUNT_LEVEL,DEBIT_VOD";
+        String values="values (\""+login+"\",\""+pw+"\",\""+prenom+"\",\""+nom+"\",\""+mail+"\",\""+sexe+"\",\""+user_type+"\",\""+account_level+"\",\""+debit_vod+"\"";
+        if (fixe.compareTo("")!=0)
+        {
+            insert+=",TEL";
+            values+=",\""+fixe+"\"";
+        }
+        if (gsm.compareTo("")!=0)
+        {
+            insert+=",GSM";
+            values+=",\""+gsm+"\"";
+        }
+        if (societe.compareTo("")!=0)
+        {
+            insert+=",SOCIETE";
+            values+=",\""+societe+"\"";
+        }
+        if (naissance.compareTo("")!=0)
+        {
+            insert+=",BORN";
+            values+=",\""+naissance+"\"";
+        }
+        insert+=") "+values+");";
+        try
+        {
+            stmt=connexion.getConn().createStatement();
+            stmt.executeUpdate(insert);
+            }
+        catch(SQLException e2)
+        {
+            System.out.println("SqlException : "+e2);
+            okay=false;
+        }
+        try {connexion.close();} catch (Exception e3) {System.out.println("Erreur fermeture"+e3);}
+        return okay;
+    }
+    
+    /*
     public static boolean insert(String login, String pw, String prenom, String nom, String naissance, String mail, String sexe, String fixe, String gsm)
     {
         boolean okay=true;
         Statement stmt;
         SQLObjet connexion=new SQLObjet();
-        String insert="insert into CUSTOMER (login,password,prenom,nom,naissance,mail,sexe";
+        String insert="insert into group8_user (login,password,prenom,nom,naissance,mail,sexe";
         String values="values (\""+login+"\",\""+pw+"\",\""+prenom+"\",\""+nom+"\",\""+naissance+"\",\""+mail+"\",\""+sexe+"\"";
         if (fixe.compareTo("")!=0)
         {
@@ -58,6 +108,7 @@ public class SQLUser {
         try {connexion.close();} catch (Exception e3) {System.out.println("Erreur fermeture"+e3);}
         return okay;
     }
+    */
     
      /** Verifie si l'utilisateur est autorisé
       * 
