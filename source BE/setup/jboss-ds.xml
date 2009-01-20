@@ -1,2 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<datasources/>
+<datasources>
+  <local-tx-datasource>
+    <jndi-name>MySqlDS</jndi-name>
+    <connection-url>
+        jdbc:mysql://localhost/RedNeck
+    </connection-url>
+    <driver-class>com.mysql.jdbc.Driver</driver-class>
+    <user-name>root</user-name>
+    <password>gandalf</password>
+  </local-tx-datasource>
+</datasources>
