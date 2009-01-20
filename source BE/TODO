@@ -27,7 +27,11 @@ Partie VoIP :
         - ??gestion des numeros spéciaux??
     - Reporting d'appel
         - CDR http://www.areski.net/asterisk-stat-v2/
-    
+* Différencier client particulier et client pro
+    - pour client pro fournir une interface web (structure à déterminer,inspirer du site web)
+    - dans pro : - employé : consultation annuaire pro
+
+                 - admin : création, gestion accès, remplissage, modification annuaire pro
 
 * Partie Utilisateur :
     - Paramètres personnels
