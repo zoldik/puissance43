@@ -187,9 +187,9 @@ public class SQLUser {
         ResultSet rs=null;
         try
         {
-            rs=stmt.executeQuery("select id_user from CUSTOMER where (login=\""+log+"\" and password=\""+pw+"\")");
+            rs=stmt.executeQuery("select USER_ID from CUSTOMER where (login=\""+log+"\" and password=\""+pw+"\")");
             rs.next();
-            id=Integer.parseInt(rs.getString("id_user"));
+            id=Integer.parseInt(rs.getString("USER_ID"));
         }
         catch(Exception e2)
         {

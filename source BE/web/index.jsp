@@ -74,7 +74,7 @@
 
 <html>
     <head>
-        <title>Accueil</title>
+        <title>Red Neck Industries</title>
         <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
     </head>
     
@@ -83,7 +83,7 @@
             <a class="onglet" href="test.jsp" onclick="fonctionContenu('Accueil'); fonctionClean('Accueil'); fonctionMenu('Accueil'); return false;"><div id="Accueil">Accueil</div></a>
             <a class="onglet" href="test.jsp" onclick="fonctionContenu('Compte'); fonctionClean('Compte'); fonctionMenu('Compte'); return false;"><div id="Compte">Compte</div></a>
             <a class="onglet" href="test.jsp" onclick="fonctionContenu('VOD'); fonctionClean('VOD'); fonctionMenu('VOD'); return false;"><div id="VOD">VOD</div></a>
-            <a class="onglet" href="test.jsp" onclick="fonctionContenu('VoIP'); fonctionClean('VoIP'); fonctionMenu('VoIP'); return false;"><div id="VoIP">VoIP</div></a>
+            <a class="onglet" href="#" onclick="fonctionOpenPage('voip/voip.jsp'); fonctionContenu('VoIP'); fonctionClean('VoIP'); fonctionMenu('VoIP'); return false;"><div id="VoIP">VoIP</div></a>
             <a class="onglet" href="test.jsp" onclick="fonctionContenu('WebMail'); fonctionClean('WebMail'); fonctionMenu('WebMail'); return false;"><div id="WebMail">WebMail</div></a>
             <a class="onglet" href="test.jsp" onclick="fonctionContenu('Assistance'); fonctionClean('Assistance'); fonctionMenu('Assistance'); return false;"><div id="Assistance">Assistance</div></a>
             <a class="onglet" href="test.jsp" onclick="fonctionContenu('Réseaux'); fonctionClean('Réseaux'); fonctionMenu('Réseaux'); return false;"><div id="Réseaux">Réseaux</div></a>

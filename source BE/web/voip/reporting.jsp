@@ -11,9 +11,9 @@
 <html>
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-        <title>JSP Page</title>
+        <title>Reporting</title>
     </head>
     <body>
-        <h2></h2>
+        <h2>Reporting!</h2>
     </body>
 </html>
