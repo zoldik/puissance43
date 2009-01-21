@@ -3,6 +3,12 @@
  * 
  *******************************************/
 
+Distinction private user / enterprise :
+-----------------------------------------
+When you have finish all the use case definie the 09-01-21, begin to distingue different 
+depending on it's a private user or an entreprise
+example : use case dedicated to the entreprises : special offer for a define quantity for the entreprise
+
 Sécurité :
 -------------
 

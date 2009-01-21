@@ -1,34 +1,39 @@
 <?xml version="1.0"?>
 <root>
-	<Accueil name="Accueil">
-            <link name="Internet" url="internet.jsp"/>
-            <link name="WebMail" url="Webmail.jsp"/>
-        </Accueil>
-        <Compte name="Compte">
-            <link name="Gestion" url="compte/compte.jsp"/>
-            <link name="Resiliation" url="resiliation-compte.jsp"/>
-        </Compte>
-        <VOD name="VOD">
-            <link/>
-        </VOD>
-        <VoIP name="VoIP">
-            <link name="Compte" url="voip/moncompte.jsp"/>
-            <link name="Communauté" url="voip/communaute.jsp"/>
-            <link name="Telechargement" url="voip/telechargement.jsp"/>
-            <link name="Support" url="voip/support.jsp"/>
-            <link name="Annuaire" url="voip/annuaire.jsp"/>
-
-        </VoIP>
-        <WebMail name="WebMail">
-            <link/>
-        </WebMail>
-        <Assistance name="menu assistance">
-            <link/>
-        </Assistance>
-        <Réseaux name="menu equipement réseau">
-            <link/>
-        </Réseaux>
-        <Services name="menu équipement service">
-            <link/>
-        </Services>                
+    <Accueil name="Accueil">
+        <link name="Internet" url="internet.jsp"/>
+        <link name="WebMail" url="Webmail.jsp"/>
+    </Accueil>
+    
+    <Compte name="Compte">
+        <link name="Gestion" url="compte/compte.jsp"/>
+        <link name="Resiliation" url="resiliation-compte.jsp"/>
+    </Compte>
+    
+    <VOD name="VOD">
+        <link/>
+    </VOD>
+    
+    <VoIP name="VoIP">
+        <link name="Compte" url="voip/moncompte.jsp"/>
+        <link name="Communauté" url="voip/communaute.jsp"/>
+        <link name="Telechargement" url="voip/telechargement.jsp"/>
+        <link name="Support" url="voip/support.jsp"/>
+        <link name="Annuaire" url="voip/annuaire.jsp"/>
+    </VoIP>
+    
+    <WebMail name="WebMail">
+        <link/>
+    </WebMail>
+    
+    <Assistance name="menu assistance">
+        <link/>
+    </Assistance>
+    
+    <Réseaux name="menu equipement réseau">
+        <link/>
+    </Réseaux>
+    <Services name="menu équipement service">
+        <link/>
+    </Services>
 </root>
