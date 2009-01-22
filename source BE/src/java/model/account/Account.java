@@ -74,10 +74,10 @@ public class Account {
         this.gsm="";
         this.born="";
         boolean tmp_allowed = false;
-        tmp_allowed = SQLUser.isAllowed(login,password);
+        tmp_allowed = SQLCustomer.isAllowed(login,password);
         this.allowed=tmp_allowed;
         if (this.allowed) {
-            this.id=SQLUser.getID(login, password);
+            this.id=SQLCustomer.getID(login, password);
         }
     }
     

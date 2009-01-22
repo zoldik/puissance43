@@ -10,7 +10,7 @@ import java.sql.*;
  * Contient les requêtes pour la partie User du projet
  * @author Baudet Aurélien
  */
-public class SQLUser {
+public class SQLCustomer {
        
      /**
       * Inscrit l'utilisateur dans la base de donnée.
