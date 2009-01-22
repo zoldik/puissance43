@@ -35,14 +35,14 @@
     </table>
 </form>
 
-<%--<%
+<%
 String param  = request.getParameter("Connexion");
 if (param!=null) {
     if(request.getParameter("Connexion").compareTo("refused")==0) {
         out.print("<center><font color=\"red\">Login et/ou mot de passe incorrect(s)</font><br><a href=\"motdepasseperdu.jsp\">Récupérer vos identifiants?</a></center>");
     }
 }
-%>--%>
+%>
 <br>
     </body>
 </html>
