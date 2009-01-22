@@ -277,18 +277,6 @@ create table HAS_VOIP_APPEL
 );
 
 /*==============================================================*/
-/* Table: HAS_VOIP_CONTACT                                      */
-/*==============================================================*/
-create table HAS_VOIP_CONTACT
-(
-   USE_ID_VOIP          bigint not null,
-   VOI_VOIP_CONTACT_ID  bigint not null,
-   ID_VOIP              bigint,
-   VOIP_CONTACT_ID      bigint,
-   primary key (USE_ID_VOIP, VOI_VOIP_CONTACT_ID)
-);
-
-/*==============================================================*/
 /* Table: HAS_VOIP_LIGNE                                        */
 /*==============================================================*/
 create table HAS_VOIP_LIGNE
@@ -552,7 +540,8 @@ create table VOIP_CONTACT
    PRENOM               varchar(15),
    MAIL                 varchar(15),
    TELEPHONE            varchar(15),
-   primary key (VOIP_CONTACT_ID)
+   ID_VOIP              bigint not null,
+   primary key (VOIP_CONTACT_ID,ID_VOIP)
 );
 
 /*==============================================================*/
