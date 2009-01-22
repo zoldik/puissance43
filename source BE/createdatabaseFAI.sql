@@ -118,19 +118,27 @@ create table ADRESSE
 -- Structure de la table `ARTICLE`
 --
 
-CREATE TABLE IF NOT EXISTS `ARTICLE` (
-  `ID_ARTICLE` bigint(20) NOT NULL,
+CREATE TABLE `ARTICLE` (
+  `ID_ARTICLE` bigint(20) NOT NULL auto_increment,
   `name` varchar(20) NOT NULL,
   `type` varchar(20) NOT NULL,
   `description` text NOT NULL,
   `unit_price` double NOT NULL default '0',
   `stock` bigint(20) NOT NULL,
   PRIMARY KEY  (`ID_ARTICLE`)
-) 
+); 
 
 --
 -- Contenu de la table `ARTICLE`
 --
+
+INSERT INTO `ARTICLE` (`ID_ARTICLE`, `name`, `type`, `description`, `unit_price`, `stock`) VALUES
+(1, 'routeur X200', 'routeur', 'implémente les fonctions NAT, DHCP, ', 11, 120),
+(2, 'switch 200', 'switch', '4 ports', 21, 130),
+(3, 'routeur X800', 'routeur', 'routeur implémentant les fonctions NAT', 12, 149),
+(4, 'switch 600', 'switch', '8 ports', 22, 150),
+(5, 'hub a', 'hub', 'USB', 31, 120),
+(6, 'hub b', 'hub', 'RJ45', 32, 130);
 
 /*==============================================================*/
 /* Table: BILL                                                  */
