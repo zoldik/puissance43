@@ -1,25 +1,25 @@
-body {background-color:white ; color:black} /* page blanche avec une police noire */
+body {background-color:red ; color:black;width:100%;height:100%} /* page rouge avec une police noire */
 
 .menu { /* boite qui contient le menu (les onglets) */
-  border-top:solid 2px black ; /* crée le trait noir en-dessous des onglets */
-  padding-top:0px ; /* marge intérieure haute */
-  padding-bottom:0px;
-  background-image: url(img/top-1px.jpg);
-  background-repeat: repeat;
-  padding: 0;
-  width:100%;
-  height:35px;
+    border-top:solid 2px black ; /* crée le trait noir au dessus des onglets */
+    padding-top:0px ; /* marge intérieure haute */
+    padding-bottom:0px;
+    background-image: url(img/top-1px.jpg);
+    background-repeat: repeat;
+    padding: 0;
+    width:100%;
+    height:35px;
 } /* marge intérieure basse */
 
 .onglet { /* style des onglets inactifs */
-  margin:0px 5px 0px 20px ; /* marge extérieure */
-  padding:7px 0px 0px 0px ; /* marge intérieure */
-  font-size : 16px ; /* taille de la police des onglets */
-  float:left ; /* boite en mode float, pour pouvoir en définir la largeur */
-  width:100px ; /* largeur de la boite float */
-  background : url(img/ongleth.gif) bottom no-repeat ; /* image de fond de la boite float, calée en bas */
-  text-decoration:none ; /* les lien dans les onglets ne sont pas soulignés */
-  text-align:center;
+    margin:0px 5px 0px 40px ; /* marge extérieure */
+    padding:7px 0px 0px 0px ; /* marge intérieure */
+    font-size : 16px ; /* taille de la police des onglets */
+    float:left ; /* boite en mode float, pour pouvoir en définir la largeur */
+    width:100px ; /* largeur de la boite float */
+    background : url(img/ongleth.gif) bottom no-repeat ; /* image de fond de la boite float, calée en bas */
+    text-decoration:none ; /* les lien dans les onglets ne sont pas soulignés */
+    text-align:center;
 } /* Le texte des onglets est centré */
 
 a.onglet:hover {color:green} /* lors du survol d'un lien, la police devient verte */
@@ -27,33 +27,44 @@ a.onglet:hover {color:green} /* lors du survol d'un lien, la police devient vert
 .spacer {clear:both} /* force le retour à la ligne après des boites float */
 
 .menu2 { /* boite qui contient les sous-onglets */
-  border-bottom:solid 2px black ; /* crée le trait noir en-dessous des onglets */
-  padding-top:0px ; /* marge intérieure haute */
-  padding-bottom:0px;
-  background-image: url(img/toph-1px.jpg);
-  background-repeat: repeat;
-  padding: 0;
-  width:100%;
-  height:35px;
+    border-bottom:solid 2px black ; /* crée le trait noir en-dessous des onglets */
+    padding-top:0px ; /* marge intérieure haute */
+    padding-bottom:0px;
+    background-image: url(img/toph-1px.jpg);
+    background-repeat: repeat;
+    padding: 0;
+    width:100%;
+    height:35px;
 } /* marge intérieure basse */
 
 .onglet2 { /* style des onglets inactifs */
-  margin:5px 5px 0px 20px ; /* marge extérieure */
-  padding:11px 0px 0px 0px ; /* marge intérieure */
-  font-size : 16px ; /* taille de la police des onglets */
-  float:left ; /* boite en mode float, pour pouvoir en définir la largeur */
-  width:100px ; /* largeur de la boite float */
-  background : url(img/onglet.gif) bottom no-repeat ; /* image de fond de la boite float, calée en bas */
-  text-decoration:none ; /* les lien dans les onglets ne sont pas soulignés */
-  text-align:center;
+    margin:5px 5px 0px 20px ; /* marge extérieure */
+    padding:11px 0px 0px 0px ; /* marge intérieure */
+    font-size : 16px ; /* taille de la police des onglets */
+    float:left ; /* boite en mode float, pour pouvoir en définir la largeur */
+    width:100px ; /* largeur de la boite float */
+    background : url(img/onglet.gif) bottom no-repeat ; /* image de fond de la boite float, calée en bas */
+    text-decoration:none ; /* les lien dans les onglets ne sont pas soulignés */
+    text-align:center;
 } /* Le texte des onglets est centré */
 
 a.onglet2:hover {color:green} /* lors du survol d'un lien, la police devient verte */
 
 .spacerh {clear:both} /* force le retour à la ligne après des boites float */
 
+
 div#main {
-	width:80%;
-	height:700px;
-        float:left;
-	}
+    width:100%;
+    height:700px;
+    /*float:left;
+    background-color:blue;*/ 
+}
+
+
+.page{
+    width:100%;
+    height:100%;
+    background-color:grey;
+}
+
+

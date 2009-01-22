@@ -35,7 +35,7 @@
     }
                 
     function fonctionOpenPage(url){
-        updateDivContent("main", "<object data='"+url+"' type='text/html'/>");
+        updateDivContent("main", "<object class='page' data='"+url+"' type='text/html'/>");
     }
     function fonctionSubClean(keep2,contenu){
         updateDivContent(temp2,keepcontenu);
@@ -87,12 +87,13 @@
             <a class="onglet" href="test.jsp" onclick="fonctionContenu('WebMail'); fonctionClean('WebMail'); fonctionMenu('WebMail'); return false;"><div id="WebMail">WebMail</div></a>
             <a class="onglet" href="test.jsp" onclick="fonctionContenu('Assistance'); fonctionClean('Assistance'); fonctionMenu('Assistance'); return false;"><div id="Assistance">Assistance</div></a>
             <a class="onglet" href="test.jsp" onclick="fonctionContenu('Réseaux'); fonctionClean('Réseaux'); fonctionMenu('Réseaux'); return false;"><div id="Réseaux">Réseaux</div></a>
-            <a class="onglet" href="test.jsp" onclick="fonctionContenu('Services'); fonctionClean('Services'); fonctionMenu('Services'); return false;"><div id="Services">Services</div></a>
+            <a class="onglet" href="test.jsp" onclick="fonctionContenu('NetworkDevices'); fonctionClean('NetworkDevices'); fonctionMenu('NetworkDevices'); return false;"><div id="NetworkDevices">NetworkDevices</div></a>
+            <a class="onglet" href="test.jsp" onclick="fonctionContenu('NetworkSolutions'); fonctionClean('NetworkSolutions'); fonctionMenu('NetworkSolutions'); return false;"><div id="NetworkSolutions">NetworkSolutions</div></a>
             <div class="spacer"></div> <!-- permet le retour à la ligne à la fin des boites float -->
         </div>
-        <div class="menu2" id="submenu"></div>
-        <div id="main"></div>
-        <div id=" "></div>
+        <div class="menu2" id="submenu"></div>        
+        <div class="main" id="main"></div>
+        <div id=" "></div>        
     </body>
     
 </html>
