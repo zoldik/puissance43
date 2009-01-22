@@ -11,15 +11,22 @@
 <html>
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-        <title>Annuaire</title>
+        <title>Annuaire Téléphonique</title>
     </head>
     <body>
-        <h2>Annuaire personnel</h2>
-        <!--Affichage puis bouton ajouter -->
+        <h2>Répertoire téléphonique</h2>
+        <!--Affichage puis bouton ajouter 
+            - par catégorie
+              nom
+              prénom
+              num de tel
         
+            -->
         
-        <h2>Annuaire professionnel</h2>
-        <!--Affichage puis bouton ajouter -->
+        <FORM Method="POST" Action="/formulaire_annuaire.jsp">
+        <input type="submit" value="Ajouter un contact " name="contact" /> <br>
+        </FORM>
+
 
 
     </body>
