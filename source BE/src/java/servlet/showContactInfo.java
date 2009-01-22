@@ -9,21 +9,20 @@ import java.io.*;
 import javax.servlet.*;
 import javax.servlet.http.*;
 import model.voip.*;
-import model.account.*;
+
 
 /**
  *
  * @author thomas
  */
-public class ContactInfo extends javax.servlet.http.HttpServlet {
+public class showContactInfo extends javax.servlet.http.HttpServlet {
    
     /** 
     * Processes requests for both HTTP <code>GET</code> and <code>POST</code> methods.
     * @param request servlet request
     * @param response servlet response
     */
-
-
+  
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">
     /** 
     * Handles the HTTP <code>GET</code> method.
@@ -31,26 +30,36 @@ public class ContactInfo extends javax.servlet.http.HttpServlet {
     * @param response servlet response
     */
    public void doGet(HttpServletRequest request, HttpServletResponse response) throws IOException, ServletException {
+		/*response.setContentType("text/html");*/
         
         //On vérifie la session
-	HttpSession session = request.getSession(true);
+	/*HttpSession session = request.getSession(true);*/
+        
+        /*On vérifie que le répertoire existe et on récupère toutes les données dans la bdd et on met dans rs
+         Puis on affiche tous les contacts du répertoire 
+         */
         
 
                      
-        String Titre = request.getParameter("Titre");
-        String Categorie = request.getParameter("Catégorie");
-        String Nom = request.getParameter("Nom");
-        String Prenom = request.getParameter("Prénom");
-        String Telephone = request.getParameter("Téléphone");
-        String Email = request.getParameter("Email");
+       /* 
+        String Titre = rs.getParameter("Titre");
+        String Categorie = rs.getParameter("Catégorie");
+        String Nom = rs.getParameter("Nom");
+        String Prenom = rs.getParameter("Prénom");
+        String Telephone = rs.getParameter("Téléphone");
+        String Email = rs.getParameter("Email");
         
-        // test du dernier id libre dans BDD
-        int id=0;
+        * outprintln(Titre = );
+        * ... 
         
-        // création d'un contact
-        Contact contact = new Contact(id,Titre,Categorie,Nom,Prenom,Telephone,Email);
+        */
         
-        //insertion du contact dans la bdd
+        
+   
+        
+       
+        
+       
         
         
         }  
@@ -62,9 +71,8 @@ public class ContactInfo extends javax.servlet.http.HttpServlet {
     * @param request servlet request
     * @param response servlet response
     */
-    protected void doPost(HttpServletRequest request, HttpServletResponse response)
+   protected void doPost(HttpServletRequest request, HttpServletResponse response)
     throws ServletException, IOException {
-        doGet(request, response);
     }
 
     /** 
