@@ -113,13 +113,24 @@ create table ADRESSE
 /*==============================================================*/
 /* Table: ARTICLE                                               */
 /*==============================================================*/
-create table ARTICLE
-(
-   ID_ARTICLE           bigint not null,
-   DESCRIPTION          text,
-   PRICE_ARTICLE        float(8,2),
-   primary key (ID_ARTICLE)
-);
+
+--
+-- Structure de la table `ARTICLE`
+--
+
+CREATE TABLE IF NOT EXISTS `ARTICLE` (
+  `ID_ARTICLE` bigint(20) NOT NULL,
+  `name` varchar(20) NOT NULL,
+  `type` varchar(20) NOT NULL,
+  `description` text NOT NULL,
+  `unit_price` double NOT NULL default '0',
+  `stock` bigint(20) NOT NULL,
+  PRIMARY KEY  (`ID_ARTICLE`)
+) 
+
+--
+-- Contenu de la table `ARTICLE`
+--
 
 /*==============================================================*/
 /* Table: BILL                                                  */
