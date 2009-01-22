@@ -546,6 +546,12 @@ create table VOIP_APPEL
 create table VOIP_CONTACT
 (
    VOIP_CONTACT_ID      bigint not null,
+   TITRE                varchar(15),
+   CATEGORIE            varchar(15),
+   NOM                  varchar(15),
+   PRENOM               varchar(15),
+   MAIL                 varchar(15),
+   TELEPHONE            varchar(15),
    primary key (VOIP_CONTACT_ID)
 );
 
