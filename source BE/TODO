@@ -3,6 +3,14 @@
  * 
  *******************************************/
 
+Resolve bugs : 
+--------------
+
+-You have to click twice on the menu's button to access to the submenu's button the first time you clicl on any of menu's buttons.
+
+-problem css height=100% in .main{] don't work
+
+
 Distinction private user / enterprise :
 -----------------------------------------
 When you have finish all the use case definie the 09-01-21, begin to distingue different 
