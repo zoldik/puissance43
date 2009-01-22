@@ -16,15 +16,31 @@
             <param-value>2</param-value>
         </init-param>
         <load-on-startup>2</load-on-startup>
+        </servlet>
+    <servlet>
+        <servlet-name>Authentification</servlet-name>
+	<servlet-class>servlet.Authentification</servlet-class>
+    </servlet>    
+    <servlet>
+        <servlet-name>enregContactInfo</servlet-name>
+        <servlet-class>servlet.enregContactInfo</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>showContactInfo</servlet-name>
+        <servlet-class>servlet.showContactInfo</servlet-class>
     </servlet>
     <servlet-mapping>
         <servlet-name>action</servlet-name>
         <url-pattern>*.do</url-pattern>
     </servlet-mapping>
-        <servlet>
-        <servlet-name>Authentification</servlet-name>
-	<servlet-class>servlet.Authentification</servlet-class>
-    </servlet>
+    <servlet-mapping>
+        <servlet-name>ContactInfo</servlet-name>
+        <url-pattern>/ContactInfo</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>showContactInfo</servlet-name>
+        <url-pattern>/showContactInfo</url-pattern>
+    </servlet-mapping>
     <servlet-mapping>
         <servlet-name>Authentification</servlet-name>
         <url-pattern>/Authentification</url-pattern>
@@ -36,5 +52,5 @@
     </session-config>
     <welcome-file-list>
         <welcome-file>index.jsp</welcome-file>
-    </welcome-file-list>
-</web-app>
+        </welcome-file-list>
+    </web-app>
