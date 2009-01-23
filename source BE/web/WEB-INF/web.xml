@@ -34,10 +34,6 @@
         <url-pattern>*.do</url-pattern>
     </servlet-mapping>
     <servlet-mapping>
-        <servlet-name>ContactInfo</servlet-name>
-        <url-pattern>/ContactInfo</url-pattern>
-    </servlet-mapping>
-    <servlet-mapping>
         <servlet-name>showContactInfo</servlet-name>
         <url-pattern>/showContactInfo</url-pattern>
     </servlet-mapping>
