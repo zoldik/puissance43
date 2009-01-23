@@ -36,13 +36,14 @@ public class enregContactInfo extends javax.servlet.http.HttpServlet {
          //if(getUserVoip().repertory==true){ 
            // }
 
-                     
+                    
         String Titre = request.getParameter("Titre");
         String Categorie = request.getParameter("Catégorie");
         String Nom = request.getParameter("Nom");
         String Prenom = request.getParameter("Prénom");
         String Telephone = request.getParameter("Téléphone");
         String Email = request.getParameter("Email");
+     //   insert().Contact
         
         // récupération du dernier id libre dans BDD (créer une fonction dans DAO)
         /*
