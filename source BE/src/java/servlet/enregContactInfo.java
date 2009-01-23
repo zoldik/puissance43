@@ -9,6 +9,8 @@ import java.io.*;
 import javax.servlet.*;
 import javax.servlet.http.*;
 import model.voip.*;
+import model.database.*;
+
 
 
 /**
@@ -32,9 +34,12 @@ public class enregContactInfo extends javax.servlet.http.HttpServlet {
    public void doGet(HttpServletRequest request, HttpServletResponse response) throws IOException, ServletException {
         try{
         
-        //On vérifie que le répertoire existe si non on en crée un sinon on insère
-         //if(getUserVoip().repertory==true){ 
-           // }
+        //Pour effectuer les tests on crée ici un objet UserVoip ainsi qu'un objet Repertoire
+         
+        //UserVoip user_voip = new UserVoip();
+        Repertoire repertoire=new Repertoire();
+       // user_voip.hasRepertoire=true;
+        int id_voip=1;
 
                     
         String Titre = request.getParameter("Titre");
@@ -43,6 +48,12 @@ public class enregContactInfo extends javax.servlet.http.HttpServlet {
         String Prenom = request.getParameter("Prénom");
         String Telephone = request.getParameter("Téléphone");
         String Email = request.getParameter("Email");
+        int id=SQLContactVoip.getlastId();
+        
+        Contact contact = new Contact(id,Titre,Categorie,Nom,Prenom,Telephone,Email);
+        
+        SQLContactVoip.insert(id, Titre, Categorie, Nom, Prenom, Telephone, Email, id_voip);
+        
      //   insert().Contact
         
         // récupération du dernier id libre dans BDD (créer une fonction dans DAO)
@@ -50,10 +61,8 @@ public class enregContactInfo extends javax.servlet.http.HttpServlet {
         mysql_query("INSERT INTO table (nom_table) values ('ex')");
    $dernier_id =  mysql_insert_id()          
           */
-        int id=0;
         
         // création d'un contact
-        Contact contact = new Contact(id,Titre,Categorie,Nom,Prenom,Telephone,Email);
         
         //insertion du contact dans la bdd
         }  
