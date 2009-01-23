@@ -50,6 +50,10 @@ public Contact (int id,String titre,String categorie,String nom,String prenom,St
     this.mail=mail;
                }
 
+public void showContact(){
+    
+}
+
     public String getCategorie() {
         return categorie;
     }
