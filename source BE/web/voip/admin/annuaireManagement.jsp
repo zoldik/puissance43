@@ -16,6 +16,8 @@
     <body>
         <h2>Administration Annuaire</h2>
         
+        
+        
         <table width="2">
             <tr>
                 <td></td>
