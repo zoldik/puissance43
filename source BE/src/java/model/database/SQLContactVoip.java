@@ -44,7 +44,7 @@ public class SQLContactVoip {
     public static boolean insertContact(Contact contact) throws SQLException {   
         boolean okay=true;
         Statement stmt;
-        SQLObjet connexion=new SQLObjet();
+        ConnectionDatabase connexion=new ConnectionDatabase();
         String insert = "INSERT INTO VOIP_CONTACT VALUES('" + contact.id + "','" + contact.titre + "','" + contact.categorie + "', '" + contact.nom + "', '" + contact.prenom + "', '" + contact.telephone + "', '" + contact.mail + "', '" + contact.id_voip + "')";
         try {   
             stmt=connexion.getConn().createStatement();
