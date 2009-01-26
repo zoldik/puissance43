@@ -16,7 +16,7 @@
     </head>
     <body>
         <h1> Rentrer les informations de votre contact</h1>
-        <FORM Method="POST" Action="enregContactInfo">
+        <FORM Method="POST" Action="/enregContactInfo">
         Titre <input type="text" name="Titre" value="" /> <br>
         Categorie <input type="text" name="Catégorie" value="" /> <br>
         Nom <input type="text" name="Nom" value="" /> <br>
