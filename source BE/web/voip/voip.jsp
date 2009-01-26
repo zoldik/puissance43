@@ -18,7 +18,6 @@
         
         <h4>Mon compte</h4>
         <a href="./historique.jsp">historique</a><br/>
-        <a href="./reporting.jsp">Reporting</a><br/>
         
         <h4>Communautée</h4>
         <a href="./annuaire.jsp">Annuaire</a><br/>
@@ -29,7 +28,7 @@
         <a href="./annuaire.jsp">telechargement</a><br/>
         
          <h4></h4>
-        <a href="./admin.jsp">administration</a><br/>
+        <a href="./admin/admin.jsp">administration</a><br/>
         
     </body>
 </html>
