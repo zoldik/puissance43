@@ -54,7 +54,7 @@ public class Cart {
     }
     
     //*******
-    //Comportements
+    //Behaviour methods
     //*******
     
     /**
