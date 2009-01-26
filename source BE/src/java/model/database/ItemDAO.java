@@ -5,10 +5,16 @@
 
 package model.database;
 
+import com.mysql.jdbc.Connection;
+
 /**
  *
  * @author vincent
  */
-public class SQLArticle {
+public class ItemDAO {
+    private Connection con = null;
+    private boolean connected = false;
+    
+    
 
 }

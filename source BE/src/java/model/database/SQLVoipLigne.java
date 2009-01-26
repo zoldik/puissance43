@@ -62,7 +62,7 @@ public class SQLVoipLigne {
     {     
         boolean okay=true;
         Statement stmt;
-        SQLObjet connexion=new SQLObjet();
+        ObjectDAO connexion=new ObjectDAO();
         
         String insert= "insert into VOIP_LIGNE (name,host,type,context,dtmfmode,language,mailbox,secret,username";
 
@@ -99,7 +99,7 @@ public class SQLVoipLigne {
     public static ResultSet getLigne(String ligne)
     {
         Statement stmt;
-        SQLObjet connexion=new SQLObjet();
+        ObjectDAO connexion=new ObjectDAO();
         ResultSet rs=null;
         try
         {
@@ -123,7 +123,7 @@ public class SQLVoipLigne {
     public static ResultSet getLignes()
     {
         Statement stmt;
-        SQLObjet connexion=new SQLObjet();
+        ObjectDAO connexion=new ObjectDAO();
         ResultSet rs=null;
         try
         {
@@ -147,7 +147,7 @@ public class SQLVoipLigne {
     public static ResultSet deleteLigne(String ligne)
     {
         Statement stmt;
-        SQLObjet connexion=new SQLObjet();
+        ObjectDAO connexion=new ObjectDAO();
         ResultSet rs=null;
         try
         {
