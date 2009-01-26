@@ -15,13 +15,13 @@ import javax.sql.DataSource;
  *
  * @author Baudet Aurélien
  */
-public class ObjectDAO {
+public class ConnectionDatabase {
     private Connection conn;
     
      /**Constructor
      * Sert à l'initialisation d'une connexion
      */
-    protected ObjectDAO()
+    protected ConnectionDatabase()
     {
         this.conn=init();
     }

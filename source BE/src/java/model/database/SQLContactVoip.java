@@ -23,7 +23,7 @@ public class SQLContactVoip {
     public static boolean insert(int voip_contact_id, String titre, String categorie, String nom, String prenom, String telephone, String mail, int id_voip) throws SQLException {   
         boolean okay=true;
         Statement stmt;
-        ObjectDAO connexion=new ObjectDAO();
+        ConnectionDatabase connexion=new ConnectionDatabase();
         String insert = "INSERT INTO VOIP_CONTACT VALUES('" + voip_contact_id + "','" + titre + "','" + categorie + "', '" + nom + "', '" + prenom + "', '" + telephone + "', '" + mail + "', '" + id_voip + "')";
         try {   
             stmt=connexion.getConn().createStatement();
@@ -65,7 +65,7 @@ public class SQLContactVoip {
       */
     static public int getlastId() throws SQLException  {
      
-     ObjectDAO connexion=new ObjectDAO();
+     ConnectionDatabase connexion=new ConnectionDatabase();
      Statement stmt=connexion.getConn().createStatement();
      int id = 0;
 
@@ -93,7 +93,7 @@ public class SQLContactVoip {
       */
     public ResultSet selectbyId(int id)throws SQLException {
         Statement stmt;
-        ObjectDAO connexion=new ObjectDAO();
+        ConnectionDatabase connexion=new ConnectionDatabase();
         ResultSet rs=null;
         try
         {
@@ -117,7 +117,7 @@ public class SQLContactVoip {
     public boolean deletebyId(int id) throws SQLException {
         boolean okay=true;
         Statement stmt;
-        ObjectDAO connexion=new ObjectDAO();
+        ConnectionDatabase connexion=new ConnectionDatabase();
         ResultSet rs=null;
         try
         {
@@ -140,7 +140,7 @@ public class SQLContactVoip {
       */
     public ResultSet selectbyCategorie(String categorie) throws SQLException {
         Statement stmt;
-        ObjectDAO connexion=new ObjectDAO();
+        ConnectionDatabase connexion=new ConnectionDatabase();
         ResultSet rs=null;
         try
         {
@@ -163,7 +163,7 @@ public class SQLContactVoip {
     public boolean updatebyfield(int id, String field, String value) throws SQLException {
         boolean okay=true;
         Statement stmt;
-        ObjectDAO connexion=new ObjectDAO();
+        ConnectionDatabase connexion=new ConnectionDatabase();
         try
         {
             stmt=connexion.getConn().createStatement();

@@ -38,7 +38,7 @@ public class SQLCustomer {
     {     
         boolean okay=true;
         Statement stmt;
-        ObjectDAO connexion=new ObjectDAO();
+        ConnectionDatabase connexion=new ConnectionDatabase();
         String insert="insert into CUSTOMER (LOGIN,PASSWORD,PRENOM,NOM,MAIL,SEXE,USER_TYPE,ACCOUNT_LEVEL,DEBIT_VOD";
         String values="values (\""+login+"\",\""+pw+"\",\""+prenom+"\",\""+nom+"\",\""+mail+"\",\""+sexe+"\",\""+user_type+"\",\""+account_level+"\",\""+debit_vod+"\"";
         if (fixe.compareTo("")!=0)
@@ -121,7 +121,7 @@ public class SQLCustomer {
     {
         boolean okay=true;
         Statement stmt;
-        ObjectDAO connexion=new ObjectDAO();
+        ConnectionDatabase connexion=new ConnectionDatabase();
         stmt=connexion.getConn().createStatement();
         ResultSet rs=null;
         try
@@ -151,7 +151,7 @@ public class SQLCustomer {
     {
         boolean okay=true;
         Statement stmt;
-        ObjectDAO connexion=new ObjectDAO();
+        ConnectionDatabase connexion=new ConnectionDatabase();
         stmt=connexion.getConn().createStatement();
         ResultSet rs=null;
         try
@@ -182,7 +182,7 @@ public class SQLCustomer {
     {
         int id;
         Statement stmt;
-        ObjectDAO connexion=new ObjectDAO();
+        ConnectionDatabase connexion=new ConnectionDatabase();
         stmt=connexion.getConn().createStatement();
         ResultSet rs=null;
         try
@@ -209,7 +209,7 @@ public class SQLCustomer {
     public ResultSet select(String log, String pw)
     {
         Statement stmt;
-        ObjectDAO connexion=new ObjectDAO();
+        ConnectionDatabase connexion=new ConnectionDatabase();
         ResultSet rs=null;
         try
         {
@@ -234,7 +234,7 @@ public class SQLCustomer {
     {
         boolean okay=true;
         Statement stmt;
-        ObjectDAO connexion=new ObjectDAO();
+        ConnectionDatabase connexion=new ConnectionDatabase();
         try
         {
                 stmt=connexion.getConn().createStatement();
@@ -259,7 +259,7 @@ public class SQLCustomer {
         boolean okay=true;
         Statement stmt;
         ResultSet rs=null;
-        ObjectDAO connexion=new ObjectDAO();
+        ConnectionDatabase connexion=new ConnectionDatabase();
         try
         {
                 stmt=connexion.getConn().createStatement();
@@ -287,7 +287,7 @@ public class SQLCustomer {
         boolean okay=true;
         Statement stmt;
         ResultSet rs=null;
-        ObjectDAO connexion=new ObjectDAO();
+        ConnectionDatabase connexion=new ConnectionDatabase();
         try
         {
                 stmt=connexion.getConn().createStatement();
