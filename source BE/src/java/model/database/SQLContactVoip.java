@@ -7,6 +7,7 @@ package model.database;
 
 import java.sql.*;
 import model.voip.*;
+import java.util.*;
 
 
 
@@ -91,7 +92,7 @@ public class SQLContactVoip {
       * @param id
       * @return ResultSet
       */
-    public ResultSet selectbyId(int id)throws SQLException {
+     public ResultSet selectbyId(int id)throws SQLException {
         Statement stmt;
         ConnectionDatabase connexion=new ConnectionDatabase();
         ResultSet rs=null;
@@ -107,8 +108,42 @@ public class SQLContactVoip {
         try {connexion.close();} catch (Exception e3) {System.out.println("Erreur fermeture"+e3);}
         return rs;
     } 
-    
-    
+   
+      /** Renvoie les contacts d'un user_voip en passant son id en paramètre
+      * 
+      * @param id
+      * @return ResultSet
+      */
+    static public LinkedList <Contact> getContactbyVoipId(int id)throws SQLException {
+        Statement stmt;
+        ConnectionDatabase connexion=new ConnectionDatabase();
+        ResultSet rs=null;
+        LinkedList listeContact = new LinkedList<Contact>();
+
+        try
+        {
+            int id_voip=1;
+            stmt=connexion.getConn().createStatement();
+            rs = stmt.executeQuery("select * from VOIP_CONTACT where (ID_VOIP=\""+id+"\")");
+            while (rs.next()){
+            String Titre = rs.getString("TITRE");
+            String Categorie = rs.getString("CATEGORIE");
+            String Nom = rs.getString("NOM");
+            String Prenom = rs.getString("PRENOM");
+            String Telephone = rs.getString("TELEPHONE");
+            String Email = rs.getString("MAIL");
+            Contact contact = new Contact(id_voip,Titre,Categorie,Nom,Prenom,Telephone,Email,id);
+            listeContact.add(contact);
+                             }
+                    }
+        catch(SQLException e2)
+        {
+            System.out.println("SqlException"+e2);
+        }
+        try {connexion.close();} catch (Exception e3) {System.out.println("Erreur fermeture"+e3);}
+        return listeContact;
+    }    
+  
      /** Supprime un contact en passant l'id en paramètre
       * 
       * 
