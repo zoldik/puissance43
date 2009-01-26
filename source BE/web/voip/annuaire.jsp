@@ -23,7 +23,7 @@
         
             -->
         
-        <FORM Method="POST" Action="./formulaire_annuaire.jsp">
+        <FORM Method="POST" Action="formulaire_annuaire.jsp">
         <input type="submit" value="Ajouter un contact " name="contact" /> <br>
         </FORM>
 
