@@ -15,16 +15,12 @@
     </head>
     <body>
         <h2>Répertoire téléphonique</h2>
-        <!--Affichage puis bouton ajouter 
-            - par catégorie
-              nom
-              prénom
-              num de tel
-        
-            -->
-        
         <FORM Method="POST" Action="formulaire_annuaire.jsp">
         <input type="submit" value="Ajouter un contact " name="contact" /> <br>
+        </FORM>
+        <h1>Afficher vos contacts</h1>
+        <FORM Method="POST" Action="../showContactInfo">
+        <input type="submit" value="Valider " name="affichage contact" /> <br>
         </FORM>
 
 
