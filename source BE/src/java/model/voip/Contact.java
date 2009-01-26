@@ -5,20 +5,20 @@
 
 package model.voip;
 
-import model.database.*;
 
 /**
  * Classe de gestion des contacts (id, titre, categorie,nom,prenom,telephone,mail)
  * @author thomas
  */
 public class Contact {
-    private int id;
-    private String titre;
-    private String categorie;
-    private String nom;
-    private String prenom;
-    private String telephone;
-    private String mail;
+    public int id;
+    public String titre;
+    public String categorie;
+    public String nom;
+    public String prenom;
+    public String telephone;
+    public String mail;
+    public int id_voip;
 
 /**
  *Constructeur par défaut de l'objet Contact
@@ -30,7 +30,8 @@ public Contact() {
     this.nom="";
     this.prenom="";
     this.telephone="";
-    this.mail=""; }
+    this.mail="";
+    this.id_voip=0;}
                 
  /**
   * Constructeur Contact
@@ -40,14 +41,16 @@ public Contact() {
   * @param prenom
   * @param telephone
   * @param mail
+  * @param id_voip
   */
-public Contact (int id,String titre,String categorie,String nom,String prenom,String telephone,String mail) {
+public Contact (int id,String titre,String categorie,String nom,String prenom,String telephone,String mail,int id_voip) {
     this.id=id;
     this.categorie=categorie;
     this.nom=nom;
     this.prenom=prenom;
     this.telephone=telephone;
     this.mail=mail;
+    this.id_voip=id_voip;        
                }
 
 public void showContact(){
@@ -108,6 +111,14 @@ public void showContact(){
 
     public void setTitre(String titre) {
         this.titre = titre;
+    }
+
+    public int getId_voip() {
+        return id_voip;
+    }
+
+    public void setId_voip(int id_voip) {
+        this.id_voip = id_voip;
     }
 
 
