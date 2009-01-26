@@ -1,5 +1,5 @@
 <%-- 
-    Document   : addUser
+    Document   : addVoipLigne
     Created on : 26 janv. 2009, 01:20:08
     Author     : francois
 --%>
@@ -11,10 +11,10 @@
 <html>
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-        <title>Voip - Add User</title>
+        <title>VoIP admin - Add VoIP Ligne</title>
     </head>
     <body>
-        <h2>VoIP admin - Add user</h2>
+        <h2>VoIP admin - Add VoIP Ligne</h2>
         
         <form method="post" action="source_BE/addLigne">
         <table>

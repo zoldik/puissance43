@@ -1,6 +1,6 @@
 <%-- 
-    Document   : admin
-    Created on : 12 janv. 2009, 22:42:00
+    Document   : editVoipLigne
+    Created on : 26 janv. 2009, 10:17:16
     Author     : francois
 --%>
 
@@ -11,15 +11,21 @@
 <html>
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-        <title>VoIP admin</title>
+        <title>VoIP admin - Edit VoIP ligne</title>
     </head>
     <body>
-        <h2>VoIP admin</h2>
-        
-        <a href="./reporting.jsp">Reporting</a><br/>
-        <a href="./annuaireManagement.jsp">Annuaire Management</a><br/>
-        <a href="./userManagement.jsp">User Management</a><br/>
+        <h2>VoIP admin - Edit VoIP ligne</h2>
         
         
+        <h4>Edit ligne</h4>
+        
+        
+        
+        
+        <h4>Options</h4>
+        
+        
+        
+
     </body>
 </html>

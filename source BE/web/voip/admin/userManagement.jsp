@@ -14,21 +14,21 @@ import = "java.sql.*"
 <html>
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-        <title>User Management</title>
+        <title>VoIP admin - VoIP ligne Management</title>
     </head>
     
     <body>
-        <h2>VoIP admin - User management </h2>
+        <h2>VoIP admin - VoIP ligne Management</h2>
         
         <p>
-        <i>In this section you can manage users of VoIP. 
+        <i>In this section you can manage VoIP ligne. 
         You can view, edit, delete, and add users.</i>
         </p>
 
 
         
         <!-- Table of a list of users -->   
-        <h4>List of users </h4>
+        <h4>List of VoIP ligne </h4>
         <table bgcolor="black">
 
         <!-- Actions -->    
