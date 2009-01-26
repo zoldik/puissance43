@@ -13,6 +13,7 @@ import model.database.*;
 
 
 
+
 /**
  *
  * @author thomas
@@ -32,13 +33,10 @@ public class enregContactInfo extends javax.servlet.http.HttpServlet {
     * @param response servlet response
     */
    public void doGet(HttpServletRequest request, HttpServletResponse response) throws IOException, ServletException {
-        try{
-        
-        //Pour effectuer les tests on crée ici un objet UserVoip ainsi qu'un objet Repertoire
-         
-        //UserVoip user_voip = new UserVoip();
-        Repertoire repertoire=new Repertoire();
-       // user_voip.hasRepertoire=true;
+       response.setContentType("text/html;charset=UTF-8") ;
+       PrintWriter out = response.getWriter(); 
+       try{
+
         int id_voip=1;
 
                     
@@ -53,18 +51,10 @@ public class enregContactInfo extends javax.servlet.http.HttpServlet {
         Contact contact = new Contact(id,Titre,Categorie,Nom,Prenom,Telephone,Email,id_voip);
         
         SQLContactVoip.insertContact(contact);
-        
+       out.println("enregistrement réussi");
      //   insert().Contact
         
-        // récupération du dernier id libre dans BDD (créer une fonction dans DAO)
-        /*
-        mysql_query("INSERT INTO table (nom_table) values ('ex')");
-   $dernier_id =  mysql_insert_id()          
-          */
-        
-        // création d'un contact
-        
-        //insertion du contact dans la bdd
+
         }  
         catch (Exception e){
 			System.err.println("Problème de répertoire");
