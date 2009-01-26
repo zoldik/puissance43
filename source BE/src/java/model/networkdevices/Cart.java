@@ -1,4 +1,4 @@
-package model.equipement.panier;
+package model.networkdevices;
 
 import java.util.ArrayList;
 import java.util.Iterator;

@@ -3,7 +3,7 @@
  * and open the template in the editor.
  */
 
-package model.equipement.panier;
+package model.networkdevices;
 
 /**Classe entité représentant un objet
  * 
