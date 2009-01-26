@@ -40,17 +40,23 @@ public class enregContactInfo extends javax.servlet.http.HttpServlet {
         int id_voip=1;
 
                     
-        String Titre = request.getParameter("Titre");
-        String Categorie = request.getParameter("Catégorie");
-        String Nom = request.getParameter("Nom");
-        String Prenom = request.getParameter("Prénom");
-        String Telephone = request.getParameter("Téléphone");
-        String Email = request.getParameter("Email");
-        int id=SQLContactVoip.getlastId();
+       String Titre = request.getParameter("titre");
+       out.println("titre ="+Titre+"");
+       String Categorie = request.getParameter("categorie");
+       out.println("categorie ="+Categorie+"");
+       String Nom = request.getParameter("nom");
+       out.println("nom ="+Nom+"");
+       String Prenom = request.getParameter("prenom");
+       out.println("prénom ="+Prenom+"");
+       String Telephone = request.getParameter("telephone");
+       out.println();
+       String Email = request.getParameter("email");
+       out.println();
+       int id=SQLContactVoip.getlastId();
+       out.println("enregistrement réussi id =  "+id+""); 
+       Contact contact = new Contact(id,Titre,Categorie,Nom,Prenom,Telephone,Email,id_voip);
         
-        Contact contact = new Contact(id,Titre,Categorie,Nom,Prenom,Telephone,Email,id_voip);
-        
-        SQLContactVoip.insertContact(contact);
+       SQLContactVoip.insertContact(contact);
        out.println("enregistrement réussi");
      //   insert().Contact
         
