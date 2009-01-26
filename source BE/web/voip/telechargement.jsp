@@ -14,6 +14,6 @@
         <title>Téléchargement</title>
     </head>
     <body>
-        <h2>Téléchargement!</h2>
+        <h2>Téléchargement</h2>
     </body>
 </html>

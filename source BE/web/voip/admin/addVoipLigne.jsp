@@ -16,8 +16,9 @@
     <body>
         <h2>VoIP admin - Add VoIP Ligne</h2>
         
-        <form method="post" action="source_BE/addLigne">
-        <table>
+        <form method="post" action="../../addVoipLigne">
+        
+        <table align="center">
         <tr>
             <td>Name</td><td><input type="text" name="name" ></td>
         </tr>
@@ -36,11 +37,14 @@
         <tr>
             <td>Host</td><td><input type="text" name="host"></td>
         </tr>
-        
+        <tr>
+            <input type="submit" value="submit" name="submit"/>
+        </tr>
         </table>
-        <input type="submit" value="submit" name="submit"/>
         
         </form>
+        <a href="./userManagement.jsp">back</a>
         
+    
     </body>
 </html>

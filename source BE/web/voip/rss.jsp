@@ -11,9 +11,9 @@
 <html>
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-        <title>JSP Page</title>
+        <title>Flux RSS</title>
     </head>
     <body>
-        <h2>Hello World!</h2>
+        <h2>Flux RSS</h2>
     </body>
 </html>

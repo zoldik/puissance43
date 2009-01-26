@@ -17,7 +17,11 @@
         <h2>VoIP admin - Edit VoIP ligne</h2>
         
         
+        request.getParameter()
+        
+        
         <h4>Edit ligne</h4>
+        
         
         
         

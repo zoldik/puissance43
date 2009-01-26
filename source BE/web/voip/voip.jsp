@@ -17,17 +17,21 @@
         <h2>Voip</h2>        
         
         <h4>Mon compte</h4>
-        <a href="./historique.jsp">historique</a><br/>
+        <a href="./moncompte.jsp">Mon compte</a><br/>
+        <a href="./historique.jsp">Historique de mes appels</a><br/>
         
         <h4>Communautée</h4>
         <a href="./annuaire.jsp">Annuaire</a><br/>
-        <a href="./rss.jsp">rss</a><br/>
+        <a href="./rss.jsp">Flux RSS</a><br/>
 
          <h4>Assistance</h4>
-        <a href="./support.jsp">support</a><br/>
-        <a href="./annuaire.jsp">telechargement</a><br/>
+        <a href="./support.jsp">Support</a><br/>
+        <a href="./telechargement.jsp">Telechargement</a><br/>
         
-         <h4></h4>
+        <br/>
+        <br/>
+        <br/>
+        <br/>
         <a href="./admin/admin.jsp">administration</a><br/>
         
     </body>

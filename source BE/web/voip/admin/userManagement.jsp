@@ -31,9 +31,9 @@ import = "java.sql.*"
         <h4>List of VoIP ligne </h4>
         <table bgcolor="black">
 
-        <!-- Actions -->    
+        <!-- Actions -->
         <input type="button" value="DELETE"/>
-        <input type="button" value="ADD"/>
+         <a href="./addVoipLigne.jsp">Add</a>
             
         <!-- titles -->
         <tr style="color:white">
@@ -56,7 +56,7 @@ import = "java.sql.*"
         %>
         <tr bgcolor="white">
             <td> <input type="checkbox" name="<%=rs.getString("VOIP_LIGNE_ID")%>"/> </td>
-            <td> <input type="button" value="EDIT" /></td>
+            <td> <input type="submit" value="EDIT" /></td>
             <td> <%=rs.getString("VOIP_LIGNE_ID")%> </td>
             <td> <%=rs.getString("name")%> </td>
             <td> <%=rs.getString("username")%> </td>
@@ -67,7 +67,7 @@ import = "java.sql.*"
         </tr>
         <%}
         try {rs.close();} catch (Exception e3) {System.out.println("Erreur fermeture"+e3);}%>
-        
+
         </table>
         
     </body>
