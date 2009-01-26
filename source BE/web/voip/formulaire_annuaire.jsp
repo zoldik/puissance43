@@ -12,16 +12,17 @@
 <html>
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-        <title>JSP Page</title>
+        <title>Rentrer votre contact</title>
     </head>
     <body>
-        <FORM Method="POST" Action="/enregContactInfo">
-        <input type="text" name="Titre" value="" /> <br>
-        <input type="text" name="Catégorie" value="" /> <br>
-        <input type="text" name="Nom" value="" /> <br>
-        <input type="text" name="Prénom" value="" /> <br>
-        <input type="text" name="Téléphone" value="" /> <br>
-        <input type="text" name="Email" value="" /> <br>
+        <h1> Rentrer les informations de votre contact</h1>
+        <FORM Method="POST" Action="enregContactInfo">
+        Titre <input type="text" name="Titre" value="" /> <br>
+        Categorie <input type="text" name="Catégorie" value="" /> <br>
+        Nom <input type="text" name="Nom" value="" /> <br>
+        Prénom <input type="text" name="Prénom" value="" /> <br>
+        Téléphone<input type="text" name="Téléphone" value="" /> <br>
+        Email<input type="text" name="Email" value="" /> <br>
         <input type="submit" value="Valider" />
         </FORM>
     </body>
