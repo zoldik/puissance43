@@ -50,9 +50,9 @@ public class enregContactInfo extends javax.servlet.http.HttpServlet {
         String Email = request.getParameter("Email");
         int id=SQLContactVoip.getlastId();
         
-        Contact contact = new Contact(id,Titre,Categorie,Nom,Prenom,Telephone,Email);
+        Contact contact = new Contact(id,Titre,Categorie,Nom,Prenom,Telephone,Email,id_voip);
         
-        SQLContactVoip.insert(id, Titre, Categorie, Nom, Prenom, Telephone, Email, id_voip);
+        SQLContactVoip.insertContact(contact);
         
      //   insert().Contact
         
@@ -80,6 +80,7 @@ public class enregContactInfo extends javax.servlet.http.HttpServlet {
     */
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
     throws ServletException, IOException {
+        doGet(request,response);
     }
 
     /** 
