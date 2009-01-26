@@ -35,7 +35,7 @@ public class Authentification extends javax.servlet.http.HttpServlet {
                         
 			if (account.isAllowed()){
 				//Si on a la permission, on accède à la suite
-                                response.sendRedirect("./index.jsp");
+                                response.sendRedirect("/source_BE/index.jsp");
 			}
 			else {
 				//Sinon, on revient à la page d'authentification
