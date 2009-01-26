@@ -14,6 +14,7 @@
         <title>Historique</title>
     </head>
     <body>
-        <h2>Historique!</h2>
+        <h2>Historique</h2>
+        <p>Consultez l'historique de vos appels</p>
     </body>
 </html>

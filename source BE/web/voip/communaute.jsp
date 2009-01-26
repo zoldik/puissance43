@@ -14,6 +14,6 @@
         <title>Communauté</title>
     </head>
     <body>
-        <h2>Communauté!</h2>
+        <h2>Communauté</h2>
     </body>
 </html>

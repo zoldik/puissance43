@@ -14,6 +14,6 @@
         <title>Support</title>
     </head>
     <body>
-        <h2>Support!</h2>
+        <h2>Support</h2>
     </body>
 </html>

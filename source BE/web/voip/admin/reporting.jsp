@@ -14,6 +14,6 @@
         <title>Reporting</title>
     </head>
     <body>
-        <h2>Reporting!</h2>
+        <h2>Reporting</h2>
     </body>
 </html>
