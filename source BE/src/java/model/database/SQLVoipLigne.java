@@ -152,7 +152,7 @@ public class SQLVoipLigne {
         try
         {
             stmt=connexion.getConn().createStatement();
-            rs = stmt.executeQuery("select * from VOIP_LIGNE where (name=\""+ligne+"\")");
+            rs = stmt.executeQuery(" * from VOIP_LIGNE where (name=\""+ligne+"\")");
         }
         catch(SQLException e2)
         {
