@@ -16,14 +16,43 @@
     </head>
     <body>
         <h1> Rentrer les informations de votre contact</h1>
-        <FORM Method="POST" Action="/enregContactInfo">
-        Titre <input type="text" name="Titre" value="" /> <br>
-        Categorie <input type="text" name="Catégorie" value="" /> <br>
-        Nom <input type="text" name="Nom" value="" /> <br>
-        Prénom <input type="text" name="Prénom" value="" /> <br>
-        Téléphone<input type="text" name="Téléphone" value="" /> <br>
-        Email<input type="text" name="Email" value="" /> <br>
-        <input type="submit" value="Valider" />
+        <FORM Method="POST" Action="../enregContactInfo">
+        <table border="1">
+
+<tr>
+<td>Titre </td>
+<td><input type="text" name="titre" value="" /> </td>
+</tr>
+<tr>
+<td>Categorie</td>
+<td><input type="text" name="categorie" value="" /> </td>
+</tr>
+<tr>
+<td>Nom</td>
+<td><input type="text" name="nom" value="" /></td>
+</tr>
+<tr>
+<td>Prénom</td>
+<td> <input type="text" name="prenom" value="" /> </td>
+</tr>
+<tr>
+<td>Téléphone</td>
+<td><input type="text" name="telephone" value="" /> </td>
+</tr>
+<tr>
+<td> Email</td>
+<td><input type="text" name="email" value="" /> </td>
+</tr>
+<tr>
+<td align="center"> <input type="submit" value="Valider" /></td>
+</tr>
+</tbody>
+</table>       
+                
+                    
+                          
+             
+                   
         </FORM>
     </body>
 </html>
