@@ -6,6 +6,8 @@
 package model.database;
 
 import java.sql.*;
+import model.voip.*;
+
 
 
 /**
@@ -35,6 +37,27 @@ public class SQLContactVoip {
         try {connexion.close();} catch (Exception e3) {System.out.println("Erreur fermeture"+e3);}
         return okay;
     }
+    
+   /**Méthode d'insertion d'un contact dans la table ContactVoip
+     *
+     */
+    public static boolean insertContact(Contact contact) throws SQLException {   
+        boolean okay=true;
+        Statement stmt;
+        SQLObjet connexion=new SQLObjet();
+        String insert = "INSERT INTO VOIP_CONTACT VALUES('" + contact.id + "','" + contact.titre + "','" + contact.categorie + "', '" + contact.nom + "', '" + contact.prenom + "', '" + contact.telephone + "', '" + contact.mail + "', '" + contact.id_voip + "')";
+        try {   
+            stmt=connexion.getConn().createStatement();
+             stmt.executeUpdate(insert);		
+            } 
+        catch (SQLException e2)
+        {
+            System.out.println("SqlException : "+e2);
+            okay=false;
+        }
+        try {connexion.close();} catch (Exception e3) {System.out.println("Erreur fermeture"+e3);}
+        return okay;
+    }    
     
     
      /** Récupère le dernier id de libre 
