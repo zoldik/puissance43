@@ -7,10 +7,13 @@ package model.voip;
 
 /**
  * Classe de gestion des UserVoip ()
- * @author thomas
+ * @author thomas, francois
  */
 public class UserVoip {
     private int id;
+    private String login;
+    private String password;
+    
     private String nom;
     private String prenom;
     private String telephone;
@@ -23,10 +26,13 @@ public class UserVoip {
  */ 
 public UserVoip() {
     this.id=0;
+    this.login="";
+    this.password="";
+    
     this.nom="";
     this.prenom="";
     this.telephone="";
-    this.mail=""; 
+    this.mail="";
     this.hasRepertoire=false;
 }
 
