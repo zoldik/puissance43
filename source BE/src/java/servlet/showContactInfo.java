@@ -59,7 +59,7 @@ public class showContactInfo extends javax.servlet.http.HttpServlet {
                                 } 
         } 
         catch (Exception e){
-        System.err.println("Problème d'affichage des contacts");
+        System.err.println("<h3>Vous n'avez pas de contact</h3>");
 	e.printStackTrace();		
                             }
      
