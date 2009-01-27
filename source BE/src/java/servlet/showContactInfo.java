@@ -42,24 +42,20 @@ public class showContactInfo extends javax.servlet.http.HttpServlet {
         int i=0;
         LinkedList listeContact = new LinkedList <Contact>();
         ListIterator<Contact> indice;
-	indice = listeContact.listIterator();
+        Contact contact;
 
         
        listeContact = SQLContactVoip.getContactbyVoipId(id);
-       out.println(" i ="+i+"");
+       indice = listeContact.listIterator();
        while (indice.hasNext()){
-       Contact contact= new Contact();    
-       contact=indice.next();
-       out.println(" i ="+i+"");
-       out.println("titre ="+contact.titre+"");
-       out.println("categorie ="+contact.categorie+"");
-       out.println("nom ="+contact.nom+"");
-       out.println("prénom ="+contact.prenom+"");
-       out.println("prénom ="+contact.telephone+"");
-       out.println("prénom ="+contact.mail+"");
-       i++;                         } 
-       out.println("affichage réussi");
-            }  
+       contact = indice.next();
+       out.println("titre ="+contact.titre+"<br>");
+       out.println("categorie ="+contact.categorie+"<br>");
+       out.println("nom ="+contact.nom+"<br>");
+       out.println("prénom ="+contact.prenom+"<br>");
+       out.println("telephone ="+contact.telephone+"<br>");
+       out.println("email ="+contact.mail+"<br><br>");
+            } } 
         catch (Exception e){
         System.err.println("Problème d'affichage des contacts");
 	e.printStackTrace();		
@@ -90,12 +86,12 @@ public class showContactInfo extends javax.servlet.http.HttpServlet {
         
    
         
-       
+       }
         
        
         
         
-        }  
+        
    
     
 
