@@ -233,19 +233,222 @@ public class VoipLigneDAO {
         Statement stmt;
         ConnectionDatabase connexion=new ConnectionDatabase();
         
-        String insert= "insert into VOIP_LIGNE (name,host,type,context,dtmfmode,language,mailbox,secret,username";
-
-        String values="values (\""+name+"\",\""+host+"\",\""+type+"\",\""+context+"\",\""+dtmfmode+"\",\""+language+"\",\""+mailbox+"\",\""+secret+"\",\""+username+"\"";
+        String insert= "insert into VOIP_LIGNE (name";
+        String values="values (\""+name+"\"";
         
-        /*
-        if (nat.compareTo("")!=0)
-        {
+        //le name doi etre exclusif
+        
+        if (id.compareTo("")!=0 || id.compareTo("null")!=0){
+            insert+=",id";
+            values+=",\""+id+"\"";
+        }
+        
+        if (host.compareTo("")!=0 || host.compareTo("null")!=0){
+            insert+=",host";
+            values+=",\""+host+"\"";
+        }
+        
+        if (nat.compareTo("")!=0 || nat.compareTo("null")!=0){
             insert+=",nat";
             values+=",\""+nat+"\"";
         }
-        */
-        insert+=") "+values+");";
         
+        if (type.compareTo("")!=0 || type.compareTo("null")!=0){
+            insert+=",type";
+            values+=",\""+type+"\"";
+        }
+        
+        if (accountcode.compareTo("")!=0 || accountcode.compareTo("null")!=0){
+            insert+=",accountcode";
+            values+=",\""+accountcode+"\"";
+        }
+        
+        if (amaflags.compareTo("")!=0 || amaflags.compareTo("null")!=0){
+            insert+=",amaflags";
+            values+=",\""+amaflags+"\"";
+        }
+        
+        if (calllimit.compareTo("")!=0 || calllimit.compareTo("null")!=0){
+            insert+=",call-limit";
+            values+=",\""+calllimit+"\"";
+        }
+        
+        if (callgroup.compareTo("")!=0 || callgroup.compareTo("null")!=0){
+            insert+=",callgroup";
+            values+=",\""+callgroup+"\"";
+        }
+        
+        if (callerid.compareTo("")!=0 || callerid.compareTo("null")!=0){
+            insert+=",callerid";
+            values+=",\""+callerid+"\"";
+        }
+        
+        if (cancallforward.compareTo("")!=0 || cancallforward.compareTo("null")!=0){
+            insert+=",cancallforward";
+            values+=",\""+cancallforward+"\"";
+        }
+        
+        if (canreinvite.compareTo("")!=0 || canreinvite.compareTo("null")!=0){
+            insert+=",canreinvite";
+            values+=",\""+canreinvite+"\"";
+        }
+        
+        if (context.compareTo("")!=0 || context.compareTo("null")!=0){
+            insert+=",context";
+            values+=",\""+context+"\"";
+        }
+        
+        if (defaultip.compareTo("")!=0 || defaultip.compareTo("null")!=0){
+            insert+=",defaultip";
+            values+=",\""+defaultip+"\"";
+        }
+        
+        if (dtmfmode.compareTo("")!=0 || dtmfmode.compareTo("null")!=0){
+            insert+=",dtmfmode";
+            values+=",\""+dtmfmode+"\"";
+        }
+        
+        if (fromuser.compareTo("")!=0 || fromuser.compareTo("null")!=0){
+            insert+=",fromuser";
+            values+=",\""+fromuser+"\"";
+        }
+        
+        if (fromdomain.compareTo("")!=0 || fromdomain.compareTo("null")!=0){
+            insert+=",fromdomain";
+            values+=",\""+fromdomain+"\"";
+        }
+        
+        if (insecure.compareTo("")!=0 || insecure.compareTo("null")!=0){
+            insert+=",insecure";
+            values+=",\""+insecure+"\"";
+        }
+        
+        if (language.compareTo("")!=0 || language.compareTo("null")!=0){
+            insert+=",language";
+            values+=",\""+language+"\"";
+        }
+        
+        if (mailbox.compareTo("")!=0 || mailbox.compareTo("null")!=0){
+            insert+=",mailbox";
+            values+=",\""+mailbox+"\"";
+        }
+        
+        if (md5secret.compareTo("")!=0 || md5secret.compareTo("null")!=0){
+            insert+=",md5secret";
+            values+=",\""+md5secret+"\"";
+        }
+        
+        if (deny.compareTo("")!=0 || deny.compareTo("null")!=0){
+            insert+=",deny";
+            values+=",\""+deny+"\"";
+        }
+        
+        if (permit.compareTo("")!=0 || permit.compareTo("null")!=0){
+            insert+=",permit";
+            values+=",\""+permit+"\"";
+        }
+        
+        if (mask.compareTo("")!=0 || mask.compareTo("null")!=0){
+            insert+=",mask";
+            values+=",\""+mask+"\"";
+        }
+        
+        if (musiconhold.compareTo("")!=0 || musiconhold.compareTo("null")!=0){
+            insert+=",musiconhold";
+            values+=",\""+musiconhold+"\"";
+        }
+        
+        if (pickupgroup.compareTo("")!=0 || pickupgroup.compareTo("null")!=0){
+            insert+=",pickupgroup";
+            values+=",\""+pickupgroup+"\"";
+        }
+        
+        if (qualify.compareTo("")!=0 || qualify.compareTo("null")!=0){
+            insert+=",qualify";
+            values+=",\""+qualify+"\"";
+        }
+        
+        if (regexten.compareTo("")!=0 || regexten.compareTo("null")!=0){
+            insert+=",regexten";
+            values+=",\""+regexten+"\"";
+        }
+        
+        if (restrictcid.compareTo("")!=0 || restrictcid.compareTo("null")!=0){
+            insert+=",restrictcid";
+            values+=",\""+restrictcid+"\"";
+        }
+        
+        if (rtptimeout.compareTo("")!=0 || rtptimeout.compareTo("null")!=0){
+            insert+=",rtptimeout";
+            values+=",\""+rtptimeout+"\"";
+        }
+        
+        if (rtpholdtimeout.compareTo("")!=0 || rtpholdtimeout.compareTo("null")!=0){
+            insert+=",rtpholdtimeout";
+            values+=",\""+rtpholdtimeout+"\"";
+        }
+        
+        if (secret.compareTo("")!=0 || secret.compareTo("null")!=0){
+            insert+=",secret";
+            values+=",\""+secret+"\"";
+        }
+        
+        if (setvar.compareTo("")!=0 || setvar.compareTo("null")!=0){
+            insert+=",setvar";
+            values+=",\""+setvar+"\"";
+        }
+        
+        if (disallow.compareTo("")!=0 || disallow.compareTo("null")!=0){
+            insert+=",disallow";
+            values+=",\""+disallow+"\"";
+        }
+        
+        if (allow.compareTo("")!=0 || allow.compareTo("null")!=0){
+            insert+=",allow";
+            values+=",\""+allow+"\"";
+        }
+        
+        if (fullcontact.compareTo("")!=0 || fullcontact.compareTo("null")!=0){
+            insert+=",fullcontact";
+            values+=",\""+fullcontact+"\"";
+        }
+        
+        if (ipaddr.compareTo("")!=0 || ipaddr.compareTo("null")!=0){
+            insert+=",ipaddr";
+            values+=",\""+ipaddr+"\"";
+        }
+        
+        if (port.compareTo("")!=0 || port.compareTo("null")!=0){
+            insert+=",port";
+            values+=",\""+port+"\"";
+        }
+        
+        if (regserver.compareTo("")!=0 || regserver.compareTo("null")!=0){
+            insert+=",regserver";
+            values+=",\""+regserver+"\"";
+        }
+        
+        if (regseconds.compareTo("")!=0 || regseconds.compareTo("null")!=0){
+            insert+=",regseconds";
+            values+=",\""+regseconds+"\"";
+        }
+        
+        if (username.compareTo("")!=0 || username.compareTo("null")!=0){
+            insert+=",username";
+            values+=",\""+username+"\"";
+        }
+        
+        if (defaultuser.compareTo("")!=0 || defaultuser.compareTo("null")!=0){
+            insert+=",defaultuser";
+            values+=",\""+defaultuser+"\"";
+        }
+        
+        if (subsribecontext.compareTo("")!=0 || subsribecontext.compareTo("null")!=0){
+            insert+=",subsribecontext";
+            values+=",\""+subsribecontext+"\"";
+        }       
+        
+        insert+=") "+values+");";
         try
         {
             stmt=connexion.getConn().createStatement();
@@ -263,8 +466,55 @@ public class VoipLigneDAO {
        
    }
     
+   
+    /**
+    * Delete Voip ligne from the database
+    * @param id
+    * @return boolean
+    */ 
+    public static boolean deleteLigneById(String id)
+    {
+        boolean okay=true;
+        Statement stmt;
+        ConnectionDatabase connexion=new ConnectionDatabase();
+        try
+        {
+            stmt=connexion.getConn().createStatement();
+            stmt.executeUpdate("DELETE FROM VOIP_LIGNE WHERE VOIP_LIGNE_ID ="+id+";");
+        }
+        catch(SQLException e2)
+        {
+            System.out.println("SqlException"+e2);
+            okay=false;
+        }
+        try {connexion.close();} catch (Exception e3) {System.out.println("Erreur fermeture"+e3);}
+        return okay;
+    }
     
-    public static boolean insert(String id,String name, String host, String type, String context, String dtmfmode, String language, String mailbox, String secret, String username)
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+       public static boolean insert(String id,String name, String host, String type, String context, String dtmfmode, String language, String mailbox, String secret, String username)
     {     
         boolean okay=true;
         Statement stmt;
@@ -297,30 +547,7 @@ public class VoipLigneDAO {
         return okay;
     }
     
-
-    /**
-    * Return all elements of a ligne from the database
-    * @param ligne
-    * @return
-    */ 
-    public static ResultSet deleteLigne(String ligne)
-    {
-        Statement stmt;
-        ConnectionDatabase connexion=new ConnectionDatabase();
-        ResultSet rs=null;
-        try
-        {
-            stmt=connexion.getConn().createStatement();
-            rs = stmt.executeQuery(" * from VOIP_LIGNE where (name=\""+ligne+"\")");
-        }
-        catch(SQLException e2)
-        {
-            System.out.println("SqlException"+e2);
-        }
-        try {connexion.close();} catch (Exception e3) {System.out.println("Erreur fermeture"+e3);}
-        return rs;
-
-    }
+    
     
     
     
