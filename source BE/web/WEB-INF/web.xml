@@ -16,11 +16,11 @@
             <param-value>2</param-value>
         </init-param>
         <load-on-startup>2</load-on-startup>
-        </servlet>
+    </servlet>
     <servlet>
         <servlet-name>Authentification</servlet-name>
-	<servlet-class>servlet.Authentification</servlet-class>
-    </servlet>    
+        <servlet-class>servlet.Authentification</servlet-class>
+    </servlet>
     <servlet>
         <servlet-name>enregContactInfo</servlet-name>
         <servlet-class>servlet.enregContactInfo</servlet-class>
@@ -45,6 +45,22 @@
         <servlet-name>Authentification</servlet-name>
         <url-pattern>/Authentification</url-pattern>
     </servlet-mapping>
+    <servlet>
+        <servlet-name>CtrSearch</servlet-name>
+        <servlet-class>fr.isen.jeen5_0809.group8.cart.controller.CtrSearch</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>CtrCart</servlet-name>
+        <servlet-class>fr.isen.jeen5_0809.group8.cart.controller.CtrCart</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>CtrSearch</servlet-name>
+        <url-pattern>/Search.do</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>CtrCart</servlet-name>
+        <url-pattern>/Cart.do</url-pattern>
+    </servlet-mapping>
     <session-config>
         <session-timeout>
             30
@@ -52,5 +68,5 @@
     </session-config>
     <welcome-file-list>
         <welcome-file>index.jsp</welcome-file>
-        </welcome-file-list>
-    </web-app>
+    </welcome-file-list>
+</web-app>
