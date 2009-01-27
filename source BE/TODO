@@ -39,27 +39,42 @@ Partie VoIP :
         - supprimer utilisateur
         - ???gestion des groupes de téléconférence???
         - ??gestion des numeros spéciaux??
+
+        /***En cours ***/
+
     - Reporting d'appel
         - CDR http://www.areski.net/asterisk-stat-v2/
+        
+        /***pouvoir mettre du php dans du Jboss ***/
+        /***Mettre les fichiers php             ***/
+
 * Différencier client particulier et client pro
     - pour client pro fournir une interface web (structure à déterminer,inspirer du site web)
     - dans pro : - employé : consultation annuaire pro
-
                  - admin : création, gestion accès, remplissage, modification annuaire pro
 
 * Partie Utilisateur :
     - Paramètres personnels
-        
+
     - Inscription Flux RSS                                          (communaute)
         - Construction Flux RSS:
             - appel manqué
             - message répondeur
         - Affichage Flux RSS
+
+        /***A faire !! ***/
+
     - Acces Annuaire                                                (communaute)
         - exportation des données pour annuaire softphone
+
+         /***En cours ***/
+
     - Consultation de ses historiques d'appels                      (mon compte)
         - son propre historique
         - statistiques
+
+         /***Ok si outil de reporting mis en place ***/
+
     - Personnalisation des appels                                   (mon compte)
         - Présentation du numéro ou nom de l'appelant
         - Transfert d'appel
@@ -69,6 +84,9 @@ Partie VoIP :
             - Activer/Désactiver envoi message répondeur sur l'email
                 -> Stockage des messages répondeur sur le serveur
                 -> ???Mise en place interface répondeur???
+                
+          /***A faire !! ***/
+
     - Faire un tutorial softphone (lequel?)                         (support)
     - Contact                                                       (support)
         - Formulaire basique -> envoi email
