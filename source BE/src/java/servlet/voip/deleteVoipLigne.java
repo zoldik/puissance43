@@ -4,8 +4,6 @@
  */
 
 package servlet.voip;
-import model.voip.*;
-import model.database.*;
 
 import java.io.IOException;
 import java.io.PrintWriter;
@@ -18,7 +16,7 @@ import javax.servlet.http.HttpServletResponse;
  *
  * @author francois
  */
-public class addLigne extends HttpServlet {
+public class deleteVoipLigne extends HttpServlet {
    
     /** 
     * Processes requests for both HTTP <code>GET</code> and <code>POST</code> methods.
@@ -31,18 +29,11 @@ public class addLigne extends HttpServlet {
         PrintWriter out = response.getWriter();
         try {
             
-            out.println("enregistrement");
+            //String id = request.getParameter("id");
+            out.println("delete");
             
-            String name = request.getParameter("name");
-            String username = request.getParameter("username");
-            String mailbox = request.getParameter("mailbox");
-            String context = request.getParameter("context");
-            String type = request.getParameter("type");
-            String host = request.getParameter("host");
             
-            SQLVoipLigne.insert(name, host, type, context,"rfc2833","en", mailbox, host, username);
-            out.println("fini !");
-
+            
         } finally { 
             out.close();
         }

@@ -12,6 +12,7 @@ package model.voip;
 
 public class VoipLigne {
     
+      private String id;
       private String name;
       private String host;
       private String nat;
@@ -58,6 +59,7 @@ public class VoipLigne {
       
       public VoipLigne(){
           
+        this.id="";  
         this.name="";
         this.host="";
         this.nat="";
@@ -104,6 +106,7 @@ public class VoipLigne {
       
       /**
       * 
+      * @param id
       * @param name
       * @param host (optional)
       * @param nat
@@ -147,8 +150,9 @@ public class VoipLigne {
       * @param defaultuser
       * @param subsribecontext
       */
-      public VoipLigne(String name,String host,String nat,String type,String accountcode,String amaflags,String calllimit,String callgroup,String callerid,String cancallforward,String canreinvite,String context,String defaultip,String dtmfmode,String fromuser,String fromdomain,String insecure,String language,String mailbox,String md5secret,String deny,String permit,String mask,String musiconhold,String pickupgroup,String qualify,String regexten,String restrictcid,String rtptimeout,String rtpholdtimeout,String secret,String setvar,String disallow,String allow,String fullcontact,String ipaddr,String port,String regserver,String regseconds,String username,String defaultuser,String subsribecontext){
+      public VoipLigne(String id,String name,String host,String nat,String type,String accountcode,String amaflags,String calllimit,String callgroup,String callerid,String cancallforward,String canreinvite,String context,String defaultip,String dtmfmode,String fromuser,String fromdomain,String insecure,String language,String mailbox,String md5secret,String deny,String permit,String mask,String musiconhold,String pickupgroup,String qualify,String regexten,String restrictcid,String rtptimeout,String rtpholdtimeout,String secret,String setvar,String disallow,String allow,String fullcontact,String ipaddr,String port,String regserver,String regseconds,String username,String defaultuser,String subsribecontext){
           
+        this.id=id;  
         this.name=name;
         this.host=host;
         this.nat=nat;
@@ -197,7 +201,10 @@ public class VoipLigne {
     //*****************
     //Getter
     //*****************
-        
+    
+     public String getid (){
+         return this.id;
+     } 
       
      public String getname (){
          return this.name;
@@ -370,7 +377,10 @@ public class VoipLigne {
     //*****************
     //Setter
     //*****************    
-    
+
+     public void setid (String id){
+         this.id=id;
+     }     
      
      public void setname (String name){
          this.name=name;

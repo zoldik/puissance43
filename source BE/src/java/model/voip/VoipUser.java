@@ -6,10 +6,10 @@
 package model.voip;
 
 /**
- * Classe de gestion des UserVoip ()
+ * Classe de gestion des VoipUser ()
  * @author thomas, francois
  */
-public class UserVoip {
+public class VoipUser {
     private int id;
     private String login;
     private String password;
@@ -21,10 +21,10 @@ public class UserVoip {
     private boolean hasRepertoire;
 
 /**
- *Constructeur par défaut de l'objet UserVoip
+ *Constructeur par défaut de l'objet VoipUser
  * @author thomas
  */ 
-public UserVoip() {
+public VoipUser() {
     this.id=0;
     this.login="";
     this.password="";
