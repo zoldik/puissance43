@@ -37,10 +37,6 @@ public class showContactInfo extends javax.servlet.http.HttpServlet {
         PrintWriter out = response.getWriter(); 
         
         try{
-
-      
-        ResultSet rs = null;
-        Statement st = null;
         
         int id=1;
         int i=0;
@@ -63,7 +59,7 @@ public class showContactInfo extends javax.servlet.http.HttpServlet {
        out.println("prénom ="+contact.mail+"");
        i++;                         } 
        out.println("affichage réussi");
-       }  
+            }  
         catch (Exception e){
         System.err.println("Problème d'affichage des contacts");
 	e.printStackTrace();		
