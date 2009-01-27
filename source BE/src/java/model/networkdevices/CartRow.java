@@ -57,7 +57,7 @@ public class CartRow {
     public double computeTotalPrice() {
         double amount = 0.0;
         
-        amount += (getQuantity()*item.getPrice());
+        amount += (getQuantity()*item.getUnitPrice());
         
         return amount;
     }

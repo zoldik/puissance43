@@ -2,6 +2,8 @@ package model.networkdevices;
 
 import java.util.ArrayList;
 import java.util.Iterator;
+import model.database.FactoryDAO;
+import model.database.ItemDAO;
 
 /**
  * Cart simulate a shopping cart of the real life.
@@ -21,42 +23,33 @@ import java.util.Iterator;
  * @author Vincent Destailleur
  */
 public class Cart {
-    
     //*******
     //Attributs
     //*******
-    
     private ArrayList<CartRow> cartRows = new ArrayList<CartRow>();
     //Attributs calculés : prix total calculé dans computeTotalPrice;    
     //nombre d'items calculé calculé dans computeNumberOfItem;
-    
     //*******
     //Constructeur
     //*******
-    
     public Cart() {
     }
 
     //*******
     //Getters
     //*******
-    
     public ArrayList<CartRow> getCartRows() {
         return cartRows;
     }
-    
     //*******
     //Setters
     //*******
-    
     public void setCartRows(ArrayList<CartRow> cartRows) {
         this.cartRows = cartRows;
     }
-    
     //*******
     //Behaviour methods
     //*******
-    
     /**
      * Return an object <code>CartRow</code> matching with the argument id.
      * The id argument must specify an int. 
@@ -99,6 +92,13 @@ public class Cart {
             }
         }
         cartRows.add(new CartRow(item));
+    }
+
+    public synchronized void addRowById(int id) {
+
+        ItemDAO itemDAO = FactoryDAO.getItemDAO();
+        
+        addRow(itemDAO.extractItemById(id));
     }
 
     /**Enlève un objet au panier.
