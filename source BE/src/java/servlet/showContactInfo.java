@@ -49,13 +49,15 @@ public class showContactInfo extends javax.servlet.http.HttpServlet {
        indice = listeContact.listIterator();
        while (indice.hasNext()){
        contact = indice.next();
+       out.println("<input type=\"checkbox\" name=\"select\" value=\"ON\" />"); 
+       out.println("&nbsp; prénom ="+contact.prenom+"<br>");
+       out.println("&nbsp; telephone ="+contact.telephone+"<br>");
        out.println("titre ="+contact.titre+"<br>");
        out.println("categorie ="+contact.categorie+"<br>");
        out.println("nom ="+contact.nom+"<br>");
-       out.println("prénom ="+contact.prenom+"<br>");
-       out.println("telephone ="+contact.telephone+"<br>");
        out.println("email ="+contact.mail+"<br><br>");
-            } } 
+                                } 
+        } 
         catch (Exception e){
         System.err.println("Problème d'affichage des contacts");
 	e.printStackTrace();		
