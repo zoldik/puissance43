@@ -223,11 +223,11 @@ public class VoipLigneDAO {
       * @param regseconds
       * @param username
       * @param defaultuser
-      * @param subsribecontext
+      * @param subscribecontext
       * @return
       */
     
-   public static boolean insertfull(String id,String name,String host,String nat,String type,String accountcode,String amaflags,String calllimit,String callgroup,String callerid,String cancallforward,String canreinvite,String context,String defaultip,String dtmfmode,String fromuser,String fromdomain,String insecure,String language,String mailbox,String md5secret,String deny,String permit,String mask,String musiconhold,String pickupgroup,String qualify,String regexten,String restrictcid,String rtptimeout,String rtpholdtimeout,String secret,String setvar,String disallow,String allow,String fullcontact,String ipaddr,String port,String regserver,String regseconds,String username,String defaultuser,String subsribecontext){
+   public static boolean insertfull(String id,String name,String host,String nat,String type,String accountcode,String amaflags,String calllimit,String callgroup,String callerid,String cancallforward,String canreinvite,String context,String defaultip,String dtmfmode,String fromuser,String fromdomain,String insecure,String language,String mailbox,String md5secret,String deny,String permit,String mask,String musiconhold,String pickupgroup,String qualify,String regexten,String restrictcid,String rtptimeout,String rtpholdtimeout,String secret,String setvar,String disallow,String allow,String fullcontact,String ipaddr,String port,String regserver,String regseconds,String username,String defaultuser,String subscribecontext){
         
         boolean okay=true;
         Statement stmt;
@@ -238,215 +238,175 @@ public class VoipLigneDAO {
         
         //le name doi etre exclusif
         
-        if (id.compareTo("")!=0 || id.compareTo("null")!=0){
+        if (id.compareTo("")!=0 && id.compareTo("null")!=0){
             insert+=",id";
             values+=",\""+id+"\"";
-        }
-        
-        if (host.compareTo("")!=0 || host.compareTo("null")!=0){
+        }       
+        if (host.compareTo("")!=0 && host.compareTo("null")!=0){
             insert+=",host";
             values+=",\""+host+"\"";
-        }
-        
-        if (nat.compareTo("")!=0 || nat.compareTo("null")!=0){
+        }        
+        if (nat.compareTo("")!=0 && nat.compareTo("null")!=0){
             insert+=",nat";
             values+=",\""+nat+"\"";
-        }
-        
-        if (type.compareTo("")!=0 || type.compareTo("null")!=0){
+        }      
+        if (type.compareTo("")!=0 && type.compareTo("null")!=0){
             insert+=",type";
             values+=",\""+type+"\"";
-        }
-        
-        if (accountcode.compareTo("")!=0 || accountcode.compareTo("null")!=0){
+        }        
+        if (accountcode.compareTo("")!=0 && accountcode.compareTo("null")!=0){
             insert+=",accountcode";
             values+=",\""+accountcode+"\"";
-        }
-        
-        if (amaflags.compareTo("")!=0 || amaflags.compareTo("null")!=0){
+        }        
+        if (amaflags.compareTo("")!=0 && amaflags.compareTo("null")!=0){
             insert+=",amaflags";
             values+=",\""+amaflags+"\"";
-        }
-        
-        if (calllimit.compareTo("")!=0 || calllimit.compareTo("null")!=0){
+        }        
+        if (calllimit.compareTo("")!=0 && calllimit.compareTo("null")!=0){
             insert+=",call-limit";
             values+=",\""+calllimit+"\"";
         }
-        
-        if (callgroup.compareTo("")!=0 || callgroup.compareTo("null")!=0){
+        if (callgroup.compareTo("")!=0 && callgroup.compareTo("null")!=0){
             insert+=",callgroup";
             values+=",\""+callgroup+"\"";
         }
-        
-        if (callerid.compareTo("")!=0 || callerid.compareTo("null")!=0){
+        if (callerid.compareTo("")!=0 && callerid.compareTo("null")!=0){
             insert+=",callerid";
             values+=",\""+callerid+"\"";
         }
-        
-        if (cancallforward.compareTo("")!=0 || cancallforward.compareTo("null")!=0){
+        if (cancallforward.compareTo("")!=0 && cancallforward.compareTo("null")!=0){
             insert+=",cancallforward";
             values+=",\""+cancallforward+"\"";
-        }
-        
-        if (canreinvite.compareTo("")!=0 || canreinvite.compareTo("null")!=0){
+        }      
+        if (canreinvite.compareTo("")!=0 && canreinvite.compareTo("null")!=0){
             insert+=",canreinvite";
             values+=",\""+canreinvite+"\"";
-        }
-        
-        if (context.compareTo("")!=0 || context.compareTo("null")!=0){
+        }      
+        if (context.compareTo("")!=0 && context.compareTo("null")!=0){
             insert+=",context";
             values+=",\""+context+"\"";
-        }
-        
-        if (defaultip.compareTo("")!=0 || defaultip.compareTo("null")!=0){
+        }     
+        if (defaultip.compareTo("")!=0 && defaultip.compareTo("null")!=0){
             insert+=",defaultip";
             values+=",\""+defaultip+"\"";
-        }
-        
-        if (dtmfmode.compareTo("")!=0 || dtmfmode.compareTo("null")!=0){
+        }     
+        if (dtmfmode.compareTo("")!=0 && dtmfmode.compareTo("null")!=0){
             insert+=",dtmfmode";
             values+=",\""+dtmfmode+"\"";
-        }
-        
-        if (fromuser.compareTo("")!=0 || fromuser.compareTo("null")!=0){
+        }     
+        if (fromuser.compareTo("")!=0 && fromuser.compareTo("null")!=0){
             insert+=",fromuser";
             values+=",\""+fromuser+"\"";
-        }
-        
-        if (fromdomain.compareTo("")!=0 || fromdomain.compareTo("null")!=0){
+        }    
+        if (fromdomain.compareTo("")!=0 && fromdomain.compareTo("null")!=0){
             insert+=",fromdomain";
             values+=",\""+fromdomain+"\"";
-        }
-        
-        if (insecure.compareTo("")!=0 || insecure.compareTo("null")!=0){
+        }  
+        if (insecure.compareTo("")!=0 && insecure.compareTo("null")!=0){
             insert+=",insecure";
             values+=",\""+insecure+"\"";
-        }
-        
-        if (language.compareTo("")!=0 || language.compareTo("null")!=0){
+        }        
+        if (language.compareTo("")!=0 && language.compareTo("null")!=0){
             insert+=",language";
             values+=",\""+language+"\"";
-        }
-        
-        if (mailbox.compareTo("")!=0 || mailbox.compareTo("null")!=0){
+        }        
+        if (mailbox.compareTo("")!=0 && mailbox.compareTo("null")!=0){
             insert+=",mailbox";
             values+=",\""+mailbox+"\"";
-        }
-        
-        if (md5secret.compareTo("")!=0 || md5secret.compareTo("null")!=0){
+        }        
+        if (md5secret.compareTo("")!=0 && md5secret.compareTo("null")!=0){
             insert+=",md5secret";
             values+=",\""+md5secret+"\"";
-        }
-        
-        if (deny.compareTo("")!=0 || deny.compareTo("null")!=0){
+        }       
+        if (deny.compareTo("")!=0 && deny.compareTo("null")!=0){
             insert+=",deny";
             values+=",\""+deny+"\"";
-        }
-        
-        if (permit.compareTo("")!=0 || permit.compareTo("null")!=0){
+        }        
+        if (permit.compareTo("")!=0 && permit.compareTo("null")!=0){
             insert+=",permit";
             values+=",\""+permit+"\"";
-        }
-        
-        if (mask.compareTo("")!=0 || mask.compareTo("null")!=0){
+        }       
+        if (mask.compareTo("")!=0 && mask.compareTo("null")!=0){
             insert+=",mask";
             values+=",\""+mask+"\"";
-        }
-        
-        if (musiconhold.compareTo("")!=0 || musiconhold.compareTo("null")!=0){
+        }        
+        if (musiconhold.compareTo("")!=0 && musiconhold.compareTo("null")!=0){
             insert+=",musiconhold";
             values+=",\""+musiconhold+"\"";
-        }
-        
-        if (pickupgroup.compareTo("")!=0 || pickupgroup.compareTo("null")!=0){
+        }        
+        if (pickupgroup.compareTo("")!=0 && pickupgroup.compareTo("null")!=0){
             insert+=",pickupgroup";
             values+=",\""+pickupgroup+"\"";
-        }
-        
-        if (qualify.compareTo("")!=0 || qualify.compareTo("null")!=0){
+        }       
+        if (qualify.compareTo("")!=0 && qualify.compareTo("null")!=0){
             insert+=",qualify";
             values+=",\""+qualify+"\"";
-        }
-        
-        if (regexten.compareTo("")!=0 || regexten.compareTo("null")!=0){
+        }        
+        if (regexten.compareTo("")!=0 && regexten.compareTo("null")!=0){
             insert+=",regexten";
             values+=",\""+regexten+"\"";
-        }
-        
-        if (restrictcid.compareTo("")!=0 || restrictcid.compareTo("null")!=0){
+        }        
+        if (restrictcid.compareTo("")!=0 && restrictcid.compareTo("null")!=0){
             insert+=",restrictcid";
             values+=",\""+restrictcid+"\"";
-        }
-        
-        if (rtptimeout.compareTo("")!=0 || rtptimeout.compareTo("null")!=0){
+        }        
+        if (rtptimeout.compareTo("")!=0 && rtptimeout.compareTo("null")!=0){
             insert+=",rtptimeout";
             values+=",\""+rtptimeout+"\"";
-        }
-        
-        if (rtpholdtimeout.compareTo("")!=0 || rtpholdtimeout.compareTo("null")!=0){
+        }        
+        if (rtpholdtimeout.compareTo("")!=0 && rtpholdtimeout.compareTo("null")!=0){
             insert+=",rtpholdtimeout";
             values+=",\""+rtpholdtimeout+"\"";
-        }
-        
-        if (secret.compareTo("")!=0 || secret.compareTo("null")!=0){
+        }        
+        if (secret.compareTo("")!=0 && secret.compareTo("null")!=0){
             insert+=",secret";
             values+=",\""+secret+"\"";
-        }
-        
-        if (setvar.compareTo("")!=0 || setvar.compareTo("null")!=0){
+        }       
+        if (setvar.compareTo("")!=0 && setvar.compareTo("null")!=0){
             insert+=",setvar";
             values+=",\""+setvar+"\"";
-        }
-        
-        if (disallow.compareTo("")!=0 || disallow.compareTo("null")!=0){
+        }       
+        if (disallow.compareTo("")!=0 && disallow.compareTo("null")!=0){
             insert+=",disallow";
             values+=",\""+disallow+"\"";
-        }
-        
-        if (allow.compareTo("")!=0 || allow.compareTo("null")!=0){
+        }       
+        if (allow.compareTo("")!=0 && allow.compareTo("null")!=0){
             insert+=",allow";
             values+=",\""+allow+"\"";
-        }
-        
-        if (fullcontact.compareTo("")!=0 || fullcontact.compareTo("null")!=0){
+        }       
+        if (fullcontact.compareTo("")!=0 && fullcontact.compareTo("null")!=0){
             insert+=",fullcontact";
             values+=",\""+fullcontact+"\"";
-        }
-        
-        if (ipaddr.compareTo("")!=0 || ipaddr.compareTo("null")!=0){
+        }       
+        if (ipaddr.compareTo("")!=0 && ipaddr.compareTo("null")!=0){
             insert+=",ipaddr";
             values+=",\""+ipaddr+"\"";
-        }
-        
-        if (port.compareTo("")!=0 || port.compareTo("null")!=0){
+        }      
+        if (port.compareTo("")!=0 && port.compareTo("null")!=0){
             insert+=",port";
             values+=",\""+port+"\"";
-        }
-        
-        if (regserver.compareTo("")!=0 || regserver.compareTo("null")!=0){
+        }      
+        if (regserver.compareTo("")!=0 && regserver.compareTo("null")!=0){
             insert+=",regserver";
             values+=",\""+regserver+"\"";
-        }
-        
-        if (regseconds.compareTo("")!=0 || regseconds.compareTo("null")!=0){
+        }      
+        if (regseconds.compareTo("")!=0 && regseconds.compareTo("null")!=0){
             insert+=",regseconds";
             values+=",\""+regseconds+"\"";
-        }
-        
-        if (username.compareTo("")!=0 || username.compareTo("null")!=0){
+        }       
+        if (username.compareTo("")!=0 && username.compareTo("null")!=0){
             insert+=",username";
             values+=",\""+username+"\"";
-        }
-        
-        if (defaultuser.compareTo("")!=0 || defaultuser.compareTo("null")!=0){
+        }        
+        if (defaultuser.compareTo("")!=0 && defaultuser.compareTo("null")!=0){
             insert+=",defaultuser";
             values+=",\""+defaultuser+"\"";
-        }
-        
-        if (subsribecontext.compareTo("")!=0 || subsribecontext.compareTo("null")!=0){
-            insert+=",subsribecontext";
-            values+=",\""+subsribecontext+"\"";
+        }        
+        if (subscribecontext.compareTo("")!=0 && subscribecontext.compareTo("null")!=0){
+            insert+=",subscribecontext";
+            values+=",\""+subscribecontext+"\"";
         }       
+        
         
         insert+=") "+values+");";
         try
@@ -462,8 +422,6 @@ public class VoipLigneDAO {
         try {connexion.close();} catch (Exception e3) {System.out.println("Erreur fermeture"+e3);}
         return okay;
     
-       
-       
    }
     
    

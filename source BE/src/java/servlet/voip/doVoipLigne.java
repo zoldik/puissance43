@@ -4,7 +4,7 @@
  */
 
 package servlet.voip;
-
+import model.database.*;
 import java.io.IOException;
 import java.io.PrintWriter;
 import javax.servlet.ServletException;
@@ -16,7 +16,7 @@ import javax.servlet.http.HttpServletResponse;
  *
  * @author francois
  */
-public class VoipLigne extends HttpServlet {
+public class doVoipLigne extends HttpServlet {
    
     
     
@@ -28,8 +28,8 @@ public class VoipLigne extends HttpServlet {
         
     }
     
-    private void delete(String id) {
-        
+    private boolean delete(String id) {
+            return VoipLigneDAO.deleteLigneById(id);
     }
     
 
@@ -43,20 +43,27 @@ public class VoipLigne extends HttpServlet {
         response.setContentType("text/html;charset=UTF-8");
         PrintWriter out = response.getWriter();
         try {
-
-           if ( request.getParameter("action").compareTo("view") == 0){
-               String id = request.getParameter("id");
-               edit(id);
-           }
            
+           
+           //-- Edit action
            if ( request.getParameter("action").compareTo("edit") == 0){
                String id = request.getParameter("id");
                view(id);
            }
            
+           
+           
+           //-- Delete action
            if ( request.getParameter("action").compareTo("delete") == 0){
                String id = request.getParameter("id");
-               delete(id);
+               
+                if ( delete(id) == true) {
+                    out.println("<p align=\"center\">Delete successfull !<br/>");
+                }else{
+                    out.println("<p align=\"center\">Delete failed !<br/>");  
+                }
+                out.println( "<a href=\"./voip/admin/ligneManagement.jsp\">back</a></p>" );
+               
            }
 
             
