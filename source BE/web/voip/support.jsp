@@ -53,7 +53,7 @@
                         <td width="12">&nbsp;</td>
                         <td align="right">Adresse : &nbsp;</td>
                         <td>
-                          <input name="adresse" size="5" maxlength="5" type="text">
+                          <input name="adresse" type="text">
                         </td>
                       </tr>
                       <tr> 
