@@ -42,8 +42,8 @@ import="java.util.*"
        out.println("<table border=\"1\" bordercolor=\"#FF3300\" style=\"background-color:#FFFFFF\" width=\"600\" cellpadding=\"3\" cellspacing=\"3\">");
        out.println("<tr>");
        out.println("<td><select name=\"liste\"><option value=\"\">Choisissez votre action");
-       out.println("<option value=\"supprimer\"  onclick=\"evenement('supprimer');\">Supprimer");
-       out.println("<option value=\"modifier\" onclick=\"evenement('modifier');\">Modifier");
+       out.println("<option value=\"supprimer\"  onClick=\"functionevent('supprimer');\">Supprimer");
+       out.println("<option value=\"modifier\" onClick=\"functionevent('modifier');\">Modifier");
        out.println("</td>");
 
        out.println("<td>Vos contacts</td>");
