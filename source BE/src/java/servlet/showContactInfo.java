@@ -46,6 +46,7 @@ public class showContactInfo extends javax.servlet.http.HttpServlet {
         
        listeContact = SQLContactVoip.getContactbyVoipId(id);
        indice = listeContact.listIterator();
+       out.println("<FORM Method=\"POST\" Action=\"../modContactInfo\">");
        out.println("<table border=\"1\" bordercolor=\"#FF3300\" style=\"background-color:#FFFFFF\" width=\"600\" cellpadding=\"3\" cellspacing=\"3\">");
        out.println("<tr>");
        out.println("<td><select name=\"liste\"><option value=\"\">Choisissez votre action");
@@ -55,7 +56,6 @@ public class showContactInfo extends javax.servlet.http.HttpServlet {
 
        out.println("<td>Vos contacts</td>");
        out.println("<tr>");
-
 
 
        while (indice.hasNext()){
@@ -72,8 +72,13 @@ public class showContactInfo extends javax.servlet.http.HttpServlet {
        out.println("email : "+contact.mail+"<br><br></td>");
        out.println("<tr>");
                                 } 
-       out.print("</table>");
-       out.print("<input type=\"submit\" value=\"Valider\">"); 
+       out.println("</table>");
+       out.println("<input type=\"submit\" value=\"Valider\">");
+       out.println("</FORM>");
+       out.println("<FORM Method=\"POST\" Action=\"voip/annuaire.jsp\">");
+       out.println("<input type=\"submit\" value=\"Retour à l'annuaire\">");
+       out.println("</FORM>");
+
         } 
         catch (Exception e){
         System.err.println("<h3>Vous n'avez pas de contact</h3>");
