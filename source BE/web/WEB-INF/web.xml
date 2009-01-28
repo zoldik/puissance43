@@ -29,6 +29,14 @@
         <servlet-name>showContactInfo</servlet-name>
         <servlet-class>servlet.showContactInfo</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>addVoipLigne</servlet-name>
+        <servlet-class>servlet.voip.addVoipLigne</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>doVoipLigne</servlet-name>
+        <servlet-class>servlet.voip.doVoipLigne</servlet-class>
+    </servlet>
     <servlet-mapping>
         <servlet-name>action</servlet-name>
         <url-pattern>*.do</url-pattern>
@@ -43,7 +51,7 @@
     </servlet-mapping>
     <servlet-mapping>
         <servlet-name>Authentification</servlet-name>
-        <url-pattern>/Authentification</url-pattern>
+        <url-pattern>/authentification/Authentification</url-pattern>
     </servlet-mapping>
     <servlet>
         <servlet-name>CtrSearch</servlet-name>
@@ -68,5 +76,27 @@
     </session-config>
     <welcome-file-list>
         <welcome-file>index.jsp</welcome-file>
-    </welcome-file-list>
-</web-app>
+        </welcome-file-list>
+    <security-constraint>
+        <display-name>constraint1</display-name>
+        <web-resource-collection>
+            <web-resource-name>web security</web-resource-name>
+            <description>redirect all to ssl</description>
+            <url-pattern>/authentification/*</url-pattern><http-method>GET</http-method>
+            <http-method>POST</http-method>
+            <http-method>HEAD</http-method>
+            <http-method>PUT</http-method>
+            <http-method>OPTIONS</http-method>
+            <http-method>TRACE</http-method>
+            <http-method>DELETE</http-method>
+        </web-resource-collection>
+        <user-data-constraint>
+            <description>Protection CONFIDENTIAL</description>
+            <transport-guarantee>CONFIDENTIAL</transport-guarantee>
+        </user-data-constraint>
+        </security-constraint>
+    <login-config>
+        <auth-method>BASIC</auth-method>
+        <realm-name>redneck</realm-name>
+        </login-config>
+    </web-app>
