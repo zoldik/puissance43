@@ -23,9 +23,9 @@
 			<h3>Compte</h3>
 			<p> commentaire :</p>
 			<ul>
-				<li><a href="page1.html">Lien</li>
-				<li><a href="page1.html">Lien</li>
-				<li><a href="page1.html">Lien</li>
+				<li><a href="page1.html">Lien</a></li>
+				<li><a href="page1.html">Lien</a></li>
+				<li><a href="page1.html">Lien</a></li>
 			</ul>
 
 		</div>
@@ -35,9 +35,10 @@
 			<h3>Telephonie</h3>
 			<p>  commentaire :</p>
 			<ul>
-				<li><a href="page1.html">Lien</li>
-				<li><a href="page1.html">Lien</li>
-				<li><a href="page1.html">Lien</li>
+				<li><a href="./voip/moncompte.jsp">Mon compte</a></li>
+                                <li><a href="./voip/annuaire.jsp">Annuaire</a></li>
+				<li><a href="./voip/support.jsp">Support</a></li>
+				<li><a href="./voip/admin/admin.jsp">Administration</a></li>
 			</ul>
 		</div>
             </td>
@@ -48,9 +49,9 @@
 			<h3>Video</h3>
 			<p>  commentaire :</p>
 			<ul>
-				<li><a href="page1.html">Lien</li>
-				<li><a href="page1.html">Lien</li>
-				<li><a href="page1.html">Lien</li>
+				<li><a href="page1.html">Lien</a></li>
+				<li><a href="page1.html">Lien</a></li>
+				<li><a href="page1.html">Lien</a></li>
 			</ul>
 		</div>
             </td>
@@ -59,9 +60,9 @@
 			<h3>Equipement</h3>
 			<p>  commentaire :</p>
 			<ul>
-				<li><a href="page1.html">Lien</li>
-				<li><a href="page1.html">Lien</li>
-				<li><a href="page1.html">Lien</li>
+				<li><a href="page1.html">Lien</a></li>
+				<li><a href="page1.html">Lien</a></li>
+				<li><a href="page1.html">Lien</a></li>
 			</ul>
             
 		</div>
