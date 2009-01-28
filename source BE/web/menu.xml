@@ -13,10 +13,10 @@
     </VOD>
     <VoIP name="VoIP">
         <link name="Compte" url="voip/moncompte.jsp"/>
-        <link name="Communauté" url="voip/communaute.jsp"/>
-        <link name="Téléchargement" url="voip/telechargement.jsp"/>
+        <link name="ZoIper" url="voip/telechargement.jsp"/>
         <link name="Support" url="voip/support.jsp"/>
         <link name="Annuaire" url="voip/annuaire.jsp"/>
+        <link name="Admin" url="voip/admin/admin.jsp"/>
     </VoIP>
     <WebMail name="WebMail">
         <link/>
