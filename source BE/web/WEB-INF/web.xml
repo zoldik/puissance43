@@ -37,6 +37,10 @@
         <servlet-name>doVoipLigne</servlet-name>
         <servlet-class>servlet.voip.doVoipLigne</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>doVoipUser</servlet-name>
+        <servlet-class>servlet.voip.doVoipUser</servlet-class>
+    </servlet>
     <servlet-mapping>
         <servlet-name>action</servlet-name>
         <url-pattern>*.do</url-pattern>
@@ -68,6 +72,14 @@
     <servlet-mapping>
         <servlet-name>CtrCart</servlet-name>
         <url-pattern>/Cart.do</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>doVoipLigne</servlet-name>
+        <url-pattern>/doVoipLigne</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>doVoipUser</servlet-name>
+        <url-pattern>/doVoipUser</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>
