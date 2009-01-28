@@ -14,11 +14,22 @@
         <title>Annuaire</title>
     </head>
     <body>
-        <h2>Annuaire</h2>
+        <h2>Répertoire téléphonique</h2>
+        <FORM Method="POST" Action="formulaire_annuaire.jsp">
+        <input type="submit" value="Ajouter un contact " name="contact" /> <br>
+        </FORM>
         
+         <%@ taglib tagdir="/WEB-INF/tags" prefix="h" %>
+        <h:showContactInfo />
         
-        
-        
-        
+       <!-- 
+       <h1>Afficher vos contacts</h1>
+        <FORM Method="POST" Action="../showContactInfo">
+        <input type="submit" value="Valider " name="affichage contact" /> <br>
+        </FORM> 
+        -->
+
+
+
     </body>
 </html>
