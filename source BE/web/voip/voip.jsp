@@ -28,11 +28,10 @@
         <a href="./support.jsp">Support</a><br/>
         <a href="./telechargement.jsp">Telechargement</a><br/>
         
-        <br/>
-        <br/>
-        <br/>
-        <br/>
-        <a href="./admin/admin.jsp">administration</a><br/>
+        <h4>Administration</h4>
+        <a href="./admin/admin.jsp">Acces</a><br/>
+        
+
         
     </body>
 </html>
