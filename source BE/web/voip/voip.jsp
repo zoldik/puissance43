@@ -18,6 +18,7 @@
         
         <h4>Mon compte</h4>
         <a href="./moncompte.jsp">Mon compte</a><br/>
+        <a href="./repertoire.jsp">Mon répertoire</a><br/>
         <a href="./historique.jsp">Historique de mes appels</a><br/>
         <a href="./annuaire.jsp">Annuaire</a><br/>
         <a href="./rss.jsp">Flux RSS</a><br/>
