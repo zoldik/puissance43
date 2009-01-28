@@ -14,7 +14,6 @@
         <title>Annuaire</title>
     </head>
     <body>
-        <h2>Répertoire téléphonique</h2>
         <FORM Method="POST" Action="formulaire_annuaire.jsp">
         <input type="submit" value="Ajouter un contact " name="contact" /> <br>
         </FORM>
