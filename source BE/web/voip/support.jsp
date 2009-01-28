@@ -15,7 +15,7 @@
     </head>
     <body>
         <h2>Support</h2>
-        <form name="formulaire_support" action="UserVoipMessage" method="post">
+        <form name="formulaire_support" action="sendUserVoipMessage" method="post">
         <table align="left" border="0" cellpadding="0" cellspacing="0">
         <tbody><tr> 
         </tr>
