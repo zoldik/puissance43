@@ -26,6 +26,7 @@ public class Contact {
  */ 
 public Contact() {
     this.id=0;
+    this.titre="";
     this.categorie="";
     this.nom="";
     this.prenom="";
@@ -36,6 +37,7 @@ public Contact() {
  /**
   * Constructeur Contact
   * @param id
+  * @param titre
   * @param categorie
   * @param nom
   * @param prenom
@@ -45,6 +47,7 @@ public Contact() {
   */
 public Contact (int id,String titre,String categorie,String nom,String prenom,String telephone,String mail,int id_voip) {
     this.id=id;
+    this.titre=titre;
     this.categorie=categorie;
     this.nom=nom;
     this.prenom=prenom;
