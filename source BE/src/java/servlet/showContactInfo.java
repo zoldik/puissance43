@@ -39,7 +39,6 @@ public class showContactInfo extends javax.servlet.http.HttpServlet {
         try{
         
         int id=1;
-        int i=0;
         LinkedList listeContact = new LinkedList <Contact>();
         ListIterator<Contact> indice;
         Contact contact;
@@ -47,16 +46,34 @@ public class showContactInfo extends javax.servlet.http.HttpServlet {
         
        listeContact = SQLContactVoip.getContactbyVoipId(id);
        indice = listeContact.listIterator();
+       out.println("<table border=\"1\" bordercolor=\"#FF3300\" style=\"background-color:#FFFFFF\" width=\"600\" cellpadding=\"3\" cellspacing=\"3\">");
+       out.println("<tr>");
+       out.println("<td><select name=\"liste\"><option value=\"\">Choisissez votre action");
+       out.println("<option value=\"supprimer\">Supprimer");
+       out.println("<option value=\"modifier\">Modifier");
+       out.println("</td>");
+
+       out.println("<td>Vos contacts</td>");
+       out.println("<tr>");
+
+
+
        while (indice.hasNext()){
        contact = indice.next();
-       out.println("<input type=\"checkbox\" name=\"select\" value=\"ON\" />"); 
-       out.println("&nbsp; prénom ="+contact.prenom+"<br>");
-       out.println("&nbsp; telephone ="+contact.telephone+"<br>");
-       out.println("titre ="+contact.titre+"<br>");
-       out.println("categorie ="+contact.categorie+"<br>");
-       out.println("nom ="+contact.nom+"<br>");
-       out.println("email ="+contact.mail+"<br><br>");
+       out.println("<tr>");
+       out.println("<td align=\"center\"><input type=\"radio\" name=\"choix\" value=\"mod");
+       out.println(contact.id);
+       out.println("\"value=\"ON\" /></td>");
+       out.println("<td>&nbsp; prénom : "+contact.prenom+"<br>");
+       out.println("&nbsp; nom : "+contact.nom+"<br>");
+       out.println("titre : "+contact.titre+"<br>");
+       out.println("categorie : "+contact.categorie+"<br>");
+       out.println("telephone : "+contact.telephone+"<br>");
+       out.println("email : "+contact.mail+"<br><br></td>");
+       out.println("<tr>");
                                 } 
+       out.print("</table>");
+       out.print("<input type=\"submit\" value=\"Valider\">"); 
         } 
         catch (Exception e){
         System.err.println("<h3>Vous n'avez pas de contact</h3>");
