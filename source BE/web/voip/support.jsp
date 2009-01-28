@@ -15,7 +15,7 @@
     </head>
     <body>
         <h2>Support</h2>
-        <form name="formulaire_support" action="RedNeckContact" method="post">
+        <form name="formulaire_support" action="UserVoipMessage" method="post">
         <table align="left" border="0" cellpadding="0" cellspacing="0">
         <tbody><tr> 
         </tr>
@@ -78,11 +78,23 @@
 
                       </tr>
                       <tr> 
-                        <td colspan="3"><b>Votre Message*</b></td>
+                        <td colspan="2"><b>Votre Message*</b></td>
                       </tr>
                       <tr> 
                         <td width="12">&nbsp;</td>
-                        <td colspan="2" align="center"><textarea name="message_client" cols="40" rows="10"></textarea></td>
+                        <td align="right">Objet du message* : &nbsp;</td>
+                        <td><input name="num_ligne" type="text"></td>
+                      </tr>
+                      <tr> 
+                        <td width="12">&nbsp;</td>
+                        <td colspan="2" align="right"><textarea name="message_client" cols="36" rows="10"></textarea></td>
+                     </tr>
+                     <tr>
+                        <td width="12">&nbsp;</td>
+                     </tr>
+                     <tr>
+                        <td width="12">&nbsp;</td>
+                        <td align="right"><input type="submit" value="valider" name="Valider" /></td>
                      </tr>
                  </tbody>
                  </table>
