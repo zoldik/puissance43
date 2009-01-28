@@ -15,10 +15,11 @@
     </head>
     <body>
         <h2>VoIP admin - Add VoIP Ligne</h2>
+        <a href="../ligneManagement.jsp">back</a>
         
-        <form method="post" action="../../addVoipLigne">
+        <form method="post" action="../../../doVoipLigne">
         
-        <table align="center">
+        <table>
         <tr>
             <td>Name</td><td><input type="text" name="name" ></td>
         </tr>
@@ -38,12 +39,15 @@
             <td>Host</td><td><input type="text" name="host"></td>
         </tr>
         <tr>
+            <td>
             <input type="submit" value="submit" name="submit"/>
+            <input type='hidden' name='action' value="add">
+            </td>
         </tr>
         </table>
         
         </form>
-        <a href="./userManagement.jsp">back</a>
+        <a href="../ligneManagement.jsp">back</a>
         
     
     </body>

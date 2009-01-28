@@ -34,7 +34,9 @@ import = "java.util.*"
 
         <!-- Actions -->
         <input type="button" value="DELETE"/>
-         <a href="./addVoipLigne.jsp">Add</a>
+        <form method='post' action="./ligneManagement/addVoipLigne.jsp">
+                 <input type="submit" value="ADD" />
+        </form>
             
         <!-- titles -->
         <tr style="color:white">

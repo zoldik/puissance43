@@ -29,7 +29,7 @@ import="model.voip.*"
         <table>
             
         <tr><td><h5>Title</h5></td></tr>
-        <tr><td>id</td><td><input type="text" value="<%= vl.getid()%>" ></td></tr>
+        <tr><td>id</td><td><%= vl.getid()%></td></tr>
         <tr><td>name</td><td><input type="text" value="<%= vl.getname() %>" ></td></tr>
         <tr><td>username</td><td><input type="text" value="<%= vl.getusername() %>" ></td></tr>
         <tr><td>mailbox</td><td><input type="text" value="<%= vl.getmailbox()%>" ></td></tr>

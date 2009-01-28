@@ -4,7 +4,11 @@
     Author     : francois
 --%>
 
-<%@page contentType="text/html" pageEncoding="UTF-8"%>
+<%@page contentType="text/html" pageEncoding="UTF-8"
+import="model.voip.* "
+import="java.util.*"
+import="model.database.*"
+%>
 <!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"
    "http://www.w3.org/TR/html4/loose.dtd">
 
@@ -37,51 +41,48 @@
             <td> </td>
             <td> Id </td>
             <td> login </td>
+            <td> Account Level</td>
             <td> activated </td>
-            <td> Mailbox </td>
-            <td> Context </td>
-            <td> Type </td>
-            <td> Host </td>
+            
+            <td> Lignes </td>
         </tr>
         
         
         
         <!-- Contents -->
         <%
-            LinkedList<VoipLigne> voipLignes = new LinkedList <VoipLigne>();
-            ListIterator<VoipLigne> indice;
-            VoipLigne vl = new VoipLigne();
+            LinkedList<VoipUser> voipUsers = new LinkedList <VoipUser>();
+            ListIterator<VoipUser> indice;
+            VoipUser vu = new VoipUser();
             
-            voipLignes = VoipLigneDAO.extractAllVoipLigne();
-            indice = voipLignes.listIterator();
+            voipUsers = VoipUserDAO.extractAllVoipUser();
+            indice = voipUsers.listIterator();
             
             while (indice.hasNext()){
-                vl = indice.next();
+                vu = indice.next();
         %>
         
         <tr bgcolor="white">
-            <td> <input type="checkbox" name="<%=vl.getid() %>"/> </td>            
+            <td> <input type="checkbox" name="<%=vu.getid() %>"/> </td>            
            
-            <td> <%=vl.getid() %> </td>
-            <td> <%=vl.getname() %> </td>
-            <td> <%=vl.getusername() %> </td>
-            <td> <%=vl.getmailbox() %> </td>
-            <td> <%=vl.getcontext() %> </td>
-            <td> <%=vl.gettype() %> </td>
-            <td> <%=vl.gethost() %> </td>
+            <td> <%=vu.getid() %> </td>
+            <td> <%=vu.getlogin() %> </td>
+            <td> <%=vu.getaccountlevel() %> </td>
+            <td> <%=vu.getisactivated() %> </td>
+            
             
             <td> <!--edit button-->
                  <form method='post' action="./ligneManagement/editVoipLigne.jsp">
                  <input type="submit" value="edit" />
-                 <input type='hidden' name='id' value="<%=vl.getid() %>">
+                 <input type='hidden' name='id' value="<%=vu.getid() %>">
                  <!--input type="hidden" name='action' value='edit'-->
                  </form>
                  </td>
             <td> <!--delete button-->
                  <form method='post' action="./ligneManagement/deleteVoipLigne.jsp">
                  <input type="submit" value="delete" />
-                 <input type='hidden' name='id' value="<%=vl.getid() %>">
-                 <input type='hidden' name='name' value="<%=vl.getname() %>">
+                 <input type='hidden' name='id' value="<%=vu.getid() %>">
+                 <input type='hidden' name='name' value="<%=vu.getid() %>">
                  </form>
                  </td>
         </tr>
