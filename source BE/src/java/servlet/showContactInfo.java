@@ -75,8 +75,8 @@ public class showContactInfo extends javax.servlet.http.HttpServlet {
        out.println("</table>");
        out.println("<input type=\"submit\" value=\"Valider\">");
        out.println("</FORM>");
-       out.println("<FORM Method=\"POST\" Action=\"voip/annuaire.jsp\">");
-       out.println("<input type=\"submit\" value=\"Retour à l'annuaire\">");
+       out.println("<FORM Method=\"POST\" Action=\"voip/repertoire.jsp\">");
+       out.println("<input type=\"submit\" value=\"Retour à mon répertoire\">");
        out.println("</FORM>");
 
         } 
