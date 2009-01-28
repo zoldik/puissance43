@@ -10,7 +10,6 @@ import javax.servlet.*;
 import javax.servlet.http.*;
 import model.voip.*;
 import model.database.*;
-import java.sql.*;
 import java.util.*;
 
 
@@ -50,8 +49,8 @@ public class showContactInfo extends javax.servlet.http.HttpServlet {
        out.println("<table border=\"1\" bordercolor=\"#FF3300\" style=\"background-color:#FFFFFF\" width=\"600\" cellpadding=\"3\" cellspacing=\"3\">");
        out.println("<tr>");
        out.println("<td><select name=\"liste\"><option value=\"\">Choisissez votre action");
-       out.println("<option value=\"supprimer\">Supprimer");
-       out.println("<option value=\"modifier\">Modifier");
+       out.println("<option value=\"supprimer\"  onclick=\"evenement('supprimer');\">Supprimer");
+       out.println("<option value=\"modifier\" onclick=\"evenement('modifier');\">Modifier");
        out.println("</td>");
 
        out.println("<td>Vos contacts</td>");
@@ -73,7 +72,7 @@ public class showContactInfo extends javax.servlet.http.HttpServlet {
        out.println("<tr>");
                                 } 
        out.println("</table>");
-       out.println("<input type=\"submit\" value=\"Valider\">");
+       out.println("<input type=\"submit\" value=\"Valider votre action\">");
        out.println("</FORM>");
        out.println("<FORM Method=\"POST\" Action=\"voip/repertoire.jsp\">");
        out.println("<input type=\"submit\" value=\"Retour à mon répertoire\">");
@@ -84,32 +83,7 @@ public class showContactInfo extends javax.servlet.http.HttpServlet {
         System.err.println("<h3>Vous n'avez pas de contact</h3>");
 	e.printStackTrace();		
                             }
-     
-        //On vérifie la session
-	/*HttpSession session = request.getSession(true);*/
-        
-        /*On vérifie que le répertoire existe et on récupère toutes les données dans la bdd et on met dans rs
-         Puis on affiche tous les contacts du répertoire 
-         */
-        
-
-                     
-       /* 
-        String Titre = rs.getParameter("Titre");
-        String Categorie = rs.getParameter("Catégorie");
-        String Nom = rs.getParameter("Nom");
-        String Prenom = rs.getParameter("Prénom");
-        String Telephone = rs.getParameter("Téléphone");
-        String Email = rs.getParameter("Email");
-        
-        * outprintln(Titre = );
-        * ... 
-        
-        */
-        
-        
-   
-        
+       
        }
         
        
