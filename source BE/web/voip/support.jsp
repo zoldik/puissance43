@@ -84,6 +84,7 @@
                         <td width="12">&nbsp;</td>
                         <td colspan="2" align="center"><textarea name="message_client" cols="40" rows="10"></textarea></td>
                      </tr>
+                 </tbody>
                  </table>
              </form>
     </body>
