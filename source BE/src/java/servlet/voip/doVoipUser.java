@@ -16,7 +16,7 @@ import javax.servlet.http.HttpServletResponse;
  *
  * @author francois
  */
-public class deleteVoipLigne extends HttpServlet {
+public class doVoipUser extends HttpServlet {
    
     /** 
     * Processes requests for both HTTP <code>GET</code> and <code>POST</code> methods.
@@ -28,9 +28,9 @@ public class deleteVoipLigne extends HttpServlet {
         response.setContentType("text/html;charset=UTF-8");
         PrintWriter out = response.getWriter();
         try {
+
             
-            //String id = request.getParameter("id");
-            out.println("delete");
+            
             
             
             

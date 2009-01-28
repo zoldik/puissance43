@@ -13,6 +13,8 @@ public class VoipUser {
     private int id;
     private String login;
     private String password;
+    private int accountlevel;
+    private boolean isactivated;
     
 
     /**
@@ -33,6 +35,14 @@ public class VoipUser {
         return login;
     }
     
+    public int getaccountlevel(){
+        return accountlevel;
+    }
+    
+    public boolean getisactivated(){
+        return isactivated;
+    }
+    
     public boolean comparePasswordTo(String pass){
         
         if (this.password.compareTo(pass) == 0) {
@@ -40,7 +50,6 @@ public class VoipUser {
         }else{
             return false;
         }
-        
     }
         
     public void setid(int id){
@@ -54,5 +63,12 @@ public class VoipUser {
     public void setpassword(String pass){
         this.password = pass;
     }
+    
+    public void setaccountlevel(int accountlevel){
+        this.accountlevel=accountlevel;
+    }
         
+    public void setisactivated(boolean is){
+        this.isactivated=is;
+    }
 }

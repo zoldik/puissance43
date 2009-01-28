@@ -5,6 +5,7 @@
 
 package servlet.voip;
 import model.database.*;
+import model.voip.*;
 import java.io.IOException;
 import java.io.PrintWriter;
 import javax.servlet.ServletException;
@@ -20,12 +21,20 @@ public class doVoipLigne extends HttpServlet {
    
     
     
-    private void view(String id) {
+    private boolean add(HttpServletRequest request,HttpServletResponse response) {
+
+        VoipLigne vl = new VoipLigne();
         
+        
+
+        //return VoipLigneDAO.insertfull(vl);
+        return false;
     }
     
-    private void edit(String id) {
+    private boolean edit(HttpServletRequest request,HttpServletResponse response) {
         
+        
+        return false;
     }
     
     private boolean delete(String id) {
@@ -33,6 +42,8 @@ public class doVoipLigne extends HttpServlet {
     }
     
 
+    
+    
     /** 
     * Processes requests for both HTTP <code>GET</code> and <code>POST</code> methods.
     * @param request servlet request
@@ -45,13 +56,30 @@ public class doVoipLigne extends HttpServlet {
         try {
            
            
+           //-- Add action
+           if ( request.getParameter("action").compareTo("add") == 0){
+               String id = request.getParameter("id");
+               
+                if ( add(request,response) == true) {
+                    out.println("<p align=\"center\">Add successfull !<br/>");
+                }else{
+                    out.println("<p align=\"center\">Add failed !<br/>");  
+                }
+                out.println( "<a href=\"./voip/admin/ligneManagement.jsp\">back</a></p>" );
+               
+           }
+           
            //-- Edit action
            if ( request.getParameter("action").compareTo("edit") == 0){
                String id = request.getParameter("id");
-               view(id);
+               
+                if ( edit(request,response) == true) {
+                    out.println("<p align=\"center\">Add successfull !<br/>");
+                }else{
+                    out.println("<p align=\"center\">Add failed !<br/>");  
+                }
+                out.println( "<a href=\"./voip/admin/ligneManagement.jsp\">back</a></p>" );
            }
-           
-           
            
            //-- Delete action
            if ( request.getParameter("action").compareTo("delete") == 0){
