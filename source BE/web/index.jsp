@@ -80,7 +80,7 @@
     
     <body>
         <div class="menu"> <!-- début de la boite contenant les onglets -->
-            <a class="onglet" href="test.jsp" onclick="fonctionContenu('Accueil'); fonctionClean('Accueil'); fonctionMenu('Accueil'); return false;"><div id="Accueil">Accueil</div></a>
+            <a class="onglet" href="test.jsp" onclick="fonctionOpenPage('accueil.jsp'); fonctionContenu('Accueil'); fonctionClean('Accueil'); fonctionMenu('Accueil'); return false;"><div id="Accueil">Accueil</div></a>
             <a class="onglet" href="test.jsp" onclick="fonctionContenu('Compte'); fonctionClean('Compte'); fonctionMenu('Compte'); return false;"><div id="Compte">Compte</div></a>
             <a class="onglet" href="test.jsp" onclick="fonctionContenu('VOD'); fonctionClean('VOD'); fonctionMenu('VOD'); return false;"><div id="VOD">VOD</div></a>
             <a class="onglet" href="#" onclick="fonctionOpenPage('voip/voip.jsp'); fonctionContenu('VoIP'); fonctionClean('VoIP'); fonctionMenu('VoIP'); return false;"><div id="VoIP">VoIP</div></a>
