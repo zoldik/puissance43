@@ -18,7 +18,6 @@
         <form name="formulaire_support" action="RedNeckContact" method="post">
         <table align="left" border="0" cellpadding="0" cellspacing="0">
         <tbody><tr> 
-        <td colspan="3">&nbsp;<input name="storeId" value="10001" type="hidden"></td>
         </tr>
         <tr> 
         <td colspan="3"><b>Renseignements nécessaires </b></td>
@@ -84,5 +83,8 @@
                       <tr> 
                         <td width="12">&nbsp;</td>
                         <td colspan="2" align="center"><textarea name="message_client" cols="40" rows="10"></textarea></td>
+                     </tr>
+                 </table>
+             </form>
     </body>
 </html>
