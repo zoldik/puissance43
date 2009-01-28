@@ -14,32 +14,45 @@ public class VoipUser {
     private String login;
     private String password;
     
-    private String nom;
-    private String prenom;
-    private String telephone;
-    private String mail;
-    private boolean hasRepertoire;
 
-/**
- *Constructeur par défaut de l'objet VoipUser
- * @author thomas
- */ 
-public VoipUser() {
-    this.id=0;
-    this.login="";
-    this.password="";
+    /**
+    *Constructeur par défaut de l'objet VoipUser
+    * @author thomas
+    */ 
+    public VoipUser() {
+        this.id=0;
+        this.login="";
+        this.password="";
+    }
     
-    this.nom="";
-    this.prenom="";
-    this.telephone="";
-    this.mail="";
-    this.hasRepertoire=false;
-}
-
-
-
-
-
-
-
+    public int getid(){
+        return id;
+    }
+    
+    public String getlogin(){
+        return login;
+    }
+    
+    public boolean comparePasswordTo(String pass){
+        
+        if (this.password.compareTo(pass) == 0) {
+            return true;
+        }else{
+            return false;
+        }
+        
+    }
+        
+    public void setid(int id){
+        this.id = id;
+    }
+        
+    public void setlogin(String log){
+        this.login = log;
+    }
+    
+    public void setpassword(String pass){
+        this.password = pass;
+    }
+        
 }
