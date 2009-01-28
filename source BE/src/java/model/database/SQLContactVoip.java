@@ -6,6 +6,7 @@
 package model.database;
 
 import java.sql.*;
+import java.lang.Object.*;
 import model.voip.*;
 import java.util.*;
 
@@ -122,17 +123,17 @@ public class SQLContactVoip {
 
         try
         {
-            int id_voip=1;
             stmt=connexion.getConn().createStatement();
             rs = stmt.executeQuery("select * from VOIP_CONTACT where (ID_VOIP=\""+id+"\")");
             while (rs.next()){
+            int IdContact = rs.getInt("VOIP_CONTACT_ID");   
             String Titre = rs.getString("TITRE");
             String Categorie = rs.getString("CATEGORIE");
             String Nom = rs.getString("NOM");
             String Prenom = rs.getString("PRENOM");
-            String Telephone = rs.getString("TELEPHONE");
             String Email = rs.getString("MAIL");
-            Contact contact = new Contact(id_voip,Titre,Categorie,Nom,Prenom,Telephone,Email,id);
+            String Telephone = rs.getString("TELEPHONE");
+            Contact contact = new Contact(IdContact,Titre,Categorie,Nom,Prenom,Email,Telephone,id);
             listeContact.add(contact);
                              }
                     }
