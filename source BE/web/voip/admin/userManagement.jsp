@@ -1,35 +1,31 @@
 <%-- 
     Document   : userManagement
-    Created on : 25 janv. 2009, 20:17:35
+    Created on : 28 janv. 2009, 11:33:09
     Author     : francois
 --%>
 
-<%@page contentType="text/html" pageEncoding="UTF-8"
-import = "model.database.*"
-import = "model.voip.*"
-import = "java.util.*"
-%>
+<%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"
    "http://www.w3.org/TR/html4/loose.dtd">
 
 <html>
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-        <title>VoIP admin - VoIP ligne Management</title>
+        <title>VoIP admin - VoIP User Management</title>
     </head>
     
     <body>
-        <h2>VoIP admin - VoIP ligne Management</h2>
+        <h2>VoIP admin - VoIP User Management</h2>
         
         <p>
-        <i>In this section you can manage VoIP ligne. 
-        You can view, edit, delete, and add lignes.</i>
+        <i>In this section you can manage VoIP User. 
+        You can view, edit, delete, and add users.</i>
         </p>
 
 
         
-        <!-- Table of a list of lignes -->   
-        <h4>List of VoIP ligne </h4>
+        <!-- Table of a list of users -->   
+        <h4>List of VoIP User </h4>
         <table bgcolor="black">
 
         <!-- Actions -->
@@ -40,8 +36,8 @@ import = "java.util.*"
         <tr style="color:white">
             <td> </td>
             <td> Id </td>
-            <td> Name </td>
-            <td> Username </td>
+            <td> login </td>
+            <td> activated </td>
             <td> Mailbox </td>
             <td> Context </td>
             <td> Type </td>
