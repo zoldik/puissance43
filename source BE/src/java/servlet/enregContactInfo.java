@@ -58,7 +58,7 @@ public class enregContactInfo extends javax.servlet.http.HttpServlet {
         
        SQLContactVoip.insertContact(contact);
        out.println("enregistrement réussi");
-       response.sendRedirect(response.encodeRedirectURL("voip/annuaire.jsp"));
+       response.sendRedirect(response.encodeRedirectURL("voip/repertoire.jsp"));
       
        
 
