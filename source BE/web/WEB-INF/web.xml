@@ -115,18 +115,6 @@
         <url-pattern>/authentification/Authentification</url-pattern>
     </servlet-mapping>
     <servlet-mapping>
-        <servlet-name>CtrSearch</servlet-name>
-        <url-pattern>/Search.do</url-pattern>
-    </servlet-mapping>
-    <servlet>
-        <servlet-name>CtrCart</servlet-name>
-        <servlet-class>servlet.networkdevices.CtrCart</servlet-class>
-    </servlet>
-    <servlet-mapping>
-        <servlet-name>CtrCart</servlet-name>
-        <url-pattern>/Cart.do</url-pattern>
-    </servlet-mapping>
-    <servlet-mapping>
         <servlet-name>addVoipLigne</servlet-name>
         <url-pattern>/addVoipLigne</url-pattern>
     </servlet-mapping>
