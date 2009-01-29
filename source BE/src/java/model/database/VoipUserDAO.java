@@ -37,7 +37,7 @@ public class VoipUserDAO {
             while (rs.next()) {
                 VoipUser li= new VoipUser();
 
-                li.setid(rs.getInt("ID_USER"));
+                li.setid(rs.getInt("ID_VOIP"));
                 li.setlogin(rs.getString("login"));
                 li.setaccountlevel(rs.getInt("account_level"));
                 li.setisactivated(rs.getBoolean("isactivated"));
@@ -78,7 +78,7 @@ public class VoipUserDAO {
             while (rs.next()) {
                 VoipUser li= new VoipUser();
 
-                li.setid(rs.getInt("VOIP_LIGNE_ID"));
+                li.setid(rs.getInt("ID_VOIP"));
                 li.setlogin(rs.getString("login"));
                 li.setaccountlevel(rs.getInt("account_level"));
                 li.setisactivated(rs.getBoolean("isactivated"));

@@ -55,6 +55,7 @@ public class VoipLigne {
       private String username;
       private String defaultuser;
       private String subsribecontext;
+      private Boolean visible;
 
       
       public VoipLigne(){
@@ -102,6 +103,7 @@ public class VoipLigne {
         this.username="";
         this.defaultuser="";
         this.subsribecontext="";
+        this.visible=false;
      }
       
       /**
@@ -149,8 +151,9 @@ public class VoipLigne {
       * @param username
       * @param defaultuser
       * @param subsribecontext
+      * @param visible
       */
-      public VoipLigne(String id,String name,String host,String nat,String type,String accountcode,String amaflags,String calllimit,String callgroup,String callerid,String cancallforward,String canreinvite,String context,String defaultip,String dtmfmode,String fromuser,String fromdomain,String insecure,String language,String mailbox,String md5secret,String deny,String permit,String mask,String musiconhold,String pickupgroup,String qualify,String regexten,String restrictcid,String rtptimeout,String rtpholdtimeout,String secret,String setvar,String disallow,String allow,String fullcontact,String ipaddr,String port,String regserver,String regseconds,String username,String defaultuser,String subsribecontext){
+      public VoipLigne(String id,String name,String host,String nat,String type,String accountcode,String amaflags,String calllimit,String callgroup,String callerid,String cancallforward,String canreinvite,String context,String defaultip,String dtmfmode,String fromuser,String fromdomain,String insecure,String language,String mailbox,String md5secret,String deny,String permit,String mask,String musiconhold,String pickupgroup,String qualify,String regexten,String restrictcid,String rtptimeout,String rtpholdtimeout,String secret,String setvar,String disallow,String allow,String fullcontact,String ipaddr,String port,String regserver,String regseconds,String username,String defaultuser,String subsribecontext,Boolean visible){
           
         this.id=id;  
         this.name=name;
@@ -195,6 +198,7 @@ public class VoipLigne {
         this.username=username;
         this.defaultuser=defaultuser;
         this.subsribecontext=subsribecontext;
+        this.visible=visible;
    
      }
       
@@ -374,6 +378,10 @@ public class VoipLigne {
          return this.subsribecontext;
      }
      
+     public boolean getvisible (){
+         return this.visible;
+     }
+     
     //*****************
     //Setter
     //*****************    
@@ -548,6 +556,10 @@ public class VoipLigne {
      
      public void setsubsribecontext (String subsribecontext){
          this.subsribecontext=subsribecontext;
+     }
+     
+     public void setvisible (Boolean visible){
+         this.visible=visible;
      }
           
     
