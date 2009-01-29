@@ -14,7 +14,7 @@
         <title>VoIP</title>
     </head>
     <body>
-        <h2>Voip</h2>        
+        <h2>VoIP</h2>        
         
         <h4>Mon compte</h4>
         <a href="./moncompte.jsp">Mon compte</a><br/>
@@ -25,7 +25,7 @@
 
          <h4>Assistance</h4>
         <a href="./support.jsp">Support</a><br/>
-        <a href="./telechargement.jsp">Telechargement</a><br/>
+        <a href="./telechargement.jsp">ZoIPer</a><br/>
         
         <h4>Administration</h4>
         <a href="./admin/admin.jsp">Acces</a><br/>
