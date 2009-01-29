@@ -8,7 +8,7 @@
 <!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"
    "http://www.w3.org/TR/html4/loose.dtd">
 <%@ page import="java.util.*" %>
-<%@ page import="fr.isen.jeen5_0809.group8.cart.model.*" %>
+<%@ page import="model.networkdevices.*" %>
 
 
 <html>
@@ -51,19 +51,19 @@
             <tr><td><%=item.getName()%></td>
                 <td><%=item.getType()%></td>            
                 <td><%=item.getDescription()%></td>
-                <td><%=item.getPrice()%> Euros</td>
-                <td><form method='post' action="../Cart.do">
+                <td><%=item.getUnitPrice()%> Euros</td>
+                <td><form method='post' action="CtrCart">
                     <input type='submit' value='Delete Item'>
                     <input type='hidden' name='id' value='<%=item.getId()%>'>
                     <input type="hidden" name='actionCart' value='delete'>
                     </form></td>
                 <td><%=cartRow.getQuantity()%></td>
-                <td><form method='post' action="../Cart.do">
+                <td><form method='post' action="CtrCart">
                     <input type='submit' value='+'>
                     <input type='hidden' name='id' value='<%=item.getId()%>'>
                     <input type="hidden" name='actionCart' value='increment'>
                     </form></td>                
-                <td><form method='post' action="../Cart.do">                 
+                <td><form method='post' action="CtrCart">                 
 <%
 if(cartRow.getQuantity()==0){
 %>
