@@ -48,6 +48,14 @@
         <url-pattern>/AdvancedSearch.jsp</url-pattern>
     </servlet-mapping>
     <servlet>
+        <servlet-name>DisplayCart.jsp</servlet-name>
+        <jsp-file>/networkDevices/ViewCart/DisplayCart.jsp</jsp-file>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>DisplayCart.jsp</servlet-name>
+        <url-pattern>/DisplayCart.jsp</url-pattern>
+    </servlet-mapping>    
+    <servlet>
         <servlet-name>DisplayItems.jsp</servlet-name>
         <jsp-file>/networkDevices/ViewCart/DisplayItems.jsp</jsp-file>
     </servlet>
