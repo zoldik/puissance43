@@ -1,13 +1,70 @@
 /* 
  * To change this template, choose Tools | Templates
  * and open the template in the editor.
+ * 
  */
+
+    
 function updateDivContent(divName, text)
 {
 	document.getElementById(divName).innerHTML = text;
 }
 
-/*function updateMenu(string)
+function getDataSynchronous(URL)
+{
+	xmlHttpRequest = createXMLHttpRequest();
+	xmlHttpRequest.open("GET", URL, false);
+	xmlHttpRequest.send(null);
+	if(xmlHttpRequest.readyState == 4)
+		return xmlHttpRequest.responseXML;
+	else
+		return false;
+}
+
+function getDataAsynchronous(URL, alertFunction)
+{
+	var request = createXMLHttpRequest();
+	request.onreadystatechange = alertFunction;
+	request.open('GET', URL, true);
+	request.send(null);
+	return request;
+}
+
+function createXMLHttpRequest()
+{
+	var request = false;
+	if (window.XMLHttpRequest)
+	{ // Mozilla, Safari,...
+		request = new XMLHttpRequest();
+		if (request.overrideMimeType)
+		{
+			request.overrideMimeType('text/xml');
+		}
+	}
+	else if (window.ActiveXObject)
+	{ // IE
+		try
+		{
+			request = new ActiveXObject("Msxml2.XMLHTTP");
+		}
+		catch (e)
+		{
+			try
+			{
+				request = new ActiveXObject("Microsoft.XMLHTTP");
+			}
+			catch (e) {}
+		}
+	}
+	if (!request)
+	{
+		alert('Cannot create XMLHTTP instance');
+		return false;
+	}
+	return request;
+}
+
+/**function updateMenu(string)
 {
     if(string != '')
                {
@@ -53,47 +110,6 @@ function updateMain(string)
                     updateDivContent("contenu", "blabla WebMail");
                 else updateDivContent("contenu", "<object data="test.jsp" type="text/html"/>");
                }
-}*/
+}**/
 
-function getDataAsynchronous(URL, alertFunction)
-{
-	var request = createXMLHttpRequest();
-	request.onreadystatechange = alertFunction;
-	request.open('GET', URL, true);
-	request.send(null);
-	return request;
-}
-
-function createXMLHttpRequest()
-{
-	var request = false;
-	if (window.XMLHttpRequest)
-	{ // Mozilla, Safari,...
-		request = new XMLHttpRequest();
-		if (request.overrideMimeType)
-		{
-			request.overrideMimeType('text/xml');
-		}
-	}
-	else if (window.ActiveXObject)
-	{ // IE
-		try
-		{
-			request = new ActiveXObject("Msxml2.XMLHTTP");
-		}
-		catch (e)
-		{
-			try
-			{
-				request = new ActiveXObject("Microsoft.XMLHTTP");
-			}
-			catch (e) {}
-		}
-	}
-	if (!request)
-	{
-		alert('Cannot create XMLHTTP instance');
-		return false;
-	}
-	return request;
-}
+    
