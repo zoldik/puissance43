@@ -26,7 +26,8 @@
         <link name="Assistance"  url="" />
     </Assistance>
     <NetworkDevices name="menu NetworkDevices">
-        <link name="Search" url="Search.view" />
+        <link name="Search" url="Search.jsp" />
+        <link name="AdvancedSearch" url="AdvancedSearch.jsp" />
     </NetworkDevices>
     <NetworkSolutions name="menu NetworkSolutions">
         <link name="Solutions" url="" />
