@@ -1,0 +1,92 @@
+Notice installation Serveur Mail
+
+Liste des paquets :
+- Postfix (avec ses dépendances)
+- courier-imap (avec ses dépendances)
+- openwebmail (voir l'archive)
+
+Pré-requis :
+- serveur web (type apache)
+- distribution debian (ubuntu/kubuntu)
+
+
+Installation :
+
+I] Services obligatoires :
+1) Utilisez votre gestionnaire de paquet (adept par exemple) pour installer les paquets Postfix & courier-imap
+- lors de l'installation du paquet postfix, il vous sera demandé diverses informations. Veuillez remplir comme suivant :
+a) Type de configuration : Site internet
+b) Nom du courrier : Redneck.fr (ou nom de domaine de l'entreprise si besoin)
+
+2) Configuration du serveur smtp (postfix)
+a) Modification du fichier main.cf de postfix
+- editez le fichier /etc/postfix/main.cf et modifiez les champs suivants selon vos besoins :
+	mynetworks = <adresse ip de votre réseau>
+	myhostname = <mail.adresse de l'entreprise>
+	mydestination = 
+Ajoutez également la ligne suivante :
+	home_mailbox = Maildir/
+
+b) Editez comme suivant le fichier /etc/procmailrc (ajoutez le si nécessaire)
+	MAILDIR=$HOME/Maildir
+	DEFAULT=$MAILDIR/
+	
+	:0:
+	$DEFAULT
+
+3) Configuration du serveur imap : Modification du fichier /etc/courier/courier-imap
+- Modifiez la ligne de configuration du MAILDIRPATH (peut être MAILPATH suivant les versions) en :
+MAILDIRPATH=Maildir
+
+4) Rechargez les services
+	sudo /etc/init.d/postfix restart
+	sudo /etc/init.d/courier-imap restart
+	sudo /etc/init.d/courier-authdaemon restart
+
+5) (optionnel) Vous pouvez également installer le paquet mailutils si vous souhaitez tester votre configuration à la main en tapant la commande "mail adresseExpéditeur"
+
+6) (optionnel) Créez le compte mail administrateur :
+Retournez dans le ~ et tapez les commandes :
+	maildirmake Maildir
+	sudo -R <nom du compte> /home/<nom du compte>/Maildir
+	sudo chgrp -R /home/<nom du compte>/Maildir
+
+7) Création/suppression des comptes mail
+a) Création
+Utilisez le script createMailAddress
+	sudo ./createMailAddress
+	puis rentrez les informations login (pas l'adresse mail au complet) et mot de passe
+b) Suppression
+Utilisez le script deleteMailAddress
+	sudo ./deleteMailAddress
+
+
+II] Service optionnel :
+1) Webmail : OpenWebMail
+a) Installation
+Lancez l'installation du paquet owm2.53-2.deb
+
+b) Configuration
+- Editez le fichier /etc/openwebmail/openwebmail.conf
+	Modifiez le paramètre domainnames en
+		domainnames	<nom de l'entreprise>
+	Par exemple pour Redneck.f
+		domainnames	Redneck.fr
+- Supprimez le fichier index.html
+	sudo rm index.html
+- Renommez le fichier redirect.html
+	sudo mv redirect.html index.html
+
+
+Utilisation :
+I] SMTP/IMAP
+Vous pouvez créer des comptes grâce au script createMailAddress
+Afin de vous connecter au serveur mail (via thunderbird par exemple), il vous suffit de remplir les informations du compte avec :
+Le login & le mdp que vous avez mis lors de l'utilisation du script createMailAddress
+L'adresse du serveur imap étant celle de votre serveur mail
+
+II] Webmail OpenWebMail
+Pour vous y connectez, rendez vous sur
+http://<adresse ip du serveur mail>/openwebmail/
+L'user_id correspond à votre login utilisé lors de la création du compte avec createMailAddress
+Le mot de passe étant le même que lors de la création du compte
