@@ -27,7 +27,7 @@ public class supprContactInfo extends HttpServlet {
     */
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
     throws ServletException, IOException {
-    int id = parseInt().request.getParameter("id"); 
+    //int id = parseInt().request.getParameter("id"); 
     //SQLContactVoip.deletebyId(id);
         
 response.sendRedirect(response.encodeRedirectURL("voip/annuaire.jsp"));    } 
