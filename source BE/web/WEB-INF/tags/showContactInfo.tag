@@ -1,7 +1,7 @@
 <%-- 
     Document   : showContactInfo
     Created on : Jan 28, 2009, 6:05:18 PM
-    Author     : isen
+    Author     : thomas
 --%>
 
 <%@tag description="affichage des contacts" 
@@ -24,7 +24,7 @@ import="java.util.*"
 <%@attribute name="message"%>
 
 <%-- any content can be specified here e.g.: --%>
-<h2>Votre répertoire</h2>
+<h2>Votre rÃ©pertoire</h2>
 <% 
 
 
@@ -53,12 +53,12 @@ import="java.util.*"
        while (indice.hasNext()){
        contact = indice.next();
        out.println("<tr>");
-       out.println("<td align=\"center\"><input type=\"radio\" name=\"choix\" onClick=\"RecupId(this.form,");
+       out.println("<td align=\"center\"><input type=\"checkbox\" name=\"choix\" onClick=\"RecupId(this.form,");
        out.println(contact.id);
        out.println(")\"value=\"");
        out.println(contact.id);
        out.println("\"/></td>");
-       out.println("<td>&nbsp; prénom : "+contact.prenom+"<br>");
+       out.println("<td>&nbsp; prÃ©nom : "+contact.prenom+"<br>");
        out.println("&nbsp; nom : "+contact.nom+"<br>");
        out.println("titre : "+contact.titre+"<br>");
        out.println("categorie : "+contact.categorie+"<br>");
@@ -70,7 +70,7 @@ import="java.util.*"
       // out.println("<input type=\"submit\" value=\"Valider votre action\">");
        out.println("</FORM>");
       // out.println("<FORM Method=\"POST\" Action=\"voip/annuaire.jsp\">");
-      // out.println("<input type=\"submit\" value=\"Retour à l'annuaire\">");
+      // out.println("<input type=\"submit\" value=\"Retour Ã  l'annuaire\">");
       // out.println("</FORM>");
 
         } 
