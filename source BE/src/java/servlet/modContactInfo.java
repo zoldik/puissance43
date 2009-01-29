@@ -14,7 +14,7 @@ import java.util.*;
 
 /**
  *
- * @author isen
+ * @author thomas
  */
 public class modContactInfo extends HttpServlet {
    
@@ -37,7 +37,7 @@ public class modContactInfo extends HttpServlet {
     throws ServletException, IOException {
 response.setContentType("text/html;charset=UTF-8") ;
 
-response.sendRedirect(response.encodeRedirectURL("voip/annuaire.jsp"));      
+response.sendRedirect(response.encodeRedirectURL("voip/repertoire.jsp"));      
     } 
 
     /** 
