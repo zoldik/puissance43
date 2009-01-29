@@ -95,6 +95,9 @@
     </servlet-mapping>
     <!--Servlet-->
     <!--JSP-->
+    <!--JSP-->
+    <!--PHILIPPE LARDENNOIS -->
+    
     <servlet>
         <servlet-name>enregContactInfo</servlet-name>
         <servlet-class>servlet.enregContactInfo</servlet-class>
