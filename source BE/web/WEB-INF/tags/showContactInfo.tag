@@ -24,7 +24,7 @@ import="java.util.*"
 <%@attribute name="message"%>
 
 <%-- any content can be specified here e.g.: --%>
-<h2>Votre rÃ©pertoire</h2>
+<h2>Votre répertoire</h2>
 <% 
 
 
@@ -38,12 +38,12 @@ import="java.util.*"
         
        listeContact = SQLContactVoip.getContactbyVoipId(id);
        indice = listeContact.listIterator();
-       out.println("<FORM Method=\"POST\" Action=\"../modContactInfo\">");
+       out.println("<FORM>");
        out.println("<table border=\"1\" bordercolor=\"#FF3300\" style=\"background-color:#FFFFFF\" width=\"600\" cellpadding=\"3\" cellspacing=\"3\">");
        out.println("<tr>");
-       out.println("<td><select name=\"liste\"><option value=\"\">Choisissez votre action");
-       out.println("<option value=\"supprimer\"  onClick=\"functionevent('supprimer');\">Supprimer");
-       out.println("<option value=\"modifier\" onClick=\"functionevent('modifier');\">Modifier");
+       out.println("<td><select name=\"ListeUrl\" onChange=\"ChangeUrl(this.form)\"><option value=\"\">Choisissez votre action");
+       out.println("<option value=\"../supprContactInfo\">Supprimer");
+       out.println("<option value=\"../modContactInfo\">Modifier");
        out.println("</td>");
 
        out.println("<td>Vos contacts</td>");
@@ -53,10 +53,12 @@ import="java.util.*"
        while (indice.hasNext()){
        contact = indice.next();
        out.println("<tr>");
-       out.println("<td align=\"center\"><input type=\"radio\" name=\"choix\" value=\"mod");
+       out.println("<td align=\"center\"><input type=\"radio\" name=\"choix\" onClick=\"RecupId(this.form,");
        out.println(contact.id);
-       out.println("\"value=\"ON\" /></td>");
-       out.println("<td>&nbsp; prÃ©nom : "+contact.prenom+"<br>");
+       out.println(")\"value=\"");
+       out.println(contact.id);
+       out.println("\"/></td>");
+       out.println("<td>&nbsp; prénom : "+contact.prenom+"<br>");
        out.println("&nbsp; nom : "+contact.nom+"<br>");
        out.println("titre : "+contact.titre+"<br>");
        out.println("categorie : "+contact.categorie+"<br>");
@@ -68,7 +70,7 @@ import="java.util.*"
       // out.println("<input type=\"submit\" value=\"Valider votre action\">");
        out.println("</FORM>");
       // out.println("<FORM Method=\"POST\" Action=\"voip/annuaire.jsp\">");
-      // out.println("<input type=\"submit\" value=\"Retour Ã  l'annuaire\">");
+      // out.println("<input type=\"submit\" value=\"Retour à l'annuaire\">");
       // out.println("</FORM>");
 
         } 
