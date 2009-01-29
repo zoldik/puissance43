@@ -41,6 +41,14 @@
         <servlet-name>doVoipUser</servlet-name>
         <servlet-class>servlet.voip.doVoipUser</servlet-class>
     </servlet>
+        <servlet>
+        <servlet-name>modContactInfo</servlet-name>
+        <servlet-class>servlet.modContactInfo</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>supprContactInfo</servlet-name>
+        <servlet-class>servlet.supprContactInfo</servlet-class>
+    </servlet>
     <servlet-mapping>
         <servlet-name>action</servlet-name>
         <url-pattern>*.do</url-pattern>
@@ -52,6 +60,14 @@
     <servlet-mapping>
         <servlet-name>showContactInfo</servlet-name>
         <url-pattern>/showContactInfo</url-pattern>
+    </servlet-mapping>
+        <servlet-mapping>
+        <servlet-name>supprContactInfo</servlet-name>
+        <url-pattern>/supprContactInfo</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>modContactInfo</servlet-name>
+        <url-pattern>/modContactInfo</url-pattern>
     </servlet-mapping>
     <servlet-mapping>
         <servlet-name>Authentification</servlet-name>
@@ -79,14 +95,10 @@
         <servlet-name>CtrCart</servlet-name>
         <url-pattern>/Cart.do</url-pattern>
     </servlet-mapping>
-<<<<<<< .mine
-    
-    
-    
-    
-    
-    
-=======
+    <servlet-mapping>
+        <servlet-name>addVoipLigne</servlet-name>
+        <url-pattern>/addVoipLigne</url-pattern>
+    </servlet-mapping>
     <servlet-mapping>
         <servlet-name>doVoipLigne</servlet-name>
         <url-pattern>/doVoipLigne</url-pattern>
@@ -95,35 +107,5 @@
         <servlet-name>doVoipUser</servlet-name>
         <url-pattern>/doVoipUser</url-pattern>
     </servlet-mapping>
->>>>>>> .r214
-    <session-config>
-        <session-timeout>
-            30
-        </session-timeout>
-    </session-config>
-    <welcome-file-list>
-        <welcome-file>index.jsp</welcome-file>
-        </welcome-file-list>
-    <security-constraint>
-        <display-name>constraint1</display-name>
-        <web-resource-collection>
-            <web-resource-name>web security</web-resource-name>
-            <description>redirect all to ssl</description>
-            <url-pattern>/authentification/*</url-pattern><http-method>GET</http-method>
-            <http-method>POST</http-method>
-            <http-method>HEAD</http-method>
-            <http-method>PUT</http-method>
-            <http-method>OPTIONS</http-method>
-            <http-method>TRACE</http-method>
-            <http-method>DELETE</http-method>
-        </web-resource-collection>
-        <user-data-constraint>
-            <description>Protection CONFIDENTIAL</description>
-            <transport-guarantee>CONFIDENTIAL</transport-guarantee>
-        </user-data-constraint>
-        </security-constraint>
-    <login-config>
-        <auth-method>BASIC</auth-method>
-        <realm-name>redneck</realm-name>
-        </login-config>
-    </web-app>
+
+</web-app>
