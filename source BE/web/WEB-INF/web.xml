@@ -75,10 +75,26 @@
     
     
     <!--VINCENT DESTAILLEUR -->
+    <!--PHILIPPE LARDENNOIS -->
+    <!--Servlet-->
     <servlet>
         <servlet-name>Authentification</servlet-name>
         <servlet-class>servlet.Authentification</servlet-class>
     </servlet>
+        <servlet-mapping>
+        <servlet-name>Authentification</servlet-name>
+        <url-pattern>/Authentification</url-pattern>
+    </servlet-mapping>
+        <servlet>
+        <servlet-name>Header</servlet-name>
+        <servlet-class>servlet.Header</servlet-class>
+    </servlet>
+        <servlet-mapping>
+        <servlet-name>Header</servlet-name>
+        <url-pattern>/Header</url-pattern>
+    </servlet-mapping>
+    <!--Servlet-->
+    <!--JSP-->
     <servlet>
         <servlet-name>enregContactInfo</servlet-name>
         <servlet-class>servlet.enregContactInfo</servlet-class>
@@ -127,10 +143,7 @@
         <servlet-name>modContactInfo</servlet-name>
         <url-pattern>/modContactInfo</url-pattern>
     </servlet-mapping>
-    <servlet-mapping>
-        <servlet-name>Authentification</servlet-name>
-        <url-pattern>/Authentification</url-pattern>
-    </servlet-mapping>
+
     <servlet-mapping>
         <servlet-name>addVoipLigne</servlet-name>
         <url-pattern>/addVoipLigne</url-pattern>
