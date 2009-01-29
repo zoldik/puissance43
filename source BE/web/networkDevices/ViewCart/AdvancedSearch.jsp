@@ -1,13 +1,12 @@
 <%-- 
-    Document   : index
-    Created on : 2 janv. 2009, 12:48:01
+    Document   : AdvancedSearch
+    Created on : 29 janv. 2009, 14:16:06
     Author     : vincent
 --%>
 
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
-
 <!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"
-"http://www.w3.org/TR/html4/loose.dtd">
+   "http://www.w3.org/TR/html4/loose.dtd">
 
 <html>
     <head>
@@ -15,17 +14,6 @@
         <title>JSP Page</title>
     </head>
     <body>
-        <table>
-            <tr><td>Click here to display all the items of the shop : </td>
-                <td><form method="post" action="CtrSearch">
-                        <input type="submit" value="Go">
-                        <input type="hidden" name='typeSearch' value='searchAll'>
-                </form></td>
-            </tr>
-        </table>
-        
-        <br><br>
-        
         <table>
             <tr><td>Fast Search By Type :</td>
                 <form method="post" action="CtrSearch">
@@ -39,17 +27,5 @@
                 </form>
             </tr>
         </table>
-        
-        <br><br>
-        
-        <table>    
-            <tr><td>See your current cart : </td>
-                <td><form name="ButtonCart" action="./DisplayCart.jsp" >
-                        <input type="submit" value="Panier" />  
-                </form></td>
-            </tr>
-        </table>
-        
-        
     </body>
 </html>

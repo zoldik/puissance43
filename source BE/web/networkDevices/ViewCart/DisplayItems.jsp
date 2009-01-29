@@ -36,8 +36,8 @@
                 <td><%=item.getType()%></td>            
                 <td><%=item.getDescription()%></td>
                 <td><%=item.getUnitPrice()%></td>
-                <td><form method='post' action="Cart.do">
-                    <input type='submit' value='Add Cart'>
+                <td><form method='post' action="CtrCart">
+                    <input type='submit' value='Add item to cart'>
                     <input type='hidden' name='id' value='<%=item.getId()%>'>
                     <input type="hidden" name='actionCart' value='add'>
                     </form></td></tr>
@@ -45,7 +45,7 @@
             }                            
 %>                       
             <tr><td>See your current cart : </td>
-                <td><form name="ButtonCart" action="./ViewCart/DisplayCart.jsp" >
+                <td><form name="ButtonCart" action="./DisplayCart.jsp" >
                     <input type="submit" value="Cart" />  
                     </form></td></tr>       
         </table>   
