@@ -150,7 +150,7 @@ public class SQLContactVoip {
       * 
       * 
       */
-    public boolean deletebyId(int id) throws SQLException {
+        static public boolean deletebyId(int id) throws SQLException {
         boolean okay=true;
         Statement stmt;
         ConnectionDatabase connexion=new ConnectionDatabase();
