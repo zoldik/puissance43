@@ -66,7 +66,7 @@ public class CtrCart extends HttpServlet {
         Cart cart = (Cart) session.getAttribute("cart");
         cart.addRowById(id);
                
-        response.sendRedirect("./Search.do");   
+        response.sendRedirect("./CtrSearch");   
     }
 
     private void deleteRow(HttpServletRequest request, HttpServletResponse response) throws IOException {
@@ -79,7 +79,7 @@ public class CtrCart extends HttpServlet {
 
         cart.deleteRow(id);
 
-        response.sendRedirect("./ViewCart/DisplayCart.jsp");
+        response.sendRedirect("./DisplayCart.jsp");
 
     }
 
@@ -95,7 +95,7 @@ public class CtrCart extends HttpServlet {
 
         cartRow.incrementQuantity();
 
-        response.sendRedirect("./ViewCart/DisplayCart.jsp");
+        response.sendRedirect("./DisplayCart.jsp");
     }
 
     private void decrement(HttpServletRequest request, HttpServletResponse response) throws IOException {
@@ -110,6 +110,6 @@ public class CtrCart extends HttpServlet {
 
         cartRow.decrementQuantity();
 
-        response.sendRedirect("./ViewCart/DisplayCart.jsp");
+        response.sendRedirect("./DisplayCart.jsp");
     }
 }

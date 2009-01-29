@@ -82,7 +82,7 @@ public class CtrSearch extends HttpServlet {
 
         request.setAttribute("results", items);
 
-        RequestDispatcher view = request.getRequestDispatcher("./networkDevices/ViewCart/DisplayItems.jsp");
+        RequestDispatcher view = request.getRequestDispatcher("./DisplayItems.jsp");
         view.forward(request, response);
     }
 
@@ -94,7 +94,7 @@ public class CtrSearch extends HttpServlet {
             String type = request.getParameter("type");
             session.setAttribute("type", type);
         }
-
+        
         String type = (String) session.getAttribute("type");
 
         //Instanciate the model class and call this method
@@ -103,7 +103,7 @@ public class CtrSearch extends HttpServlet {
 
         request.setAttribute("results", items);
 
-        RequestDispatcher view = request.getRequestDispatcher("./ViewCart/DisplayItems.jsp");
+        RequestDispatcher view = request.getRequestDispatcher("./DisplayItems.jsp");
         view.forward(request, response);
 
     }

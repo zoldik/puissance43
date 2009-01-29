@@ -113,7 +113,7 @@ public class ItemDAO {
             ConnectionDatabase connectionDatabase = new ConnectionDatabase();
             Connection conn = (Connection) connectionDatabase.getConn();
 
-            pSt = conn.prepareStatement("SELECT * FROM `group8_objet` WHERE `type` = ? ");
+            pSt = conn.prepareStatement("SELECT * FROM `ARTICLE` WHERE `type` = ? ");
             pSt.setString(1, type);
             rs = pSt.executeQuery();
 
