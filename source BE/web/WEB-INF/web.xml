@@ -21,14 +21,6 @@
     <!--VINCENT DESTAILLEUR -->
     <!--Servlet-->
     <servlet>
-        <servlet-name>CtrSearch</servlet-name>
-        <servlet-class>servlet.networkdevices.CtrSearch</servlet-class>
-    </servlet>
-    <servlet-mapping>
-        <servlet-name>CtrSearch</servlet-name>
-        <url-pattern>/CtrSearch</url-pattern>
-    </servlet-mapping>
-    <servlet>
         <servlet-name>CtrCart</servlet-name>
         <servlet-class>servlet.networkdevices.CtrCart</servlet-class>
     </servlet>
@@ -36,8 +28,25 @@
         <servlet-name>CtrCart</servlet-name>
         <url-pattern>/CtrCart</url-pattern>
     </servlet-mapping>
+    <servlet>
+        <servlet-name>CtrSearch</servlet-name>
+        <servlet-class>servlet.networkdevices.CtrSearch</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>CtrSearch</servlet-name>
+        <url-pattern>/CtrSearch</url-pattern>
+    </servlet-mapping>
+    
     <!--Servlet-->
     <!--JSP-->
+    <servlet>
+        <servlet-name>AdvancedSearch.jsp</servlet-name>
+        <jsp-file>/networkDevices/ViewCart/AdvancedSearch.jsp</jsp-file>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>AdvancedSearch.jsp</servlet-name>
+        <url-pattern>/AdvancedSearch.jsp</url-pattern>
+    </servlet-mapping>
     <servlet>
         <servlet-name>DisplayItems.jsp</servlet-name>
         <jsp-file>/networkDevices/ViewCart/DisplayItems.jsp</jsp-file>
