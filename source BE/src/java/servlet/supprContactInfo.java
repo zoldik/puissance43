@@ -30,7 +30,7 @@ public class supprContactInfo extends HttpServlet {
     //int id = parseInt().request.getParameter("id"); 
     //SQLContactVoip.deletebyId(id);
         
-response.sendRedirect(response.encodeRedirectURL("voip/annuaire.jsp"));    } 
+response.sendRedirect(response.encodeRedirectURL("voip/repertoire.jsp"));    } 
 
     /** 
     * Handles the HTTP <code>POST</code> method.
