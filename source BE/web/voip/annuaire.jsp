@@ -4,39 +4,13 @@
     Author     : francois
 --%>
 
-<%@page contentType="text/html" pageEncoding="UTF-8"%>
+<%@page contentType="text/html" pageEncoding="UTF-8"
+import="model.database.*"
+import="model.voip.*"
+import="java.util.*"
+%>
 <!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"
 "http://www.w3.org/TR/html4/loose.dtd">
-<script language="JavaScript" src="ajax.js"></script>
-<script language="JavaScript">
-   
-    function ChangeUrl(formulaire)
-    {
-        if (formulaire.ListeUrl.selectedIndex != 0) 
-        {
-            location.href = formulaire.ListeUrl.options[formulaire.ListeUrl.selectedIndex].value;
-            id.submit() =formulaire.choix.value ; 
-            alert("id :"+formulaire.choix.value+"");
-            
-        }
-        else 
-        {
-            alert("choississez un contact");
-        }        
-    }
-
-    function RecupId(formulaire,id)
-    {
-        if (formulaire.choix.checked)
-        {
-            id = formulaire.choix.value;}
-        else 
-        {
-            alert("id :"+formulaire.choix.value+"");
-        }
-    } 
-    
-</script>
 
 <html>
     <head>
@@ -44,21 +18,55 @@
         <title>Annuaire</title>
     </head>
     <body>
-        <FORM Method="POST" Action="formulaire_repertoire.jsp">
-            <input type="submit" value="Ajouter un contact " name="contact" /> <br>
-        </FORM>
-        
-        <%@ taglib tagdir="/WEB-INF/tags" prefix="h" %>
-        <h:showContactInfo />
-        
-        <!-- 
-        <h1>Afficher vos contacts</h1>
-        <FORM Method="POST" Action="../showContactInfo">
-        <input type="submit" value="Valider " name="affichage contact" /> <br>
-        </FORM> 
-        -->
 
+        <h2>Annuaire</h2>
+        
+        <p>
+        <i>Vous pouvez consultez la liste des lignes VoIP disponibles sur le serveur RedNeck. </i>
+        </p>
+        
+        <!-- Table of a list of users -->   
+        <h4>annuaire</h4>
+        <table bgcolor="black" width="100%">
 
+        <!-- titles -->
+        <tr style="color:white">
+            <td> nom </td>
+            <td> prenom </td>
+            <td> Numero </td>
+            <td> Groupe</td>
+            <td> Mail </td>
+        </tr>
+        
+        
+        
+        <!-- Contents -->
+        <%
+            LinkedList<VoipLigne> voipLignes = new LinkedList <VoipLigne>();
+            ListIterator<VoipLigne> indice;
+            VoipLigne vl = new VoipLigne();
+            
+            voipLignes = VoipLigneDAO.extractAllVoipLigne();
+            indice = voipLignes.listIterator();
+            
+            while (indice.hasNext()){
+                vl = indice.next();
+                if( vl.getvisible() == true){
+        %>
+        
+        <tr bgcolor="white">
+            <td> </td>
+            <td> </td>
+            <td> <%=vl.getname() %> </td>
+            <td> <%=vl.getcontext() %> </td>
+            <td> <%=vl.getmailbox() %> </td>
+            
+
+        </tr>
+        <%     }
+        }%>
+
+        </table>
         
     </body>
 </html>

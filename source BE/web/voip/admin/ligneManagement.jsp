@@ -48,6 +48,7 @@ import = "java.util.*"
             <td> Context </td>
             <td> Type </td>
             <td> Host </td>
+            <td> Visible</td>
         </tr>
         
         
@@ -75,11 +76,12 @@ import = "java.util.*"
             <td> <%=vl.getcontext() %> </td>
             <td> <%=vl.gettype() %> </td>
             <td> <%=vl.gethost() %> </td>
+            <td> <%=vl.getvisible() %> </td>
             
             <td> <!--edit button-->
                  <form method='post' action="./ligneManagement/editVoipLigne.jsp">
                  <input type="submit" value="edit" />
-                 <input type='hidden' name='id' value="<%=vl.getid() %>">
+                 <input type='hidden' name='id' value="<%=vl.getid() %>"/>
                  <!--input type="hidden" name='action' value='edit'-->
                  </form>
                  </td>
