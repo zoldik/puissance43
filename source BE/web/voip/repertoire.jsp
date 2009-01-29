@@ -1,5 +1,5 @@
 <%-- 
-    Document   : annuaire
+    Document   : repertoire
     Created on : 28 janv. 2009, 17:45:27
     Author     : thomas
 --%>
@@ -25,7 +25,7 @@
         }        
     }
 
-    function RecupId(formulaire,id)
+    function RecupId(formulaire)
     {
         if (formulaire.choix.checked)
         {
