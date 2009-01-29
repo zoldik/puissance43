@@ -87,12 +87,10 @@ public class CtrCart extends HttpServlet {
         HttpSession session = request.getSession();
 
         Cart cart = (Cart) session.getAttribute("cart");
-        //Récupération du paramètre id de la requête 
-        //Conversion String vers int
+       
         String idString = request.getParameter("id");
         int id = Integer.parseInt(idString);
 
-        //Extract cartRow from an id
         CartRow cartRow = cart.extractCartRowFrom(id);
 
         cartRow.incrementQuantity();
@@ -104,12 +102,10 @@ public class CtrCart extends HttpServlet {
         HttpSession session = request.getSession();
 
         Cart cart = (Cart) session.getAttribute("cart");
-        //Récupération du paramètre id de la requête 
-        //Conversion String vers int
+        
         String idString = request.getParameter("id");
         int id = Integer.parseInt(idString);
 
-        //Extract cartRow from an id
         CartRow cartRow = cart.extractCartRowFrom(id);
 
         cartRow.decrementQuantity();

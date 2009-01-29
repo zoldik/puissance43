@@ -11,6 +11,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import javax.servlet.http.HttpSession;
+import model.database.FactoryDAO;
 import model.database.ItemDAO;
 import model.networkdevices.Item;
 
@@ -36,7 +37,6 @@ public class CtrSearch extends HttpServlet {
         }
 
         String typeSearch = (String) session.getAttribute("typeSearch");
-
 
         if (typeSearch.equals("searchAll")) {
             searchAll(request, response);
@@ -77,12 +77,12 @@ public class CtrSearch extends HttpServlet {
 
     public void searchAll(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 
-        ItemDAO itemDAO = new ItemDAO();
+        ItemDAO itemDAO = FactoryDAO.getItemDAO();
         ArrayList<Item> items = itemDAO.extractAllItems();
 
         request.setAttribute("results", items);
 
-        RequestDispatcher view = request.getRequestDispatcher("./ViewCart/DisplayItems.jsp");
+        RequestDispatcher view = request.getRequestDispatcher("./networkDevices/ViewCart/DisplayItems.jsp");
         view.forward(request, response);
     }
 
@@ -99,7 +99,7 @@ public class CtrSearch extends HttpServlet {
 
         //Instanciate the model class and call this method
         ItemDAO itemDAO = new ItemDAO();
-        ArrayList<Item> items = itemDAO.extractDbItemsByType(type);
+        ArrayList<Item> items = itemDAO.extractItemsByType(type);
 
         request.setAttribute("results", items);
 

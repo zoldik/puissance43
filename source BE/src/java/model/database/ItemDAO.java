@@ -4,12 +4,13 @@ import model.networkdevices.Item;
 
 import java.util.ArrayList;
 
-import com.mysql.jdbc.Connection;
 import java.net.ConnectException;
+
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
+import java.sql.Connection;
 
 /**
  *
@@ -33,7 +34,7 @@ public class ItemDAO {
         try {
 
             st = conn.createStatement();
-            rs = st.executeQuery("SELECT * FROM group8_objet");
+            rs = st.executeQuery("SELECT * FROM ARTICLE");
 
 
             while (rs.next()) {
@@ -44,7 +45,7 @@ public class ItemDAO {
                 item.setType(rs.getString("type"));
                 item.setDescription(rs.getString("description"));
                 item.setUnitPrice(rs.getFloat("unit_price"));
-                item.setUnitPrice(rs.getFloat("stock"));
+                item.setStock(rs.getInt("stock"));
                 items.add(item);
             }
 
@@ -98,7 +99,7 @@ public class ItemDAO {
         return item;
     }
 
-    public ArrayList<Item> extractDbItemsByType(String type) {
+    public ArrayList<Item> extractItemsByType(String type) {
 
         ArrayList<Item> items = new ArrayList<Item>();
 
