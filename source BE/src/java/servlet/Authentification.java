@@ -27,7 +27,7 @@ public class Authentification extends javax.servlet.http.HttpServlet {
                         String login = request.getParameter("login");
                         String password = request.getParameter("password");
                         
-                        Account account = new Account(login,password);
+                        Customer account = new Customer(login,password);
                         
                         
 			//Booleen qui donne ou non la permission d'accéder à l'application
