@@ -121,7 +121,7 @@
     </servlet-mapping>
     <servlet-mapping>
         <servlet-name>Authentification</servlet-name>
-        <url-pattern>/authentification/Authentification</url-pattern>
+        <url-pattern>/Authentification</url-pattern>
     </servlet-mapping>
     <servlet-mapping>
         <servlet-name>addVoipLigne</servlet-name>
