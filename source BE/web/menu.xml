@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="UTF-8"?> 
+<?xml version="1.0" encoding="UTF-8"?>
 <root>
     <Accueil name="Accueil">
         <link name="Internet" url="internet.jsp"/>
@@ -26,9 +26,10 @@
         <link name="Assistance"  url="" />
     </Assistance>
     <NetworkDevices name="menu NetworkDevices">
-        <link name="Search" url="Search.jsp" />
         <link name="AdvancedSearch" url="AdvancedSearch.jsp" />
-        <link name="Order" url="Order.jsp" />        
+        <link name="Cart" url="DisplayCart.jsp" />
+        <link name="Order" url="Order.jsp" />
+        <link name="Search" url="Search.jsp" />
     </NetworkDevices>
     <NetworkSolutions name="menu NetworkSolutions">
         <link name="Solutions" url="" />
