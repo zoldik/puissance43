@@ -35,8 +35,7 @@
     <servlet-mapping>
         <servlet-name>CtrSearch</servlet-name>
         <url-pattern>/CtrSearch</url-pattern>
-    </servlet-mapping>
-    
+    </servlet-mapping>    
     <!--Servlet-->
     <!--JSP-->
     <servlet>
@@ -54,7 +53,7 @@
     <servlet-mapping>
         <servlet-name>DisplayCart.jsp</servlet-name>
         <url-pattern>/DisplayCart.jsp</url-pattern>
-    </servlet-mapping>    
+    </servlet-mapping>
     <servlet>
         <servlet-name>DisplayItems.jsp</servlet-name>
         <jsp-file>/networkDevices/ViewCart/DisplayItems.jsp</jsp-file>
@@ -64,32 +63,39 @@
         <url-pattern>/DisplayItems.jsp</url-pattern>
     </servlet-mapping>
     <servlet>
+        <servlet-name>Order.jsp</servlet-name>
+        <jsp-file>/networkDevices/Order/Order.jsp</jsp-file>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>Order.jsp</servlet-name>
+        <url-pattern>/Order.jsp</url-pattern>
+    </servlet-mapping>
+    <servlet>
         <servlet-name>Search.jsp</servlet-name>
         <jsp-file>/networkDevices/ViewCart/Search.jsp</jsp-file>
     </servlet>
     <servlet-mapping>
         <servlet-name>Search.jsp</servlet-name>
         <url-pattern>/Search.jsp</url-pattern>
-    </servlet-mapping>    
-    <!--JSP-->
-    
-    
+    </servlet-mapping>       
+    <!--JSP-->    
     <!--VINCENT DESTAILLEUR -->
+    
     <!--PHILIPPE LARDENNOIS -->
     <!--Servlet-->
     <servlet>
         <servlet-name>Authentification</servlet-name>
         <servlet-class>servlet.Authentification</servlet-class>
     </servlet>
-        <servlet-mapping>
+    <servlet-mapping>
         <servlet-name>Authentification</servlet-name>
         <url-pattern>/Authentification</url-pattern>
     </servlet-mapping>
-        <servlet>
+    <servlet>
         <servlet-name>Header</servlet-name>
         <servlet-class>servlet.Header</servlet-class>
     </servlet>
-        <servlet-mapping>
+    <servlet-mapping>
         <servlet-name>Header</servlet-name>
         <url-pattern>/Header</url-pattern>
     </servlet-mapping>
@@ -97,7 +103,6 @@
     <!--JSP-->
     <!--JSP-->
     <!--PHILIPPE LARDENNOIS -->
-    
     <servlet>
         <servlet-name>enregContactInfo</servlet-name>
         <servlet-class>servlet.enregContactInfo</servlet-class>
@@ -118,7 +123,7 @@
         <servlet-name>doVoipUser</servlet-name>
         <servlet-class>servlet.voip.doVoipUser</servlet-class>
     </servlet>
-        <servlet>
+    <servlet>
         <servlet-name>modContactInfo</servlet-name>
         <servlet-class>servlet.modContactInfo</servlet-class>
     </servlet>
@@ -138,7 +143,7 @@
         <servlet-name>showContactInfo</servlet-name>
         <url-pattern>/showContactInfo</url-pattern>
     </servlet-mapping>
-        <servlet-mapping>
+    <servlet-mapping>
         <servlet-name>supprContactInfo</servlet-name>
         <url-pattern>/supprContactInfo</url-pattern>
     </servlet-mapping>
@@ -146,7 +151,6 @@
         <servlet-name>modContactInfo</servlet-name>
         <url-pattern>/modContactInfo</url-pattern>
     </servlet-mapping>
-
     <servlet-mapping>
         <servlet-name>addVoipLigne</servlet-name>
         <url-pattern>/addVoipLigne</url-pattern>
