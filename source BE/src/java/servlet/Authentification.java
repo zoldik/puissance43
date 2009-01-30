@@ -24,22 +24,23 @@ public class Authentification extends javax.servlet.http.HttpServlet {
 			//On crée la session
 			HttpSession session = request.getSession(true);
                       
-                        String login = request.getParameter("login");
+                        String login = request.getParameter("username");
                         String password = request.getParameter("password");
                         
-                        Customer account = new Customer(login,password);
+                        Customer account = new Customer();
                         
-                        
-			//Booleen qui donne ou non la permission d'accéder à l'application
-			session.setAttribute("account",account);
-                        
+                        if (login!="" && password!="") {
+                            account = new Customer(login,password);
+                        }
+
 			if (account.isAllowed()){
+                                session.setAttribute("Customer",account);
 				//Si on a la permission, on accède à la suite
-                                response.sendRedirect("/source_BE/index.jsp");
+                                response.sendRedirect("./index.jsp");
 			}
 			else {
 				//Sinon, on revient à la page d'authentification
-				response.sendRedirect("./authentification.jsp?Connexion=refused");
+				response.sendRedirect("./index.jsp?Connexion=refused");
 			}
 		}catch (Exception e){
 			System.err.println("Erreur à l'authentification !");

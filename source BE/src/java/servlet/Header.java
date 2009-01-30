@@ -29,7 +29,7 @@ public class Header extends HttpServlet {
         PrintWriter out = response.getWriter();
         
         
-        out.println("<!-- début de la boite contenant les onglets -->"+
+        out.println("<div class=\"menu\"><!-- début de la boite contenant les onglets -->"+
                 "<a class=\"onglet\" href=\"#\" onclick=\"fonctionOpenPage('accueil.jsp'); fonctionContenu('Accueil'); fonctionClean('Accueil'); fonctionMenu('Accueil'); return false;\"><div id=\"Accueil\">Accueil</div></a>"+
                 "<a class=\"onglet\" href=\"#\" onclick=\"fonctionContenu('Compte'); fonctionClean('Compte'); fonctionMenu('Compte'); return false;\"><div id=\"Compte\">Compte</div></a>"+
                 "<a class=\"onglet\" href=\"#\" onclick=\"fonctionContenu('VOD'); fonctionClean('VOD'); fonctionMenu('VOD'); return false;\"><div id=\"VOD\">VOD</div></a>"+
@@ -39,7 +39,8 @@ public class Header extends HttpServlet {
                 "<a class=\"onglet\" href=\"#\" onclick=\"fonctionContenu('Réseaux'); fonctionClean('Réseaux'); fonctionMenu('Réseaux'); return false;\"><div id=\"Réseaux\">Réseaux</div></a>"+
                 "<a class=\"onglet\" href=\"#\" onclick=\"fonctionContenu('NetworkDevices'); fonctionClean('NetworkDevices'); fonctionMenu('NetworkDevices'); return false;\"><div id=\"NetworkDevices\">NetworkDevices</div></a>"+
                 "<a class=\"onglet\" href=\"#\" onclick=\"fonctionContenu('NetworkSolutions'); fonctionClean('NetworkSolutions'); fonctionMenu('NetworkSolutions'); return false;\"><div id=\"NetworkSolutions\">NetworkSolutions</div></a>"+
-                "<div class=\"spacer\"></div> <!-- permet le retour à la ligne à la fin des boites float -->");
+                "<div class=\"spacer\"></div> <!-- permet le retour à la ligne à la fin des boites float --> </div>"+
+                "<div class=\"menu2\" id=\"submenu\"></div> ");
     }
     
     
