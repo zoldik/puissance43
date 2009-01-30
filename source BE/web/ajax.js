@@ -4,6 +4,7 @@
  * 
  */
 
+var thisRequest;
     
 function updateDivContent(divName, text)
 {
@@ -62,6 +63,42 @@ function createXMLHttpRequest()
 		return false;
 	}
 	return request;
+}
+
+function displayHeader()
+{
+           thisRequest = getDataAsynchronous('./Header', showHeader);
+}
+
+function showHeader()
+{
+  if (thisRequest.readyState == 4) {
+    if (thisRequest.status == 200) {
+      var text = thisRequest.responseText;
+      updateDivContent('menu', text);
+    }
+  }
+}
+
+function hideHeader()
+{
+    updateDivContent('menu', ' ');
+}
+
+function templateShow()
+{
+  if (thisRequest.readyState == 4) {
+    if (thisRequest.status == 200) {
+      var text = thisRequest.responseText;
+      updateDivContent(divName, text);
+    } else {
+      var text2 = thisRequest.status;
+      updateDivContent(divName, '<h2>status('+divName+') : '+text2+'</h2>');
+    }
+  } else {
+    var text3 = thisRequest.readyState;
+    updateDivContent(divName, '<h2>readyState('+divName+') : '+text3+'</h2>');
+  }
 }
 
 /**function updateMenu(string)

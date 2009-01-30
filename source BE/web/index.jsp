@@ -5,6 +5,7 @@
 --%>
 
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
+<%@page language="Java" import="javax.servlet.*,javax.script.*,java.io.*,java.util.*,servlet.*" %>
 <!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"
 "http://www.w3.org/TR/html4/loose.dtd">
 <script language="JavaScript" src="ajax.js"></script>
@@ -96,19 +97,44 @@
     </head>
     
     <body>
-        <div class="menu"> <!-- début de la boite contenant les onglets -->
-            <a class="onglet" href="test.jsp" onclick="fonctionOpenPage('accueil.jsp'); fonctionContenu('Accueil'); fonctionClean('Accueil'); fonctionMenu('Accueil'); return false;"><div id="Accueil">Accueil</div></a>
-            <a class="onglet" href="test.jsp" onclick="fonctionContenu('Compte'); fonctionClean('Compte'); fonctionMenu('Compte'); return false;"><div id="Compte">Compte</div></a>
-            <a class="onglet" href="test.jsp" onclick="fonctionContenu('VOD'); fonctionClean('VOD'); fonctionMenu('VOD'); return false;"><div id="VOD">VOD</div></a>
-            <a class="onglet" href="#" onclick="fonctionOpenPage('voip/voip.jsp'); fonctionContenu('VoIP'); fonctionClean('VoIP'); fonctionMenu('VoIP'); return false;"><div id="VoIP">VoIP</div></a>
-            <a class="onglet" href="test.jsp" onclick="fonctionContenu('WebMail'); fonctionClean('WebMail'); fonctionMenu('WebMail'); return false;"><div id="WebMail">WebMail</div></a>
-            <a class="onglet" href="test.jsp" onclick="fonctionContenu('Assistance'); fonctionClean('Assistance'); fonctionMenu('Assistance'); return false;"><div id="Assistance">Assistance</div></a>
-            <a class="onglet" href="test.jsp" onclick="fonctionContenu('Réseaux'); fonctionClean('Réseaux'); fonctionMenu('Réseaux'); return false;"><div id="Réseaux">Réseaux</div></a>
-            <a class="onglet" href="test.jsp" onclick="fonctionContenu('NetworkDevices'); fonctionClean('NetworkDevices'); fonctionMenu('NetworkDevices'); return false;"><div id="NetworkDevices">NetworkDevices</div></a>
-            <a class="onglet" href="test.jsp" onclick="fonctionContenu('NetworkSolutions'); fonctionClean('NetworkSolutions'); fonctionMenu('NetworkSolutions'); return false;"><div id="NetworkSolutions">NetworkSolutions</div></a>
-            <div class="spacer"></div> <!-- permet le retour à la ligne à la fin des boites float -->
-        </div>
-        <div class="menu2" id="submenu"></div>        
+        
+        <%
+            HttpSession CustomerSession = request.getSession(false);
+              if (CustomerSession!=null) {
+                if (CustomerSession.getAttribute("Customer")!=null) {%>
+                    <jsp:include page="Header" />
+                <%}
+                else
+                {%>
+                    <div class="menu" id="menu"></div>
+                    <div class="intermenu">
+                        <form name="Authentification" action="./Authentification" method="POST">
+                            <table align="center">
+                                <tr style="font-size:12px;" >
+                                    <td align="right"><label for="username"> Nom d'utilisateur :</label></td>
+                                    <td align="left"><input type="text" id="username" name="username" class="LoginBox" value="" /></td>
+                                    <td>&nbsp;</td>
+                                </tr>
+                                <tr style="font-size:12px;" >
+                                    <td align="right"><label for="password"> Mot de passe :</label></td>
+                                    <td align="left"><input type="password" id="password" name="password" class="LoginBox" value=""  /></td>
+                                    <td>&nbsp;</td>
+                                </tr>
+                                <tr>
+                                    <td align="right" style="font-size:10px;"><a href="./lostpassword.jsp" title="Mot de passe oublié">Mot de passe oublié</a></td>
+                                    <td align="left"><input type="submit" value="Connexion" name="Connexion" /></td>
+                                    <td>&nbsp;</td>
+                                </tr>
+                            </table>
+                        </form>
+                    </div>
+                    <div class="menu2" id="submenu"></div> 
+        <%        }
+              }
+
+        %>
+        
+        
         <div class="main" id="main"></div>
         <div id=" "></div>        
     </body>
