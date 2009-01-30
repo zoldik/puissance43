@@ -26,10 +26,10 @@
         <link name="Assistance"  url="" />
     </Assistance>
     <NetworkDevices name="menu NetworkDevices">
+        <link name="Search" url="Search.jsp" />
         <link name="AdvancedSearch" url="AdvancedSearch.jsp" />
         <link name="Cart" url="DisplayCart.jsp" />
-        <link name="Order" url="Order.jsp" />
-        <link name="Search" url="Search.jsp" />
+        <link name="Order" url="Order.jsp" />        
     </NetworkDevices>
     <NetworkSolutions name="menu NetworkSolutions">
         <link name="Solutions" url="" />
