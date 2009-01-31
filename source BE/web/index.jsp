@@ -96,47 +96,9 @@
         <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
     </head>
     
-    <body>
+    <body onload="displayAccount();">
         <jsp:include page="Header" />
-        <%
-            HttpSession CustomerSession = request.getSession(false);
-              if (CustomerSession!=null) {
-                if (CustomerSession.getAttribute("Customer")!=null) {
-                    
-                    
-                    %>
-                    <div class="intermenu">
-                        Customer 
-                    </div>
-                <%}
-                else
-                {%>
-                    <div class="intermenu">
-                        <form name="Authentification" action="./Authentification" method="POST">
-                            <table align="center">
-                                <tr style="font-size:12px;" >
-                                    <td align="right"><label for="username"> Nom d'utilisateur :</label></td>
-                                    <td align="left"><input type="text" id="username" name="username" class="LoginBox" value="" /></td>
-                                    <td>&nbsp;</td>
-                                </tr>
-                                <tr style="font-size:12px;" >
-                                    <td align="right"><label for="password"> Mot de passe :</label></td>
-                                    <td align="left"><input type="password" id="password" name="password" class="LoginBox" value=""  /></td>
-                                    <td>&nbsp;</td>
-                                </tr>
-                                <tr>
-                                    <td align="right" style="font-size:10px;"><a href="./lostpassword.jsp" title="Mot de passe oublié">Mot de passe oublié</a></td>
-                                    <td align="left"><input type="submit" value="Connexion" name="Connexion" /></td>
-                                    <td>&nbsp;</td>
-                                </tr>
-                            </table>
-                        </form>
-                    </div>
-        <%        }
-              }
-
-        %>
-        
+        <div class="account" id="account"></div>
         
         <div class="main" id="main"></div>
         <div id=" "></div>        
