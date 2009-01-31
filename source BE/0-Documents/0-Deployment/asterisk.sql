@@ -47,10 +47,10 @@ INSERT INTO `extensions_table` (`id`, `context`, `exten`, `priority`, `app`, `ap
 -- --------------------------------------------------------
 
 --
--- Table structure for table `voip_appel`
+-- Table structure for table `cdr`
 --
 
-CREATE TABLE IF NOT EXISTS `voip_appel` (
+CREATE TABLE IF NOT EXISTS `cdr` (
   `calldate` datetime NOT NULL default '0000-00-00 00:00:00',
   `clid` varchar(80) NOT NULL default '',
   `src` varchar(80) NOT NULL default '',
@@ -70,10 +70,10 @@ CREATE TABLE IF NOT EXISTS `voip_appel` (
 ) ENGINE=MyISAM DEFAULT CHARSET=latin1;
 
 --
--- Dumping data for table `voip_appel`
+-- Dumping data for table `cdr`
 --
 
-INSERT INTO `voip_appel` (`calldate`, `clid`, `src`, `dst`, `dcontext`, `channel`, `dstchannel`, `lastapp`, `lastdata`, `duration`, `billsec`, `disposition`, `amaflags`, `accountcode`, `uniqueid`, `userfield`) VALUES
+INSERT INTO `cdr` (`calldate`, `clid`, `src`, `dst`, `dcontext`, `channel`, `dstchannel`, `lastapp`, `lastdata`, `duration`, `billsec`, `disposition`, `amaflags`, `accountcode`, `uniqueid`, `userfield`) VALUES
 ('2009-01-22 16:15:15', '"6000" <6000>', '6000', 's', 'default', 'SIP/6000-091d65e8', '', 'BackGround', 'demo-congrats', 4, 3, 'ANSWERED', 3, '', '1232637315.0', ''),
 ('2009-01-22 16:15:52', '"6000" <6000>', '6000', 's', 'default', 'SIP/6000-091d65e8', '', 'BackGround', 'demo-congrats', 24, 23, 'ANSWERED', 3, '', '1232637352.1', ''),
 ('2009-01-25 14:38:13', '"6000" <6000>', '6000', 's', 'default', 'SIP/6000-081a9840', '', 'BackGround', 'demo-congrats', 5, 4, 'ANSWERED', 3, '', '1232890693.0', ''),
