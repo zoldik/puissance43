@@ -85,7 +85,7 @@
     <!--Servlet-->
     <servlet>
         <servlet-name>Authentification</servlet-name>
-        <servlet-class>servlet.Authentification</servlet-class>
+        <servlet-class>servlet.customer.account.Authentification</servlet-class>
     </servlet>
     <servlet-mapping>
         <servlet-name>Authentification</servlet-name>
@@ -100,12 +100,12 @@
         <url-pattern>/Header</url-pattern>
     </servlet-mapping>
     <servlet>
-        <servlet-name>Account</servlet-name>
-        <servlet-class>servlet.Account</servlet-class>
+        <servlet-name>LostPassword</servlet-name>
+        <servlet-class>servlet.customer.account.LostPassword</servlet-class>
     </servlet>
     <servlet-mapping>
-        <servlet-name>Account</servlet-name>
-        <url-pattern>/Account</url-pattern>
+        <servlet-name>LostPassword</servlet-name>
+        <url-pattern>/LostPassword</url-pattern>
     </servlet-mapping>
     <!--Servlet-->
     <!--JSP-->

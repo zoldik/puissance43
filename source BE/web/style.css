@@ -26,7 +26,7 @@ a.onglet:hover {color:green} /* lors du survol d'un lien, la police devient vert
 
 .spacer {clear:both} /* force le retour à la ligne après des boites float */
 
-.intermenu { /* boite entre les onglets */
+.account { /* boite entre les onglets */
     padding-top:0px ; /* marge intérieure haute */
     padding-bottom:0px;
     background-color: white;

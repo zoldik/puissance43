@@ -3,7 +3,7 @@
  * and open the template in the editor.
  */
 
-package servlet;
+package servlet.customer.account;
 
 
 import java.io.*;

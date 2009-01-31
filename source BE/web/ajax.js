@@ -65,24 +65,42 @@ function createXMLHttpRequest()
 	return request;
 }
 
-function displayHeader()
+function displayAccount()
 {
-           thisRequest = getDataAsynchronous('./Header', showHeader);
+    thisRequest = getDataAsynchronous('./customer/Account.jsp', showAccount);
+    
 }
 
-function showHeader()
+function displayIdentification()
+{
+    thisRequest = getDataAsynchronous('./customer/Identification.jsp', showAccount);
+}
+
+function showAccount()
 {
   if (thisRequest.readyState == 4) {
     if (thisRequest.status == 200) {
       var text = thisRequest.responseText;
-      updateDivContent('menu', text);
+      updateDivContent('account', text);
+    } else {
+      var text2 = thisRequest.status;
+      updateDivContent('account', '<h2>status(Account) : '+text2+'</h2>');
     }
+  } else {
+    var text3 = thisRequest.readyState;
+    updateDivContent('account', '<h2>readyState(Account) : '+text3+'</h2>');
   }
 }
 
-function hideHeader()
+function hideAccount()
 {
-    updateDivContent('menu', ' ');
+    updateDivContent('account', ' ');
+}
+
+function displayLostPassword()
+{
+    thisRequest = getDataAsynchronous('./customer/LostPassword.jsp', showAccount);
+    
 }
 
 function templateShow()
