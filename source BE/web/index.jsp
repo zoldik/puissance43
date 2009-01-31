@@ -97,16 +97,20 @@
     </head>
     
     <body>
-        
+        <jsp:include page="Header" />
         <%
             HttpSession CustomerSession = request.getSession(false);
               if (CustomerSession!=null) {
-                if (CustomerSession.getAttribute("Customer")!=null) {%>
-                    <jsp:include page="Header" />
+                if (CustomerSession.getAttribute("Customer")!=null) {
+                    
+                    
+                    %>
+                    <div class="intermenu">
+                        Customer 
+                    </div>
                 <%}
                 else
                 {%>
-                    <div class="menu" id="menu"></div>
                     <div class="intermenu">
                         <form name="Authentification" action="./Authentification" method="POST">
                             <table align="center">
@@ -128,7 +132,6 @@
                             </table>
                         </form>
                     </div>
-                    <div class="menu2" id="submenu"></div> 
         <%        }
               }
 
