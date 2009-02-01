@@ -16,22 +16,22 @@
         
         <script language="JavaScript" src="ajax_register.js"></script>
         
-        <%
-            
+        <%            
             //randomly generate two int in order to avoid boot attack
             int int1 = (int) ((float) Math.random() * 100);
             int int2 = (int) ((float) Math.random() * 100);
-                
-        
+            
+            //need to set here otherwise internal error server 500 during the get 
+            session.setAttribute("Creation","S'enregistrer");
             //String param  = request.getParameter("Creation");
             String account = session.getAttribute("Creation").toString();
-            ErrorRegister error = new ErrorRegister();
+            RegisterErrors error = new RegisterErrors();
             if (account.compareTo("S'enregistrer") == 0) {
                 out.print("<center>Création d'un compte</center><hr>");
             } else if (account.compareTo("used") == 0) {
                 out.print("<center>Compte déja enregistré, sélectionnez un autre login</center><hr>");
             } else if (account.compareTo("fail") == 0) {
-                error = (ErrorRegister) session.getAttribute("error");
+                error = (RegisterErrors) session.getAttribute("error");
                 out.print("<center>Un ou plusieurs champs ont été mal rempli, vérifiez les informations rentrées</center><hr>");
             } else if (account.toString().compareTo("true") == 0) {
                 out.print("<center>Consultez votre boîte mail pour valider votre compte</center><hr>");
@@ -45,13 +45,13 @@
             <div id="register">  
                 <table>
                     <tr align="left">
-                        <td><a style="color:<%if (error.isErrorname() == 1) {
+                        <td><a style="color:<%if (error.isErrorFirstName() == 1) {
                 out.print("#FF0000");
             }%>">* Nom (15 caractères max) : </a></td>
                         <td><input type="text" name="nom" onKeyUp=veriflength(this.value,"name","15") align="left" /><div id="name"></div></td>
                     </tr>
                     <tr align="left">
-                        <td><a style="color:<%if (error.isErrorsurname() == 1) {
+                        <td><a style="color:<%if (error.isErrorLastName() == 1) {
                 out.print("#FF0000");
             }%>">* Prénom (15 caractères max) : </a></td>
                         <td><input type="text" name="prenom" onKeyUp=veriflength(this.value,"surname","15") align="left" /><div id="surname"></div></td>
