@@ -6,7 +6,7 @@
 package model.database;
 
 import java.sql.*;
-/** Classe SQLUser.
+/** Classe SQLCustomer.
  * Contient les requêtes pour la partie User du projet
  * @author Baudet Aurélien
  */
