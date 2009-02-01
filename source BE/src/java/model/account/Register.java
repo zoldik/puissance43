@@ -45,7 +45,7 @@ public class Register {
       * @param newUser
       * @throws java.lang.Exception
       */
-    public Register(Customer2 newCustomer) throws Exception
+    public Register(Customer newCustomer) throws Exception
     {
         this.login=newCustomer.getLogin();
         this.mdp=newCustomer.getPassword();

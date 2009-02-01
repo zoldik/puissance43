@@ -4,7 +4,7 @@ import java.io.*;
 import javax.servlet.*;
 import javax.servlet.http.*;
 
-import model.account.Customer2;
+import model.account.Customer;
 import model.account.Mail;
 import model.account.Register;
 import model.account.RegisterErrors;
@@ -22,7 +22,7 @@ public class CtrAccount extends javax.servlet.http.HttpServlet {
 		try{
 			HttpSession session = request.getSession();
                         
-                        Customer2 newCustomer=new Customer2(request.getParameter("nom")
+                        Customer newCustomer=new Customer(request.getParameter("nom")
                                                             ,request.getParameter("prenom")
                                                             ,request.getParameter("login")
                                                             ,request.getParameter("mdp")
