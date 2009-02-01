@@ -8,12 +8,17 @@
 <!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <div id="accountmenu" >
         <%
+            boolean sessionOK=false;
             HttpSession CustomerSession = request.getSession(false);
               if (CustomerSession!=null) {
+                  sessionOK=true;
                 if (CustomerSession.getAttribute("Customer")!=null) {
+                    sessionOK=true;
                     Customer CustomerObject =(Customer)CustomerSession.getAttribute("Customer");
-                    int idCustomer=CustomerObject.getId();
-                    %>
+                    if (CustomerObject.isAllowed()) {
+                        sessionOK=true;
+                        int idCustomer=CustomerObject.getId();
+                        %>
 <br>                         
 <h4>Bonjour <%=CustomerObject.getSurname()%> <%=CustomerObject.getName()%> [<%=idCustomer%>/<%=CustomerObject.getLog()%>], nous sommes le <%= new java.util.Date() %> , vous avez X message(s) </h4>
                             <!-- <table align="left">
@@ -33,9 +38,18 @@
                                     <td>&nbsp;</td>
                                 </tr>
                             </table> -->
-                <%}
-                else
-                {%>
+                    <%} else {
+                        sessionOK=false;
+                      } 
+                 } else {
+                    sessionOK=false;
+                 }
+              } else {
+                sessionOK=false;
+              }
+            
+            if (!sessionOK) {
+            %>
 <form name="Authentification" action="./Authentification" method="POST">
                             <table align="center">
                                 <tr style="font-size:12px;" >
@@ -55,8 +69,7 @@
                                 </tr>
                             </table>
                         </form>
-        <%        }
-              }
+        <%  }
 
         %>
 </div>

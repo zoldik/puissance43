@@ -27,10 +27,10 @@ public class Authentification extends javax.servlet.http.HttpServlet {
                         String login = request.getParameter("username");
                         String password = request.getParameter("password");
                         
-                        Customer2 account = new Customer2();
+                        Customer account = new Customer();
                         
                         if (login!="" && password!="") {
-                            account = new Customer2(login,password);
+                            account = new Customer(login,password);
                         }
 
 			if (account.isAllowed()){

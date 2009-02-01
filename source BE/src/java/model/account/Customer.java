@@ -11,6 +11,7 @@ import model.database.*;
  * Classe de gestion des accounts (inscription, identification, modification infos personnelles)
  * @author orthank
  */
+
 public class Customer {
     private int id;
     private String log;
@@ -29,6 +30,63 @@ public class Customer {
     private String born;
     private boolean allowed;
     
+        //******************
+    // CONSTRUCTORS
+    //******************
+           
+    /**
+     * Constructeur par défaut Account
+     */
+    public Customer() {
+        this.id=0;
+        this.log="";
+        this.pw="";
+        this.name="";
+        this.surname="";
+        this.societe="";
+        this.mail="";
+        this.sexe="";
+        this.userType="";
+        this.accountLevel="";
+        this.typeUserVod="";
+        this.creditVod="";
+        this.tel="";
+        this.gsm="";
+        this.born="";
+        this.allowed=false;
+    }
+    
+    /**
+     * Sert à l'authentification d'un utilisateur à partir du login & mdp passés en argument
+     * @param login
+     * @param password
+     * @throws java.lang.Exception
+     */
+    public Customer(String login, String password) throws Exception {
+        this.id=0;
+        this.log=login;
+        this.pw=password;
+        this.name="";
+        this.surname="";
+        this.societe="";
+        this.mail="";
+        this.sexe="";
+        this.userType="";
+        this.accountLevel="";
+        this.typeUserVod="";
+        this.creditVod="";
+        this.tel="";
+        this.gsm="";
+        this.born="";
+        boolean tmp_allowed = false;
+        tmp_allowed = SQLCustomer.isAllowed(login,password);
+        this.allowed=tmp_allowed;
+        if (this.allowed) {
+            this.id=SQLCustomer.getID(login, password);
+            this.name=SQLCustomer.getName(login, password);
+            this.surname=SQLCustomer.getSurname(login, password);
+        }
+    }
     
     public int getId() {
         return id;
