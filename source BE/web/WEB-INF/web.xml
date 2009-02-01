@@ -21,6 +21,14 @@
     <!--VINCENT DESTAILLEUR -->
     <!--Servlet-->
     <servlet>
+        <servlet-name>CtrAccount</servlet-name>
+        <servlet-class>servlet.account.CtrAccount</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>CtrAccount</servlet-name>
+        <url-pattern>/CtrAccount</url-pattern>
+    </servlet-mapping>    
+    <servlet>
         <servlet-name>CtrCart</servlet-name>
         <servlet-class>servlet.networkdevices.CtrCart</servlet-class>
     </servlet>
