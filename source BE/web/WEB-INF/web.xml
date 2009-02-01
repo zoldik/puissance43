@@ -20,8 +20,9 @@
         <load-on-startup>2</load-on-startup>
     </servlet>
     <!--STRUTS-->
+    
         
-    <!--VINCENT DESTAILLEUR -->
+    <!--VINCENT DESTAILLEUR -->    
     <!--Servlet-->
     <servlet>
         <servlet-name>CtrAccount</servlet-name>
