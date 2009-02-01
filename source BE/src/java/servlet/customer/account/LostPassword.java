@@ -9,7 +9,8 @@ import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-
+import javax.servlet.http.HttpSession;
+import model.database.*;
 
 /**
  *
@@ -26,11 +27,35 @@ public class LostPassword extends HttpServlet {
      */
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
     throws ServletException, IOException {
-        response.setContentType("text/html;charset=UTF-8");
-        PrintWriter out = response.getWriter();
-        
-        
+        try{
+                        boolean envoi=false;
+                        String login = request.getParameter("username");
+                        String email = request.getParameter("email");
+                        
+                        if(login!="" && email.length()<30 && email.toString().indexOf("@",0)!=-1 && email.toString().indexOf(".",0)!=-1) {
+                            if(SQLCustomer.isValidEmail(login,email)) {
+                                //Envoi mail
+                                envoi=true;
+                            } else {
+                                envoi=false;
+                            } 
+                        } else {
+                            envoi=false;
+                        }
+                        
 
+			if (envoi){
+				//Si on a la permission, on accède à la suite
+                                response.sendRedirect("./index.jsp?Envoi=1");
+			}
+			else {
+				//Sinon, on revient à la page d'authentification
+				response.sendRedirect("./index.jsp?Envoi=0");
+			}
+		}catch (Exception e){
+			System.err.println("Erreur à l'authentification !");
+			e.printStackTrace();		
+		}
         
         
     }

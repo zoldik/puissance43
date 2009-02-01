@@ -109,6 +109,30 @@
     </servlet-mapping>
     <!--Servlet-->
     <!--JSP-->
+    <servlet>
+        <servlet-name>Account.jsp</servlet-name>
+        <jsp-file>/customer/Account.jsp</jsp-file>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>Account.jsp</servlet-name>
+        <url-pattern>/Account.jsp</url-pattern>
+    </servlet-mapping> 
+    <servlet>
+        <servlet-name>Identification.jsp</servlet-name>
+        <jsp-file>/customer/Identification.jsp</jsp-file>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>Identification.jsp</servlet-name>
+        <url-pattern>/Identification.jsp</url-pattern>
+    </servlet-mapping> 
+    <servlet>
+        <servlet-name>LostPassword.jsp</servlet-name>
+        <jsp-file>/customer/LostPassword.jsp</jsp-file>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>LostPassword.jsp</servlet-name>
+        <url-pattern>/LostPassword.jsp</url-pattern>
+    </servlet-mapping> 
     <!--JSP-->
     <!--PHILIPPE LARDENNOIS -->
     <servlet>

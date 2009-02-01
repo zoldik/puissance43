@@ -305,4 +305,91 @@ public class SQLCustomer {
         try {connexion.close();} catch (Exception e3) {System.out.println("Erreur fermeture"+e3);}
         return okay;
     }
+    
+         /** Retourne la valeur du PRENOM à partir du login & mdp passés en arguments
+      * 
+      * @param log
+      * @param pw
+      * @return String
+      * @throws java.lang.Exception
+      */
+    static public String getName(String log, String pw) throws Exception
+    {
+        String result ="";
+        Statement stmt;
+        ConnectionDatabase connexion=new ConnectionDatabase();
+        stmt=connexion.getConn().createStatement();
+        ResultSet rs=null;
+        try
+        {
+            rs=stmt.executeQuery("select PRENOM from CUSTOMER where (login=\""+log+"\" and password=\""+pw+"\")");
+            rs.next();
+            result=rs.getString("PRENOM");
+        }
+        catch(Exception e2)
+        {
+            System.out.println("SQLException"+e2);
+            result="";
+        }
+        try {connexion.close();} catch (Exception e3) {System.out.println("Erreur fermeture"+e3);}
+        return result;
+    }
+    
+         /** Retourne la valeur du NOM à partir du login & mdp passés en arguments
+      * 
+      * @param log
+      * @param pw
+      * @return String
+      * @throws java.lang.Exception
+      */
+    static public String getSurname(String log, String pw) throws Exception
+    {
+        String result ="";
+        Statement stmt;
+        ConnectionDatabase connexion=new ConnectionDatabase();
+        stmt=connexion.getConn().createStatement();
+        ResultSet rs=null;
+        try
+        {
+            rs=stmt.executeQuery("select NOM from CUSTOMER where (login=\""+log+"\" and password=\""+pw+"\")");
+            rs.next();
+            result=rs.getString("NOM");
+        }
+        catch(Exception e2)
+        {
+            System.out.println("SQLException"+e2);
+            result="";
+        }
+        try {connexion.close();} catch (Exception e3) {System.out.println("Erreur fermeture"+e3);}
+        return result;
+    }
+    
+         /** Vérifie qu'un email correspond à un login donné
+      * @param login
+      * @param login
+      * @return email
+      */
+    static public boolean isValidEmail(String login, String email)
+    {
+        boolean okay=true;
+        Statement stmt;
+        ResultSet rs=null;
+        ConnectionDatabase connexion=new ConnectionDatabase();
+        try
+        {
+                stmt=connexion.getConn().createStatement();
+                rs=stmt.executeQuery("select * from CUSTOMER where (LOGIN=\""+login+"\" and MAIL=\""+email+"\");");
+                if (rs.next()==true)
+                {okay=true;}
+                else 
+                {okay=false;}
+        }
+        catch(SQLException e2)
+        {
+            System.out.println("SqlException"+e2);
+            okay=false;
+        }
+        try {connexion.close();} catch (Exception e3) {System.out.println("Erreur fermeture"+e3);}
+        return okay;
+    }
 }
