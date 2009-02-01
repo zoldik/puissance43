@@ -11,12 +11,11 @@
             HttpSession CustomerSession = request.getSession(false);
               if (CustomerSession!=null) {
                 if (CustomerSession.getAttribute("Customer")!=null) {
-                    Customer CustomerOjbect =(Customer)CustomerSession.getAttribute("Customer");
-                    String login=CustomerOjbect.getLog();
-                    
+                    Customer CustomerObject =(Customer)CustomerSession.getAttribute("Customer");
+                    int idCustomer=CustomerObject.getId();
                     %>
 <br>                         
-<h4>Bonjour <%= login%>, nous sommes le <%= new java.util.Date() %> , vous avez X message(s) </h4>
+<h4>Bonjour <%=CustomerObject.getSurname()%> <%=CustomerObject.getName()%> [<%=idCustomer%>/<%=CustomerObject.getLog()%>], nous sommes le <%= new java.util.Date() %> , vous avez X message(s) </h4>
                             <!-- <table align="left">
                                 <tr style="font-size:12px;" >
                                     <td align="right"><label for="username"> Nom d'utilisateur :</label></td>
@@ -41,12 +40,12 @@
                             <table align="center">
                                 <tr style="font-size:12px;" >
                                     <td align="right"><label for="username"> Nom d'utilisateur :</label></td>
-                                    <td align="left"><input type="text" id="username" name="username" class="LoginBox" value="Orthank" /></td>
+                                    <td align="left"><input type="text" id="username" name="username" class="LoginBox" value="UtilisateurTest" /></td>
                                     <td>&nbsp;</td>
                                 </tr>
                                <tr style="font-size:12px;" >
                                     <td align="right"><label for="password"> Mot de passe :</label></td>
-                                    <td align="left"><input type="password" id="password" name="password" class="LoginBox" value="blabla"  /></td>
+                                    <td align="left"><input type="password" id="password" name="password" class="LoginBox" value="blablatest"  /></td>
                                     <td>&nbsp;</td>
                                 </tr>
                                 <tr>

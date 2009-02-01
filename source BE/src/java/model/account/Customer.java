@@ -78,6 +78,8 @@ public class Customer {
         this.allowed=tmp_allowed;
         if (this.allowed) {
             this.id=SQLCustomer.getID(login, password);
+            this.name=SQLCustomer.getName(login, password);
+            this.surname=SQLCustomer.getSurname(login, password);
         }
     }
     
