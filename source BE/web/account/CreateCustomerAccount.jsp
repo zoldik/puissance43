@@ -23,6 +23,7 @@
             
             //need to set here otherwise internal error server 500 during the get 
             session.setAttribute("Creation","S'enregistrer");
+            
             //String param  = request.getParameter("Creation");
             String account = session.getAttribute("Creation").toString();
             RegisterErrors error = new RegisterErrors();
