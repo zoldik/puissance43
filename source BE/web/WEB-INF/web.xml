@@ -1,5 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <web-app version="2.5" xmlns="http://java.sun.com/xml/ns/javaee" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://java.sun.com/xml/ns/javaee http://java.sun.com/xml/ns/javaee/web-app_2_5.xsd">
+        
+    <!--STRUTS-->
     <servlet>
         <servlet-name>action</servlet-name>
         <servlet-class>org.apache.struts.action.ActionServlet</servlet-class>
@@ -17,7 +19,8 @@
         </init-param>
         <load-on-startup>2</load-on-startup>
     </servlet>
-    
+    <!--STRUTS-->
+        
     <!--VINCENT DESTAILLEUR -->
     <!--Servlet-->
     <servlet>
@@ -27,7 +30,8 @@
     <servlet-mapping>
         <servlet-name>CtrAccount</servlet-name>
         <url-pattern>/CtrAccount</url-pattern>
-    </servlet-mapping>    
+    </servlet-mapping>
+    <!--zzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzz-->
     <servlet>
         <servlet-name>CtrCart</servlet-name>
         <servlet-class>servlet.networkdevices.CtrCart</servlet-class>
@@ -36,6 +40,7 @@
         <servlet-name>CtrCart</servlet-name>
         <url-pattern>/CtrCart</url-pattern>
     </servlet-mapping>
+    <!--zzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzz-->
     <servlet>
         <servlet-name>CtrSearch</servlet-name>
         <servlet-class>servlet.networkdevices.CtrSearch</servlet-class>
@@ -45,6 +50,8 @@
         <url-pattern>/CtrSearch</url-pattern>
     </servlet-mapping>    
     <!--Servlet-->
+    <!--zzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzz-->
+    <!--zzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzz-->
     <!--JSP-->
     <servlet>
         <servlet-name>AdvancedSearch.jsp</servlet-name>
@@ -54,6 +61,7 @@
         <servlet-name>AdvancedSearch.jsp</servlet-name>
         <url-pattern>/AdvancedSearch.jsp</url-pattern>
     </servlet-mapping>
+    <!--zzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzz-->
     <servlet>
         <servlet-name>CreateCustomerAccount.jsp</servlet-name>
         <jsp-file>/account/CreateCustomerAccount.jsp</jsp-file>
@@ -61,7 +69,8 @@
     <servlet-mapping>
         <servlet-name>CreateCustomerAccount.jsp</servlet-name>
         <url-pattern>/CreateCustomerAccount.jsp</url-pattern>
-    </servlet-mapping>    
+    </servlet-mapping>
+    <!--zzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzz-->
     <servlet>
         <servlet-name>DisplayCart.jsp</servlet-name>
         <jsp-file>/networkDevices/ViewCart/DisplayCart.jsp</jsp-file>
@@ -70,6 +79,7 @@
         <servlet-name>DisplayCart.jsp</servlet-name>
         <url-pattern>/DisplayCart.jsp</url-pattern>
     </servlet-mapping>
+    <!--zzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzz-->
     <servlet>
         <servlet-name>DisplayItems.jsp</servlet-name>
         <jsp-file>/networkDevices/ViewCart/DisplayItems.jsp</jsp-file>
@@ -78,6 +88,7 @@
         <servlet-name>DisplayItems.jsp</servlet-name>
         <url-pattern>/DisplayItems.jsp</url-pattern>
     </servlet-mapping>
+    <!--zzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzz-->
     <servlet>
         <servlet-name>Order.jsp</servlet-name>
         <jsp-file>/networkDevices/Order/Order.jsp</jsp-file>
@@ -86,6 +97,7 @@
         <servlet-name>Order.jsp</servlet-name>
         <url-pattern>/Order.jsp</url-pattern>
     </servlet-mapping>
+    <!--zzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzz-->
     <servlet>
         <servlet-name>Search.jsp</servlet-name>
         <jsp-file>/networkDevices/ViewCart/Search.jsp</jsp-file>
@@ -132,7 +144,7 @@
     <servlet-mapping>
         <servlet-name>Account.jsp</servlet-name>
         <url-pattern>/Account.jsp</url-pattern>
-    </servlet-mapping> 
+    </servlet-mapping>
     <servlet>
         <servlet-name>Identification.jsp</servlet-name>
         <jsp-file>/customer/Identification.jsp</jsp-file>
@@ -140,7 +152,7 @@
     <servlet-mapping>
         <servlet-name>Identification.jsp</servlet-name>
         <url-pattern>/Identification.jsp</url-pattern>
-    </servlet-mapping> 
+    </servlet-mapping>
     <servlet>
         <servlet-name>LostPassword.jsp</servlet-name>
         <jsp-file>/customer/LostPassword.jsp</jsp-file>
