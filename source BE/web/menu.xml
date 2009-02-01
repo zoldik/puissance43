@@ -5,7 +5,7 @@
         <link name="WebMail" url="Webmail.jsp"/>
     </Accueil>
     <Compte name="Compte">
-        <link name="Creation" url=
+        <link name="Creation" url="CreateCustomerAccount.jsp" />
         <link name="Gestion" url="compte/compte.jsp"/>
         <link name="Resiliation" url="resiliation-compte.jsp"/>
     </Compte>
@@ -30,7 +30,7 @@
         <link name="Search" url="Search.jsp" />
         <link name="AdvancedSearch" url="AdvancedSearch.jsp" />
         <link name="Cart" url="DisplayCart.jsp" />
-        <link name="Order" url="Order.jsp" />        
+        <link name="Order" url="Order.jsp" />
     </NetworkDevices>
     <NetworkSolutions name="menu NetworkSolutions">
         <link name="Solutions" url="" />
