@@ -15,12 +15,21 @@ package model.database;
 public class FactoryDAO {
 
     static ItemDAO ItemDAO = null;
-
+    static CustomerDAO CustomerDAO = null;
+    
+    
     public static ItemDAO getItemDAO() {
         if (ItemDAO == null) {
             ItemDAO = new ItemDAO();
         }
         return ItemDAO;
+    }
+    
+    public static CustomerDAO getCustomerDAO() {
+        if (CustomerDAO == null) {
+            CustomerDAO = new CustomerDAO();
+        }
+        return CustomerDAO;
     }
     
 }
