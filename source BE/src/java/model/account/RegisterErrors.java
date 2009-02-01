@@ -39,7 +39,7 @@ public class RegisterErrors{
      * @param newUser
      * @return ErrorRegister
      */
-    public RegisterErrors checkInfos(Customer newCustomer) {
+    public RegisterErrors checkInfos(Customer2 newCustomer) {
         if (newCustomer.getFirstName() == "" || newCustomer.getFirstName().length() > 15) {
             this.errorFirstName = 1;
             this.error = 1;
