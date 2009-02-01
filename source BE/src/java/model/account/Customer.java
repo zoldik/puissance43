@@ -30,7 +30,7 @@ public class Customer {
     private String born;
     private boolean allowed;
     
-        //******************
+    //******************
     // CONSTRUCTORS
     //******************
            
