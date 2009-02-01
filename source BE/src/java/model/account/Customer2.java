@@ -37,7 +37,7 @@ public class Customer2 {
     private String tel;
     private String gsm;
     private String born;
-    private String allowed;
+    private boolean allowed;
     
     //******************
     // CONSTRUCTORS
@@ -46,7 +46,7 @@ public class Customer2 {
     /**
      * Constructeur par défaut Account
      */
-    public Customer() {
+    public Customer2() {
         this.id=0;
         this.login="";
         this.password="";
