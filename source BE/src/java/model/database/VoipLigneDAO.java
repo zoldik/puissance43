@@ -82,7 +82,7 @@ public class VoipLigneDAO {
                 li.setsubsribecontext(rs.getString("subscribecontext"));
                 li.settype(rs.getString("type"));
                 li.setusername(rs.getString("username"));
-                li.setvisible(rs.getBoolean("visible"));
+                //li.setvisible(rs.getBoolean("visible"));
                 
                 voipLignes.add(li);                
             }
@@ -164,7 +164,7 @@ public class VoipLigneDAO {
                 li.setsubsribecontext(rs.getString("subscribecontext"));
                 li.settype(rs.getString("type"));
                 li.setusername(rs.getString("username"));
-                li.setvisible(rs.getBoolean("visible"));
+                //li.setvisible(rs.getBoolean("visible"));
                 
                 voipLigne = li;
             }
