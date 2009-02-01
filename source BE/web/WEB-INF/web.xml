@@ -55,6 +55,14 @@
         <url-pattern>/AdvancedSearch.jsp</url-pattern>
     </servlet-mapping>
     <servlet>
+        <servlet-name>CreateCustomerAccount.jsp</servlet-name>
+        <jsp-file>/account/CreateCustomerAccount.jsp</jsp-file>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>CreateCustomerAccount.jsp</servlet-name>
+        <url-pattern>/CreateCustomerAccount.jsp</url-pattern>
+    </servlet-mapping>    
+    <servlet>
         <servlet-name>DisplayCart.jsp</servlet-name>
         <jsp-file>/networkDevices/ViewCart/DisplayCart.jsp</jsp-file>
     </servlet>
