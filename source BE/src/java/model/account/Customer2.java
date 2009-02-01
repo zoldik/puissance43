@@ -12,6 +12,9 @@ public class Customer2 {
     //******************
     // ATTRIBUTES
     //******************
+    
+    private int id = 0;
+    
     private String firstName;
     private String lastName;
     private String login;
@@ -24,6 +27,18 @@ public class Customer2 {
     private String protectAccount;
     private String key1;
     private String key2;
+    
+    private String societe;
+    private String userType;
+    
+    private String accountLevel;
+    private String typeUserVod;
+    private String creditVod;
+    private String tel;
+    private String gsm;
+    private String born;
+    private String allowed;
+    
     //******************
     // CONSTRUCTORS
     //******************
@@ -31,12 +46,12 @@ public class Customer2 {
     /**
      * Constructeur par défaut Account
      */
-    /*public Customer() {
+    public Customer() {
         this.id=0;
-        this.log="";
-        this.pw="";
-        this.name="";
-        this.surname="";
+        this.login="";
+        this.password="";
+        this.firstName="";
+        this.lastName="";
         this.societe="";
         this.mail="";
         this.sexe="";
@@ -48,7 +63,7 @@ public class Customer2 {
         this.gsm="";
         this.born="";
         this.allowed=false;
-    }*/
+    }
     
     /**
      * Sert à l'authentification d'un utilisateur à partir du login & mdp passés en argument
