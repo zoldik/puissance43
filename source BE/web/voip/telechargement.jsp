@@ -14,7 +14,7 @@
         <title>Téléchargements</title>
     </head>
     <body>
-<h2>Cliquer sur l'icone correspondant votre système d'exploitation</h2> 
+<h2>Cliquer sur l'icone correspondant à votre système d'exploitation</h2> 
 <table>
 <thead>
 <tr>
