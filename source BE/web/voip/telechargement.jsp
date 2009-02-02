@@ -11,9 +11,30 @@
 <html>
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-        <title>Téléchargement</title>
+        <title>Téléchargements</title>
     </head>
     <body>
-        <h2>Téléchargement</h2>
+<h2>Cliquer sur l'icone correspondant votre système d'exploitation</h2> 
+<table>
+<thead>
+<tr>
+<th>Windows</th>
+<th>Linux</th>
+<th>MacOsX</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><a href="http://www.zoiper.com/downloads/free/win/Zoiper_2.18_Free_Installer.exe"><img src="telechargement/images/win_logo.gif" border="0"></a> </td>
+<td><a href="http://www.zoiper.com/downloads/free/linux/zoiper209-linux.tar.gz"><img src="telechargement/images/linux_logo.gif" border="0"></a></td>
+<td><a href="http://www.zoiper.com/downloads/free/mac/zoiper209_installer.dmg"><img src="telechargement/images/MacOS.gif" border="0"></a></td>
+</tr>
+</tbody>
+</table>
+<h2>Tutoriel de configuration</h2> 
+
+
+        <div>
+       </div>
     </body>
 </html>
