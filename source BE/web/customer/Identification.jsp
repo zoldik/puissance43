@@ -9,7 +9,7 @@
 <!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"
    "http://www.w3.org/TR/html4/loose.dtd">
 
-<form name="Authentification" action="./Authentification" method="POST">
+<form class="account" name="Authentification" action="./Authentification" method="POST">
                             <table align="center">
                                 <tr style="font-size:12px;" >
                                     <td align="right"><label for="username"> Nom d'utilisateur :</label></td>

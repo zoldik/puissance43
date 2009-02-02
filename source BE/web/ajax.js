@@ -5,6 +5,7 @@
  */
 
 var thisRequest;
+var thisRequest2;
     
 function updateDivContent(divName, text)
 {
@@ -68,12 +69,21 @@ function createXMLHttpRequest()
 function displayAccount()
 {
     thisRequest = getDataAsynchronous('./Account.jsp', showAccount);
-    
+}
+
+function hideAccount()
+{
+    updateDivContent('account', ' ');
 }
 
 function displayIdentification()
 {
     thisRequest = getDataAsynchronous('./Identification.jsp', showAccount);
+}
+
+function displayLostPassword()
+{
+    thisRequest = getDataAsynchronous('./LostPassword.jsp', showAccount);
 }
 
 function showAccount()
@@ -82,20 +92,32 @@ function showAccount()
     if (thisRequest.status == 200) {
       var text = thisRequest.responseText;
       updateDivContent('account', text);
+    } else {
+      var text2 = thisRequest.status;
+      updateDivContent('account', '<h2>status('+'account'+') : '+text2+'</h2>');
     }
+  } else {
+    var text3 = thisRequest.readyState;
+    updateDivContent('account', '<h2>readyState('+'account'+') : '+text3+'</h2>');
   }
 }
 
-function hideAccount()
+function displayHeader()
 {
-    updateDivContent('account', ' ');
+    thisRequest2 = getDataAsynchronous('./Header.jsp', showHeader);
 }
 
-function displayLostPassword()
+function showHeader()
 {
-    thisRequest = getDataAsynchronous('./LostPassword.jsp', showAccount);
-    
+  if (thisRequest2.readyState == 4) {
+    if (thisRequest2.status == 200) {
+      var text = thisRequest2.responseText;
+      updateDivContent('header', text);
+    } 
+  }
 }
+
+
 
 function templateShow()
 {

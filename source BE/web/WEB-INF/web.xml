@@ -121,14 +121,6 @@
         <url-pattern>/Authentification</url-pattern>
     </servlet-mapping>
     <servlet>
-        <servlet-name>Header</servlet-name>
-        <servlet-class>servlet.Header</servlet-class>
-    </servlet>
-    <servlet-mapping>
-        <servlet-name>Header</servlet-name>
-        <url-pattern>/Header</url-pattern>
-    </servlet-mapping>
-    <servlet>
         <servlet-name>LostPassword</servlet-name>
         <servlet-class>servlet.customer.account.LostPassword</servlet-class>
     </servlet>
@@ -170,6 +162,14 @@
         <servlet-name>LostPassword.jsp</servlet-name>
         <url-pattern>/LostPassword.jsp</url-pattern>
     </servlet-mapping> 
+    <servlet>
+        <servlet-name>Header.jsp</servlet-name>
+        <jsp-file>/Header.jsp</jsp-file>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>Header.jsp</servlet-name>
+        <url-pattern>/Header.jsp</url-pattern>
+    </servlet-mapping>
     <!--JSP-->
     <!--PHILIPPE LARDENNOIS -->
     <servlet>
