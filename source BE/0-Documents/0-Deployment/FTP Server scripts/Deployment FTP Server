@@ -1,0 +1,25 @@
+Notice installation Serveur FTP
+
+Liste des paquets :
+- Vsftpd
+
+Pré-requis :
+- distribution linux sous laquelle Vsftpd est connue
+
+
+I] Installation :
+1) Utilisez votre gestionnaire de paquet (adept par exemple) pour installer le paquet Vsftpd
+2) Editez le fichier /etc/vsftpd.conf comme suivant :
+	local_enable=YES (pour bloquer les utilisateurs dans leur dossier home)
+	write_enable=YES (pour activer l'autorisation d'écriture aux utilisateurs)
+	local_umask=077 (permet d'avoir un chmod des dossiers en 755 et fichiers en 644)
+	ftpd_banner=<Message de bienvenu>
+	anonymous_enable=NO (pour désactiver le compte anonyme)
+	hide_file={.bashrc,.bash_logout,.profile,Maildir}
+3) Rédemarrez le service
+	sudo /etc/init.d/vsftpd reload
+
+II] utilisation :
+Vous pouvez dès à présent vous connecter sur votre compte ftp :
+Login : Nom de votre compte sur le serveur (le même que votre adresse mail sans @RedNeck.fr)
+Mdp : Le même que pour votre mail
