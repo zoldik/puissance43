@@ -23,56 +23,67 @@ import="java.util.*"
 <%-- The list of normal or fragment attributes can be specified here: --%>
 <%@attribute name="message"%>
 
-<%-- any content can be specified here e.g.: --%>
-<h2>Votre répertoire</h2>
+<h2>Votre répertoire personnel</h2>
 <% 
 
 
         try{
-        
         int id=1;
         LinkedList listeContact = new LinkedList <Contact>();
         ListIterator<Contact> indice;
         Contact contact;
+        int i=0;
 
         
        listeContact = SQLContactVoip.getContactbyVoipId(id);
        indice = listeContact.listIterator();
-       out.println("<FORM>");
-       out.println("<table border=\"1\" bordercolor=\"#FF3300\" style=\"background-color:#FFFFFF\" width=\"600\" cellpadding=\"3\" cellspacing=\"3\">");
+       out.println("<table width=\"60%\">");
        out.println("<tr>");
-       out.println("<td><select name=\"ListeUrl\" onChange=\"ChangeUrl(this.form)\"><option value=\"\">Choisissez votre action");
-       out.println("<option value=\"../supprContactInfo\">Supprimer");
-       out.println("<option value=\"../modContactInfo\">Modifier");
-       out.println("</td>");
-
+       
+       out.println("<td>Choississez votre action</td>");
+       out.println("<td></td>");
        out.println("<td>Vos contacts</td>");
-       out.println("<tr>");
+       out.println("</tr>");
 
 
        while (indice.hasNext()){
        contact = indice.next();
+       id=contact.getId();
        out.println("<tr>");
-       out.println("<td align=\"center\"><input type=\"checkbox\" name=\"choix\" onClick=\"RecupId(this.form,");
-       out.println(contact.id);
-       out.println(")\"value=\"");
-       out.println(contact.id);
-       out.println("\"/></td>");
-       out.println("<td>&nbsp; prénom : "+contact.prenom+"<br>");
-       out.println("&nbsp; nom : "+contact.nom+"<br>");
+
+       out.println("<td>");
+       //delete button
+       out.println("<form method=\"post\" action=\"../supprContactInfo\">");
+       out.println("<input type=\"submit\" value=\"delete\" />");
+       out.println("<input type=\"hidden\" name=\"id\" value=\"");
+       out.println(id);
+       out.println("\">");
+       out.println("</form>");
+       out.println("</td>");
+       
+       out.println("<td>");
+       //edit button
+       out.println("<form method=\"post\" action=\"../modContactInfo\">");
+       out.println("<input type=\"submit\" value=\"edit\" />");
+       out.println("<input type=\"hidden\" name=\"id\" value=\"");
+       out.println(id);
+       out.println("\">");
+       out.println("</form>");
+       out.println("</td>");
+
+       
+       out.println("<td>prénom : "+contact.prenom+"<br>");
+       out.println("nom : "+contact.nom+"<br>");
        out.println("titre : "+contact.titre+"<br>");
        out.println("categorie : "+contact.categorie+"<br>");
        out.println("telephone : "+contact.telephone+"<br>");
        out.println("email : "+contact.mail+"<br><br></td>");
        out.println("<tr>");
+       i++;
                                 } 
        out.println("</table>");
-      // out.println("<input type=\"submit\" value=\"Valider votre action\">");
        out.println("</FORM>");
-      // out.println("<FORM Method=\"POST\" Action=\"voip/annuaire.jsp\">");
-      // out.println("<input type=\"submit\" value=\"Retour à l'annuaire\">");
-      // out.println("</FORM>");
-
+      
         } 
         catch (Exception e){
         System.err.println("<h3>Vous n'avez pas de contact</h3>");
