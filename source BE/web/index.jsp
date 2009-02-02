@@ -89,6 +89,7 @@
     
 </script>
 <link rel="stylesheet" href="style.css">
+<LINK REL="SHORTCUT ICON" HREF="./favicon.ico">
 
 <html>
     <head>
