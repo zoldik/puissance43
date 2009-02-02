@@ -22,7 +22,7 @@ function cdrpage_getpost_ifset($test_vars)
 cdrpage_getpost_ifset(array('s', 't'));
 
 
-$array = array ("INTRO", "CDR REPORT", "CALLS COMPARE", "MONTHLY TRAFFIC","DAILY LOAD", "CONTACT");
+$array = array ("CDR REPORT", "CALLS COMPARE", "MONTHLY TRAFFIC","DAILY LOAD");
 $s = $s ? $s : 0;
 $section="section$s$t";
 
@@ -51,7 +51,7 @@ $paypal="NOK"; //OK || NOK
 
 	
 	
-		<!-- header BEGIN -->
+		<!-- header BEGIN
 		<div id="fedora-header">
 			
 			<div id="fedora-header-logo">
@@ -61,7 +61,7 @@ $paypal="NOK"; //OK || NOK
 
 		</div>
 		<div id="fedora-nav"></div>
-		<!-- header END -->
+		 header END -->
 		
 		<!-- leftside BEGIN -->
 		<div id="fedora-side-left">
