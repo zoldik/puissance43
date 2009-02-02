@@ -9,7 +9,7 @@ import model.account.Mail;
 import model.account.Register;
 import model.account.RegisterErrors;
 import model.database.CustomerDAO;
-import model.database.FactoryDAO;
+import model.database.FactoryDAO; 
 
 /**
  *
