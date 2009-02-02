@@ -17,7 +17,7 @@
     <body>
         <h1> Rentrer les informations de votre contact</h1>
         <FORM Method="POST" Action="../enregContactInfo">
-        <table border="1">
+        <table>
 
 <tr>
 <td>Titre </td>
@@ -46,13 +46,7 @@
 <tr>
 <td align="center"> <input type="submit" value="Valider" /></td>
 </tr>
-</tbody>
-</table>       
-                
-                
-                          
-             
-                   
+        </table>       
         </FORM>
     </body>
 </html>
