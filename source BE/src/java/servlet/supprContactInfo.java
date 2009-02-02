@@ -8,7 +8,6 @@ package servlet;
 import java.io.*;
 import javax.servlet.*;
 import javax.servlet.http.*;
-import model.voip.*;
 import model.database.*;
 
 /**
@@ -27,10 +26,12 @@ public class supprContactInfo extends HttpServlet {
     */
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
     throws ServletException, IOException {
-    //int id = parseInt().request.getParameter("id"); 
-    //SQLContactVoip.deletebyId(id);
+    int id = Integer.parseInt(request.getParameter("id"));
+    
+    try {SQLContactVoip.deletebyId(id);}
+    catch (Exception e) {System.out.println("Erreur dans la suppression"+e);}
         
-response.sendRedirect(response.encodeRedirectURL("voip/repertoire.jsp"));    } 
+    response.sendRedirect(response.encodeRedirectURL("voip/repertoire.jsp"));    } 
 
     /** 
     * Handles the HTTP <code>POST</code> method.
