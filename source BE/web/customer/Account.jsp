@@ -19,25 +19,25 @@
                         sessionOK=true;
                         int idCustomer=CustomerObject.getId();
                         %>
-<br>                         
-<h4>Bonjour <%=CustomerObject.getSurname()%> <%=CustomerObject.getName()%> [<%=idCustomer%>/<%=CustomerObject.getLog()%>], nous sommes le <%= new java.util.Date() %> , vous avez X message(s) </h4>
-                            <!-- <table align="left">
+                        <form name="Account" action="./Deconnection" method="POST">
+                            <table align="center">
                                 <tr style="font-size:12px;" >
-                                    <td align="right"><label for="username"> Nom d'utilisateur :</label></td>
-                                    <td align="left"><input type="text" id="username" name="username" class="LoginBox" value="" /></td>
+                                    <td align="left">Bonjour <%=CustomerObject.getSurname()%> <%=CustomerObject.getName()%></td>
+                                    <td align="left">[<%=idCustomer%>/<%=CustomerObject.getLog()%>]</td>
                                     <td>&nbsp;</td>
                                 </tr>
                                <tr style="font-size:12px;" >
-                                    <td align="right"><label for="password"> Mot de passe :</label></td>
-                                    <td align="left"><input type="password" id="password" name="password" class="LoginBox" value=""  /></td>
+                                    <td align="right">Nous sommes le <%= new java.util.Date() %>,</td>
+                                    <td align="left">vous avez X message(s)</td>
                                     <td>&nbsp;</td>
                                 </tr>
                                 <tr>
-                                    <td align="right" ><input type="button" onclick="displayLostPassword();" value="Mot de passe oublié" name="Mot de passe oublié" /></td>
-                                    <td align="left"><input type="submit" value="Connexion" name="Connexion" /></td>
+                                    <td align="right" ></td>
+                                    <td align="right"><input type="submit" value="Déconnexion" name="Déconnexion" /></td>
                                     <td>&nbsp;</td>
                                 </tr>
-                            </table> -->
+                            </table>
+                        </form>
                     <%} else {
                         sessionOK=false;
                       } 
@@ -50,7 +50,7 @@
             
             if (!sessionOK) {
             %>
-<form name="Authentification" action="./Authentification" method="POST">
+            <form name="Authentification" action="./Authentification" method="POST">
                             <table align="center">
                                 <tr style="font-size:12px;" >
                                     <td align="right"><label for="username"> Nom d'utilisateur :</label></td>
