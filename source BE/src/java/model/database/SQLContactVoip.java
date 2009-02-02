@@ -93,28 +93,42 @@ public class SQLContactVoip {
       * @param id
       * @return ResultSet
       */
-     public ResultSet selectbyId(int id)throws SQLException {
+      static public Contact selectbyId(int id)throws SQLException {
         Statement stmt;
         ConnectionDatabase connexion=new ConnectionDatabase();
         ResultSet rs=null;
+        Contact contact = new Contact();
+        
         try
         {
             stmt=connexion.getConn().createStatement();
             rs = stmt.executeQuery("select * from VOIP_CONTACT where (VOIP_CONTACT_ID=\""+id+"\")");
-        }
-        catch(SQLException e2)
+            int IdContact = rs.getInt("VOIP_CONTACT_ID");   
+            String Titre = rs.getString("TITRE");
+            String Categorie = rs.getString("CATEGORIE");
+            String Nom = rs.getString("NOM");
+            String Prenom = rs.getString("PRENOM");
+            String Email = rs.getString("MAIL");
+            String Telephone = rs.getString("TELEPHONE");
+            Contact tmp = new Contact(IdContact,Titre,Categorie,Nom,Prenom,Email,Telephone,id);
+            contact=tmp;
+
+        } 
+            catch(SQLException e2)
         {
             System.out.println("SqlException"+e2);
         }
-        try {connexion.close();} catch (Exception e3) {System.out.println("Erreur fermeture"+e3);}
-        return rs;
-    } 
+            try {connexion.close();} catch (Exception e3) {System.out.println("Erreur fermeture"+e3);}
+            return contact;
+        }
+            
+ 
    
       /** Renvoie les contacts d'un user_voip en passant son id en paramètre
-      * 
-      * @param id
-      * @return ResultSet
-      */
+       * 
+       * @param id
+       * @return ResultSet
+       */
     static public LinkedList <Contact> getContactbyVoipId(int id)throws SQLException {
         Statement stmt;
         ConnectionDatabase connexion=new ConnectionDatabase();
