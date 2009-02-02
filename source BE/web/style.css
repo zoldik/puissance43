@@ -8,13 +8,14 @@ body {background-color:red ; color:black;height:100%} /* page rouge avec une pol
     background-repeat: repeat;
     padding: 0;
     width:100%;
-    height:35px;
+    height:27px;
 } /* marge intérieure basse */
 
 .onglet { /* style des onglets inactifs */
-    margin:0px 5px 0px 40px ; /* marge extérieure */
-    padding:7px 0px 0px 0px ; /* marge intérieure */
-    font-size : 16px ; /* taille de la police des onglets */
+    margin:0px 5px 0px 10px ; /* marge extérieure */
+    padding:8px 0px 0px 0px ; /* marge intérieure */
+    font-size : 15px ; /* taille de la police des onglets */
+    font-family: Verdana,Arial,Helvetica,sans-serif; /* type de la police des onglets */
     float:left ; /* boite en mode float, pour pouvoir en définir la largeur */
     width:100px ; /* largeur de la boite float */
     background : url(img/ongleth.gif) bottom no-repeat ; /* image de fond de la boite float, calée en bas */
@@ -32,6 +33,7 @@ a.onglet:hover {color:green} /* lors du survol d'un lien, la police devient vert
     background-color: white;
     background-repeat: repeat;
     padding: 0;
+    font-family: Verdana,Arial,Helvetica,sans-serif;
     width:100%;
     height:80px;
 } /* marge intérieure basse */
@@ -44,13 +46,14 @@ a.onglet:hover {color:green} /* lors du survol d'un lien, la police devient vert
     background-repeat: repeat;
     padding: 0;
     width:100%;
-    height:35px;
+    height:27px;
 } /* marge intérieure basse */
 
 .onglet2 { /* style des onglets inactifs */
-    margin:5px 5px 0px 20px ; /* marge extérieure */
-    padding:11px 0px 0px 0px ; /* marge intérieure */
-    font-size : 16px ; /* taille de la police des onglets */
+    margin:0px 5px 0px 10px ; /* marge extérieure */
+    padding:13px 0px 0px 0px ; /* marge intérieure */
+    font-size : 12px ; /* taille de la police des onglets */
+    font-family: Verdana,Arial,Helvetica,sans-serif; /* type de la police des onglets */
     float:left ; /* boite en mode float, pour pouvoir en définir la largeur */
     width:100px ; /* largeur de la boite float */
     background : url(img/onglet.gif) bottom no-repeat ; /* image de fond de la boite float, calée en bas */

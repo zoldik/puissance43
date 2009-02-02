@@ -5,6 +5,7 @@
 --%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <%@page language="Java" import="javax.servlet.*,java.io.*,java.util.*,model.account.*" %>
+<script language="JavaScript" src="ajax.js"></script>
 <!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <div id="accountmenu" >
         <%
@@ -19,7 +20,7 @@
                         sessionOK=true;
                         int idCustomer=CustomerObject.getId();
                         %>
-                        <form name="Account" action="./Deconnection" method="POST">
+                        <form class="account" name="Account" action="./Deconnection" method="POST">
                             <table align="center">
                                 <tr style="font-size:12px;" >
                                     <td align="left">Bonjour <%=CustomerObject.getSurname()%> <%=CustomerObject.getName()%></td>
@@ -50,7 +51,7 @@
             
             if (!sessionOK) {
             %>
-            <form name="Authentification" action="./Authentification" method="POST">
+            <form class="account" name="Authentification" action="./Authentification" method="POST">
                             <table align="center">
                                 <tr style="font-size:12px;" >
                                     <td align="right"><label for="username"> Nom d'utilisateur :</label></td>

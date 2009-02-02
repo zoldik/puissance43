@@ -5,9 +5,10 @@
 --%>
 
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
+<script language="JavaScript" src="ajax.js"></script>
 <!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"
    "http://www.w3.org/TR/html4/loose.dtd">
-<form name="LostPassword" action="./LostPassword" method="POST">
+<form class="account" name="LostPassword" action="./LostPassword" method="POST">
                             <table align="center">
                                 <tr style="font-size:12px;" >
                                     <td align="right"><label for="username"> Nom d'utilisateur :</label></td>
