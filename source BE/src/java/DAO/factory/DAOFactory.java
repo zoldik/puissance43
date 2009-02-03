@@ -12,6 +12,7 @@ public abstract class DAOFactory {
     public static final int POSTGRESQL = 2;
     public static final int ORACLE = 3;
     public static final int SYBASE = 4;
+    
 
     // There will be a method for each DAO that can be 
     // created. The concrete factories will have to 
