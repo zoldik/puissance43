@@ -48,7 +48,6 @@ public class ConnectionDatabase {
      * @return Statement
      */
     private Connection init() {
-        Statement stmt = null;
         Connection conn = null;
         try {
             Context initCtx = new InitialContext();
