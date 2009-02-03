@@ -58,6 +58,7 @@ import="java.util.*"
        out.println("<input type=\"hidden\" name=\"id\" value=\"");
        out.println(id);
        out.println("\">");
+       out.println("id :" +id+"");
        out.println("</form>");
        out.println("</td>");
        
