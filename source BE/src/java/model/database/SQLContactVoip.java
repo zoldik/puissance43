@@ -72,15 +72,14 @@ public class SQLContactVoip {
      int id = 0;
 
 
-    String query = "SELECT VOIP_CONTACT_ID FROM VOIP_CONTACT ";
+    String query = "SELECT MAX(VOIP_CONTACT_ID) FROM VOIP_CONTACT; ";
     ResultSet rs = stmt.executeQuery(query);
 
     try {
-        if (rs.last()) {
-        id = rs.getRow();
-                    }
-        else id=0;
-         }
+        rs.next();
+        id = rs.getInt(1)+1;
+        System.out.println(id );
+        }
         catch(SQLException e2)
         {
             System.out.println("SqlException : "+e2);
@@ -101,20 +100,14 @@ public class SQLContactVoip {
 
         ConnectionDatabase connectionDatabase = new ConnectionDatabase();
         Connection conn = (Connection) connectionDatabase.getConn(); 
-        System.out.println("ok1");
 
         try
         {   
-            System.out.println("ok2");
             stmt=conn.createStatement();
-            System.out.println("ok3");
             
-            rs = stmt.executeQuery("SELECT * FROM VOIP_CONTACT WHERE (VOIP_CONTACT_ID=\""+id+"\")");
-            System.out.println("ok4"); 
+            rs = stmt.executeQuery("SELECT * FROM VOIP_CONTACT WHERE (VOIP_CONTACT_ID="+id+");");
             rs.next();
-            System.out.println("ok5"); 
             Contact tmp=new Contact();
-            System.out.println("ok6");                                 
             tmp.setId_voip(rs.getInt("VOIP_CONTACT_ID"));
             tmp.setTitre(rs.getString("TITRE"));
             tmp.setCategorie(rs.getString("CATEGORIE"));
@@ -124,7 +117,6 @@ public class SQLContactVoip {
             tmp.setTelephone(rs.getString("TELEPHONE"));
             tmp.setId_voip(rs.getInt("ID_VOIP"));
             contact=tmp;
-            System.out.println("ok9");                                 
 
         } 
             catch(SQLException e2)
@@ -177,7 +169,7 @@ public class SQLContactVoip {
       * 
       * 
       */
-        static public boolean deletebyId(String id) throws SQLException {
+        static public boolean deletebyId(int id) throws SQLException {
         boolean okay=true;
         Statement stmt;
         ConnectionDatabase connexion=new ConnectionDatabase();
@@ -220,6 +212,27 @@ public class SQLContactVoip {
     } 
     
      /** Modifie les informations concernant un contact en passant l'id en paramètre (pas terminer)
+      * 
+      * @param id
+      * @param contact
+      * @return ResultSet
+      */
+        static public boolean updateContactInfo(int id, Contact contact) throws SQLException {
+        boolean okay=true;
+        
+        try
+        {
+            deletebyId(id);
+            insertContact(contact);
+        }
+        catch(SQLException e2)
+        {
+            okay=false;
+            System.out.println("SqlException"+e2);
+        }
+        return okay;
+    } 
+    /** Modifie les informations concernant un contact en passant l'id en paramètre (pas terminer)
       * 
       * @param id
       * @return ResultSet
