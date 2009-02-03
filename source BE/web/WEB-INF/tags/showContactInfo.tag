@@ -41,7 +41,6 @@ import="java.util.*"
        out.println("<tr>");
        
        out.println("<td>Choississez votre action</td>");
-       out.println("<td></td>");
        out.println("<td>Vos contacts</td>");
        out.println("</tr>");
 
@@ -57,9 +56,7 @@ import="java.util.*"
        out.println("<input type=\"submit\" value=\"delete\" />");
        out.println("<input type=\"hidden\" name=\"id\" value=\""+id+"\">");
        out.println("</form>");
-       out.println("</td>");
-       
-       out.println("<td>");
+
        //edit button
        out.println("<form method=\"post\" action=\"../modContactInfo\">");
        out.println("<input type=\"submit\" value=\"edit\" />");
