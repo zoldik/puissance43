@@ -1,6 +1,6 @@
 package model.account;
 
-import DAO.transfertObject.Customer2;
+import DAO.transfertObject.CustomerTO;
 import model.database.CustomerDAO;
 import model.database.FactoryDAO;
 
@@ -46,7 +46,7 @@ public class Register {
       * @param newUser
       * @throws java.lang.Exception
       */
-    public Register(Customer2 newCustomer) throws Exception
+    public Register(CustomerTO newCustomer) throws Exception
     {
         this.login=newCustomer.getLogin();
         this.mdp=newCustomer.getPassword();
