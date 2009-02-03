@@ -55,10 +55,7 @@ import="java.util.*"
        //delete button
        out.println("<form method=\"post\" action=\"../supprContactInfo\">");
        out.println("<input type=\"submit\" value=\"delete\" />");
-       out.println("<input type=\"hidden\" name=\"id\" value=\"");
-       out.println(id);
-       out.println("\">");
-       out.println("id :" +id+"");
+       out.println("<input type=\"hidden\" name=\"id\" value=\""+id+"\">");
        out.println("</form>");
        out.println("</td>");
        
@@ -66,19 +63,17 @@ import="java.util.*"
        //edit button
        out.println("<form method=\"post\" action=\"../modContactInfo\">");
        out.println("<input type=\"submit\" value=\"edit\" />");
-       out.println("<input type=\"hidden\" name=\"id\" value=\"");
-       out.println(id);
-       out.println("\">");
+       out.println("<input type=\"hidden\" name=\"id\" value=\""+id+"\">");
        out.println("</form>");
        out.println("</td>");
 
        
-       out.println("<td>prénom : "+contact.prenom+"<br>");
-       out.println("nom : "+contact.nom+"<br>");
-       out.println("titre : "+contact.titre+"<br>");
-       out.println("categorie : "+contact.categorie+"<br>");
-       out.println("telephone : "+contact.telephone+"<br>");
-       out.println("email : "+contact.mail+"<br><br></td>");
+       out.println("<td> "+contact.prenom+"<br>");
+       out.println(contact.nom+"<br>");
+       out.println(contact.titre+"<br>");
+       out.println(contact.categorie+"<br>");
+       out.println(contact.telephone+"<br>");
+       out.println(contact.mail+"<br><br></td>");
        out.println("<tr>");
        i++;
                                 } 
