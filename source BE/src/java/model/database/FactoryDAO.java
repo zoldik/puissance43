@@ -4,6 +4,8 @@
  */
 package model.database;
 
+import DAO.mySql.MySqlItemDAO;
+
 /**
  * FactoryDAO owns methods in order to create DAO Object.
  * Class FactoryDAO implements the design pattern Factory for create DAO objects.
@@ -14,13 +16,13 @@ package model.database;
  */
 public class FactoryDAO {
 
-    static ItemDAO ItemDAO = null;
+    static MySqlItemDAO ItemDAO = null;
     static CustomerDAO CustomerDAO = null;
     
     
-    public static ItemDAO getItemDAO() {
+    public static MySqlItemDAO getItemDAO() {
         if (ItemDAO == null) {
-            ItemDAO = new ItemDAO();
+            ItemDAO = new MySqlItemDAO();
         }
         return ItemDAO;
     }

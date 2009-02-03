@@ -2,7 +2,7 @@
  * To change this template, choose Tools | Templates
  * and open the template in the editor.
  */
-package model.account;
+package DAO.transfertObject;
 
 /**Customer is a model class.
  * contains name,surname,log,pw,mail,sexe,born,fixe,gsm,protect,key1,key2
@@ -26,26 +26,29 @@ public class Customer2 {
     private String cellPhone;
     private String protectAccount;
     private String key1;
-    private String key2;
-    
-    private String societe;
-    private String userType;
-    
-    private String accountLevel;
-    private String typeUserVod;
-    private String creditVod;
-    private String tel;
-    private String gsm;
-    private String born;
-    private boolean allowed;
+    private String key2;        
     
     //******************
     // CONSTRUCTORS
     //******************
-           
+    
+    /*
+      // member variables
+  int CustomerNumber;
+  String name;
+  String streetAddress;
+  String city;
+  //...
+
+  // getter and setter methods...
+  //...
+  
+  */    
+       
     /**
      * Constructeur par défaut Account
      */
+    /*
     public Customer2() {
         this.id=0;
         this.login="";
@@ -64,7 +67,7 @@ public class Customer2 {
         this.born="";
         this.allowed=false;
     }
-    
+    */
     /**
      * Sert à l'authentification d'un utilisateur à partir du login & mdp passés en argument
      * @param login

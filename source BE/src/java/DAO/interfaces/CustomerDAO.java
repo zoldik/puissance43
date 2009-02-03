@@ -1,4 +1,4 @@
-package DAO;
+package DAO.interfaces;
 
 import java.util.Collection;
 import javax.sql.RowSet;
@@ -12,10 +12,16 @@ import model.account.Customer;
  * @author vincent
  */
 public interface CustomerDAO {
-   public int insertCustomer();
-  public boolean deleteCustomer();
-  public Customer findCustomer();
-  public boolean updateCustomer();
-  public RowSet selectCustomersRS();
-  public Collection selectCustomersTO();    
+
+    public int insertCustomer();
+
+    public boolean deleteCustomer();
+
+    public Customer findCustomer();
+
+    public boolean updateCustomer();
+
+    public RowSet selectCustomersRS();
+
+    public Collection selectCustomersTO();
 }

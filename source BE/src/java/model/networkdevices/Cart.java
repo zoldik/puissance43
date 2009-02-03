@@ -3,7 +3,7 @@ package model.networkdevices;
 import java.util.ArrayList;
 import java.util.Iterator;
 import model.database.FactoryDAO;
-import model.database.ItemDAO;
+import DAO.mySql.MySqlItemDAO;
 
 /**
  * Cart simulate a shopping cart of the real life.
@@ -96,7 +96,7 @@ public class Cart {
 
     public synchronized void addRowById(int id) {
 
-        ItemDAO itemDAO = FactoryDAO.getItemDAO();
+        MySqlItemDAO itemDAO = FactoryDAO.getItemDAO();
         
         addRow(itemDAO.extractItemById(id));
     }

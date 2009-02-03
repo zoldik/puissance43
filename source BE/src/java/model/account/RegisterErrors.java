@@ -1,5 +1,7 @@
 package model.account;
 
+import DAO.transfertObject.Customer2;
+
 /** Classe de test permettant la validation d'un compte à la création
  * @author Baudet Aurélien
  */

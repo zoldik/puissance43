@@ -12,7 +12,7 @@ import javax.servlet.http.HttpServletResponse;
 
 import javax.servlet.http.HttpSession;
 import model.database.FactoryDAO;
-import model.database.ItemDAO;
+import DAO.mySql.MySqlItemDAO;
 import model.networkdevices.Item;
 
 /**
@@ -77,7 +77,7 @@ public class CtrSearch extends HttpServlet {
 
     public void searchAll(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 
-        ItemDAO itemDAO = FactoryDAO.getItemDAO();
+        MySqlItemDAO itemDAO = FactoryDAO.getItemDAO();
         ArrayList<Item> items = itemDAO.extractAllItems();
 
         request.setAttribute("results", items);
@@ -98,7 +98,7 @@ public class CtrSearch extends HttpServlet {
         String type = (String) session.getAttribute("type");
 
         //Instanciate the model class and call this method
-        ItemDAO itemDAO = new ItemDAO();
+        MySqlItemDAO itemDAO = new MySqlItemDAO();
         ArrayList<Item> items = itemDAO.extractItemsByType(type);
 
         request.setAttribute("results", items);
