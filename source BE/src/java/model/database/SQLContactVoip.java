@@ -93,32 +93,45 @@ public class SQLContactVoip {
       * @param id
       * @return ResultSet
       */
-      static public Contact selectbyId(int id)throws SQLException {
-        Statement stmt;
-        ConnectionDatabase connexion=new ConnectionDatabase();
+      public static Contact selectbyId(String id)throws SQLException {
+        Statement stmt=null;
         ResultSet rs=null;
-        Contact contact = new Contact();
         
+        Contact contact = new Contact();
+
+        ConnectionDatabase connectionDatabase = new ConnectionDatabase();
+        Connection conn = (Connection) connectionDatabase.getConn(); 
+        System.out.println("ok1");
+
         try
-        {
-            stmt=connexion.getConn().createStatement();
-            rs = stmt.executeQuery("select * from VOIP_CONTACT where (VOIP_CONTACT_ID=\""+id+"\")");
-            int IdContact = rs.getInt("VOIP_CONTACT_ID");   
-            String Titre = rs.getString("TITRE");
-            String Categorie = rs.getString("CATEGORIE");
-            String Nom = rs.getString("NOM");
-            String Prenom = rs.getString("PRENOM");
-            String Email = rs.getString("MAIL");
-            String Telephone = rs.getString("TELEPHONE");
-            Contact tmp = new Contact(IdContact,Titre,Categorie,Nom,Prenom,Email,Telephone,id);
+        {   
+            System.out.println("ok2");
+            stmt=conn.createStatement();
+            System.out.println("ok3");
+            
+            rs = stmt.executeQuery("SELECT * FROM VOIP_CONTACT WHERE (VOIP_CONTACT_ID=\""+id+"\")");
+            System.out.println("ok4"); 
+            rs.next();
+            System.out.println("ok5"); 
+            Contact tmp=new Contact();
+            System.out.println("ok6");                                 
+            tmp.setId_voip(rs.getInt("VOIP_CONTACT_ID"));
+            tmp.setTitre(rs.getString("TITRE"));
+            tmp.setCategorie(rs.getString("CATEGORIE"));
+            tmp.setNom(rs.getString("NOM"));
+            tmp.setPrenom(rs.getString("PRENOM"));
+            tmp.setMail(rs.getString("MAIL"));
+            tmp.setTelephone(rs.getString("TELEPHONE"));
+            tmp.setId_voip(rs.getInt("ID_VOIP"));
             contact=tmp;
+            System.out.println("ok9");                                 
 
         } 
             catch(SQLException e2)
         {
             System.out.println("SqlException"+e2);
         }
-            try {connexion.close();} catch (Exception e3) {System.out.println("Erreur fermeture"+e3);}
+            try {conn.close();} catch (Exception e3) {System.out.println("Erreur fermeture"+e3);}
             return contact;
         }
             
@@ -138,7 +151,7 @@ public class SQLContactVoip {
         try
         {
             stmt=connexion.getConn().createStatement();
-            rs = stmt.executeQuery("select * from VOIP_CONTACT where (ID_VOIP=\""+id+"\")");
+            rs = stmt.executeQuery("select * from VOIP_CONTACT where (ID_VOIP="+id+");");
             while (rs.next()){
             int IdContact = rs.getInt("VOIP_CONTACT_ID");   
             String Titre = rs.getString("TITRE");
@@ -164,15 +177,16 @@ public class SQLContactVoip {
       * 
       * 
       */
-        static public boolean deletebyId(int id) throws SQLException {
+        static public boolean deletebyId(String id) throws SQLException {
         boolean okay=true;
         Statement stmt;
         ConnectionDatabase connexion=new ConnectionDatabase();
-        ResultSet rs=null;
+        //ResultSet rs=null;
         try
         {
             stmt=connexion.getConn().createStatement();
-            rs = stmt.executeQuery("DELETE * from VOIP_CONTACT where (VOIP_CONTACT_ID=\""+id+"\")");
+            //ResultSet rs = 
+            stmt.executeUpdate("DELETE from VOIP_CONTACT where VOIP_CONTACT_ID="+id+";");
         }
         catch(SQLException e2)
         {
@@ -195,7 +209,7 @@ public class SQLContactVoip {
         try
         {
             stmt=connexion.getConn().createStatement();
-            rs = stmt.executeQuery("select * from VOIP_CONTACT where (CATEGORIE=\""+categorie+"\")");
+            rs = stmt.executeQuery("select * from VOIP_CONTACT where CATEGORIE="+categorie+";");
         }
         catch(SQLException e2)
         {
