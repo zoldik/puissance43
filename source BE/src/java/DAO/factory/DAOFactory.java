@@ -1,4 +1,6 @@
-package DAO;
+package DAO.factory;
+
+import DAO.factory.MySqlDAOFactory;
 
 /**Abstract class DAO Factory
  *
@@ -7,7 +9,7 @@ package DAO;
 public abstract class DAOFactory {
     // List of DAO types supported by the factory
     public static final int MYSQL = 1;
-    public static final int CLOUDSCAPE = 2;
+    public static final int POSTGRESQL = 2;
     public static final int ORACLE = 3;
     public static final int SYBASE = 4;
 
@@ -25,8 +27,8 @@ public abstract class DAOFactory {
         switch (whichFactory) {
             case MYSQL:
                 return new MySqlDAOFactory();
-            //case CLOUDSCAPE:
-                //return new CloudscapeDAOFactory();
+            //case POSTGRESQL :
+                //return new PostGreSqlDAOFactory();
             //case ORACLE:
                 //return new OracleDAOFactory();
             //case SYBASE:

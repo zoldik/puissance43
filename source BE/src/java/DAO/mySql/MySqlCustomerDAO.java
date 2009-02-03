@@ -1,5 +1,7 @@
-package DAO;
+package DAO.mySql;
 
+import DAO.interfaces.CustomerDAO;
+import DAO.*;
 import java.util.Collection;
 import javax.sql.RowSet;
 import model.account.Customer;
@@ -70,4 +72,11 @@ public class MySqlCustomerDAO implements CustomerDAO {
         // of Transfer Objects.
 
     }
+    
+    /*
+    public int insertCustomer() {
+        throw new UnsupportedOperationException("Not supported yet.");
+    }
+     */
+     
 }

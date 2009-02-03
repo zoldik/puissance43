@@ -4,7 +4,7 @@ import java.io.*;
 import javax.servlet.*;
 import javax.servlet.http.*;
 
-import model.account.Customer2;
+import DAO.transfertObject.Customer2;
 import model.account.Mail;
 import model.account.Register;
 import model.account.RegisterErrors;

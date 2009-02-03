@@ -1,5 +1,8 @@
-package model.database;
+package DAO.mySql;
 
+import DAO.interfaces.ItemDAO;
+import DAO.*;
+import model.database.*;
 import model.networkdevices.Item;
 
 import java.util.ArrayList;
@@ -13,7 +16,7 @@ import java.sql.Connection;
  *
  * @author vincent
  */
-public class ItemDAO {
+public class MySqlItemDAO implements ItemDAO {
 
     public ArrayList<Item> extractAllItems() {
 

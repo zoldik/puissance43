@@ -1,5 +1,6 @@
 package model.account;
 
+import DAO.transfertObject.Customer2;
 import model.database.CustomerDAO;
 import model.database.FactoryDAO;
 
