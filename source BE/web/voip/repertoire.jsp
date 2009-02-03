@@ -7,22 +7,8 @@
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"
 "http://www.w3.org/TR/html4/loose.dtd">
-<script language="JavaScript">
 
-    function ChangeUrl(formulaire)
-    {
-        if (formulaire.ListeUrl.selectedIndex != 0) 
-        {
-            location.href = formulaire.ListeUrl.options[formulaire.ListeUrl.selectedIndex].value;
-        }
-        else 
-        {
-            alert("choississez un contact");
-        }        
-    }
 
-    
-</script>
 
 <html>
     <head>
@@ -37,7 +23,6 @@
         <%@ taglib tagdir="/WEB-INF/tags" prefix="h" %>
         <h:showContactInfo />
         
-        doCheck()
 
 
 
