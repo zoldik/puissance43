@@ -29,14 +29,14 @@ public class supprContactInfo extends HttpServlet {
     throws ServletException, IOException {
     response.setContentType("text/html;charset=UTF-8") ;
     PrintWriter out = response.getWriter();
-    String id = request.getParameter("id");
+    String id_string = request.getParameter("id");
+    System.out.println(id_string);
+    int id = Integer.parseInt(id_string);
 
 
     
     try {
-        out.println("id"+id+"");
         SQLContactVoip.deletebyId(id);
-        out.println("id"+id+"");
         }
     catch (Exception e) {System.out.println("Erreur dans la suppression"+e);}
         
