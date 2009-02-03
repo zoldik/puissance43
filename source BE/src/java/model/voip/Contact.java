@@ -56,6 +56,8 @@ public Contact (int id,String titre,String categorie,String nom,String prenom,St
     this.id_voip=id_voip;        
                }
 
+
+
 public void showContact(){
     
 }
