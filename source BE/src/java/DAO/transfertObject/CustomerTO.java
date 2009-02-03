@@ -8,7 +8,7 @@ package DAO.transfertObject;
  * contains name,surname,log,pw,mail,sexe,born,fixe,gsm,protect,key1,key2
  * @author Baudet Aurélien
  */
-public class Customer2 {
+public class CustomerTO {
     //******************
     // ATTRIBUTES
     //******************
@@ -154,7 +154,7 @@ public class Customer2 {
      * @param key1
      * @param key2
      */
-    public Customer2(String firstName, String lastName, String login, String password, String mail, String birthday, String sexe,
+    public CustomerTO(String firstName, String lastName, String login, String password, String mail, String birthday, String sexe,
             String phone, String cellPhone, String protectAccount, String key1, String key2) {
         this.firstName = firstName;
         this.lastName = lastName;

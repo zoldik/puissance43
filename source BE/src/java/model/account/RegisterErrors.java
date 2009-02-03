@@ -1,6 +1,6 @@
 package model.account;
 
-import DAO.transfertObject.Customer2;
+import DAO.transfertObject.CustomerTO;
 
 /** Classe de test permettant la validation d'un compte à la création
  * @author Baudet Aurélien
@@ -41,7 +41,7 @@ public class RegisterErrors{
      * @param newUser
      * @return ErrorRegister
      */
-    public RegisterErrors checkInfos(Customer2 newCustomer) {
+    public RegisterErrors checkInfos(CustomerTO newCustomer) {
         if (newCustomer.getFirstName() == "" || newCustomer.getFirstName().length() > 15) {
             this.errorFirstName = 1;
             this.error = 1;
