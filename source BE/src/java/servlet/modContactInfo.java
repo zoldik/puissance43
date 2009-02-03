@@ -37,48 +37,49 @@ public class modContactInfo extends HttpServlet {
     throws ServletException, IOException {
     response.setContentType("text/html;charset=UTF-8") ;
     PrintWriter out = response.getWriter();
-    int id = Integer.parseInt(request.getParameter("id")); 
-    Contact contact = new Contact();
+    String id = request.getParameter("id"); 
+
 
     try {
-        contact=SQLContactVoip.selectbyId(id);
+        Contact contact=SQLContactVoip.selectbyId(id);
         out.println("<h1>Modifier votre contact</h1>");
-        out.println("FORM Method=\"POST\" Action=\"../enregContactInfo\">");
+        out.println("<FORM Method=\"POST\" Action=\"enregModContactInfo\">");
         out.println("<table>");
         out.println("<tr>");
+        out.println("<input type=\"hidden\" name=\"id\" value=\""+id+"\">");
         out.println("<td>Titre </td>");
         out.println("<td><input type=\"text\" name=\"titre\" value=\"");
-        out.println(contact.titre);
+        out.println(contact.getTitre());
         out.println("\" /> </td>");
         out.println("</tr>");
         out.println("<tr>");
         out.println("<td>Catégorie </td>");
         out.println("<td><input type=\"text\" name=\"categorie\" value=\"");
-        out.println(contact.categorie);
+        out.println(contact.getCategorie());
         out.println("\" /> </td>");
         out.println("</tr>");
         out.println("<tr>");
         out.println("<td>Nom </td>");
         out.println("<td><input type=\"text\" name=\"nom\" value=\"");
-        out.println(contact.nom);
+        out.println(contact.getNom());
         out.println("\" /> </td>");
         out.println("</tr>");
         out.println("<tr>");
         out.println("<td>Prénom</td>");
         out.println("<td><input type=\"text\" name=\"prenom\" value=\"");
-        out.println(contact.prenom);
+        out.println(contact.getPrenom());
         out.println("\" /> </td>");
         out.println("</tr>");
         out.println("<tr>");
         out.println("<td>Téléphone </td>");
         out.println("<td><input type=\"text\" name=\"telephone\" value=\"");
-        out.println(contact.telephone);
+        out.println(contact.getTelephone());
         out.println("\" /> </td>");
         out.println("</tr>");        
         out.println("<tr>");
         out.println("<td>Email </td>");
         out.println("<td><input type=\"text\" name=\"mail\" value=\"");
-        out.println(contact.mail);
+        out.println(contact.getMail());
         out.println("\" /> </td>");
         out.println("</tr>");     
         out.println("<tr>");
@@ -92,7 +93,6 @@ public class modContactInfo extends HttpServlet {
         }
     catch (Exception e) {System.out.println("Erreur dans la modification"+e);}
 
-response.sendRedirect(response.encodeRedirectURL("voip/repertoire.jsp"));      
     } 
 
     /** 
