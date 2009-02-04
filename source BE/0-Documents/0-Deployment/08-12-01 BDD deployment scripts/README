@@ -1,0 +1,56 @@
+================================================================
+INFORMATIONS SUR LES SCRIPTS DE CE REPERTOIRE :
+================================================================
+Ce répertoire contient les fichiers nécessaires pour créer les bases de données, les tables et remplir les tables avec des données de test pour le TP.
+
+Les scripts peuvent fonctionner aussi bien avec mysql que postgresql.
+Pour passer de l'un à l'autre, il suffit de modifier la variable DB_MANAGER dans le fichier config.sh (mysql ou psql).
+
+Pour créer et initialiser la base, lancer le script create_database.sh.
+
+Après avoir créé et configué la base, vous pouvez utiliser init.sh pour créer les tables et les remplir de données.
+Ce script appelle create_tables.sh puis populate_tables.sh.
+
+Le script reinit.sh a le même fonctionnement mais il appelle d'abord drop_tables.sh pour supprimer les tables
+avant de les recréer et de les remplir.
+
+
+===============================================================
+INFOS SUPPLÉMENTAIRES CONCERNANT PostgreSQL :
+================================================================
+
+I) ACCES À LA BASE
+-----------------------------
+- Par défaut, PostgreSQL n'autorise que les utilisateurs qui ont réellement un compte sur le système.
+Le plus simple est donc que l'utilisateur spécifié dans le fichier config.sh existe et soit celui avec
+lequel on exécute les scripts.
+
+- Si cela ne convient pas, il faut modifier la configuration de démarrage du serveur PostgreSQL pour
+qu'il autorise des utilisateurs non existants sur le système à se connecter aux bases de données.
+Cela se fait dans le fichier pg_hba.conf (et éventuellement pg_ident.conf).
+Sous Fedora, ces fichiers se trouvent dans le répertoire /var/lib/pgsql/data.
+
+On ajoute les lignes suivantes dans le fichier pg_hba.conf AVANT les autres enregistrements :
+local   all     isen    md5
+host	all	isen    127.0.0.1/32	md5
+
+Il faut ensuite redémarrer le serveur PostgreSQL pour prendre en compte les modifications :
+/etc/init.d/postgresql restart
+
+Voir http://www.postgresql.org/docs/8.1/interactive/auth-methods.html pour plus de détails.
+
+
+II) MEMORISATION DU MOT DE PASSE
+---------------------------------
+Si, pour se connecter à la base PostgreSQL,  on utilise un utilisateur différent de celui avec 
+lequel on est connecté sur le système, psql va demander le mot de passe correspondant.
+Il est possible de mémoriser le mot de passe pour que PostgreSQL ne le demande plus.
+On crée un fichier ~/.pgpass dans lequel on met une ligne de la forme :
+hostname:port:database:username:password
+
+Dans notre cas, on écrirait :
+localhost:5432:my_project_manager:isen:isen
+
+Il faut penser à modifier les droits de ce fichier :
+chmod 0600 ~/.pgpass
+
