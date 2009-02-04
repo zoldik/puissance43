@@ -13,7 +13,7 @@
 DB_MANAGER=mysql
 USER=isen
 PASSWORD=isen
-DATABASE=RedNeck2
+DATABASE=RedNeck
 
 
 
