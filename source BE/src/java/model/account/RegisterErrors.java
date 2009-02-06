@@ -5,20 +5,22 @@ import DAO.transfertObject.CustomerTO;
 /** Classe de test permettant la validation d'un compte à la création
  * @author Baudet Aurélien
  */
-public class RegisterErrors{
+public class RegisterErrors {
 
     private int errorFirstName;
     private int errorLastName;
     private int errorLogin;
-    private int errorPw;
-    private int errormail;
-    private int errorsexe;
-    private int errorborn;
-    private int errorfixe;
-    private int errorgsm;
-    private int errorprotect;
-    private int error;    
+    private int errorPassword;
+    private int errorMail;
+    private int errorSexe;
+    private int errorBirthday;
+    private int errorPhone;
+    private int errorCellPhone;
+    private int errorProfession;
+    private int errorCompany;
 
+    //gestion de l'account_level ?
+    
     /**Constructor
      * 
      */
@@ -36,6 +38,58 @@ public class RegisterErrors{
         this.error = 0;
     }
 
+    //**********
+    //GETTERS
+    //**********
+    
+    public int getErrorBirthday() {
+        return errorBirthday;
+    }
+
+    public int getErrorCellPhone() {
+        return errorCellPhone;
+    }
+
+    public int getErrorCompany() {
+        return errorCompany;
+    }
+
+    public int getErrorFirstName() {
+        return errorFirstName;
+    }
+
+    public int getErrorLastName() {
+        return errorLastName;
+    }
+
+    public int getErrorLogin() {
+        return errorLogin;
+    }
+
+    public int getErrorMail() {
+        return errorMail;
+    }
+
+    public int getErrorPassword() {
+        return errorPassword;
+    }
+
+    public int getErrorPhone() {
+        return errorPhone;
+    }
+
+    public int getErrorProfession() {
+        return errorProfession;
+    }
+
+    public int getErrorSexe() {
+        return errorSexe;
+    }
+    
+    //**********
+    //METHODS
+    //**********
+        
     /** Check if all the fields in the register's form is well filled
      * 
      * @param newUser
@@ -80,54 +134,12 @@ public class RegisterErrors{
         }
         /*
         if (Integer.parseInt(newCustomer.getProtectAccount()) != (Integer.parseInt(newCustomer.getKey1()) + Integer.parseInt(newCustomer.getKey2())) || newCustomer.getProtectAccount() == "0") {
-            this.errorprotect = 1;
-            this.error = 1;
+        this.errorprotect = 1;
+        this.error = 1;
         }
-         */ 
+         */
         return this;
     }
 
-    public int isErrorFirstName() {
-        return errorFirstName;
-    }
-
-    public int isErrorLastName() {
-        return errorLastName;
-    }
-
-    public int isErrorLogin() {
-        return errorLogin;
-    }
-
-    public int isErrorpw() {
-        return errorPw;
-    }
-
-    public int isErrormail() {
-        return errormail;
-    }
-
-    public int isErrorsexe() {
-        return errorsexe;
-    }
-
-    public int isErrorborn() {
-        return errorborn;
-    }
-
-    public int isErrorfixe() {
-        return errorfixe;
-    }
-
-    public int isErrorgsm() {
-        return errorgsm;
-    }
-
-    public int isError() {
-        return error;
-    }
-
-    public int isErrorProtect() {
-        return errorprotect;
-    }
+   
 }
