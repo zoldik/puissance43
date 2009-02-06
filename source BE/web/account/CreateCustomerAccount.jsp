@@ -26,7 +26,9 @@
 
             //String param  = request.getParameter("Creation");
             String account = session.getAttribute("Creation").toString();
+            
             RegisterErrors error = new RegisterErrors();
+            
             if (account.compareTo("S'enregistrer") == 0) {
                 out.print("<center>Création d'un compte</center><hr>");
             } else if (account.compareTo("used") == 0) {
@@ -41,31 +43,35 @@
         
         <br><br><div id="CreateUser"></div><br>
         
-        <center><a style="color:#FF0000">* : Paramètre obligatoire</a></center><br>
+        <center><a style="color:#FF0000">* : Paramètres obligatoires</a></center><br>
         <form name="Register" action="./CreateAccount" method="POST">
             <div id="register">  
                 <table>
                     <tr align="left">
                         <td><a style="color:
-                                   <%if (error.isErrorFirstName() == 1) {
+                                   <%if (error.getErrorFirstName() == 1) {
                 out.print("#FF0000");
             }%>">* Prénom (15 caractères max) : </a></td>
                         <td><input type="text" name="firstName" onKeyUp=veriflength(this.value,"firstName","15") align="left" /><div id="firstName"></div></td>
                     </tr>
                     
+                    
                     <tr align="left">
-                        <td><a style="color:<%if (error.isErrorLastName() == 1) {
+                        <td><a style="color:<%if (error.getErrorLastName() == 1) {
                 out.print("#FF0000");
             }%>">* nom (15 caractères max) : </a></td>
                         <td><input type="text" name="lastName" onKeyUp=veriflength(this.value,"lastName","15") align="left" /><div id="lastName"></div></td>
                     </tr>
                     
+                    
                     <tr align="left">
-                        <td><a style="color:<%if (error.isErrorlog() == 1) {
+                        <td><a style="color:<%if (error.getErrorLogin() == 1) {
                 out.print("#FF0000");
             }%>">* Nom d'utilisateur (15 caractères max) : </a></td>
-                        <td><input type="text" name="login" onKeyUp=verifPseudo(this.value) align="left"/><div id="freelogin"></div></td>
+                        <td><input type="text" name="login" onKeyUp=verifLogin(this.value) align="left"/><div id="freelogin"></div></td>
                     </tr>
+                    
+                    
                     <tr align="left">
                         <td><a style="color:<%if (error.isErrorpw() == 1) {
                 out.print("#FF0000");

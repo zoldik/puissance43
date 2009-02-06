@@ -23,6 +23,8 @@ function writedivMdp(texte)
     document.getElementById('levelmdp').innerHTML = texte;
 }
 
+//****************************************************
+
 function createXMLHttpRequest()
 {
     var request = false;
@@ -57,12 +59,14 @@ function createXMLHttpRequest()
     return request;
 }
 
+//****************************************************
+
 function updateDivContent(divName, text)
 {
     document.getElementById(divName).innerHTML = text;
 }
 
-//ddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddd
+//****************************************************
 
 function verifLength(string, div, length)
 {
@@ -74,35 +78,46 @@ function verifLength(string, div, length)
     }
 }
 
+//****************************************************
 
-
-
-
-function verifPseudo(pseudo) {
-    request = getDataAsynchronous3('./verifPseudo.jsp', try4, pseudo);
+function verifLogin(login) {
+    
+    xhr = getDataAsynchronous3('./verifPseudo.jsp', handlerLogin, login);
     //updateDivContent("pseudobox2", "readyState");
     //writediv('<span style="color:#cc0000"><b>'+pseudo2+' :</b> ce pseudo est trop court</span>');
 }
 
-function try4() {
-    if(request.readyState == 4) {
-        if(request.status == 200) {
-            var text2=request.responseText.toString();
-            updateDivContent("freelogin", "<FONT SIZE=1 "+text2+"</font>");
+//****************************************************
+
+function getDataAsynchronous3(URL, alertFunction, login)
+{
+    //Creation de l'objet xhr du côté client
+    var xhr = createXMLHttpRequest();
+    
+    //Mise en place d'une fonction handler pour le résultat de la requête
+    xhr.onreadystatechange = alertFunction;
+    
+    //envoie de la requête par l'objet xhr en mode asynchrone (true)
+    xhr.open("POST",URL,true);
+    xhr.overrideMimeType('text/html');
+    xhr.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
+    //envoie du login pour vérification
+    xhr.send("login="+login);
+    return xhr;
+}
+
+//****************************************************
+
+function handlerLogin() {
+    if(xhr.readyState == 4) {
+        if(xhr.status == 200) {
+            var validationLogin=xhr.responseText.toString();
+            updateDivContent("freelogin", "<FONT SIZE=1 "+validationLogin+"</font>");
         }
     }
 }
 
-function getDataAsynchronous3(URL, alertFunction, pseudo)
-{
-    var request = createXMLHttpRequest();
-    request.onreadystatechange = alertFunction;
-    request.open("POST",URL,true);
-    request.overrideMimeType('text/html');
-    request.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
-    request.send("pseudo="+pseudo);
-    return request;
-}
+//****************************************************
 
 function verifMail(mail)
 {
