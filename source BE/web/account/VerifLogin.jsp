@@ -8,7 +8,7 @@
 <%@page pageEncoding="UTF-8"%>
 <%@page language="java" import="java.util.*,java.io.*,fr.isen.jeen5_0809.group8.SQL.*" %>
 <%
-        String login = (String)request.getParameter("pseudo");
+        String login = (String)request.getParameter("login");
         
         boolean result=SQLUser.isUsed(login);
         String result2="";

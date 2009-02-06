@@ -68,50 +68,62 @@
                         <td><a style="color:<%if (error.getErrorLogin() == 1) {
                 out.print("#FF0000");
             }%>">* Nom d'utilisateur (15 caractères max) : </a></td>
-                        <td><input type="text" name="login" onKeyUp=verifLogin(this.value) align="left"/><div id="freelogin"></div></td>
+                        <td><input type="text" name="login" onKeyUp=verifLogin(this.value) align="left"/><div id="freeLogin"></div></td>
                     </tr>
                     
                     
                     <tr align="left">
-                        <td><a style="color:<%if (error.isErrorpw() == 1) {
+                        <td><a style="color:<%if (error.getErrorPassword() == 1) {
                 out.print("#FF0000");
             }%>">* Mot de passe (8 min / 15 max) : </a></td>
-                        <td><input type="password" name="mdp" onKeyUp=levelMdp(this.value) align="left" /><div id="levelmdp"></div></td>
+                        <td><input type="password" name="password" onKeyUp=levelMdp(this.value) align="left" /><div id="levelPassword"></div></td>
                     </tr>
+                    
+                    
                     <tr align="left">
-                        <td><a style="color:<%if (error.isErrormail() == 1) {
+                        <td><a style="color:<%if (error.getErrorMail() == 1) {
                 out.print("#FF0000");
             }%>">* Mail (Valide) : </a></td>
                         <td><input type="text" name="mail" onKeyUp=verifMail(this.value) align="left" /><div id="mail"></div></td>
                     </tr>
+                    
+                    
                     <tr align="left">
-                        <td><a style="color:<%if (error.isErrorsexe() == 1) {
+                        <td><a style="color:<%if (error.getErrorSexe() == 1) {
                 out.print("#FF0000");
             }%>">* Sexe (M/F/X): </a></td>
-                        <td><input type="text" name="sexe" onKeyUp=verifSex(this.value,"sex","1") align="left" /><div id="sex"></div></td>
+                        <td><input type="text" name="sexe" onKeyUp=verifSexe(this.value) align="left" /><div id="sexe"></div></td>
                     </tr>
+                    
+                    
                     <tr align="left">
-                        <td><a style="color:<%if (error.isErrorborn() == 1) {
+                        <td><a style="color:<%if (error.getErrorBirthday() == 1) {
                 out.print("#FF0000");
             }%>">* Date de Naissance : </a></td>
                         <td><input type="text" name="naissance" onKeyUp=veriflength(this.value,"birthday","10") align="left" /><div id="birthday"></div></td>
                     </tr>
+                    
+                    
                     <tr align="left">
-                        <td><a style="color:<%if (error.isErrorfixe() == 1) {
+                        <td><a style="color:<%if (error.getErrorPhone() == 1) {
                 out.print("#FF0000");
             }%>">Téléphone Fixe : </a></td>
                         <td><input type="text" name="fixe" onKeyUp=veriflength(this.value,"phone","20") align="left" /><div id="phone"></div></td>
                     </tr>
+                    
+                    
                     <tr align="left">
-                        <td><a style="color:<%if (error.isErrorgsm() == 1) {
+                        <td><a style="color:<%if (error.getErrorCellPhone() == 1) {
                 out.print("#FF0000");
             }%>">Téléphone gsm : </a></td>
                         <td><input type="text" name="gsm" onKeyUp=veriflength(this.value,"gsm","20") align="left" /><div id="gsm"></div></td>
                     </tr>
+                    
+                    <!--
                     <tr align="left">
-                        <td><a style="color:<%if (error.isErrorProtect() == 1) {
+                        <td><a style="color://if (error.isErrorProtect() == 1) {
                 out.print("#FF0000");
-            }%>">* Anti-Bot : <%out.print(int1 + " + " + int2 + " =\n");%></a></td>
+            //>">* Anti-Bot : //out.print(int1 + " + " + int2 + " =\n");//</a></td>
                         <td><input type="text" name="protect" align="left" /></td>
                     </tr>
                     <tr>
@@ -122,6 +134,7 @@
                             <input type="submit" value="Créer" name="Connexion" />
                         </td>
                     </tr>
+                    -->
                 </table>
             </div>
         </form>
