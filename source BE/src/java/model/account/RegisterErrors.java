@@ -28,14 +28,14 @@ public class RegisterErrors {
         this.errorFirstName = 0;
         this.errorLastName = 0;
         this.errorLogin = 0;
-        this.errorPw = 0;
-        this.errormail = 0;
-        this.errorsexe = 0;
-        this.errorborn = 0;
-        this.errorfixe = 0;
-        this.errorgsm = 0;
-        this.errorprotect = 0;
-        this.error = 0;
+        this.errorPassword = 0;
+        this.errorMail = 0;
+        this.errorSexe = 0;
+        this.errorBirthday = 0;
+        this.errorPhone = 0;
+        this.errorCellPhone = 0;
+        this.errorProfession = 0;
+        this.errorCompany = 0;
     }
 
     //**********
@@ -96,6 +96,7 @@ public class RegisterErrors {
      * @return ErrorRegister
      */
     public RegisterErrors checkInfos(CustomerTO newCustomer) {
+        /*
         if (newCustomer.getFirstName() == "" || newCustomer.getFirstName().length() > 15) {
             this.errorFirstName = 1;
             this.error = 1;
@@ -137,7 +138,7 @@ public class RegisterErrors {
         this.errorprotect = 1;
         this.error = 1;
         }
-         */
+        */
         return this;
     }
 
