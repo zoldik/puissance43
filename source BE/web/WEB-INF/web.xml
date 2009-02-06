@@ -106,6 +106,15 @@
     <servlet-mapping>
         <servlet-name>Search.jsp</servlet-name>
         <url-pattern>/Search.jsp</url-pattern>
+    </servlet-mapping>  
+    <!--zzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzz-->
+    <servlet>
+        <servlet-name>VerifLogin.jsp</servlet-name>
+        <jsp-file>/account/VerifLogin.jsp</jsp-file>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>VerifLogin.jsp</servlet-name>
+        <url-pattern>/VerifLogin.jsp</url-pattern>
     </servlet-mapping>       
     <!--JSP-->    
     <!--VINCENT DESTAILLEUR -->
