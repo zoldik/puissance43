@@ -1,29 +1,5 @@
-function levelMdp(mdp)
-{
-    if(mdp != '')
-    {
-        if(mdp.length<8)
-            writedivMdp('<span style="color:#cc0000"><FONT SIZE=1>Password too short</font></span>');
-        else if(mdp.length>15)
-            writedivMdp('<span style="color:#cc0000"><FONT SIZE=1>Password too long</font></span>');
-        else if(mdp.length>7 && mdp.length<10)
-            writedivMdp('<span style="color:#FF8C00"><FONT SIZE=1>Low security password</font></span>');
-        else if(mdp.length>10 && mdp.length<13)
-            writedivMdp('<span style="color:#0000cc"><FONT SIZE=1>Medium security password</font></span>');
-        else if(mdp.length>12 && mdp.length<15)
-            writedivMdp('<span style="color:#90EE90"><FONT SIZE=1>High security password</font></span>');
-        else if(mdp.length==15)
-            writedivMdp('<span style="color:#008000"><FONT SIZE=1>Highest security password</font></span>');
-    }
-    else writedivMdp('<span style="color:#000000"><FONT SIZE=1>Enter password</font></span>');
-}
-     
-function writedivMdp(texte)
-{
-    document.getElementById('levelmdp').innerHTML = texte;
-}
-
 //****************************************************
+//**************BEGIN CORE FUNCTIONS********************
 
 function createXMLHttpRequest()
 {
@@ -67,6 +43,8 @@ function updateDivContent(divName, text)
 }
 
 //****************************************************
+//**************END CORE FUNCTIONS********************
+
 
 function verifLength(string, div, length)
 {
@@ -78,18 +56,16 @@ function verifLength(string, div, length)
     }
 }
 
+//*************BEGIN LOGIN FUNCTIONS******************
 //****************************************************
 
-function verifLogin(login) {
-    
-    xhr = getDataAsynchronous3('./verifPseudo.jsp', handlerLogin, login);
-    //updateDivContent("pseudobox2", "readyState");
-    //writediv('<span style="color:#cc0000"><b>'+pseudo2+' :</b> ce pseudo est trop court</span>');
+function verifLogin(login) {    
+    xhr = getVerifLoginAsynchronous('./VerifLogin.jsp', handlerVerifLogin, login);    
 }
 
 //****************************************************
 
-function getDataAsynchronous3(URL, alertFunction, login)
+function getVerifLoginAsynchronous(URL, alertFunction, login)
 {
     //Creation de l'objet xhr du côté client
     var xhr = createXMLHttpRequest();
@@ -108,16 +84,50 @@ function getDataAsynchronous3(URL, alertFunction, login)
 
 //****************************************************
 
-function handlerLogin() {
+function handlerVerifLogin() {
     if(xhr.readyState == 4) {
         if(xhr.status == 200) {
             var validationLogin=xhr.responseText.toString();
-            updateDivContent("freelogin", "<FONT SIZE=1 "+validationLogin+"</font>");
+            updateDivContent("freeLogin", "<FONT SIZE=1 "+validationLogin+"</font>");
         }
     }
 }
 
 //****************************************************
+//*************END LOGIN FUNCTIONS********************
+
+//*************BEGIN PASSWORD FUNCTIONS***************
+//****************************************************
+
+function levelPassword(password)
+{
+    if(password != '')
+    {
+        if(password.length<8)
+            writeDivPassword('<span style="color:#cc0000"><FONT SIZE=1>Password too short</font></span>');
+        else if(password.length>15)
+            writeDivPassword('<span style="color:#cc0000"><FONT SIZE=1>Password too long</font></span>');
+        else if(password.length>7 && password.length<10)
+            writeDivPassword('<span style="color:#FF8C00"><FONT SIZE=1>Low security password</font></span>');
+        else if(password.length>10 && password.length<13)
+            writeDivPassword('<span style="color:#0000cc"><FONT SIZE=1>Medium security password</font></span>');
+        else if(password.length>12 && password.length<15)
+            writeDivPassword('<span style="color:#90EE90"><FONT SIZE=1>High security password</font></span>');
+        else if(password.length==15)
+            writeDivPassword('<span style="color:#008000"><FONT SIZE=1>Highest security password</font></span>');
+    }
+    else writeDivPassword('<span style="color:#000000"><FONT SIZE=1>Enter password</font></span>');
+}
+
+//****************************************************
+
+function writeDivPassword(innerHTML)
+{
+    document.getElementById('levelPassword').innerHTML = innerHTML;
+}
+
+//*************END PASSWORD FUNCTIONS***************
+//**************************************************
 
 function verifMail(mail)
 {
@@ -129,14 +139,14 @@ function verifMail(mail)
     }
 }
 
+//**************************************************
 
-
-function verifSex(sex)
+function verifSexe(sexe)
 {
-    if(sex != '')
+    if(sexe != '')
     {
-        if(sex.length<2 && (sex.toString().indexOf("F",0)!=-1 || sex.toString().indexOf("M",0)!=-1 || sex.toString().indexOf("X",0)!=-1))
-            updateDivContent("sex", "<FONT SIZE=1 color=\"green\">Sex correct</font>");
-        else updateDivContent("sex", "<FONT SIZE=1 color=\"red\">Sex incorrect</font>");
+        if(sexe.length<2 && (sexe.toString().indexOf("F",0)!=-1 || sexe.toString().indexOf("M",0)!=-1 || sexe.toString().indexOf("X",0)!=-1))
+            updateDivContent("sex", "<FONT SIZE=1 color=\"green\">Sexe correct</font>");
+        else updateDivContent("sex", "<FONT SIZE=1 color=\"red\">Sexe incorrect</font>");
     }
 }
