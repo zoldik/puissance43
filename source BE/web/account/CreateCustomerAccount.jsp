@@ -16,14 +16,14 @@
         
         <script language="JavaScript" src="ajax_register.js"></script>
         
-        <%            
+        <%
             //randomly generate two int in order to avoid boot attack
             int int1 = (int) ((float) Math.random() * 100);
             int int2 = (int) ((float) Math.random() * 100);
-            
+
             //need to set here otherwise internal error server 500 during the get 
-            session.setAttribute("Creation","S'enregistrer");
-            
+            session.setAttribute("Creation", "S'enregistrer");
+
             //String param  = request.getParameter("Creation");
             String account = session.getAttribute("Creation").toString();
             RegisterErrors error = new RegisterErrors();
@@ -46,17 +46,20 @@
             <div id="register">  
                 <table>
                     <tr align="left">
-                        <td><a style="color:<%if (error.isErrorFirstName() == 1) {
+                        <td><a style="color:
+                                   <%if (error.isErrorFirstName() == 1) {
                 out.print("#FF0000");
-            }%>">* Nom (15 caractères max) : </a></td>
-                        <td><input type="text" name="nom" onKeyUp=veriflength(this.value,"name","15") align="left" /><div id="name"></div></td>
+            }%>">* Prénom (15 caractères max) : </a></td>
+                        <td><input type="text" name="firstName" onKeyUp=veriflength(this.value,"firstName","15") align="left" /><div id="firstName"></div></td>
                     </tr>
+                    
                     <tr align="left">
                         <td><a style="color:<%if (error.isErrorLastName() == 1) {
                 out.print("#FF0000");
-            }%>">* Prénom (15 caractères max) : </a></td>
-                        <td><input type="text" name="prenom" onKeyUp=veriflength(this.value,"surname","15") align="left" /><div id="surname"></div></td>
+            }%>">* nom (15 caractères max) : </a></td>
+                        <td><input type="text" name="lastName" onKeyUp=veriflength(this.value,"lastName","15") align="left" /><div id="lastName"></div></td>
                     </tr>
+                    
                     <tr align="left">
                         <td><a style="color:<%if (error.isErrorlog() == 1) {
                 out.print("#FF0000");
