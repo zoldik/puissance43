@@ -36,7 +36,7 @@ public class RegisterErrors{
         this.error = 0;
     }
 
-    /** Vérifie si l'ensemble du formulaire a été bien rempli
+    /** Check if all the fields in the register's form is well filled
      * 
      * @param newUser
      * @return ErrorRegister
@@ -78,10 +78,12 @@ public class RegisterErrors{
             this.errorgsm = 1;
             this.error = 1;
         }
+        /*
         if (Integer.parseInt(newCustomer.getProtectAccount()) != (Integer.parseInt(newCustomer.getKey1()) + Integer.parseInt(newCustomer.getKey2())) || newCustomer.getProtectAccount() == "0") {
             this.errorprotect = 1;
             this.error = 1;
         }
+         */ 
         return this;
     }
 
@@ -93,7 +95,7 @@ public class RegisterErrors{
         return errorLastName;
     }
 
-    public int isErrorlog() {
+    public int isErrorLogin() {
         return errorLogin;
     }
 

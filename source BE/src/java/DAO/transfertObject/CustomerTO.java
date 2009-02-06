@@ -11,174 +11,46 @@ package DAO.transfertObject;
 public class CustomerTO {
     //******************
     // ATTRIBUTES
-    //******************
-    
-    private int id = 0;
-    
+    //******************    
+    private int id;
     private String firstName;
     private String lastName;
     private String login;
     private String password;
     private String mail;
-    private String birthday;
     private String sexe;
+    private String birthday;
     private String phone;
     private String cellPhone;
-    private String protectAccount;
-    private String key1;
-    private String key2;        
-    
-    //******************
-    // CONSTRUCTORS
-    //******************
-    
-    /*
-      // member variables
-  int CustomerNumber;
-  String name;
-  String streetAddress;
-  String city;
-  //...
-
-  // getter and setter methods...
-  //...
-  
-  */    
-       
-    /**
-     * Constructeur par défaut Account
-     */
-    /*
-    public Customer2() {
-        this.id=0;
-        this.login="";
-        this.password="";
-        this.firstName="";
-        this.lastName="";
-        this.societe="";
-        this.mail="";
-        this.sexe="";
-        this.userType="";
-        this.accountLevel="";
-        this.typeUserVod="";
-        this.creditVod="";
-        this.tel="";
-        this.gsm="";
-        this.born="";
-        this.allowed=false;
-    }
-    */
-    /**
-     * Sert à l'authentification d'un utilisateur à partir du login & mdp passés en argument
-     * @param login
-     * @param password
-     * @throws java.lang.Exception
-     */
-    /*public Customer(String login, String password) throws Exception {
-        this.id=0;
-        this.log=login;
-        this.pw=password;
-        this.name="";
-        this.surname="";
-        this.societe="";
-        this.mail="";
-        this.sexe="";
-        this.userType="";
-        this.accountLevel="";
-        this.typeUserVod="";
-        this.creditVod="";
-        this.tel="";
-        this.gsm="";
-        this.born="";
-        boolean tmp_allowed = false;
-        tmp_allowed = SQLCustomer.isAllowed(login,password);
-        this.allowed=tmp_allowed;
-        if (this.allowed) {
-            this.id=SQLCustomer.getID(login, password);
-            this.name=SQLCustomer.getName(login, password);
-            this.surname=SQLCustomer.getSurname(login, password);
-        }
-    }*/
-    
-    /**
-     * Constructeur Account
-     * @param id
-     * @param login
-     * @param mdp
-     * @param nom
-     * @param prenom
-     * @param societe
-     * @param mail
-     * @param sexe
-     * @param user_type
-     * @param account_level
-     * @param typeUserVOD
-     * @param creditVOD
-     * @param tel
-     * @param gsm
-     * @param naissance
-     */
-    /*public Customer(int id, String login, String mdp, String nom, String prenom, String societe, String mail, 
-            String sexe, String user_type, String account_level, String typeUserVOD, String creditVOD, String tel, String gsm, String naissance) {
-        this.id=id;
-        this.log=login;
-        this.pw=mdp;
-        this.name=nom;
-        this.surname=prenom;
-        this.societe=societe;
-        this.mail=mail;
-        this.sexe=sexe;
-        this.userType=user_type;
-        this.accountLevel=account_level;
-        this.typeUserVod=typeUserVOD;
-        this.creditVod=creditVOD;
-        this.tel=tel;
-        this.gsm=gsm;
-        this.born=naissance;
-        this.allowed=false;    
-    }*/
-
-        
-    /**
-     * Constructor User
-     * @param nom
-     * @param prenom
-     * @param login
-     * @param mdp
-     * @param mail
-     * @param sexe
-     * @param naissance
-     * @param fixe
-     * @param gsm
-     * @param protect
-     * @param key1
-     * @param key2
-     */
-    public CustomerTO(String firstName, String lastName, String login, String password, String mail, String birthday, String sexe,
-            String phone, String cellPhone, String protectAccount, String key1, String key2) {
-        this.firstName = firstName;
-        this.lastName = lastName;
-        this.login = login;
-        this.password = password;
-        this.mail = mail;
-        this.birthday = birthday;
-        this.sexe = sexe;
-        this.phone = phone;
-        this.cellPhone = cellPhone;
-        if (protectAccount == "") {
-            this.protectAccount = "0";
-        } else {
-            this.protectAccount = protectAccount;
-        }
-        this.key1 = key1;
-        this.key2 = key2;
-    }
+    private String profession;
+    private String company;
+    private String account_level;
 
     //******************
     //GETTERS
     //******************
+    public String getAccount_level() {
+        return account_level;
+    }
+
+    public String getBirthday() {
+        return birthday;
+    }
+
+    public String getCellPhone() {
+        return cellPhone;
+    }
+
+    public String getCompany() {
+        return company;
+    }
+
     public String getFirstName() {
         return firstName;
+    }
+
+    public int getId() {
+        return id;
     }
 
     public String getLastName() {
@@ -189,39 +61,77 @@ public class CustomerTO {
         return login;
     }
 
-    public String getPassword() {
-        return password;
-    }
-
     public String getMail() {
         return mail;
     }
 
-    public String getBirthday() {
-        return birthday;
-    }
-
-    public String getSexe() {
-        return sexe;
+    public String getPassword() {
+        return password;
     }
 
     public String getPhone() {
         return phone;
     }
 
-    public String getCellPhone() {
-        return cellPhone;
+    public String getProfession() {
+        return profession;
     }
 
-    public String getProtectAccount() {
-        return protectAccount;
+    public String getSexe() {
+        return sexe;
+    }
+    //******************
+    //SETTERS
+    //******************
+    public void setAccount_level(String account_level) {
+        this.account_level = account_level;
     }
 
-    public String getKey1() {
-        return key1;
+    public void setBirthday(String birthday) {
+        this.birthday = birthday;
     }
 
-    public String getKey2() {
-        return key2;
+    public void setCellPhone(String cellPhone) {
+        this.cellPhone = cellPhone;
+    }
+
+    public void setCompany(String company) {
+        this.company = company;
+    }
+
+    public void setFirstName(String firstName) {
+        this.firstName = firstName;
+    }
+
+    public void setId(int id) {
+        this.id = id;
+    }
+
+    public void setLastName(String lastName) {
+        this.lastName = lastName;
+    }
+
+    public void setLogin(String login) {
+        this.login = login;
+    }
+
+    public void setMail(String mail) {
+        this.mail = mail;
+    }
+
+    public void setPassword(String password) {
+        this.password = password;
+    }
+
+    public void setPhone(String phone) {
+        this.phone = phone;
+    }
+
+    public void setProfession(String profession) {
+        this.profession = profession;
+    }
+
+    public void setSexe(String sexe) {
+        this.sexe = sexe;
     }
 }

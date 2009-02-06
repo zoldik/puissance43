@@ -1,5 +1,6 @@
 package DAO.interfaces;
 
+import DAO.transfertObject.CustomerTO;
 import java.util.Collection;
 import javax.sql.RowSet;
 import model.account.Customer;
@@ -13,7 +14,7 @@ import model.account.Customer;
  */
 public interface CustomerDAO {
 
-    public int insertCustomer();
+    public int insertCustomer(CustomerTO customerTO);
 
     public boolean deleteCustomer();
 
