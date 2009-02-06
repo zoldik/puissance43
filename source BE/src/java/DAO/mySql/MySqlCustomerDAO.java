@@ -2,6 +2,7 @@ package DAO.mySql;
 
 import DAO.interfaces.CustomerDAO;
 import DAO.*;
+import DAO.transfertObject.CustomerTO;
 import java.util.Collection;
 import javax.sql.RowSet;
 import model.account.Customer;
@@ -22,14 +23,18 @@ public class MySqlCustomerDAO implements CustomerDAO {
         //initialization
     }
     // The following methods can use
-    // CloudscapeDAOFactory.createConnection() 
+    // MySqlDAOFactory.createConnection() 
     // to get a connection as required
-    public int insertCustomer() {
+    public int insertCustomer(CustomerTO customerTO) {
         throw new UnsupportedOperationException("Not supported yet.");
+        
+        
     // Implement insert customer here.
     // Return newly created customer number
     // or a -1 on error
-
+        
+        
+        
     }
 
     public boolean deleteCustomer() {
@@ -72,6 +77,8 @@ public class MySqlCustomerDAO implements CustomerDAO {
         // of Transfer Objects.
 
     }
+
+   
     
     /*
     public int insertCustomer() {
