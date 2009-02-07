@@ -1,0 +1,7 @@
+user = login mysql
+password = mot de passe mysql
+dbname = courrier
+table = forward
+select_field = destination
+where_field = source
+hosts = adresse IP de votre serveur

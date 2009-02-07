@@ -1,0 +1,5 @@
+Mail userMail=new Mail();
+userMail.subject="le titre du message";
+userMail.content="le contenu du message";
+userMail.address="l'adresse du destinataire";
+userMail.sendMail();

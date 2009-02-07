@@ -1,0 +1,7 @@
+user = login mysql
+password = mot de passe mysql
+dbname = courrier
+table = compte
+select_field = emplacement
+where_field = login
+hosts = adresse IP de votre serveur

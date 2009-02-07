@@ -1,0 +1,199 @@
+Notice installation Serveur Mail
+
+Liste des paquets :
+- Postfix (avec ses dépendances)
+- Postfix-mysql
+- courier-imap (avec ses dépendances)
+- openwebmail (voir l'archive)
+
+Pré-requis :
+- serveur web (type apache)
+- serveur mysql
+- distribution debian (ubuntu/kubuntu)
+
+
+Installation :
+
+I] Services obligatoires :
+1) Installations des paquets. Le paquet courier-imap est optionnel si courier-pop est installé (et vice-versa)
+    apt-get install postfix postfix-mysql
+    apt-get install courier-authdaemon  courier-authmysql courier-debug
+    apt-get install courier-pop 
+    apt-get install courier-imap
+- lors de l'installation du paquet postfix, il vous sera demandé diverses informations. Veuillez remplir comme suivant :
+a) Type de configuration : Site internet
+b) Nom du courrier : Redneck.fr (ou nom de domaine de l'entreprise si besoin)
+
+
+2) Préparatif configuration
+a) Ajouter l'utilisateur vmail
+    sudo groupadd -g 5000 vmail 
+    sudo useradd -g vmail -u 5000 vmail -d /home/vmail –m
+
+b) Création des tables /!\ A INCLURE DANS LE SCRIPT DE LA DB /!\
+    -- Dans la table domaines, entrez vos domaines qui recevront du courrier, par exemple RedNeck.fr (pas de sous domaine)
+    CREATE TABLE `domaines` (
+     `domaine` varchar(100) NOT NULL default '',
+     UNIQUE KEY `domaine` (`domaine`)
+    ) TYPE=MyISAM;
+    -- Dans forward, entrez tout vos forwards, par ex contact@RedNeck.com vers webmaster@RedNeck.fr
+    CREATE TABLE `forward` (
+     `source` varchar(255) NOT NULL default '',
+     `destination` varchar(255) NOT NULL default '',
+     PRIMARY KEY  (`source`)
+    ) TYPE=MyISAM;
+    -- Enfin cette dernière table définie vos comptes. Le login est de la forme d’un email (par ex contact@sos-dedie.com), ensuite emplacement contient un chemin relatif au répertoire de base (normalement /home/vmail/) de type contact/ pour un format de boite aux lettres maildir
+    CREATE TABLE `compte` (
+     `login` varchar(255) NOT NULL default '',
+     `motdepasse` varchar(255) NOT NULL default '',
+     `emplacement` varchar(255) NOT NULL default '',
+     PRIMARY KEY  (`login`)
+    ) TYPE=MyISAM;
+
+3) Configuration du serveur smtp (postfix)
+a) Modification du fichier main.cf de postfix
+- editez le fichier /etc/postfix/main.cf et remplacez son contenu par le suivant + modifications pour vos besoins :
+    myhostname = <Nom de votre serveur, par exemple : RedNeck.fr>
+    myorigin = <Nom de votre domaine, par exemple : RedNeck>
+    mydestination = $myhostname, localhost.$mydomain, localhost
+    mynetworks = 127.0.0.0/8, 192.168.0.5/24
+    best_mx_transport=virtual
+    virtual_maps = mysql:/etc/postfix/virtual_adresse.cf mysql:/etc/postfix/virtual_forward.cf
+    virtual_mailbox_base = /home/vmail
+    virtual_mailbox_maps = mysql:/etc/postfix/virtual_emplacement.cf
+    virtual_uid_maps = static:5000
+    virtual_gid_maps = static:5000
+
+b) Ajoutez à votre dossier /etc/postfix les fichiers suivants :
+- virtual_forward.cf
+- virtual_emplacement.cf
+- virtual_adresse.cf
+Présents dans le dossier FilesToAdd
+
+
+4) Configuration du serveur pop (si installé) :
+ 
+a) Modification du fichier /etc/courier/pop3d
+    Décommentez POP3AUTH="LOGIN CRAM-MD5 CRAM-SHA1"
+    Commentez #POP3AUTH=""
+
+b) Modification du fichier /etc/courier/authdaemonrc
+    Modifiez le paramètre : authmodulelist="authmysql"
+
+c) Modification du fichier /etc/courier/authmysqlrc
+    Modifiez les lignes :
+        MYSQL_SERVER            localhost
+        MYSQL_USERNAME          login mysql
+        MYSQL_PASSWORD          mot de passe mysql
+        MYSQL_DATABASE          courrier
+        MYSQL_USER_TABLE        compte
+        MYSQL_UID_FIELD         5000
+        MYSQL_GID_FIELD         5000
+        MYSQL_LOGIN_FIELD       login
+        MYSQL_HOME_FIELD        "/home/vmail/"
+    Commentez MYSQL_CRYPT_PWFIELD    crypt
+    Décommentez MYSQL_CLEAR_PWFIELD     motdepasse
+    
+
+5) Configuration du serveur imap (si installé) : Modification du fichier /etc/courier/courier-imap
+a) /!\ A FAIRE, need fichiers serveur Compaq /!\
+
+
+6) Rechargez les services
+	sudo /etc/init.d/postfix restart
+	sudo /etc/init.d/courier-imap restart
+	sudo /etc/init.d/courier-authdaemon restart
+        sudo /etc/init.d/courier-pop restart
+        sudo /etc/init.d/courier-authdaemon restart
+
+
+7) Création/Suppression de compte mail
+- Ajoutez/Supprimez une ligne dans la table compte dans la base de données
+
+
+8) (optionnel) Tests
+a) Envoi de mail avec telnet
+
+    telnet localhost 25 ou depuis l’extérieur telnet www.votredomaine.com 25
+    Si vous n’arrivez pas à vous connecter, regardez le fichier tail /var/log/syslog et le point 9) de ce fichier
+
+    telnet www.votredomaine.com 25
+        220 myserver ESMTP Postfix (Debian/GNU)
+    ehlo coucou.com
+        250-mailtest 250-PIPELINING 250-SIZE 10240000 250-VRFY 250-ETRN 250 XVERP 250 8BITMIME
+    mail from:<une adresse mail que vous avez créé>
+        250 Ok
+    rcpt to:<une autre adresse mail que vous avez créé>
+        250 Ok
+    data
+        354 End data with <CR><LF>.<CR><LF></LF></CR></LF></CR>
+    blablabla...
+    .
+        250 Ok: queued as ABC1D1C123
+    quit
+        221 BYE
+
+b) Authentification (authmysql)
+        authtest <adresse mail> <password>
+    Vous devez obtenir une réponse du type
+        Authenticated: module authdaemon
+        Home directory: /home/vmail
+        UID/GID: 5000/5000
+        Maildir: votredomaine.com/contact/
+        AUTHADDR=<adresse mail>
+        AUTHFULLNAME=<none>
+
+c) Connexion au pop (si installé)
+    telnet www.votredomaine.com 110
+        +OK Hello there.
+    USER contact@votredomaine.com
+        +OK Password required.
+    PASS motdepasse
+        +OK logged in.
+    STAT
+        +OK 4 14434
+    TOP 1 5
+        +OK headers follow.
+    QUIT
+        +OK Bye-bye.
+
+
+9) Erreurs connues
+- Après la commande mail from :
+    Aucune réponse du serveur. Il est fort probable que postfix n'arrive pas à se connecter à la base de données. Vérifiez les droits que vous attribué au compte vous servant à vous y connecter
+
+- Après la commande rcpt :
+    1. l’adresse email du destinataire n’est pas reconnue, dans ce cas un problème peut se situer dans virtual_adresse
+    2. Postfix ne trouve pas le répertoire de destination, cette fois-ci c’est virtual_emplacement qui peut avoir un problème
+
+
+
+II] Service optionnel :
+1) Webmail : OpenWebMail
+a) Installation
+Lancez l'installation du paquet owm2.53-2.deb
+
+b) Configuration
+- Editez le fichier /etc/openwebmail/openwebmail.conf
+	Modifiez le paramètre domainnames en
+		domainnames	<nom de l'entreprise>
+	Par exemple pour Redneck.f
+		domainnames	Redneck.fr
+- Supprimez le fichier index.html
+	sudo rm index.html
+- Renommez le fichier redirect.html
+	sudo mv redirect.html index.html
+
+
+Utilisation :
+I] SMTP/IMAP
+Vous pouvez créer des comptes grâce au script createMailAddress
+Afin de vous connecter au serveur mail (via thunderbird par exemple), il vous suffit de remplir les informations du compte avec :
+Le login & le mdp que vous avez mis lors de l'utilisation du script createMailAddress
+L'adresse du serveur imap étant celle de votre serveur mail
+
+II] Webmail OpenWebMail
+Pour vous y connectez, rendez vous sur
+http://<adresse ip du serveur mail>/openwebmail/
+L'user_id correspond à votre login utilisé lors de la création du compte avec createMailAddress
+Le mot de passe étant le même que lors de la création du compte
