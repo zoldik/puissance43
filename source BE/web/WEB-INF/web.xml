@@ -69,7 +69,7 @@
     </servlet>
     <servlet-mapping>
         <servlet-name>CreateCustomerAccount.jsp</servlet-name>
-        <url-pattern>/CreateCustomerAccount.jsp</url-pattern>
+        <url-pattern>/account/CreateCustomerAccount.jsp</url-pattern>
     </servlet-mapping>
     <!--zzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzz-->
     <servlet>
