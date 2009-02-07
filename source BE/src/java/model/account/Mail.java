@@ -1,8 +1,3 @@
-/*
- * To change this template, choose Tools | Templates
- * and open the template in the editor.
- */
-
 package model.account;
 
 /**
@@ -10,13 +5,9 @@ package model.account;
  * @author Baudet Aurélien
  */
 import java.security.Security;
-
 import javax.mail.*;
 import javax.mail.internet.*;
 import java.util.Properties;
-
-//import javax.naming.Context;
-//import javax.naming.InitialContext;
 
 /** Classe Mail
  * contient subject,content,address
