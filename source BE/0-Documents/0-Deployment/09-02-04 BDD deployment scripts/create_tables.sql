@@ -134,9 +134,12 @@ create table internet_subscribe
 
 create table item
 (
-   id_item              bigint not null,
+   id_item              bigint not null auto_increment,
+   name                 varchar(20),
+   type                 varchar(20),
    description          text,
-   item_price           float(8,2),
+   unit_price           float(8,2),
+   stock                varchar(20),
    primary key (id_item)
 );
 

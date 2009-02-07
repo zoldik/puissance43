@@ -1,5 +1,7 @@
 package servlet.networkdevices;
 
+import DAO.factory.MySqlDAOFactory;
+import DAO.interfaces.ItemDAOInterface;
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.util.ArrayList;
@@ -39,7 +41,7 @@ public class CtrSearch extends HttpServlet {
         String typeSearch = (String) session.getAttribute("typeSearch");
 
         if (typeSearch.equals("searchAll")) {
-            searchAll(request, response);
+            //searchAll(request, response);
         } else if (typeSearch.equals("searchByType")) {
             searchByType(request, response);
         }
@@ -75,17 +77,20 @@ public class CtrSearch extends HttpServlet {
                 " Ce résultat est renvoyé à la view jsp ";
     }// </editor-fold>
 
+    /*
     public void searchAll(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 
-        MySqlItemDAO itemDAO = FactoryDAO.getItemDAO();
-        ArrayList<Item> items = itemDAO.extractAllItems();
+        ItemDAOInterface itemDAO = (ItemDAOInterface) MySqlDAOFactory.getItemDAO();
+        
+        //ArrayList<Item> items = itemDAO.extractAllItems();
 
         request.setAttribute("results", items);
 
         RequestDispatcher view = request.getRequestDispatcher("./DisplayItems.jsp");
         view.forward(request, response);
     }
-
+    */
+    
     public void searchByType(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 
         HttpSession session = request.getSession();
