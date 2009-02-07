@@ -6,9 +6,14 @@
 
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <%@page language="Java" import="javax.servlet.*,javax.script.*,java.io.*,java.util.*,servlet.*" %>
+
 <!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"
 "http://www.w3.org/TR/html4/loose.dtd">
+
+
+
 <script language="JavaScript" src="ajax.js"></script>
+
 <script language="JavaScript">
     var myRequest = false;
     var temp=" ";
@@ -16,7 +21,7 @@
     var keepcontenu=" ";
     var bouton_menu;
     
-/** function fonctionCleanMain()
+    /** function fonctionCleanMain()
     {
       updateDivContent("main",""); 
     }
@@ -25,7 +30,7 @@
     {
       updateDivContent("submenu",""); 
     }
-**/
+     **/
     function fonctionClean(keep)
     {
         updateDivContent(temp,temp);
@@ -77,8 +82,8 @@
                     var name=subMenu.item(i).getAttribute('name');
                     var url=subMenu.item(i).getAttribute('url');
                     message2+="<a class=\"onglet2\" href=\"#\" onclick=\""+
-                                                           "fonctionOpenPage('"+url+"');"+
-                                                           "return false;\"><div id=\"subMenu"+i+"\">"+name+"</div></a>";
+                        "fonctionOpenPage('"+url+"');"+
+                        "return false;\"><div id=\"subMenu"+i+"\">"+name+"</div></a>";
                     //fonctionSubClean('subMenu"+i+"','"+name+"');\n\
                     //fonctionSubMenu('subMenu"+i+"','"+name+"');\n\
                 }
@@ -92,7 +97,9 @@
 <LINK REL="SHORTCUT ICON" HREF="./favicon.ico">
 
 <html>
+    
     <head>
+       
         <title>Red Neck Industries</title>
         <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
     </head>
@@ -102,10 +109,10 @@
         <div id="header"></div>
         <div id="account"></div>
         <div id="test">
-        <input type="button" onclick="displayAccount();" name="displayAccount" value="displayAccount" /><input type="button" onclick="displayIdentification();" name="displayIdentification" value="displayIdentification" /><input type="button" onclick="displayLostPassword();" name="displayLostPassword" value="displayLostPassword" /><input type="button" onclick="hideAccount();" name="hideAccount" value="hideAccount" /><input type="button" onclick="displayHeader();" name="displayHeader" value="displayHeader" />
+            <input type="button" onclick="displayAccount();" name="displayAccount" value="displayAccount" /><input type="button" onclick="displayIdentification();" name="displayIdentification" value="displayIdentification" /><input type="button" onclick="displayLostPassword();" name="displayLostPassword" value="displayLostPassword" /><input type="button" onclick="hideAccount();" name="hideAccount" value="hideAccount" /><input type="button" onclick="displayHeader();" name="displayHeader" value="displayHeader" />
         </div>
         <div class="main" id="main"></div>
-            
+        
     </body>
     
 </html>

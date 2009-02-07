@@ -65,7 +65,7 @@
     <!--zzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzz-->
     <servlet>
         <servlet-name>CreateCustomerAccount.jsp</servlet-name>
-        <jsp-file>/account/CreateCustomerAccount.jsp</jsp-file>
+        <jsp-file>/CreateCustomerAccount.jsp</jsp-file>
     </servlet>
     <servlet-mapping>
         <servlet-name>CreateCustomerAccount.jsp</servlet-name>
