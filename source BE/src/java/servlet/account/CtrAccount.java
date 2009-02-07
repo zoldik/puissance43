@@ -1,19 +1,14 @@
 package servlet.account;
 
-import DAO.factory.DAOFactory;
-import DAO.factory.MySqlDAOFactory;
-import DAO.mySql.MySqlCustomerDAO;
 import java.io.*;
 import javax.servlet.*;
 import javax.servlet.http.*;
 
+import DAO.factory.DAOFactory;
+import DAO.factory.MySqlDAOFactory;
+import DAO.interfaces.CustomerDAOInterface;
+import DAO.mySql.MySqlCustomerDAO;
 import DAO.transfertObject.CustomerTO;
-import model.account.Customer;
-import model.account.Mail;
-import model.account.Register;
-import model.account.RegisterErrors;
-import model.database.CustomerDAO;
-import model.database.FactoryDAO;
 
 /**
  *
@@ -23,24 +18,8 @@ public class CtrAccount extends javax.servlet.http.HttpServlet {
 
     public void doGet(HttpServletRequest request, HttpServletResponse response) throws IOException, ServletException {
         response.setContentType("text/html");
-    /*
-    try{
-    HttpSession session = request.getSession();
-    
-    
-    Customer newCustomer=new Customer(request.getParameter("nom")
-    ,request.getParameter("prenom")
-    ,request.getParameter("login")
-    ,request.getParameter("mdp")
-    ,request.getParameter("mail")
-    ,request.getParameter("sexe")
-    ,request.getParameter("naissance")
-    ,request.getParameter("fixe")
-    ,request.getParameter("gsm")
-    ,request.getParameter("protect")
-    ,request.getParameter("key1")
-    ,request.getParameter("key2"));
-    
+
+    /*    
     CustomerDAO customerDAO = FactoryDAO.getCustomerDAO(); 
     //check not used login
     if(customerDAO.isUsed(newCustomer.getLogin())==true)
@@ -73,67 +52,77 @@ public class CtrAccount extends javax.servlet.http.HttpServlet {
     //Object failed=session.getAttribute("user_id");
     //String fail=failed.toString();
     
-    if (used!="true") 
-    {
-    session.setAttribute("user_id",register.getID(request.getParameter("login"),request.getParameter("mdp")));
-    String id  = session.getAttribute("user_id").toString();
-    //On vérifie l'absence d'erreur lors de la requête sql. Si présence => on renvoit à CreateUser avec le param Creation à fail
-    if (id.compareTo("0")!=0)
-    {
-    //Sinon, l'utilisateur est créé, on passe à la validation du compte
-    Mail userMail=new Mail();
-    userMail.subject="Bienvenu sur ProjectRSS";
-    userMail.content="Voici un récapitulatif de vos identifiants :\nLogin : "+register.getLogin()+
-    "\nMot de passe : "+register.getMdp()+
-    "\nPour valider votre compte, veuillez vous rendre à la page suivante :\n http://localhost:8080/ProjetRSS/Validation.jsp?Creation=inProgress&compte="+
-    register.getId();
-    //userMail.content="test";
-    userMail.address=register.getMail();
-    System.out.println(register.getMail());
-    userMail.sendMail();
-    //response.sendRedirect("Validation.jsp?Creation=inProgress");
-    session.setAttribute("Creation","true");
-    response.sendRedirect("CreateUser.jsp");
-    
-    }
-    
-    }
-    
-    }
-    
-    
-    }
-    }catch (Exception e){
-    System.err.println("Erreur ! ! !");
-    e.printStackTrace
-    
-    ();		
-    }
      */
     }
 
     public void doPost(HttpServletRequest request, HttpServletResponse response) throws IOException, ServletException {
-        
+
         HttpSession session = request.getSession();
-        
+
         //Creation of the transfert object
-        CustomerTO newCustomerTO = new CustomerTO();
-        newCustomerTO.setFirstName("firstName");
-        newCustomerTO.setLastName("lastName");
-        newCustomerTO.setLogin("login");
-        newCustomerTO.setPassword("password");
-        newCustomerTO.setMail("mail");
-        newCustomerTO.setSexe("sexe");
-        newCustomerTO.setBirthday("birthday");
-        newCustomerTO.setPhone("phone");
-        newCustomerTO.setCellPhone("cellPhone");     
+        CustomerTO customerTO = new CustomerTO();
+        customerTO.setFirstName("firstName");
+        customerTO.setLastName("lastName");
+        customerTO.setLogin("login");
+        customerTO.setPassword("password");
+        customerTO.setMail("mail");
+        customerTO.setSexe("sexe");
+        customerTO.setBirthday("birthday");
+        customerTO.setPhone("phone");
+        customerTO.setCellPhone("cellPhone");
+
+        //*************************
+        //DEBUT CODE TEST 
+        //************************* 
+        //METHOD servlet v1 : la servlet est bien appelé
         
-        //Create a MySqlDAOFactory
-        MySqlDAOFactory iMySqlDAOFactory = (MySqlDAOFactory) DAOFactory.getDAOFactory(1);
+        response.setContentType("text/html");
+        PrintWriter writer = response.getWriter();
+        writer.println("<html>");
+        writer.println("<head>");
+        writer.println("<title>Hello World Application Servlet Page</title>");
+        writer.println("<head>");
+        writer.println("<body>");
+        writer.println("<h1>TEST</h1>");
+        writer.println("</body>");
+        writer.println("</html");
         
-        //MySqlDAOFactory creates a CustomerDAO object
-        MySqlCustomerDAO iMySqlCustomerDAO = (MySqlCustomerDAO) iMySqlDAOFactory.getCustomerDAO();
+        //*************************
+        //FIN CODE TEST 
+        //************************* 
+
+        //METHODE servlet v2 : la servlet a bien accès à la BDD et retourne les bonnes valeurs
+        /*PrintWriter writer = response.getWriter();
+        for(int i = 0 ; i<items.size() ; i++){
+        Item it  = items.get(i);           
+        writer.println("Item "+i+" =   ID="+it.getId()+"   NAME="+it.getName()+"   TYPE="+it.getType()+"   DESCRIPTION="+it.getDescription()+"   PRICE="+it.getPrice()+"<br>");            
+        }  
+         */
+
+        //METHOD servlet v3 : la servlet délegue la requête à un autre compossant, ici une JSP
+        /*
+        request.setAttribute("results", items);
+
+        //RequestDispatcher view = request.getRequestDispatcher(arg0);
+
+        RequestDispatcher view = request.getRequestDispatcher("./ViewCart/DisplayItems.jsp");
+        view.forward(request, response);
+         */
         
-        
-    }
+    //Create a MySqlDAOFactory
+    //Problem avec l'abstract class ?? DINONT, si on change de base (ex : postgres) on doit comme même
+    //venir ici changer le cast
+    //MySqlDAOFactory mySqlDAOFactory = (MySqlDAOFactory) DAOFactory.getDAOFactory(1);
+    //MySqlDAOFactory creates a CustomerDAO object
+    //CustomerDAO mySqlCustomerDAO = (CustomerDAO) mySqlDAOFactory.getCustomerDAO();
+    CustomerDAOInterface customerDAO = (CustomerDAOInterface) MySqlDAOFactory.getCustomerDAO();
+
+    customerDAO.insertCustomer(customerTO);    
+    
+    //response.sendRedirect("Validation.jsp?Creation=inProgress");
+    //session.setAttribute("CreationAccount","true");
+
+    //response.sendRedirect("../../CreationCustomerAccount.jsp");
+}
+
 }
