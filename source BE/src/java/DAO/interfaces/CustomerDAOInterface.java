@@ -12,7 +12,7 @@ import model.account.Customer;
  * CloudscapeCustomerDAO, OracleCustomerDAO, MySqlCustomerDAO and SybaseCustomerDAO.
  * @author vincent
  */
-public interface CustomerDAO {
+public interface CustomerDAOInterface {
 
     public int insertCustomer(CustomerTO customerTO);
 

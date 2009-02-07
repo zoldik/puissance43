@@ -1,8 +1,8 @@
 package DAO.factory;
 
 import DAO.*;
-import DAO.interfaces.CustomerDAO;
-import DAO.interfaces.ItemDAO;
+import DAO.interfaces.CustomerDAOInterface;
+import DAO.interfaces.ItemDAOInterface;
 import DAO.mySql.MySqlCustomerDAO;
 import DAO.mySql.MySqlItemDAO;
 import java.sql.Connection;
@@ -19,13 +19,13 @@ public class MySqlDAOFactory extends DAOFactory {
     //*********************
     //STATIC ATTRIBUTES
     //*********************
-    static ItemDAO itemDAO = null;
-    static CustomerDAO customerDAO = null;
+    private static ItemDAOInterface itemDAO = null;
+    private static CustomerDAOInterface customerDAO = null;
     
     //*********************
     //STATIC METHODS
     //*********************
-           
+               
     // method to create MySql connections
     public static Connection createConnectionWithJNDI() {
         Connection conn = null;
@@ -37,11 +37,11 @@ public class MySqlDAOFactory extends DAOFactory {
             System.out.println("Connection issue : ");
             e.printStackTrace();
         }
-        System.out.println("Success connection \n");
+        //System.out.println("Success connection \n");
         return conn;
     }
 
-    public static CustomerDAO getCustomerDAO() {
+    public static CustomerDAOInterface getCustomerDAO() {
         // MySqlCustomerDAO implements CustomerDAO 
         if (customerDAO == null) {
             customerDAO = new MySqlCustomerDAO();
@@ -49,7 +49,7 @@ public class MySqlDAOFactory extends DAOFactory {
         return customerDAO;
     }
 
-    public static ItemDAO getItemDAO() {
+    public static ItemDAOInterface getItemDAO() {
         if (itemDAO == null) {
             itemDAO = new MySqlItemDAO();
         }
