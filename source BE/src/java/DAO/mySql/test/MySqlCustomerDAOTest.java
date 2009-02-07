@@ -1,4 +1,4 @@
-package DAO.mySql;
+package DAO.mySql.test;
 
 import DAO.factory.MySqlDAOFactory;
 import DAO.interfaces.CustomerDAOInterface;

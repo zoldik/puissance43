@@ -34,13 +34,13 @@ public class MySqlItemDAO implements ItemDAOInterface {
         try {
 
             st = conn.createStatement();
-            rs = st.executeQuery("SELECT * FROM ARTICLE");
+            rs = st.executeQuery("SELECT * FROM item");
 
 
             while (rs.next()) {
                 Item item = new Item();
 
-                item.setId(rs.getInt("ID_ARTICLE"));
+                item.setId(rs.getInt("id_item"));
                 item.setName(rs.getString("name"));
                 item.setType(rs.getString("type"));
                 item.setDescription(rs.getString("description"));
