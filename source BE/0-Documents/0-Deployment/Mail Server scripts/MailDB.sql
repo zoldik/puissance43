@@ -1,5 +1,5 @@
--- Créer une DB RedNeckMail
-
+CREATE DATABASE `RedNeckMail`;
+USE `RedNeckMail`;
 CREATE TABLE `domaines` (
  `domaine` varchar(100) NOT NULL default '',
  UNIQUE KEY `domaine` (`domaine`)
