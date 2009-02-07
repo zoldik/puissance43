@@ -1,5 +1,8 @@
 package servlet.account;
 
+import DAO.factory.DAOFactory;
+import DAO.factory.MySqlDAOFactory;
+import DAO.mySql.MySqlCustomerDAO;
 import java.io.*;
 import javax.servlet.*;
 import javax.servlet.http.*;
@@ -91,26 +94,46 @@ public class CtrAccount extends javax.servlet.http.HttpServlet {
     //response.sendRedirect("Validation.jsp?Creation=inProgress");
     session.setAttribute("Creation","true");
     response.sendRedirect("CreateUser.jsp");
-     
+    
     }
     
-}
+    }
+    
+    }
+    
+    
+    }
+    }catch (Exception e){
+    System.err.println("Erreur ! ! !");
+    e.printStackTrace
+    
+    ();		
+    }
+     */
+    }
 
-}
-                        
-
-}
-		}catch (Exception e){
-			System.err.println("Erreur ! ! !");
-			e.printStackTrace
-
-();		
-		}
-*/
-}
-
-     
-     public void doPost(HttpServletRequest request, HttpServletResponse response) throws IOException, ServletException {
-		doGet(request,response);
-	}
+    public void doPost(HttpServletRequest request, HttpServletResponse response) throws IOException, ServletException {
+        
+        HttpSession session = request.getSession();
+        
+        //Creation of the transfert object
+        CustomerTO newCustomerTO = new CustomerTO();
+        newCustomerTO.setFirstName("firstName");
+        newCustomerTO.setLastName("lastName");
+        newCustomerTO.setLogin("login");
+        newCustomerTO.setPassword("password");
+        newCustomerTO.setMail("mail");
+        newCustomerTO.setSexe("sexe");
+        newCustomerTO.setBirthday("birthday");
+        newCustomerTO.setPhone("phone");
+        newCustomerTO.setCellPhone("cellPhone");     
+        
+        //Create a MySqlDAOFactory
+        MySqlDAOFactory iMySqlDAOFactory = (MySqlDAOFactory) DAOFactory.getDAOFactory(1);
+        
+        //MySqlDAOFactory creates a CustomerDAO object
+        MySqlCustomerDAO iMySqlCustomerDAO = (MySqlCustomerDAO) iMySqlDAOFactory.getCustomerDAO();
+        
+        
+    }
 }

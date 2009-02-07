@@ -8,10 +8,10 @@ import DAO.factory.MySqlDAOFactory;
  */
 public abstract class DAOFactory {
     // List of DAO types supported by the factory
-    public static final int MYSQL = 1;
-    public static final int POSTGRESQL = 2;
-    public static final int ORACLE = 3;
-    public static final int SYBASE = 4;
+    private static final int MYSQL = 1;
+    private static final int POSTGRESQL = 2;
+    private static final int ORACLE = 3;
+    private static final int SYBASE = 4;
     
 
     // There will be a method for each DAO that can be 
