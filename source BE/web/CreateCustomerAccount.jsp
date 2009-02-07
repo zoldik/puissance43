@@ -1,5 +1,6 @@
 <%-- 
     Author     : Baudet Aurélien
+    Modified by : Vincent Destailleur
 --%>
 
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
@@ -9,64 +10,62 @@
 
 <html>
     <head>
+        <script language="JavaScript" src="javascripts/ajax_register.js"></script>
         <title>Création of a new account</title>
         <%--<link rel="stylesheet" type="text/css" href="style.css" />--%>
     </head>
-    <body class="presentation">
-        
-        <script language="JavaScript" src="ajax_register.js"></script>
+    
+    <body class="presentation">        
         
         <%
-            //randomly generate two int in order to avoid boot attack
-            int int1 = (int) ((float) Math.random() * 100);
-            int int2 = (int) ((float) Math.random() * 100);
-
-            //need to set here otherwise internal error server 500 during the get 
-            session.setAttribute("Creation", "S'enregistrer");
+            //Need to set the attribut now otherwise there is an internal error server 500 during the get. 
+            session.setAttribute("CreationAccount", "default");
 
             //String param  = request.getParameter("Creation");
-            String account = session.getAttribute("Creation").toString();
-            
+            String account = session.getAttribute("CreationAccount").toString();
+
             RegisterErrors error = new RegisterErrors();
-            
-            if (account.compareTo("S'enregistrer") == 0) {
-                out.print("<center>Création d'un compte</center><hr>");
+
+            if (account.compareTo("default") == 0) {
+                out.print("<center>Création d'un compte client</center><hr>");
             } else if (account.compareTo("used") == 0) {
                 out.print("<center>Compte déja enregistré, sélectionnez un autre login</center><hr>");
-            } else if (account.compareTo("fail") == 0) {
+            } else if (account.compareTo("failed") == 0) {
                 error = (RegisterErrors) session.getAttribute("error");
                 out.print("<center>Un ou plusieurs champs ont été mal rempli, vérifiez les informations rentrées</center><hr>");
-            } else if (account.toString().compareTo("true") == 0) {
-                out.print("<center>Consultez votre boîte mail pour valider votre compte</center><hr>");
+            } else if (account.toString().compareTo("registered") == 0) {
+                out.print("<center>Demande de compte transmise, consultez votre boîte mail pour valider votre compte</center><hr>");
             }
         %>
         
         <br><br><div id="CreateUser"></div><br>
+        <!--#FF0000>>Red-->
+        <!--#FFFF00>>Yellow-->       
+        <center><a style="color:#FFFF00">* : Paramètres obligatoires </a></center><br>        
         
-        <center><a style="color:#FF0000">* : Paramètres obligatoires</a></center><br>
-        <form name="Register" action="./CreateAccount" method="POST">
+        <form name="RegisterForm" action="./CtrAccount" method="POST">
             <div id="register">  
                 <table>
                     <tr align="left">
                         <td><a style="color:
                                    <%if (error.getErrorFirstName() == 1) {
-                out.print("#FF0000");
+                out.print("#FFFF00");
             }%>">* Prénom (15 caractères max) : </a></td>
-                        <td><input type="text" name="firstName" onKeyUp=veriflength(this.value,"firstName","15") align="left" /><div id="firstName"></div></td>
+                        <td><input type="text" name="xfirstName" onKeyUp=verifLength(this.value,"firstName","15") align="left" /><div id="firstName"></div></td>
                     </tr>
                     
                     
                     <tr align="left">
                         <td><a style="color:<%if (error.getErrorLastName() == 1) {
-                out.print("#FF0000");
+                out.print("#FFFF00");
             }%>">* nom (15 caractères max) : </a></td>
-                        <td><input type="text" name="lastName" onKeyUp=veriflength(this.value,"lastName","15") align="left" /><div id="lastName"></div></td>
+                        <td><input type="text" name="lastName" onKeyUp=verifLength(this.value,"lastName","15") align="left" /><div id="lastName"></div></td>
                     </tr>
                     
                     
                     <tr align="left">
                         <td><a style="color:<%if (error.getErrorLogin() == 1) {
-                out.print("#FF0000");
+                out.print("#FFFF00");
             }%>">* Nom d'utilisateur (15 caractères max) : </a></td>
                         <td><input type="text" name="login" onKeyUp=verifLogin(this.value) align="left"/><div id="freeLogin"></div></td>
                     </tr>
@@ -74,15 +73,15 @@
                     
                     <tr align="left">
                         <td><a style="color:<%if (error.getErrorPassword() == 1) {
-                out.print("#FF0000");
+                out.print("#FFFF00");
             }%>">* Mot de passe (8 min / 15 max) : </a></td>
-                        <td><input type="password" name="password" onKeyUp=levelMdp(this.value) align="left" /><div id="levelPassword"></div></td>
+                        <td><input type="password" name="password" onKeyUp=levelPassword(this.value) align="left" /><div id="levelPassword"></div></td>
                     </tr>
                     
                     
                     <tr align="left">
                         <td><a style="color:<%if (error.getErrorMail() == 1) {
-                out.print("#FF0000");
+                out.print("#FFFF00");
             }%>">* Mail (Valide) : </a></td>
                         <td><input type="text" name="mail" onKeyUp=verifMail(this.value) align="left" /><div id="mail"></div></td>
                     </tr>
@@ -90,7 +89,7 @@
                     
                     <tr align="left">
                         <td><a style="color:<%if (error.getErrorSexe() == 1) {
-                out.print("#FF0000");
+                out.print("#FFFF00");
             }%>">* Sexe (M/F/X): </a></td>
                         <td><input type="text" name="sexe" onKeyUp=verifSexe(this.value) align="left" /><div id="sexe"></div></td>
                     </tr>
@@ -98,26 +97,33 @@
                     
                     <tr align="left">
                         <td><a style="color:<%if (error.getErrorBirthday() == 1) {
-                out.print("#FF0000");
-            }%>">* Date de Naissance : </a></td>
-                        <td><input type="text" name="naissance" onKeyUp=veriflength(this.value,"birthday","10") align="left" /><div id="birthday"></div></td>
+                out.print("#FFFF00");
+            }%>">* Date de Naissance (dd/mm/yyyy) : </a></td>
+                        <td><input type="text" name="naissance" onKeyUp=verifLength(this.value,"birthday","10") align="left" /><div id="birthday"></div></td>
                     </tr>
                     
                     
                     <tr align="left">
                         <td><a style="color:<%if (error.getErrorPhone() == 1) {
-                out.print("#FF0000");
+                out.print("#FFFF00");
             }%>">Téléphone Fixe : </a></td>
-                        <td><input type="text" name="fixe" onKeyUp=veriflength(this.value,"phone","20") align="left" /><div id="phone"></div></td>
+                        <td><input type="text" name="fixe" onKeyUp=verifLength(this.value,"phone","20") align="left" /><div id="phone"></div></td>
                     </tr>
                     
                     
                     <tr align="left">
                         <td><a style="color:<%if (error.getErrorCellPhone() == 1) {
-                out.print("#FF0000");
+                out.print("#FFFF00");
             }%>">Téléphone gsm : </a></td>
-                        <td><input type="text" name="gsm" onKeyUp=veriflength(this.value,"gsm","20") align="left" /><div id="gsm"></div></td>
+                        <td><input type="text" name="gsm" onKeyUp=verifLength(this.value,"gsm","20") align="left" /><div id="gsm"></div></td>
                     </tr>
+                    
+                    
+                    <%
+            //randomly generate two int in order to avoid boot attack
+            int int1 = (int) ((float) Math.random() * 100);
+            int int2 = (int) ((float) Math.random() * 100);
+                    %>
                     
                     <!--
                     <tr align="left">
@@ -126,6 +132,7 @@
             //>">* Anti-Bot : //out.print(int1 + " + " + int2 + " =\n");//</a></td>
                         <td><input type="text" name="protect" align="left" /></td>
                     </tr>
+                    -->
                     <tr>
                         <td></td>
                         <td align="left">
@@ -134,7 +141,7 @@
                             <input type="submit" value="Créer" name="Connexion" />
                         </td>
                     </tr>
-                    -->
+                    
                 </table>
             </div>
         </form>
