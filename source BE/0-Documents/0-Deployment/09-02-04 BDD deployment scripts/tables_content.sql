@@ -13,5 +13,5 @@ INSERT INTO `item` (`id_item`, `name`, `type`, `description`, `unit_price`, `sto
 -- Contenu de la table `CUSTOMER`
 --
 
-INSERT INTO `CUSTOMER` (`USER_ID`, `ID_VOIP`, `ADR_ID_ADDRESS`, `ABO_ID_ABONNEMENT`, `LOGIN`, `PASSWORD`, `NOM`, `PRENOM`, `SEXE`, `SOCIETE`, `MAIL`, `USER_TYPE`, `ACCOUNT_LEVEL`, `DEBIT_VOD`, `TEL`, `GSM`, `BORN`, `USER_ID2`, `ID_ABONNEMENT`, `USER_ID3`, `ID_ADDRESS`) VALUES
-(1, 1, 0, NULL, 'UtilisateurTest', 'blablatest', 'Machin', 'Truc', 'M', 'SuperSociete', 'machintruc@supersociete.fr', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL);
+--INSERT INTO `customer` (`id_customer`, `id_address`, `int_id_internet_subscribe`, `first_name`, `last_name`, `login`, `password`, `mail`, `sexe`, `birthday`, `phone`, `cell_phone`, `profession`, `company`, `account_level`, `vod_debit`, `BORN`, `USER_ID2`, `ID_ABONNEMENT`, `USER_ID3`, `ID_ADDRESS`) VALUES
+--(1, NULL, NULL, 'prénom', 'nom', 'pseudo', 'Truc', 'M', 'SuperSociete', 'machintruc@supersociete.fr', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL);

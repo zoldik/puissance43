@@ -81,9 +81,9 @@ create table commentaire
 
 create table customer
 (
-   id_customer          bigint not null,
+   id_customer          bigint not null auto_increment,
    id_address           bigint not null,
-   int_id_internet_subscribe bigint,
+   id_internet_subscribe bigint,
    first_name           varchar(20),
    last_name            varchar(20),
    login                varchar(15),
@@ -95,10 +95,7 @@ create table customer
    cell_phone           varchar(20),
    profession           varchar(20),
    company              varchar(20),
-   account_level        smallint,
-   vod_debit            float(8,2),
-   user_id              bigint,
-   id_internet_subscribe bigint,
+   account_level        smallint, 
    primary key (id_customer)
 );
 
@@ -446,7 +443,7 @@ alter table command_has_network_solutions add constraint FK_COMMAND_HAS_NETWORK_
 alter table customer add constraint FK_CUSTOMER_HAS_AN_ADDRESS foreign key (id_address)
       references address (id_address) on delete restrict on update restrict;
 
-alter table customer add constraint FK_CUSTOMER_HAS_INTERNET_SUBSCRIBE foreign key (int_id_internet_subscribe)
+alter table customer add constraint FK_CUSTOMER_HAS_INTERNET_SUBSCRIBE foreign key (id_internet_subscribe)
       references internet_subscribe (id_internet_subscribe) on delete restrict on update restrict;
 
 alter table customer_has_command add constraint FK_CUSTOMER_HAS_COMMAND foreign key (id_customer)

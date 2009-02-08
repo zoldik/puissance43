@@ -1,3 +1,15 @@
 modification directement dans les .sql qu'il faudra reporter dans le visuel Power Designer
 
-09-02-07 : modification de la table item ajout de champs
+Vincent, 09-02-07 09h00 : modification de la table item ajout de champs
+
+Vincent, 09-02-08 : 
+1-delete int_id_internet_subscribe bigint,
+2-mise en 3eme position des champs id_internet_subscribe bigint,
+3-delete user_id bigint,
+4-delete vod_debit float(8,2),
+5-Mette les noms de liaison commençant par un z pour avoir dans l'ordre creation de table puis les liaisons ??
+6-Ne pas insérer de commentaires -- cela ne compile pas
+
+7-changement de int_id_... en id_...
+dans alter table customer add constraint FK_CUSTOMER_HAS_INTERNET_SUBSCRIBE foreign key (id_internet_subscribe)
+      references internet_subscribe (id_internet_subscribe) on delete restrict on update restrict;
