@@ -30,7 +30,7 @@
 <%
         ItemMySqlDAO mySqlItemDAO = new ItemMySqlDAO();
         //test extractAllItems()
-        ArrayList<Item> items = mySqlItemDAO.selectAllItemsTO() ;
+        ArrayList<Item> items = mySqlItemDAO.selectAllItems() ;
         
         Iterator it = items.iterator();
         while(it.hasNext()){

@@ -6,14 +6,17 @@
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <%@page language="Java" import="java.util.*,servlet.account.*,model.account.*" %>
 
-<link rel="stylesheet" href="style.css">
 
 <html>
     <head>
         <script language="JavaScript" src="javascripts/ajax_register.js"></script>
+        
         <title>Création of a new account</title>
-        <%--<link rel="stylesheet" type="text/css" href="style.css" />--%>
+        
+        <link rel="stylesheet" href="style.css">
+
     </head>
+    
     
     <body class="presentation">        
         
