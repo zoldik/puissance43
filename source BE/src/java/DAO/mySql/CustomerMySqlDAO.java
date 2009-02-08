@@ -30,17 +30,90 @@ public class CustomerMySqlDAO implements CustomerDAOInterface {
     }
     // The following methods can use MySqlDAOFactory.createConnection() 
     // to get a connection as required
-    public int insertCustomer(CustomerTO customerTO) {
-
-        int error = 0;
+    public String insertCustomer(CustomerTO customerTO) {
 
         //Implement insert customer here.
-        String insert = "insert into customer (first_name, last_name, login, password, mail, sexe, birthday, phone, cell_phone) ";
-        String values = "values (\"" + customerTO.getFirstName() +
-                "\",\"" + customerTO.getLastName() + "\",\"" + customerTO.getLogin() +
-                "\",\"" + customerTO.getPassword() + "\",\"" + customerTO.getMail() +
-                "\",\"" + customerTO.getSexe() + "\",\"" + customerTO.getBirthday() +
-                "\",\"" + customerTO.getPhone() + "\",\"" + customerTO.getCellPhone() + "\");";
+
+        //Return object
+        //int error = 0;
+        String error = "pas d'erreur";
+
+        //Connexion to the database with JNDI 
+        Connection conn = (Connection) MySqlDAOFactory.createConnectionWithJNDI();
+
+        //transaction or sequence of queries
+        Statement st = null;
+
+        //Test 1
+        /*
+        String insert = "INSERT INTO `customer` ( `id_address` , `first_name` , " +
+        "`last_name` , `login` , `password`, `mail` , `sexe` , `birthday` , `phone` , `cell_phone` , `profession` , " +
+        "`company` , `account_level` ) ";
+        
+        String values = " VALUES ( " + "\""+ "5" + "\",\"" + "getFirstName()" +
+        "\",\"" + "getLastName()" + "\",\"" + "getLogin()" +
+        "\",\"" + "getPassword()" + "\",\"" + "getMail()" +
+        "\",\"" + "M" + "\",\"" + "Birthday" +
+        "\",\"" + "getPhone()" + "\",\"" + "getCellPhone()" +
+        "\",\"" + "profession" + "\",\"" + "company" + "\",\"" + "1" + "\");";
+        
+        insert += values;
+         */
+
+        //Test 2
+        //Il y a 13 champs sur les 15 que contient la table customer. En effet :
+        //Pas de `id_customer`, the field is on auto_increment;
+        //Pas de `id_internet_subscribe`
+
+        //Pour le moment `id_address` a une valeur par défaut de 5. En effet, id_address is not null car
+        //IMPORTANT un customer à au moins 1 adresse
+
+        //IMPORTANT
+        //name column between `` 
+        //value between ' or "/ 
+        /*
+        String insert = "INSERT INTO `customer` ( `id_address` , `first_name` , " +
+        "`last_name` , `login` , `password`, `mail` , `sexe` , `birthday` , `phone` , `cell_phone` , `profession` , " +
+        "`company` , `account_level` ) ";
+        
+        String values = " VALUES ( " + " 5 ," + " 'getFirstName()' ," +
+        " 'getLastName()' ," + " 'getLogin()' ," +
+        " 'getPassword()' ," + " 'getMail()' ," +
+        " 'M' ," + " 'Birthday' ," +
+        " 'getPhone()' ," + " 'getCellPhone()' ," +
+        " 'profession' ," + " 'company' ," + " '1' " + ");";
+        
+        insert += values;
+         */
+
+        //Test3
+        /*
+        String insert = "INSERT INTO `customer` ( `id_address` , `first_name` , " +
+        "`last_name` , `login` , `password`, `mail` , `sexe` , `birthday` , `phone` , `cell_phone` , `profession` , " +
+        "`company` , `account_level` ) ";
+        
+        String values = " VALUES ( " + "\"" + "5" + "\",\"" + customerTO.getFirstName() +
+        "\",\"" + customerTO.getLastName() + "\",\"" + customerTO.getLogin() +
+        "\",\"" + customerTO.getPassword() + "\",\"" + customerTO.getMail() +
+        "\",\"" + customerTO.getSexe() + "\",\"" + customerTO.getBirthday() +
+        "\",\"" + customerTO.getPhone() + "\",\"" + customerTO.getCellPhone() +
+        "\",\"" + "profession" + "\",\"" + "company" + "\",\"" + "1" + "\");";
+        
+        insert += values;
+         */
+
+        //Test4
+        //ATTENTION à ne pas mettre d'espace pour les values
+        String insert = "INSERT INTO `customer` ( `id_address` , `first_name` , " +
+                "`last_name` , `login` , `password`, `mail` , `sexe` , `birthday` , `phone` , `cell_phone` , `profession` , " +
+                "`company` , `account_level` ) ";
+
+        String values = " VALUES ( " + "'" + "5" + "','" + customerTO.getFirstName() +
+                "','" + customerTO.getLastName() + "','" + customerTO.getLogin() +
+                "','" + customerTO.getPassword() + "','" + customerTO.getMail() +
+                "','" + customerTO.getSexe() + "','" + customerTO.getBirthday() +
+                "','" + customerTO.getPhone() + "','" + customerTO.getCellPhone() +
+                "','" + "profession" + "','" + "company" + "','" + "1" + "');";
 
         insert += values;
 
@@ -64,21 +137,18 @@ public class CustomerMySqlDAO implements CustomerDAOInterface {
         insert += ") " + values + ");";
          */
 
-        Statement st = null;
-        Connection conn = (Connection) MySqlDAOFactory.createConnectionWithJNDI();
-
         try {
             st = conn.createStatement();
             st.executeUpdate(insert);
-        } catch (SQLException e2) {
-            System.out.println("SqlException : " + e2);
-            error = -1;
+        } catch (SQLException e) {
+            System.out.println("SqlException : " + e);
+            //error = -1;
+            error = e.toString();        
         }
-        try {
-            conn.close();
-        } catch (Exception e3) {
-            System.out.println("Erreur fermeture" + e3);
-        }
+
+        //Manque fermeture st 
+
+        MySqlDAOFactory.closeConnection();
 
         // Return newly created customer number
         // or a -1 on error    
@@ -118,14 +188,14 @@ public class CustomerMySqlDAO implements CustomerDAOInterface {
 
     public RowSet selectAllCustomersRS() {
         RowSet rs = null;
-        
+
         return rs;
-        
+
     }
 
     public ArrayList<CustomerTO> selectAllCustomersTO() {
         ArrayList<CustomerTO> customerTOs = null;
-        
+
         return customerTOs;
     }
 }
