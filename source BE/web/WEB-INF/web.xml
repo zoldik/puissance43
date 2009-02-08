@@ -89,6 +89,15 @@
         <servlet-name>DisplayItems.jsp</servlet-name>
         <url-pattern>/DisplayItems.jsp</url-pattern>
     </servlet-mapping>
+    <!--zzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzz-->   
+    <servlet>
+        <servlet-name>NotificationCreationAccount.jsp</servlet-name>
+        <jsp-file>/account/NotificationCreationAccount.jsp</jsp-file>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>NotificationCreationAccount.jsp</servlet-name>
+        <url-pattern>/NotificationCreationAccount.jsp</url-pattern>
+    </servlet-mapping>
     <!--zzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzz-->
     <servlet>
         <servlet-name>Order.jsp</servlet-name>
