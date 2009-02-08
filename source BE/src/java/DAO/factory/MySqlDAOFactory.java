@@ -1,17 +1,20 @@
 package DAO.factory;
 
-import DAO.*;
 import DAO.interfaces.CustomerDAOInterface;
 import DAO.interfaces.ItemDAOInterface;
+
 import DAO.mySql.CustomerMySqlDAO;
 import DAO.mySql.ItemMySqlDAO;
+
 import java.sql.Connection;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
+
+import javax.sql.DataSource;
+
 import javax.naming.Context;
 import javax.naming.InitialContext;
-import javax.sql.DataSource;
 
 /**
  *
@@ -107,12 +110,16 @@ public class MySqlDAOFactory extends DAOFactory {
         }
         return itemDAO;
     }    // public getVoIPCustomerDAO() {}
+    
     /*
     public AccountDAO getAccountDAO() {
     // CloudscapeAccountDAO implements AccountDAO
     return new CloudscapeAccountDAO();
     }
-    public OrderDAO getOrderDAO() {
+    */
+    
+    /*
+     public OrderDAO getOrderDAO() {
     // CloudscapeOrderDAO implements OrderDAO
     return new CloudscapeOrderDAO();
     }

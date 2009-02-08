@@ -17,7 +17,7 @@ import model.account.Customer;
  */
 public interface CustomerDAOInterface {
 
-    public int insertCustomer(CustomerTO customerTO);
+    public String insertCustomer(CustomerTO customerTO);
 
     public boolean deleteCustomer();
 
