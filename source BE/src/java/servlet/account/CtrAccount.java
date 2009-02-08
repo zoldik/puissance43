@@ -60,6 +60,7 @@ public class CtrAccount extends javax.servlet.http.HttpServlet {
         HttpSession session = request.getSession();
 
         //Creation of the transfert object
+        /*
         CustomerTO customerTO = new CustomerTO();
         customerTO.setFirstName("firstName");
         customerTO.setLastName("lastName");
@@ -70,12 +71,30 @@ public class CtrAccount extends javax.servlet.http.HttpServlet {
         customerTO.setBirthday("birthday");
         customerTO.setPhone("phone");
         customerTO.setCellPhone("cellPhone");
+        */
+        
+        //Creation of the transfert object        
+        CustomerTO customerTO = new CustomerTO();
+        //Set the attibutes of customerTO with parameters from the CreateCustomerAccount
+        customerTO.setFirstName(request.getParameter("firstName"));
+        customerTO.setLastName(request.getParameter("lastName"));
+        customerTO.setLogin(request.getParameter("login"));
+        customerTO.setPassword(request.getParameter("password"));
+        customerTO.setMail(request.getParameter("mail"));
+        customerTO.setSexe(request.getParameter("sexe"));
+        customerTO.setBirthday(request.getParameter("birthday"));
+        customerTO.setPhone(request.getParameter("phone"));
+        customerTO.setCellPhone(request.getParameter("cellPhone"));
+        
+        CustomerDAOInterface customerDAO = (CustomerDAOInterface) MySqlDAOFactory.getCustomerDAO();
 
+        customerDAO.insertCustomer(customerTO);        
+        
         //*************************
         //DEBUT CODE TEST 
         //************************* 
         //METHOD servlet v1 : la servlet est bien appelé
-        
+        /*
         response.setContentType("text/html");
         PrintWriter writer = response.getWriter();
         writer.println("<html>");
@@ -86,7 +105,7 @@ public class CtrAccount extends javax.servlet.http.HttpServlet {
         writer.println("<h1>TEST</h1>");
         writer.println("</body>");
         writer.println("</html");
-        
+        */
         //*************************
         //FIN CODE TEST 
         //************************* 
@@ -115,9 +134,7 @@ public class CtrAccount extends javax.servlet.http.HttpServlet {
     //MySqlDAOFactory mySqlDAOFactory = (MySqlDAOFactory) DAOFactory.getDAOFactory(1);
     //MySqlDAOFactory creates a CustomerDAO object
     //CustomerDAO mySqlCustomerDAO = (CustomerDAO) mySqlDAOFactory.getCustomerDAO();
-    CustomerDAOInterface customerDAO = (CustomerDAOInterface) MySqlDAOFactory.getCustomerDAO();
-
-    customerDAO.insertCustomer(customerTO);    
+      
     
     //response.sendRedirect("Validation.jsp?Creation=inProgress");
     //session.setAttribute("CreationAccount","true");
