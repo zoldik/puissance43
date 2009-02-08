@@ -41,7 +41,7 @@
             }
         %>
         
-        <br><br><div id="CreateUser"></div><br>
+        <br><br><div id="CreateCustomerAccount"></div><br>
         <!--#FF0000>>Red-->
         <!--#FFFF00>>Yellow-->       
         <center><a style="color:#FFFF00">* : Paramètres obligatoires </a></center><br>        
@@ -54,7 +54,7 @@
                                    <%if (error.getErrorFirstName() == 1) {
                 out.print("#FFFF00");
             }%>">* Prénom (15 caractères max) : </a></td>
-                        <td><input type="text" name="xfirstName" onKeyUp=verifLength(this.value,"firstName","15") align="left" /><div id="firstName"></div></td>
+                        <td><input type="text" name="firstName" onKeyUp=verifLength(this.value,"firstName","15") align="left" /><div id="firstName"></div></td>
                     </tr>
                     
                     
@@ -102,7 +102,7 @@
                         <td><a style="color:<%if (error.getErrorBirthday() == 1) {
                 out.print("#FFFF00");
             }%>">* Date de Naissance (dd/mm/yyyy) : </a></td>
-                        <td><input type="text" name="naissance" onKeyUp=verifLength(this.value,"birthday","10") align="left" /><div id="birthday"></div></td>
+                        <td><input type="text" name="birthday" onKeyUp=verifLength(this.value,"birthday","10") align="left" /><div id="birthday"></div></td>
                     </tr>
                     
                     
@@ -110,7 +110,7 @@
                         <td><a style="color:<%if (error.getErrorPhone() == 1) {
                 out.print("#FFFF00");
             }%>">Téléphone Fixe : </a></td>
-                        <td><input type="text" name="fixe" onKeyUp=verifLength(this.value,"phone","20") align="left" /><div id="phone"></div></td>
+                        <td><input type="text" name="phone" onKeyUp=verifLength(this.value,"phone","20") align="left" /><div id="phone"></div></td>
                     </tr>
                     
                     
@@ -118,7 +118,7 @@
                         <td><a style="color:<%if (error.getErrorCellPhone() == 1) {
                 out.print("#FFFF00");
             }%>">Téléphone gsm : </a></td>
-                        <td><input type="text" name="gsm" onKeyUp=verifLength(this.value,"gsm","20") align="left" /><div id="gsm"></div></td>
+                        <td><input type="text" name="cellPhone" onKeyUp=verifLength(this.value,"cellPhone","20") align="left" /><div id="cellPhone"></div></td>
                     </tr>
                     
                     
