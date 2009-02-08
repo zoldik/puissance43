@@ -1,6 +1,6 @@
 package model.database;
 
-import DAO.mySql.MySqlItemDAO;
+import DAO.mySql.ItemMySqlDAO;
 
 /**
  * FactoryDAO owns methods in order to create DAO Object.
@@ -12,13 +12,13 @@ import DAO.mySql.MySqlItemDAO;
  */
 public class FactoryDAO {
 
-    static MySqlItemDAO ItemDAO = null;
+    static ItemMySqlDAO ItemDAO = null;
     static CustomerDAO CustomerDAO = null;
     
     
-    public static MySqlItemDAO getItemDAO() {
+    public static ItemMySqlDAO getItemDAO() {
         if (ItemDAO == null) {
-            ItemDAO = new MySqlItemDAO();
+            ItemDAO = new ItemMySqlDAO();
         }
         return ItemDAO;
     }

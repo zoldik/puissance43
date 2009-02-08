@@ -1,8 +1,11 @@
 package DAO.interfaces;
 
 import DAO.transfertObject.CustomerTO;
-import java.util.Collection;
+
+import java.util.ArrayList;
+
 import javax.sql.RowSet;
+
 import model.account.Customer;
 
 /**Interface customerDAO is a part of DAO pattern.
@@ -22,7 +25,7 @@ public interface CustomerDAOInterface {
 
     public boolean updateCustomer();
 
-    public RowSet selectCustomersRS();
+    public RowSet selectAllCustomersRS();
 
-    public Collection selectCustomersTO();
+    public ArrayList<CustomerTO> selectAllCustomersTO();
 }

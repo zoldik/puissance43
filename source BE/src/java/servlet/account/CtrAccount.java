@@ -7,7 +7,7 @@ import javax.servlet.http.*;
 import DAO.factory.DAOFactory;
 import DAO.factory.MySqlDAOFactory;
 import DAO.interfaces.CustomerDAOInterface;
-import DAO.mySql.MySqlCustomerDAO;
+import DAO.mySql.CustomerMySqlDAO;
 import DAO.transfertObject.CustomerTO;
 
 /**

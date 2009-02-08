@@ -1,14 +1,16 @@
 package DAO.mySql;
 
 import DAO.interfaces.CustomerDAOInterface;
-import DAO.*;
 import DAO.factory.MySqlDAOFactory;
 import DAO.transfertObject.CustomerTO;
+
+import java.util.ArrayList;
+
 import java.sql.Connection;
 import java.sql.SQLException;
 import java.sql.Statement;
-import java.util.Collection;
 import javax.sql.RowSet;
+
 import model.account.Customer;
 
 /** *CloudscapeCustomerDAO implementation of the 
@@ -21,9 +23,9 @@ import model.account.Customer;
 
  * @author vincent
  */
-public class MySqlCustomerDAO implements CustomerDAOInterface {
+public class CustomerMySqlDAO implements CustomerDAOInterface {
 
-    public MySqlCustomerDAO() {
+    public CustomerMySqlDAO() {
         //initialization
     }
     // The following methods can use MySqlDAOFactory.createConnection() 
@@ -84,48 +86,46 @@ public class MySqlCustomerDAO implements CustomerDAOInterface {
     }
 
     public boolean deleteCustomer() {
-        throw new UnsupportedOperationException("Not supported yet.");
-    // Implement delete customer here
-    // Return true on success, false on failure
+        boolean isOk = true;
 
+        // Implement delete customer here
+        // Return true on success, false on failure
+
+        return isOk;
     }
 
     public Customer findCustomer() {
-        throw new UnsupportedOperationException("Not supported yet.");
-    // Implement find a customer here using supplied
-    // argument values as search criteria
-    // Return a Transfer Object if found,
-    // return null on error or if not found
 
+        Customer customer = null;
+
+        // Implement find a customer here using supplied               
+        // argument values as search criteria
+        // Return a Transfer Object if found,
+        // return null on error or if not found
+
+        return customer;
     }
 
     public boolean updateCustomer() {
-        throw new UnsupportedOperationException("Not supported yet.");
-    // implement update record here using data
-    // from the customerData Transfer Object
-    // Return true on success, false on failure or
-    // error
+        boolean isOk = true;
+        // implement update record here using data
+        // from the customerData Transfer Object
+        // Return true on success, false on failure or
+        // error
 
+        return isOk;
     }
 
-    public RowSet selectCustomersRS() {
-        throw new UnsupportedOperationException("Not supported yet.");
-    // implement search customers here using the
-    // supplied criteria.
-    // Return a RowSet.
+    public RowSet selectAllCustomersRS() {
+        RowSet rs = null;
+        
+        return rs;
+        
     }
 
-    public Collection selectCustomersTO() {
-        throw new UnsupportedOperationException("Not supported yet.");
-    // implement search customers here using the
-    // supplied criteria.
-    // Alternatively, implement to return a Collection 
-    // of Transfer Objects.
-
+    public ArrayList<CustomerTO> selectAllCustomersTO() {
+        ArrayList<CustomerTO> customerTOs = null;
+        
+        return customerTOs;
     }
-    /*
-    public int insertCustomer() {
-    throw new UnsupportedOperationException("Not supported yet.");
-    }
-     */
 }
