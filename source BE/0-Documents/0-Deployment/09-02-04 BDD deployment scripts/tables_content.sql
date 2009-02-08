@@ -9,9 +9,40 @@ INSERT INTO `item` (`id_item`, `name`, `type`, `description`, `unit_price`, `sto
 (6, 'hub b', 'hub', 'RJ45', 32, 130),
 (7, 'hub c', 'hub', 'RJ45', 33, 140);
 
---
--- Contenu de la table `CUSTOMER`
---
 
---INSERT INTO `customer` (`id_customer`, `id_address`, `int_id_internet_subscribe`, `first_name`, `last_name`, `login`, `password`, `mail`, `sexe`, `birthday`, `phone`, `cell_phone`, `profession`, `company`, `account_level`, `vod_debit`, `BORN`, `USER_ID2`, `ID_ABONNEMENT`, `USER_ID3`, `ID_ADDRESS`) VALUES
---(1, NULL, NULL, 'prénom', 'nom', 'pseudo', 'Truc', 'M', 'SuperSociete', 'machintruc@supersociete.fr', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL);
+INSERT INTO `customer` (
+`id_customer` , 
+`id_address` ,
+`id_internet_subscribe` ,
+`first_name` ,
+`last_name` ,
+`login` ,
+`password`,
+`mail` ,
+`sexe` ,
+`birthday` ,
+`phone` ,
+`cell_phone` ,
+`profession` ,
+`company` ,
+`account_level`
+)
+VALUES (
+NULL ,
+'',
+NULL ,
+'albert', 
+'einstein', 
+'genie', 
+'genie', 
+'albert.einstein@relativemail.com', 
+'M', 
+'19/03/1950', 
+'03 20 00 76 43', 
+'06 12 58 37 29', 
+'physicien', 
+'relativeCoporation',
+NULL
+);
+
+
