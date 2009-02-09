@@ -19,3 +19,4 @@ Philippe, 09-02-08 : Merci pour le passage en lowercase, plus rien ne marche! :)
 
 Vincent, 09-02-08 : De tout façon énormément de choses ont changer aussi, la migration suit sont cours...dsl
 1-ajout de unique (`login`) dans la table customer
+2-Philippe attention à mettre le drop pour que le reinit.sh fonctionne bien quand tu crées une table
