@@ -116,6 +116,7 @@ create table customer
    profession           varchar(20),
    company              varchar(20),
    account_level        smallint, 
+   unique (`login`)
    primary key (id_customer)
 );
 
