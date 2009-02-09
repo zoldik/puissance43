@@ -2,20 +2,22 @@ body {background-color:red; color:black;} /* page rouge avec une police noire */
 
 .menu { /* boite qui contient le menu (les onglets) */
     border-top:solid 2px black ; /* crée le trait noir au dessus des onglets */
-    padding-top:0px ; /* marge intérieure haute */
+    padding-top:0px; /* marge intérieure haute */
     padding-bottom:0px;
     background-image: url(img/top-1px.jpg);
     background-repeat: repeat;
     padding: 0;
     width:100%;
-    height:27px;
+    height:25px;
+    text-align:center;
 } /* marge intérieure basse */
 
 .onglet { /* style des onglets inactifs */
-    margin:0px 5px 0px 10px ; /* marge extérieure */
-    padding:8px 0px 0px 0px ; /* marge intérieure */
-    font-size : 15px ; /* taille de la police des onglets */
+    margin:0px 4px 0px 10px ; /* marge extérieure */
+    padding:5px 0px 0px 0px ; /* marge intérieure */
+    font-size : 14px ; /* taille de la police des onglets */
     font-family: Verdana,Arial,Helvetica,sans-serif; /* type de la police des onglets */
+    font-weight: bold;
     float:left ; /* boite en mode float, pour pouvoir en définir la largeur */
     width:100px ; /* largeur de la boite float */
     background : url(img/ongleth.gif) bottom no-repeat ; /* image de fond de la boite float, calée en bas */
@@ -23,7 +25,7 @@ body {background-color:red; color:black;} /* page rouge avec une police noire */
     text-align:center;
 } /* Le texte des onglets est centré */
 
-a.onglet:hover {color:green} /* lors du survol d'un lien, la police devient verte */
+a.onglet:hover {color:red} /* lors du survol d'un lien, la police devient verte */
 
 .spacer {clear:both} /* force le retour à la ligne après des boites float */
 
@@ -47,22 +49,22 @@ a.onglet:hover {color:green} /* lors du survol d'un lien, la police devient vert
     background-repeat: repeat;
     padding: 0;
     width:100%;
-    height:27px;
+    height:25px;
 } /* marge intérieure basse */
 
 .onglet2 { /* style des onglets inactifs */
-    margin:0px 5px 0px 10px ; /* marge extérieure */
-    padding:13px 0px 0px 0px ; /* marge intérieure */
+    margin:0px 4px 0px 10px ; /* marge extérieure */
+    padding:8px 0px 0px 0px ; /* marge intérieure */
     font-size : 12px ; /* taille de la police des onglets */
     font-family: Verdana,Arial,Helvetica,sans-serif; /* type de la police des onglets */
     float:left ; /* boite en mode float, pour pouvoir en définir la largeur */
     width:100px ; /* largeur de la boite float */
-    background : url(img/onglet.gif) bottom no-repeat ; /* image de fond de la boite float, calée en bas */
+    background : url(img/onglet.gif) top no-repeat ; /* image de fond de la boite float, calée en bas */
     text-decoration:none ; /* les lien dans les onglets ne sont pas soulignés */
     text-align:center;
 } /* Le texte des onglets est centré */
 
-a.onglet2:hover {color:green} /* lors du survol d'un lien, la police devient verte */
+a.onglet2:hover {color:orange} /* lors du survol d'un lien, la police devient verte */
 
 .spacerh {clear:both} /* force le retour à la ligne après des boites float */
 

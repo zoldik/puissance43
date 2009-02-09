@@ -104,13 +104,13 @@
         <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
     </head>
     
-    <body onload="displayHeader();displayAccount();">
+    <body onload="displayHeader();hideAccount();">
         
         <div id="header"></div>
         <div id="account"></div>
-        <div id="test">
+        <!--<div id="test">
             <input type="button" onclick="displayAccount();" name="displayAccount" value="displayAccount" /><input type="button" onclick="displayIdentification();" name="displayIdentification" value="displayIdentification" /><input type="button" onclick="displayLostPassword();" name="displayLostPassword" value="displayLostPassword" /><input type="button" onclick="hideAccount();" name="hideAccount" value="hideAccount" /><input type="button" onclick="displayHeader();" name="displayHeader" value="displayHeader" />
-        </div>
+        </div>-->
         <div class="main" id="main" > </div>
         
     </body>
