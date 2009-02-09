@@ -59,20 +59,29 @@ public class CtrAccount extends javax.servlet.http.HttpServlet {
 
         HttpSession session = request.getSession();
 
-        //Creation of the transfert object
-        /*
-        CustomerTO customerTO = new CustomerTO();
-        customerTO.setFirstName("firstName");
-        customerTO.setLastName("lastName");
-        customerTO.setLogin("login");
-        customerTO.setPassword("password");
-        customerTO.setMail("mail");
-        customerTO.setSexe("sexe");
-        customerTO.setBirthday("birthday");
-        customerTO.setPhone("phone");
-        customerTO.setCellPhone("cellPhone");
-        */
-        
+        CustomerDAOInterface customerDAO = (CustomerDAOInterface) MySqlDAOFactory.getCustomerDAO();
+
+        //Check if the login is not already used
+        if (customerDAO.isLoginUsed(request.getParameter("login")) == true) {
+            session.setAttribute("CreationAccount", "used");
+            
+            /*
+            response.setContentType("text/html");
+            PrintWriter writer = response.getWriter();
+            writer.println("<html>");
+            writer.println("<head>");
+            writer.println("<title>Login already used</title>");
+            writer.println("<head>");
+            writer.println("<body>");
+            writer.println("<h1>Login already used</h1>");
+            writer.println("</body>");
+            writer.println("</html");
+            */
+            
+            response.sendRedirect("NotificationCreationAccount.jsp");
+        } 
+
+
         //Creation of the transfert object        
         CustomerTO customerTO = new CustomerTO();
         //Set the attibutes of customerTO with parameters from the CreateCustomerAccount
@@ -85,61 +94,61 @@ public class CtrAccount extends javax.servlet.http.HttpServlet {
         customerTO.setBirthday(request.getParameter("birthday"));
         customerTO.setPhone(request.getParameter("phone"));
         customerTO.setCellPhone(request.getParameter("cellPhone"));
-        
-        CustomerDAOInterface customerDAO = (CustomerDAOInterface) MySqlDAOFactory.getCustomerDAO();
 
-        customerDAO.insertCustomer(customerTO);        
-        
-        //*************************
-        //DEBUT CODE TEST 
-        //************************* 
-        //METHOD servlet v1 : la servlet est bien appelé
+        //Put in the BDD
+        customerDAO.insertCustomer(customerTO);
+        //response.sendRedirect("NotificationCreationAccount.jsp");
+
+
+    //*************************
+    //DEBUT CODE TEST 
+    //************************* 
+    //METHOD servlet v1 : la servlet est bien appelé
         /*
-        response.setContentType("text/html");
-        PrintWriter writer = response.getWriter();
-        writer.println("<html>");
-        writer.println("<head>");
-        writer.println("<title>Hello World Application Servlet Page</title>");
-        writer.println("<head>");
-        writer.println("<body>");
-        writer.println("<h1>TEST</h1>");
-        writer.println("</body>");
-        writer.println("</html");
-        */
-        //*************************
-        //FIN CODE TEST 
-        //************************* 
+    response.setContentType("text/html");
+    PrintWriter writer = response.getWriter();
+    writer.println("<html>");
+    writer.println("<head>");
+    writer.println("<title>Hello World Application Servlet Page</title>");
+    writer.println("<head>");
+    writer.println("<body>");
+    writer.println("<h1>TEST</h1>");
+    writer.println("</body>");
+    writer.println("</html");
+     */
+    //*************************
+    //FIN CODE TEST 
+    //************************* 
 
-        //METHODE servlet v2 : la servlet a bien accès à la BDD et retourne les bonnes valeurs
+    //METHODE servlet v2 : la servlet a bien accès à la BDD et retourne les bonnes valeurs
         /*PrintWriter writer = response.getWriter();
-        for(int i = 0 ; i<items.size() ; i++){
-        Item it  = items.get(i);           
-        writer.println("Item "+i+" =   ID="+it.getId()+"   NAME="+it.getName()+"   TYPE="+it.getType()+"   DESCRIPTION="+it.getDescription()+"   PRICE="+it.getPrice()+"<br>");            
-        }  
-         */
+    for(int i = 0 ; i<items.size() ; i++){
+    Item it  = items.get(i);           
+    writer.println("Item "+i+" =   ID="+it.getId()+"   NAME="+it.getName()+"   TYPE="+it.getType()+"   DESCRIPTION="+it.getDescription()+"   PRICE="+it.getPrice()+"<br>");            
+    }  
+     */
 
-        //METHOD servlet v3 : la servlet délegue la requête à un autre compossant, ici une JSP
+    //METHOD servlet v3 : la servlet délegue la requête à un autre compossant, ici une JSP
         /*
-        request.setAttribute("results", items);
+    request.setAttribute("results", items);
+    
+    //RequestDispatcher view = request.getRequestDispatcher(arg0);
+    
+    RequestDispatcher view = request.getRequestDispatcher("./ViewCart/DisplayItems.jsp");
+    view.forward(request, response);
+     */
 
-        //RequestDispatcher view = request.getRequestDispatcher(arg0);
-
-        RequestDispatcher view = request.getRequestDispatcher("./ViewCart/DisplayItems.jsp");
-        view.forward(request, response);
-         */
-        
     //Create a MySqlDAOFactory
     //Problem avec l'abstract class ?? DINONT, si on change de base (ex : postgres) on doit comme même
     //venir ici changer le cast
     //MySqlDAOFactory mySqlDAOFactory = (MySqlDAOFactory) DAOFactory.getDAOFactory(1);
     //MySqlDAOFactory creates a CustomerDAO object
     //CustomerDAO mySqlCustomerDAO = (CustomerDAO) mySqlDAOFactory.getCustomerDAO();
-      
-    
+
+
     //response.sendRedirect("Validation.jsp?Creation=inProgress");
     //session.setAttribute("CreationAccount","true");
 
     //response.sendRedirect("../../CreationCustomerAccount.jsp");
-}
-
+    }
 }

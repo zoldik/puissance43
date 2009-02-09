@@ -17,15 +17,17 @@ import model.account.Customer;
  */
 public interface CustomerDAOInterface {
 
-    public String insertCustomer(CustomerTO customerTO);
-
     public boolean deleteCustomer();
-
+    
     public Customer findCustomer();
-
-    public boolean updateCustomer();
+    
+    public String insertCustomer(CustomerTO customerTO);
+ 
+    public boolean isLoginUsed(String login);
 
     public RowSet selectAllCustomersRS();
 
     public ArrayList<CustomerTO> selectAllCustomersTO();
+    
+    public boolean updateCustomer();    
 }
