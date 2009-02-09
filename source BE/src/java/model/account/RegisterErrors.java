@@ -6,24 +6,25 @@ import DAO.transfertObject.CustomerTO;
  * @author Baudet Aurélien
  */
 public class RegisterErrors {
-
-    private int errorFirstName;
-    private int errorLastName;
-    private int errorLogin;
-    private int errorPassword;
-    private int errorMail;
-    private int errorSexe;
-    private int errorBirthday;
-    private int errorPhone;
-    private int errorCellPhone;
-    private int errorProfession;
-    private int errorCompany;
+          
+    private int errorFirstName = 0;
+    private int errorLastName = 0;
+    private int errorLogin = 0;
+    private int errorPassword = 0;
+    private int errorMail = 0;
+    private int errorSexe = 0;
+    private int errorBirthday = 0;
+    private int errorPhone = 0;
+    private int errorCellPhone = 0;
+    private int errorProfession = 0;
+    private int errorCompany = 0;
 
     //gestion de l'account_level ?
     
     /**Constructor
      * 
      */
+    
     public RegisterErrors() {
         this.errorFirstName = 0;
         this.errorLastName = 0;
@@ -37,6 +38,7 @@ public class RegisterErrors {
         this.errorProfession = 0;
         this.errorCompany = 0;
     }
+    
 
     //**********
     //GETTERS
@@ -95,43 +97,61 @@ public class RegisterErrors {
      * @param newUser
      * @return ErrorRegister
      */
-    public RegisterErrors checkInfos(CustomerTO newCustomer) {
-        /*
+    public boolean checkInfos(CustomerTO newCustomer) {
+        
+        //Return object
+        boolean error = false;
+        
+        //obligatory field
         if (newCustomer.getFirstName() == "" || newCustomer.getFirstName().length() > 15) {
             this.errorFirstName = 1;
-            this.error = 1;
+            error = true;
         }
+        
+        //obligatory field
         if (newCustomer.getLastName() == "" || newCustomer.getLastName().length() > 15) {
             this.errorLastName = 1;
-            this.error = 1;
+            error = true;
         }
+        
+        //obligatory field
         if (newCustomer.getLogin() == "" || newCustomer.getLogin().length() > 15) {
             this.errorLogin = 1;
-            this.error = 1;
+            error = true;
         }
+        
+        //obligatory field
         if (newCustomer.getPassword() == "" || newCustomer.getPassword().length() > 15 || newCustomer.getPassword().length() < 8) {
-            this.errorPw = 1;
-            this.error = 1;
+            this.errorPassword = 1;
+            error = true;
         }
+        
+        //obligatory field
         if (newCustomer.getMail() == "" || newCustomer.getMail().length() > 30 || newCustomer.getMail().indexOf("@") == -1 || newCustomer.getMail().indexOf(".") == -1) {
-            this.errormail = 1;
-            this.error = 1;
+            this.errorMail = 1;
+            error = true;
         }
+        
+        //obligatory field
         if (newCustomer.getSexe() == "" || newCustomer.getSexe().length() > 1 || (newCustomer.getSexe().indexOf("M") == -1 && newCustomer.getSexe().indexOf("F") == -1 && newCustomer.getSexe().indexOf("X") == -1)) {
-            this.errorsexe = 1;
-            this.error = 1;
+            this.errorSexe = 1;
+            error = true;
         }
+        
+        //obligatory field
         if (newCustomer.getBirthday() == "" || newCustomer.getBirthday().length() > 10) {
-            this.errorborn = 1;
-            this.error = 1;
+            this.errorBirthday = 1;
+            error = true;
         }
+        
+        //NOT obligatory field because you have not error = true; line;
         if (newCustomer.getPhone().length() > 20) {
-            this.errorfixe = 1;
-            this.error = 1;
+            this.errorPhone = 1;            
         }
+                
+        //NOT obligatory field because you have not error = true; line;
         if (newCustomer.getCellPhone().length() > 20) {
-            this.errorgsm = 1;
-            this.error = 1;
+            this.errorCellPhone = 1;            
         }
         /*
         if (Integer.parseInt(newCustomer.getProtectAccount()) != (Integer.parseInt(newCustomer.getKey1()) + Integer.parseInt(newCustomer.getKey2())) || newCustomer.getProtectAccount() == "0") {
@@ -139,7 +159,7 @@ public class RegisterErrors {
         this.error = 1;
         }
         */
-        return this;
+        return error;
     }
 
    

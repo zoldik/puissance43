@@ -10,6 +10,8 @@ import DAO.interfaces.CustomerDAOInterface;
 import DAO.mySql.CustomerMySqlDAO;
 import DAO.transfertObject.CustomerTO;
 
+import model.account.RegisterErrors;
+
 /**
  *
  * @author Baudet Aurélien
@@ -56,7 +58,6 @@ public class CtrAccount extends javax.servlet.http.HttpServlet {
     }
 
     public void doPost(HttpServletRequest request, HttpServletResponse response) throws IOException, ServletException {
-
         HttpSession session = request.getSession();
 
         CustomerDAOInterface customerDAO = (CustomerDAOInterface) MySqlDAOFactory.getCustomerDAO();
@@ -64,7 +65,7 @@ public class CtrAccount extends javax.servlet.http.HttpServlet {
         //Check if the login is not already used
         if (customerDAO.isLoginUsed(request.getParameter("login")) == true) {
             session.setAttribute("CreationAccount", "used");
-            
+
             /*
             response.setContentType("text/html");
             PrintWriter writer = response.getWriter();
@@ -76,79 +77,62 @@ public class CtrAccount extends javax.servlet.http.HttpServlet {
             writer.println("<h1>Login already used</h1>");
             writer.println("</body>");
             writer.println("</html");
-            */
-            
+             */
+
+            //si on rentre dans le if : meme si redirect le reste de la servlet est quand même executé
+            //par contre pas de mise en base ??
+            //C'est pourquoi il faut absolument faire des else if à chaque cas
             response.sendRedirect("NotificationCreationAccount.jsp");
-        } 
+        } else {
 
+            //Creation of the transfert object 
+            CustomerTO customerTO = new CustomerTO();
+            //Set the attibutes of customerTO with parameters from the CreateCustomerAccount
+            customerTO.setFirstName(request.getParameter("firstName"));
+            customerTO.setLastName(request.getParameter("lastName"));
+            customerTO.setLogin(request.getParameter("login"));
+            customerTO.setPassword(request.getParameter("password"));
+            customerTO.setMail(request.getParameter("mail"));
+            customerTO.setSexe(request.getParameter("sexe"));
+            customerTO.setBirthday(request.getParameter("birthday"));
+            customerTO.setPhone(request.getParameter("phone"));
+            customerTO.setCellPhone(request.getParameter("cellPhone"));
 
-        //Creation of the transfert object        
-        CustomerTO customerTO = new CustomerTO();
-        //Set the attibutes of customerTO with parameters from the CreateCustomerAccount
-        customerTO.setFirstName(request.getParameter("firstName"));
-        customerTO.setLastName(request.getParameter("lastName"));
-        customerTO.setLogin(request.getParameter("login"));
-        customerTO.setPassword(request.getParameter("password"));
-        customerTO.setMail(request.getParameter("mail"));
-        customerTO.setSexe(request.getParameter("sexe"));
-        customerTO.setBirthday(request.getParameter("birthday"));
-        customerTO.setPhone(request.getParameter("phone"));
-        customerTO.setCellPhone(request.getParameter("cellPhone"));
+            //On vérifie qu'il n'y a pas d'erreur dans le formulaire
+            RegisterErrors erreursFormulaire = new RegisterErrors();
+            boolean isError = erreursFormulaire.checkInfos(customerTO);
 
-        //Put in the BDD
-        customerDAO.insertCustomer(customerTO);
-        //response.sendRedirect("NotificationCreationAccount.jsp");
+            if (isError == true) {
+                session.setAttribute("errorAccount", "errorAccount");
 
+                session.setAttribute("errors", erreursFormulaire);
+                
+                session.setAttribute("customerBegin", customerTO);
 
-    //*************************
-    //DEBUT CODE TEST 
-    //************************* 
-    //METHOD servlet v1 : la servlet est bien appelé
-        /*
-    response.setContentType("text/html");
-    PrintWriter writer = response.getWriter();
-    writer.println("<html>");
-    writer.println("<head>");
-    writer.println("<title>Hello World Application Servlet Page</title>");
-    writer.println("<head>");
-    writer.println("<body>");
-    writer.println("<h1>TEST</h1>");
-    writer.println("</body>");
-    writer.println("</html");
-     */
-    //*************************
-    //FIN CODE TEST 
-    //************************* 
+                response.sendRedirect("CreateCustomerAccount.jsp");
+            } else {
 
-    //METHODE servlet v2 : la servlet a bien accès à la BDD et retourne les bonnes valeurs
-        /*PrintWriter writer = response.getWriter();
-    for(int i = 0 ; i<items.size() ; i++){
-    Item it  = items.get(i);           
-    writer.println("Item "+i+" =   ID="+it.getId()+"   NAME="+it.getName()+"   TYPE="+it.getType()+"   DESCRIPTION="+it.getDescription()+"   PRICE="+it.getPrice()+"<br>");            
-    }  
-     */
+            //Put in the BDD
+            String error = customerDAO.insertCustomer(customerTO);
 
-    //METHOD servlet v3 : la servlet délegue la requête à un autre compossant, ici une JSP
-        /*
-    request.setAttribute("results", items);
-    
-    //RequestDispatcher view = request.getRequestDispatcher(arg0);
-    
-    RequestDispatcher view = request.getRequestDispatcher("./ViewCart/DisplayItems.jsp");
-    view.forward(request, response);
-     */
+            /*
+            response.setContentType("text/html");
+            PrintWriter writer = response.getWriter();
+            writer.println("<html>");
+            writer.println("<head>");
+            writer.println("<title>Hello World Application Servlet Page</title>");
+            writer.println("<head>");
+            writer.println("<body>");
+            writer.println(error);
+            writer.println("</body>");
+            writer.println("</html");
+             */
 
-    //Create a MySqlDAOFactory
-    //Problem avec l'abstract class ?? DINONT, si on change de base (ex : postgres) on doit comme même
-    //venir ici changer le cast
-    //MySqlDAOFactory mySqlDAOFactory = (MySqlDAOFactory) DAOFactory.getDAOFactory(1);
-    //MySqlDAOFactory creates a CustomerDAO object
-    //CustomerDAO mySqlCustomerDAO = (CustomerDAO) mySqlDAOFactory.getCustomerDAO();
+            session.setAttribute("CreationAccount", "registered");
 
-
-    //response.sendRedirect("Validation.jsp?Creation=inProgress");
-    //session.setAttribute("CreationAccount","true");
-
-    //response.sendRedirect("../../CreationCustomerAccount.jsp");
+            response.sendRedirect("NotificationCreationAccount.jsp");
+            
+            }
+        }
     }
 }
