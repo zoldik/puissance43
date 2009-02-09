@@ -7,6 +7,7 @@ import DAO.transfertObject.CustomerTO;
 import java.util.ArrayList;
 
 import java.sql.Connection;
+import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
 import javax.sql.RowSet;
@@ -24,12 +25,34 @@ import model.account.Customer;
  * @author vincent
  */
 public class CustomerMySqlDAO implements CustomerDAOInterface {
-
-    public CustomerMySqlDAO() {
+    
+     public CustomerMySqlDAO() {
         //initialization
     }
     // The following methods can use MySqlDAOFactory.createConnection() 
     // to get a connection as required
+
+     public boolean deleteCustomer() {
+        boolean isOk = true;
+
+        // Implement delete customer here
+        // Return true on success, false on failure
+
+        return isOk;
+    }
+
+    public Customer findCustomer() {
+
+        Customer customer = null;
+
+        // Implement find a customer here using supplied               
+        // argument values as search criteria
+        // Return a Transfer Object if found,
+        // return null on error or if not found
+
+        return customer;
+    }
+    
     public String insertCustomer(CustomerTO customerTO) {
 
         //Implement insert customer here.
@@ -143,7 +166,7 @@ public class CustomerMySqlDAO implements CustomerDAOInterface {
         } catch (SQLException e) {
             System.out.println("SqlException : " + e);
             //error = -1;
-            error = e.toString();        
+            error = e.toString();
         }
 
         //Manque fermeture st 
@@ -154,39 +177,55 @@ public class CustomerMySqlDAO implements CustomerDAOInterface {
         // or a -1 on error    
         return error;
     }
+    
+    /** Verifie si l'utilisateur passé en argument existe dans la DB
+     * 
+     * @param log
+     * @return boolean
+     * @throws java.lang.Exception
+     */
+    public boolean isLoginUsed(String login){
 
-    public boolean deleteCustomer() {
-        boolean isOk = true;
+        //Return object
+        boolean isUsed = false;
 
-        // Implement delete customer here
-        // Return true on success, false on failure
+        //Connexion to the database with JNDI 
+        Connection conn = (Connection) MySqlDAOFactory.createConnectionWithJNDI();
 
-        return isOk;
+        //transaction or sequence of queries
+        Statement st = null;
+
+        //result of the queries
+        ResultSet rs = null;
+
+        try {
+
+            st = conn.createStatement();
+            rs = st.executeQuery("select * from customer where login='" + login + "'");
+
+            if (rs.next() == true) {
+                //The login is already used
+                isUsed = true;
+            } else {
+                isUsed = false;
+            }
+
+
+        } catch (Exception e) {
+
+            System.out.println("Exception" + e);
+            e.printStackTrace();
+
+        } finally {
+
+            MySqlDAOFactory.closeRsAndSt(rs, st);
+
+        }
+        MySqlDAOFactory.closeConnection();
+        return isUsed;
     }
 
-    public Customer findCustomer() {
-
-        Customer customer = null;
-
-        // Implement find a customer here using supplied               
-        // argument values as search criteria
-        // Return a Transfer Object if found,
-        // return null on error or if not found
-
-        return customer;
-    }
-
-    public boolean updateCustomer() {
-        boolean isOk = true;
-        // implement update record here using data
-        // from the customerData Transfer Object
-        // Return true on success, false on failure or
-        // error
-
-        return isOk;
-    }
-
-    public RowSet selectAllCustomersRS() {
+     public RowSet selectAllCustomersRS() {
         RowSet rs = null;
 
         return rs;
@@ -198,4 +237,14 @@ public class CustomerMySqlDAO implements CustomerDAOInterface {
 
         return customerTOs;
     }
+   
+    public boolean updateCustomer() {
+        boolean isOk = true;
+        // implement update record here using data
+        // from the customerData Transfer Object
+        // Return true on success, false on failure or
+        // error
+
+        return isOk;
+    }   
 }
