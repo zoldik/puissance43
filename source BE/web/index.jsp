@@ -96,7 +96,7 @@
 <link rel="stylesheet" href="style.css">
 <LINK REL="SHORTCUT ICON" HREF="./favicon.ico">
 
-<html>
+<html style="overflow: auto">
     
     <head>
        
@@ -111,7 +111,7 @@
         <div id="test">
             <input type="button" onclick="displayAccount();" name="displayAccount" value="displayAccount" /><input type="button" onclick="displayIdentification();" name="displayIdentification" value="displayIdentification" /><input type="button" onclick="displayLostPassword();" name="displayLostPassword" value="displayLostPassword" /><input type="button" onclick="hideAccount();" name="hideAccount" value="hideAccount" /><input type="button" onclick="displayHeader();" name="displayHeader" value="displayHeader" />
         </div>
-        <div class="main" id="main"></div>
+        <div class="main" id="main" > </div>
         
     </body>
     
