@@ -14,37 +14,24 @@
         <title>Création of a new account</title>
         
         <link rel="stylesheet" href="style.css">
-
+        
     </head>
     
     
-    <body class="presentation">        
+    <body class="presentation"> 
+    
+<%
+    RegisterErrors error = new RegisterErrors();
+%>
         
-        <%
-            //Need to set the attribut now otherwise there is an internal error server 500 during the get. 
-            session.setAttribute("CreationAccount", "default");
-
-            //String param  = request.getParameter("Creation");
-            String account = session.getAttribute("CreationAccount").toString();
-
-            RegisterErrors error = new RegisterErrors();
-
-            if (account.compareTo("default") == 0) {
-                out.print("<center>Création d'un compte client</center><hr>");
-            } else if (account.compareTo("used") == 0) {
-                out.print("<center>Compte déja enregistré, sélectionnez un autre login</center><hr>");
-            } else if (account.compareTo("failed") == 0) {
-                error = (RegisterErrors) session.getAttribute("error");
-                out.print("<center>Un ou plusieurs champs ont été mal rempli, vérifiez les informations rentrées</center><hr>");
-            } else if (account.toString().compareTo("registered") == 0) {
-                out.print("<center>Demande de compte transmise, consultez votre boîte mail pour valider votre compte</center><hr>");
-            }
-        %>
+        <center>Création d'un compte client</center><hr>              
         
         <br><br><div id="CreateCustomerAccount"></div><br>
+        
         <!--#FF0000>>Red-->
         <!--#FFFF00>>Yellow-->       
         <center><a style="color:#FFFF00">* : Paramètres obligatoires </a></center><br>        
+        
         
         <form name="RegisterForm" action="./CtrAccount" method="POST">
             <div id="register">  
