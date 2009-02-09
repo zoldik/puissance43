@@ -1,6 +1,6 @@
 modification directement dans les .sql qu'il faudra reporter dans le visuel Power Designer
 
-Vincent, 09-02-07 09h00 : modification de la table item ajout de champs
+Vincent, 09-02-08 09h00 : modification de la table item ajout de champs
 
 Vincent, 09-02-08 : 
 1-delete int_id_internet_subscribe bigint,
@@ -12,4 +12,7 @@ Vincent, 09-02-08 :
 
 7-changement de int_id_... en id_...
 dans alter table customer add constraint FK_CUSTOMER_HAS_INTERNET_SUBSCRIBE foreign key (id_internet_subscribe)
-      references internet_subscribe (id_internet_subscribe) on delete restrict on update restrict;
+      references internet_subscribe (id_internet_subscribe) on delete restrict on update restrict
+
+Philippe, 09-02-08 : Merci pour le passage en lowercase, plus rien ne marche! :)
+1-ajout table cdr et de d'un contenu de test dans les scripts
