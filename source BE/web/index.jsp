@@ -12,7 +12,7 @@
 
 
 
-<script language="JavaScript" src="ajax.js"></script>
+<script language="JavaScript" src="./javascripts/ajax.js"></script>
 
 <script language="JavaScript">
     var myRequest = false;
