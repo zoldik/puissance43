@@ -76,7 +76,7 @@ body {
 	margin: 0;
 	padding: 0;
 	/* (The background color is specified elsewhere, so do a global replacement if it ever changes) */
-	background-color: #d9d9d9;
+	background-color: #ff0000;
 }
 
 a:link {
