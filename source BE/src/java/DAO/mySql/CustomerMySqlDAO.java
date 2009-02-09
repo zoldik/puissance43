@@ -202,7 +202,8 @@ public class CustomerMySqlDAO implements CustomerDAOInterface {
 
             st = conn.createStatement();
             rs = st.executeQuery("select * from customer where login='" + login + "'");
-
+            
+            
             if (rs.next() == true) {
                 //The login is already used
                 isUsed = true;

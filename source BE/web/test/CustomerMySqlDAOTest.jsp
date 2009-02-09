@@ -21,18 +21,22 @@
     
     
 <%
+    //**************************************    
+    //Test customerDAO.insertCustomer(customerTO)
+    //**************************************
+    
     String error ;
     CustomerTO customerTO = new CustomerTO();
     
-    customerTO.setFirstName("Jean");
-    customerTO.setLastName("Dujardin");
-    customerTO.setLogin("OSS117");
-    customerTO.setPassword("OSS117");
-    customerTO.setMail("jean.dujardin@gmail.com");
-    customerTO.setSexe("M");
-    customerTO.setBirthday("19/03/1979");
+    customerTO.setFirstName("anya");
+    customerTO.setLastName("Dujmovic");
+    customerTO.setLogin("anya");
+    customerTO.setPassword("anya");
+    customerTO.setMail("anya@gmail.com");
+    customerTO.setSexe("F");
+    customerTO.setBirthday("09/02/2009");
     customerTO.setPhone("03 20 00 56 12");
-    customerTO.setCellPhone("06 68 97 12 32");      
+    customerTO.setCellPhone("06 68 97 12 32"); 
     
     //Test
     out.println(customerTO.getLastName());    
@@ -43,6 +47,16 @@
     
     //Test
     out.println(error);    
+    
+    //**************************************    
+    //Test customerDAO.customerDAO.isLoginUsed()
+    //**************************************
+    //qui serait assez fou pour mettre ceci en login aaaaabeb
+    if (customerDAO.isLoginUsed("aaaaabeb") == true) {
+            session.setAttribute("CreationAccount", "used");
+            out.println("already used");
+            }
+    
 %>
         
         <h2>Test customer insert</h2>

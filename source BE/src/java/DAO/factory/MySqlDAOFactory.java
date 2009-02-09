@@ -24,15 +24,12 @@ public class MySqlDAOFactory extends DAOFactory {
     //*********************
     //STATIC ATTRIBUTES
     //*********************
-    private static Connection conn = null;
-    
+    //private static Connection conn = null;
     private static ItemDAOInterface itemDAO = null;
     private static CustomerDAOInterface customerDAO = null;
-    
     //*********************
     //STATIC COMMONS METHODS FOR THE DAO OBJECTS
     //*********************
-        
     /** Connect to the main database (RedNeck database).
      * method to create MySql connections.
      * init uses service JNDI
@@ -40,17 +37,18 @@ public class MySqlDAOFactory extends DAOFactory {
      * @return Statement
      */
     public static Connection createConnectionWithJNDI() {
-        if (conn == null) {
-            try {
-                Context initCtx = new InitialContext();
-                DataSource ds = (DataSource) initCtx.lookup("java:MySqlDS");
-                conn = ds.getConnection();
-            } catch (Exception e) {
-                //System.out.println("Connection issue : ");
-                e.printStackTrace();
-            }
-        //System.out.println("Success connection \n");
+        //if (conn == null) {
+        Connection conn = null;
+        try {
+            Context initCtx = new InitialContext();
+            DataSource ds = (DataSource) initCtx.lookup("java:MySqlDS");
+            conn = ds.getConnection();
+        } catch (Exception e) {
+            //System.out.println("Connection issue : ");
+            e.printStackTrace();
         }
+        //System.out.println("Success connection \n");
+        //}
         return conn;
     }
 
@@ -59,6 +57,7 @@ public class MySqlDAOFactory extends DAOFactory {
      */
     public static void closeConnection() {
         try {
+            Connection conn = null;
             conn.close();
         } catch (Exception e) {
             System.out.println("\n Impossible de se déconnecter de la base de donnée\n");
@@ -95,7 +94,6 @@ public class MySqlDAOFactory extends DAOFactory {
     //*********************
     //STATIC METHODS TO GET THE DAO OBJECTS 
     //*********************       
-    
     public static CustomerDAOInterface getCustomerDAO() {
         // MySqlCustomerDAO implements CustomerDAO 
         if (customerDAO == null) {
@@ -110,16 +108,14 @@ public class MySqlDAOFactory extends DAOFactory {
         }
         return itemDAO;
     }    // public getVoIPCustomerDAO() {}
-    
     /*
     public AccountDAO getAccountDAO() {
     // CloudscapeAccountDAO implements AccountDAO
     return new CloudscapeAccountDAO();
     }
-    */
-    
+     */
     /*
-     public OrderDAO getOrderDAO() {
+    public OrderDAO getOrderDAO() {
     // CloudscapeOrderDAO implements OrderDAO
     return new CloudscapeOrderDAO();
     }
