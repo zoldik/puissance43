@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<root>
+    <Accueil name="Accueil">
+        <link name="Internet" url="internet.jsp"/>
+        <link name="WebMail" url="Webmail.jsp"/>
+    </Accueil>
+    <Compte name="Compte">
+        <link name="Creation" url="CreateCustomerAccount.jsp" />
+        <link name="Gestion" url="compte/compte.jsp"/>
+        <link name="Resiliation" url="resiliation-compte.jsp"/>
+    </Compte>
+    <VOD name="VOD">
+        <link name="VOD"  url="" />
+    </VOD>
+    <VoIP name="VoIP">
+        <link name="Compte" url="voip/moncompte.jsp"/>
+        <link name="Annuaire" url="voip/annuaire.jsp"/>
+        <link name="ZoIPer" url="voip/telechargement.jsp"/>
+        <link name="Support" url="voip/support.jsp"/>
+        <link name="Admin" url="voip/admin/admin.jsp"/>
+        <link name="CDR" url="http://localhost/cdr/cdr.php"/>
+    </VoIP>
+    <WebMail name="WebMail">
+        <link name="WebMail"  url="" />
+    </WebMail>
+    <Assistance name="menu assistance">
+        <link name="Assistance"  url="" />
+    </Assistance>
+    <NetworkDevices name="menu NetworkDevices">
+        <link name="Search" url="Search.jsp" />
+        <link name="AdvancedSearch" url="AdvancedSearch.jsp" />
+        <link name="Cart" url="DisplayCart.jsp" />
+        <link name="Order" url="Order.jsp" />
+    </NetworkDevices>
+    <NetworkSolutions name="menu NetworkSolutions">
+        <link name="Solutions" url="" />
+    </NetworkSolutions>
+</root>
