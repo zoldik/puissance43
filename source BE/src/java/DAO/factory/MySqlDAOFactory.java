@@ -1,10 +1,7 @@
 package DAO.factory;
 
-import DAO.interfaces.CustomerDAOInterface;
-import DAO.interfaces.ItemDAOInterface;
-
-import DAO.mySql.CustomerMySqlDAO;
-import DAO.mySql.ItemMySqlDAO;
+import DAO.interfaces.*;
+import DAO.mySql.*;
 
 import java.sql.Connection;
 import java.sql.ResultSet;
@@ -28,6 +25,7 @@ public class MySqlDAOFactory extends DAOFactory {
     //private static Connection conn = null;
     private static ItemDAOInterface itemDAO = null;
     private static CustomerDAOInterface customerDAO = null;
+    private static LineDAOInterface lineDAO = null;
     //*********************
     //STATIC COMMONS METHODS FOR THE DAO OBJECTS
     //*********************
@@ -110,6 +108,15 @@ public class MySqlDAOFactory extends DAOFactory {
         return itemDAO;
     }    // public getVoIPCustomerDAO() {}
 
+        public LineDAOInterface getLineDAO() {
+        // MySqlCustomerDAO implements CustomerDAO 
+        if (lineDAO == null) {
+            lineDAO = new LineMySqlDAO();
+        }
+        return lineDAO;
+    }
+    
+    
     /*
     public AccountDAO getAccountDAO() {
     // CloudscapeAccountDAO implements AccountDAO

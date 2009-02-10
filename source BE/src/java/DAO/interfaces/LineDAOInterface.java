@@ -20,7 +20,7 @@ public interface LineDAOInterface {
 
     public LineTO findLine(String id, String order);
 
-    public boolean updateLine();
+    public boolean updateLine(String id, String name, String value);
 
     public LinkedList<LineTO> selectAllLineTO(String order);
     
