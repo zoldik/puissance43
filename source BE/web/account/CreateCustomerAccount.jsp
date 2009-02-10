@@ -19,17 +19,20 @@
     
     
     <body class="presentation"> 
-    
-<%
-    RegisterErrors error = new RegisterErrors();
-    CustomerTO customerTO = new CustomerTO();
-     
-    if(session.getAttribute("errorAccount") != null){
-        error = (RegisterErrors)session.getAttribute("errors");
-        customerTO = (CustomerTO)session.getAttribute("customerBegin"); 
-        out.print("<center><a style=color:#FFFF00>Un ou plusieurs champs ont été mal rempli, corriger les champs en jaune</a></center></center><hr>");
-    }
-%>
+        
+        <%
+            RegisterCustomerErrors errorC = new RegisterCustomerErrors();
+            RegisterAddressErrors errorA = new RegisterAddressErrors();
+            
+            CustomerTO customerTO = new CustomerTO();
+
+            if (session.getAttribute("errorAccount") != null) {
+                errorC = (RegisterCustomerErrors) session.getAttribute("errorsCustomer");
+                //errorA
+                customerTO = (CustomerTO) session.getAttribute("customerBegin");
+                out.print("<center><a style=color:#FFFF00>Un ou plusieurs champs ont été mal rempli, corriger les champs en jaune</a></center></center><hr>");
+            }
+        %>
         
         <center>Création d'un compte client</center><hr>              
         
@@ -37,15 +40,17 @@
         
         <!--#FF0000>>Red-->
         <!--#FFFF00>>Yellow-->       
-        <center><a style="color:#FFFF00">* : Paramètres obligatoires </a></center><br>        
-        
+        <center><a style="color:#FFFF00">* : Paramètres obligatoires </a></center><br>         
         
         <form name="RegisterForm" action="./CtrAccount" method="POST">
             <div id="register">  
                 <table>
+                    <tr align="left"><td><h2 align='left'>Renseignements :</h2></td></tr>
+                    
+                    
                     <tr align="left">
                         <td><a style="color:
-                                   <%if (error.getErrorFirstName() == 1) {
+                                   <%if (errorC.getErrorFirstName() == 1) {
                 out.print("#FFFF00");
             }%>">* Prénom (15 caractères max) : </a></td>
                         <td><input type="text" name="firstName" value="<%if (customerTO.getFirstName() != null) {
@@ -55,7 +60,7 @@
                     
                     
                     <tr align="left">
-                        <td><a style="color:<%if (error.getErrorLastName() == 1) {
+                        <td><a style="color:<%if (errorC.getErrorLastName() == 1) {
                 out.print("#FFFF00");
             }%>">* nom (15 caractères max) : </a></td>
                         <td><input type="text" name="lastName" value="<%if (customerTO.getLastName() != null) {
@@ -65,7 +70,7 @@
                     
                     
                     <tr align="left">
-                        <td><a style="color:<%if (error.getErrorLogin() == 1) {
+                        <td><a style="color:<%if (errorC.getErrorLogin() == 1) {
                 out.print("#FFFF00");
             }%>">* Nom d'utilisateur (15 caractères max) : </a></td>
                         <td><input type="text" name="login" value="<%if (customerTO.getLogin() != null) {
@@ -75,7 +80,7 @@
                     
                     
                     <tr align="left">
-                        <td><a style="color:<%if (error.getErrorPassword() == 1) {
+                        <td><a style="color:<%if (errorC.getErrorPassword() == 1) {
                 out.print("#FFFF00");
             }%>">* Mot de passe (8 min / 15 max) : </a></td>
                         <td><input type="password" name="password" value="<%if (customerTO.getPassword() != null) {
@@ -85,7 +90,7 @@
                     
                     
                     <tr align="left">
-                        <td><a style="color:<%if (error.getErrorMail() == 1) {
+                        <td><a style="color:<%if (errorC.getErrorMail() == 1) {
                 out.print("#FFFF00");
             }%>">* Mail (Valide) : </a></td>
                         <td><input type="text" name="mail" value="<%if (customerTO.getMail() != null) {
@@ -95,7 +100,7 @@
                     
                     
                     <tr align="left">
-                        <td><a style="color:<%if (error.getErrorSexe() == 1) {
+                        <td><a style="color:<%if (errorC.getErrorSexe() == 1) {
                 out.print("#FFFF00");
             }%>">* Sexe (M/F/X): </a></td>
                         <td><input type="text" name="sexe" value="<%if (customerTO.getSexe() != null) {
@@ -105,7 +110,7 @@
                     
                     
                     <tr align="left">
-                        <td><a style="color:<%if (error.getErrorBirthday() == 1) {
+                        <td><a style="color:<%if (errorC.getErrorBirthday() == 1) {
                 out.print("#FFFF00");
             }%>">* Date de Naissance (dd/mm/yyyy) : </a></td>
                         <td><input type="text" name="birthday" value="<%if (customerTO.getBirthday() != null) {
@@ -115,7 +120,7 @@
                     
                     
                     <tr align="left">
-                        <td><a style="color:<%if (error.getErrorPhone() == 1) {
+                        <td><a style="color:<%if (errorC.getErrorPhone() == 1) {
                 out.print("#FFFF00");
             }%>">Téléphone Fixe : </a></td>
                         <td><input type="text" name="phone" onKeyUp=verifLength(this.value,"phone","20") align="left" /><div id="phone"></div></td>
@@ -123,7 +128,7 @@
                     
                     
                     <tr align="left">
-                        <td><a style="color:<%if (error.getErrorCellPhone() == 1) {
+                        <td><a style="color:<%if (errorC.getErrorCellPhone() == 1) {
                 out.print("#FFFF00");
             }%>">Téléphone gsm : </a></td>
                         <td><input type="text" name="cellPhone" onKeyUp=verifLength(this.value,"cellPhone","20") align="left" /><div id="cellPhone"></div></td>
@@ -144,6 +149,47 @@
                         <td><input type="text" name="protect" align="left" /></td>
                     </tr>
                     -->
+                    
+                    <!--zzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzz-->
+                    
+                    <tr align="left"><td><h2 align='left'>Adresse :</h2></td></tr>
+                    
+                    
+                    <tr align="left">
+                        <td><a style="color:<%if (errorA.getErrorStreet() == 1) {
+                out.print("#FFFF00");
+            }%>">* Rue : </a></td>
+                        <td><input type="text" name="street" onKeyUp=verifLength(this.value,"street","20") align="left" /><div id="street"></div></td>
+                    </tr>
+                    
+                    
+                    <tr align="left">
+                        <td><a style="color:<%if (errorA.getErrorPostalCode() == 1) {
+                out.print("#FFFF00");
+            }%>">* Code postal : </a></td>
+                        <td><input type="text" name="postalCode" onKeyUp=verifLength(this.value,"postalCode","20") align="left" /><div id="postalCode"></div></td>
+                    </tr>
+                    
+                    
+                    <tr align="left">
+                        <td><a style="color:<%if (errorA.getErrorCity() == 1) {
+                out.print("#FFFF00");
+            }%>">* Ville : </a></td>
+                        <td><input type="text" name="city" onKeyUp=verifLength(this.value,"city","20") align="left" /><div id="city"></div></td>
+                    </tr>
+                    
+                    
+                    <tr align="left">
+                        <td><a style="color:<%if (errorA.getErrorCountry() == 1) {
+                out.print("#FFFF00");
+            }%>">* Code postal : </a></td>
+                        <td><input type="text" name="country" onKeyUp=verifLength(this.value,"country","20") align="left" /><div id="country"></div></td>
+                    </tr>
+                    
+                    
+                     <!--zzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzz-->
+                    
+                    
                     <tr>
                         <td></td>
                         <td align="left">
