@@ -17,7 +17,9 @@ import model.account.Customer;
 /** *CloudscapeCustomerDAO implementation of the 
 // CustomerDAO interface. 
  * 
- * This class can contain all
+ * This class can contain all        RowSet rs = null;
+
+        return rs;
 // Cloudscape specific code and SQL statements. 
 // The client is thus shielded from knowing 
 // these implementation details.
