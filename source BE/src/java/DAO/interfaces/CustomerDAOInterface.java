@@ -1,5 +1,6 @@
 package DAO.interfaces;
 
+import DAO.transfertObject.AddressTO;
 import DAO.transfertObject.CustomerTO;
 
 import java.util.ArrayList;
@@ -21,7 +22,7 @@ public interface CustomerDAOInterface {
     
     public Customer findCustomer();
     
-    public String insertCustomer(CustomerTO customerTO);
+    public String insertCustomer(CustomerTO customerTO, AddressTO addressTO);
  
     public boolean isLoginUsed(String login);
 

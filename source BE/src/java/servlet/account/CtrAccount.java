@@ -140,7 +140,7 @@ public class CtrAccount extends javax.servlet.http.HttpServlet {
             } else {
 
                 //Put in the BDD
-                String error = customerDAO.insertCustomer(customerTO);
+                String error = customerDAO.insertCustomer(customerTO, addressTO);
 
                 /*
                 response.setContentType("text/html");

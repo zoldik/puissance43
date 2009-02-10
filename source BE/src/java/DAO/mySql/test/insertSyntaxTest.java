@@ -4,6 +4,7 @@
  */
 package DAO.mySql.test;
 
+import DAO.transfertObject.AddressTO;
 import DAO.transfertObject.CustomerTO;
 
 /**
@@ -16,30 +17,46 @@ public class insertSyntaxTest {
 
         CustomerTO customerTO = new CustomerTO();
 
-        customerTO.setFirstName("Jean");
-        customerTO.setLastName("Dujardin");
-        customerTO.setLogin("OSS117");
-        customerTO.setPassword("OSS117");
-        customerTO.setMail("jean.dujardin@gmail.com");
-        customerTO.setSexe("M");
-        customerTO.setBirthday("19/03/1979");
+        customerTO.setFirstName("michel");
+        customerTO.setLastName("Dujmovic");
+        customerTO.setLogin("anya");
+        customerTO.setPassword("anya");
+        customerTO.setMail("anya@gmail.com");
+        customerTO.setSexe("F");
+        customerTO.setBirthday("09/02/2009");
         customerTO.setPhone("03 20 00 56 12");
         customerTO.setCellPhone("06 68 97 12 32");
 
-        String insert = "INSERT INTO `customer` ( `id_address` , `first_name` , " +
+        AddressTO addressTO = new AddressTO();
+
+        addressTO.setStreet("12, avenue de j'en ai marre");
+        addressTO.setPostalCode("53 464");
+        addressTO.setCity("MARRE");
+        addressTO.setCountry("FRANCE");
+
+        String insertAddress = "INSERT INTO `address` ( `street` , `postal_code` , `city` , `country` ) ";
+
+        String valuesAddress = "VALUES ( " + "'" + addressTO.getStreet() + "','" + addressTO.getPostalCode() +
+                "','" + addressTO.getCity() + "','" + addressTO.getCountry() + "');";
+
+        String selectId = "SELECT `id_address` FROM `address` WHERE `street` = \"12, avenue de jen ai marre\" AND `postal_code` = \"53 464\" " +
+                " AND `city` = \"MARRE\" AND `country` = \"FRANCE\" LIMIT 0 , 30";
+
+        String insertCustomer = "INSERT INTO `customer` ( `id_address` , `first_name` , " +
                 "`last_name` , `login` , `password`, `mail` , `sexe` , `birthday` , `phone` , `cell_phone` , `profession` , " +
                 "`company` , `account_level` ) ";
 
-        String values = " VALUES ( " + "\"" + "5" + "\",\"" + customerTO.getFirstName() +
-                "\",\"" + customerTO.getLastName() + "\",\"" + customerTO.getLogin() +
-                "\",\"" + customerTO.getPassword() + "\",\"" + customerTO.getMail() +
-                "\",\"" + customerTO.getSexe() + "\",\"" + customerTO.getBirthday() +
-                "\",\"" + customerTO.getPhone() + "\",\"" + customerTO.getCellPhone() +
-                "\",\"" + "profession" + "\",\"" + "company" + "\",\"" + "1" + "\");";
+        String valuesCustomer = " VALUES ( " + "'" + selectId + "','" + customerTO.getFirstName() +
+                "','" + customerTO.getLastName() + "','" + customerTO.getLogin() +
+                "','" + customerTO.getPassword() + "','" + customerTO.getMail() +
+                "','" + customerTO.getSexe() + "','" + customerTO.getBirthday() +
+                "','" + customerTO.getPhone() + "','" + customerTO.getCellPhone() +
+                "','" + "profession" + "','" + "company" + "','" + "1" + "');";
 
-        insert += values;
 
-        System.out.println(insert);
+        insertAddress += valuesAddress;
+        insertCustomer += valuesCustomer;
+        System.out.println(insertCustomer);
     //Puis, tester dans phpMyAdmin
     }
 }
