@@ -30,7 +30,7 @@ public class SQLContactVoip {
         try {   
             stmt=connexion.getConn().createStatement();
              stmt.executeUpdate(insert);		
-            } 
+            }
         catch (SQLException e2)
         {
             System.out.println("SqlException : "+e2);
@@ -169,7 +169,7 @@ public class SQLContactVoip {
       * 
       * 
       */
-        static public boolean deletebyId(int id) throws SQLException {
+     static public boolean deletebyId(int id) throws SQLException {
         boolean okay=true;
         Statement stmt;
         ConnectionDatabase connexion=new ConnectionDatabase();
@@ -187,8 +187,8 @@ public class SQLContactVoip {
         }
         try {connexion.close();} catch (Exception e3) {System.out.println("Erreur fermeture"+e3);}
         return okay;
-    } 
-    
+    }
+        
          /** Renvoie les contacts d'une catégorie
       * 
       * @param categorie
@@ -253,7 +253,7 @@ public class SQLContactVoip {
         }
         try {connexion.close();} catch (Exception e3) {System.out.println("Erreur fermeture"+e3);}
         return okay;
-    } 
+    }
     
     
     
