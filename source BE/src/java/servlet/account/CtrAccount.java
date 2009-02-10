@@ -8,9 +8,11 @@ import DAO.factory.DAOFactory;
 import DAO.factory.MySqlDAOFactory;
 import DAO.interfaces.CustomerDAOInterface;
 import DAO.mySql.CustomerMySqlDAO;
+import DAO.transfertObject.AddressTO;
 import DAO.transfertObject.CustomerTO;
 
-import model.account.RegisterErrors;
+import model.account.RegisterAddressErrors;
+import model.account.RegisterCustomerErrors;
 
 /**
  *
@@ -85,7 +87,7 @@ public class CtrAccount extends javax.servlet.http.HttpServlet {
             response.sendRedirect("NotificationCreationAccount.jsp");
         } else {
 
-            //Creation of the transfert object 
+            //Creation of the transfert object customer 
             CustomerTO customerTO = new CustomerTO();
             //Set the attibutes of customerTO with parameters from the CreateCustomerAccount
             customerTO.setFirstName(request.getParameter("firstName"));
@@ -97,15 +99,26 @@ public class CtrAccount extends javax.servlet.http.HttpServlet {
             customerTO.setBirthday(request.getParameter("birthday"));
             customerTO.setPhone(request.getParameter("phone"));
             customerTO.setCellPhone(request.getParameter("cellPhone"));
-
+            
+            //Creation of the transfert object customer
+            AddressTO addressTO = new AddressTO();
+            //Set the attibutes of customerTO with parameters from the CreateCustomerAccount
+            addressTO.setStreet(request.getParameter("street"));
+            addressTO.setPostalCode(request.getParameter("postalCode"));
+            addressTO.setCity(request.getParameter("city"));
+            addressTO.setCountry(request.getParameter("country"));
+            
             //On vérifie qu'il n'y a pas d'erreur dans le formulaire
-            RegisterErrors erreursFormulaire = new RegisterErrors();
-            boolean isError = erreursFormulaire.checkInfos(customerTO);
-
-            if (isError == true) {
+            RegisterCustomerErrors erreursClient = new RegisterCustomerErrors();
+            boolean isErrorCustomer = erreursClient.checkInfos(customerTO);
+            
+            RegisterAddressErrors erreursAdresse = new RegisterAddressErrors();
+            boolean isErrorAddress = erreursAdresse.checkInfos(addressTO);
+            
+            if (isErrorCustomer == true || isErrorAddress == true) {
                 session.setAttribute("errorAccount", "errorAccount");
 
-                session.setAttribute("errors", erreursFormulaire);
+                session.setAttribute("errorsCustomer", erreursClient);
                 
                 session.setAttribute("customerBegin", customerTO);
 

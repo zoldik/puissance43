@@ -5,8 +5,8 @@ import DAO.transfertObject.CustomerTO;
 /** Classe de test permettant la validation d'un compte à la création
  * @author Baudet Aurélien
  */
-public class RegisterErrors {
-          
+public class RegisterCustomerErrors {
+
     private int errorFirstName = 0;
     private int errorLastName = 0;
     private int errorLogin = 0;
@@ -20,12 +20,10 @@ public class RegisterErrors {
     private int errorCompany = 0;
 
     //gestion de l'account_level ?
-    
     /**Constructor
      * 
      */
-    
-    public RegisterErrors() {
+    public RegisterCustomerErrors() {
         this.errorFirstName = 0;
         this.errorLastName = 0;
         this.errorLogin = 0;
@@ -38,12 +36,9 @@ public class RegisterErrors {
         this.errorProfession = 0;
         this.errorCompany = 0;
     }
-    
-
     //**********
     //GETTERS
     //**********
-    
     public int getErrorBirthday() {
         return errorBirthday;
     }
@@ -87,80 +82,79 @@ public class RegisterErrors {
     public int getErrorSexe() {
         return errorSexe;
     }
-    
     //**********
     //METHODS
     //**********
-        
     /** Check if all the fields in the register's form is well filled
      * 
      * @param newUser
      * @return ErrorRegister
      */
-    public boolean checkInfos(CustomerTO newCustomer) {
-        
+    public boolean checkInfos(CustomerTO customerTO) {
+
         //Return object
         boolean error = false;
-        
+
         //obligatory field
-        if (newCustomer.getFirstName() == "" || newCustomer.getFirstName().length() > 15) {
+        if (customerTO.getFirstName() == "" || customerTO.getFirstName().length() > 15) {
             this.errorFirstName = 1;
             error = true;
         }
-        
+
         //obligatory field
-        if (newCustomer.getLastName() == "" || newCustomer.getLastName().length() > 15) {
+        if (customerTO.getLastName() == "" || customerTO.getLastName().length() > 15) {
             this.errorLastName = 1;
             error = true;
         }
-        
+
         //obligatory field
-        if (newCustomer.getLogin() == "" || newCustomer.getLogin().length() > 15) {
+        if (customerTO.getLogin() == "" || customerTO.getLogin().length() > 15) {
             this.errorLogin = 1;
             error = true;
         }
-        
+
         //obligatory field
-        if (newCustomer.getPassword() == "" || newCustomer.getPassword().length() > 15 || newCustomer.getPassword().length() < 8) {
+        if (customerTO.getPassword() == "" || customerTO.getPassword().length() > 15 || customerTO.getPassword().length() < 8) {
             this.errorPassword = 1;
             error = true;
         }
-        
+
         //obligatory field
-        if (newCustomer.getMail() == "" || newCustomer.getMail().length() > 30 || newCustomer.getMail().indexOf("@") == -1 || newCustomer.getMail().indexOf(".") == -1) {
+        if (customerTO.getMail() == "" || customerTO.getMail().length() > 30 || customerTO.getMail().indexOf("@") == -1 || customerTO.getMail().indexOf(".") == -1) {
             this.errorMail = 1;
             error = true;
         }
-        
+
         //obligatory field
-        if (newCustomer.getSexe() == "" || newCustomer.getSexe().length() > 1 || (newCustomer.getSexe().indexOf("M") == -1 && newCustomer.getSexe().indexOf("F") == -1 && newCustomer.getSexe().indexOf("X") == -1)) {
+        if (customerTO.getSexe() == "" || customerTO.getSexe().length() > 1 || (customerTO.getSexe().indexOf("M") == -1 && customerTO.getSexe().indexOf("F") == -1 && customerTO.getSexe().indexOf("X") == -1)) {
             this.errorSexe = 1;
             error = true;
         }
-        
+
         //obligatory field
-        if (newCustomer.getBirthday() == "" || newCustomer.getBirthday().length() > 10) {
+        if (customerTO.getBirthday() == "" || customerTO.getBirthday().length() > 10) {
             this.errorBirthday = 1;
             error = true;
         }
-        
-        //NOT obligatory field because you have not error = true; line;
-        if (newCustomer.getPhone().length() > 20) {
-            this.errorPhone = 1;            
+
+        //NOT obligatory field because you have not customer.get... == "" in the predicat;
+        if (customerTO.getPhone().length() > 20) {
+            this.errorPhone = 1;
+            error = true;
         }
-                
-        //NOT obligatory field because you have not error = true; line;
-        if (newCustomer.getCellPhone().length() > 20) {
-            this.errorCellPhone = 1;            
+
+        //NOT obligatory field because you have not customer.get... == "" in the predicat;
+        if (customerTO.getCellPhone().length() > 20) {
+            this.errorCellPhone = 1;
+            error = true;
         }
+
         /*
         if (Integer.parseInt(newCustomer.getProtectAccount()) != (Integer.parseInt(newCustomer.getKey1()) + Integer.parseInt(newCustomer.getKey2())) || newCustomer.getProtectAccount() == "0") {
         this.errorprotect = 1;
         this.error = 1;
         }
-        */
+         */
         return error;
     }
-
-   
 }
