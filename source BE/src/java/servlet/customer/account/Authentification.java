@@ -36,7 +36,7 @@ public class Authentification extends javax.servlet.http.HttpServlet {
 			if (account.isAllowed()){
                                 session.setAttribute("Customer",account);
 				//Si on a la permission, on accède à la suite
-                                response.sendRedirect("./index.jsp");
+                                response.sendRedirect("./index.jsp?Connexion=1");
 			}
 			else {
 				//Sinon, on revient à la page d'authentification
