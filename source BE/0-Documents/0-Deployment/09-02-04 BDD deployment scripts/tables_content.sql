@@ -25,7 +25,8 @@ INSERT INTO `customer` (
 `cell_phone` ,
 `profession` ,
 `company` ,
-`account_level`
+`account_level` ,
+`valid`
 )
 VALUES (
 NULL ,
@@ -42,7 +43,8 @@ NULL ,
 '06 12 58 37 29', 
 'physicien', 
 'relativeCoporation',
-NULL
+NULL ,
+1
 );
 
 --
