@@ -1,6 +1,6 @@
 create table address
 (
-   id_address           bigint not null,
+   id_address           bigint not null auto_increment,
    street               varchar(64),
    postal_code          varchar(10),
    city                 varchar(64),
