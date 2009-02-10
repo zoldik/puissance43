@@ -4,12 +4,15 @@
  */
 
 package servlet;
-
-import java.io.*;
-import javax.servlet.*;
-import javax.servlet.http.*;
 import model.database.*;
 import java.lang.Integer.*;
+
+import java.io.IOException;
+import java.io.PrintWriter;
+import javax.servlet.ServletException;
+import javax.servlet.http.HttpServlet;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
 
 /**
  *
@@ -17,6 +20,30 @@ import java.lang.Integer.*;
  */
 public class supprContactInfo extends HttpServlet {
    
+    /** 
+    * Processes requests for both HTTP <code>GET</code> and <code>POST</code> methods.
+    * @param request servlet request
+    * @param response servlet response
+    */
+    protected void processRequest(HttpServletRequest request, HttpServletResponse response)
+    throws ServletException, IOException {
+        response.setContentType("text/html;charset=UTF-8");
+        PrintWriter out = response.getWriter();
+        try {
+            out.println("hello");
+            out.println("ID : "+request.getParameter("id"));
+            String id = request.getParameter("id");
+            //SQLContactVoip.deletebyId(id);
+        }
+        catch (Exception e) {
+            System.out.println("Erreur dans la suppression"+e);
+        }
+         
+        finally { 
+            response.sendRedirect(response.encodeRedirectURL("voip/repertoire.jsp"));    
+            out.close();
+        }
+    } 
 
 
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">
@@ -42,6 +69,9 @@ public class supprContactInfo extends HttpServlet {
         
     response.sendRedirect(response.encodeRedirectURL("voip/repertoire.jsp"));    
     } 
+
+
+     
 
     /** 
     * Handles the HTTP <code>POST</code> method.
