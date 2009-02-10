@@ -21,7 +21,7 @@
                                     <td>&nbsp;</td>
                                 </tr>
                                 <tr>
-                                    <td align="right"><input type="button" onclick="displayIdentification();" value="retour" name="retour" /></td>
+                                    <td align="right"><input type="button" onclick="displayIdentification(1);" value="retour" name="retour" /></td>
                                     <td align="left"><input type="submit" value="Réinitialiser" name="Réinitialiser" /></td>
                                     <td>&nbsp;</td>
                                 </tr>

@@ -2,26 +2,26 @@
 <root>
     <Accueil name="Accueil">
         <link name="Internet" url="internet.jsp"/>
-        <link name="WebMail" url="Webmail.jsp"/>
+        <link name="WebMail" url="0"/>
     </Accueil>
     <Compte name="Compte">
         <link name="Creation" url="CreateCustomerAccount.jsp" />
-        <link name="Gestion" url="compte/compte.jsp"/>
-        <link name="Resiliation" url="resiliation-compte.jsp"/>
+        <link name="Gestion" url="0"/>
+        <link name="Resiliation" url="0"/>
     </Compte>
     <VOD name="VOD">
-        <link name="VOD"  url="" />
+        <link name="VOD"  url="accueil.jsp" />
     </VOD>
     <VoIP name="VoIP">
-        <link name="Compte" url="voip/moncompte.jsp"/>
+        <link name="Compte" url="0"/>
         <link name="Annuaire" url="voip/annuaire.jsp"/>
         <link name="ZoIPer" url="voip/telechargement.jsp"/>
         <link name="Support" url="voip/support.jsp"/>
-        <link name="Admin" url="voip/admin/admin.jsp"/>
-        <link name="CDR" url="http://localhost/cdr/cdr.php"/>
+        <link name="Admin" url="0"/>
+        <link name="CDR" url="0"/>
     </VoIP>
     <WebMail name="WebMail">
-        <link name="WebMail"  url="" />
+        <link name="WebMail"  url="0" />
     </WebMail>
     <Assistance name="menu assistance">
         <link name="Assistance"  url="" />
