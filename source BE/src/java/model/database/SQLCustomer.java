@@ -12,103 +12,6 @@ import java.sql.*;
  */
 public class SQLCustomer {
        
-     /**
-      * Inscrit l'utilisateur dans la base de donnée.
-      * 
-      * Si absence de gsm, remplacer par le string null.
-      * Si absence de fixe, remplacer par le string null.
-      * Si absence de societe, remplacer par le string null.
-      * Si absence de date de naissance, remplacer par le string null.
-      * @param login
-      * @param pw
-      * @param prenom
-      * @param nom
-      * @param naissance
-      * @param societe
-      * @param mail
-      * @param sexe
-      * @param fixe
-      * @param gsm
-      * @param user_type
-      * @param account_level
-      * @param debit_vod
-      * @return
-      */
-    public static boolean insert(String login, String pw, String prenom, String nom, String naissance, String societe ,String mail, String sexe, String fixe, String gsm, String user_type, String account_level, String debit_vod)
-    {     
-        boolean okay=true;
-        Statement stmt;
-        ConnectionDatabase connexion=new ConnectionDatabase();
-        String insert="insert into CUSTOMER (LOGIN,PASSWORD,PRENOM,NOM,MAIL,SEXE,USER_TYPE,ACCOUNT_LEVEL,DEBIT_VOD";
-        String values="values (\""+login+"\",\""+pw+"\",\""+prenom+"\",\""+nom+"\",\""+mail+"\",\""+sexe+"\",\""+user_type+"\",\""+account_level+"\",\""+debit_vod+"\"";
-        if (fixe.compareTo("")!=0)
-        {
-            insert+=",TEL";
-            values+=",\""+fixe+"\"";
-        }
-        if (gsm.compareTo("")!=0)
-        {
-            insert+=",GSM";
-            values+=",\""+gsm+"\"";
-        }
-        if (societe.compareTo("")!=0)
-        {
-            insert+=",SOCIETE";
-            values+=",\""+societe+"\"";
-        }
-        if (naissance.compareTo("")!=0)
-        {
-            insert+=",BORN";
-            values+=",\""+naissance+"\"";
-        }
-        insert+=") "+values+");";
-        try
-        {
-            stmt=connexion.getConn().createStatement();
-            stmt.executeUpdate(insert);
-            }
-        catch(SQLException e2)
-        {
-            System.out.println("SqlException : "+e2);
-            okay=false;
-        }
-        try {connexion.close();} catch (Exception e3) {System.out.println("Erreur fermeture"+e3);}
-        return okay;
-    }
-    
-    /*
-    public static boolean insert(String login, String pw, String prenom, String nom, String naissance, String mail, String sexe, String fixe, String gsm)
-    {
-        boolean okay=true;
-        Statement stmt;
-        SQLObjet connexion=new SQLObjet();
-        String insert="insert into group8_user (login,password,prenom,nom,naissance,mail,sexe";
-        String values="values (\""+login+"\",\""+pw+"\",\""+prenom+"\",\""+nom+"\",\""+naissance+"\",\""+mail+"\",\""+sexe+"\"";
-        if (fixe.compareTo("")!=0)
-        {
-            insert+=",tel_fixe";
-            values+=",\""+fixe+"\"";
-        }
-        if (gsm.compareTo("")!=0)
-        {
-            insert+=",tel_gsm";
-            values+=",\""+gsm+"\"";
-        }
-        insert+=") "+values+");";
-        try
-        {
-            stmt=connexion.getConn().createStatement();
-            stmt.executeUpdate(insert);
-            }
-        catch(SQLException e2)
-        {
-            System.out.println("SqlException : "+e2);
-            okay=false;
-        }
-        try {connexion.close();} catch (Exception e3) {System.out.println("Erreur fermeture"+e3);}
-        return okay;
-    }
-    */
     
      /** Verifie si l'utilisateur est autorisé
       * 
@@ -126,7 +29,7 @@ public class SQLCustomer {
         ResultSet rs=null;
         try
         {
-            rs=stmt.executeQuery("select * from CUSTOMER where (login=\""+log+"\" and password=\""+pw+"\")");
+            rs=stmt.executeQuery("select * from customer where (login=\""+log+"\" and password=\""+pw+"\")");
             if (rs.next()==true)
                 {okay=true;}
             else 
@@ -156,7 +59,7 @@ public class SQLCustomer {
         ResultSet rs=null;
         try
         {
-            rs=stmt.executeQuery("select * from CUSTOMER where login=\""+log+"\"");
+            rs=stmt.executeQuery("select * from customer where login=\""+log+"\"");
             if (rs.next()==true)
                 {okay=true;}
             else 
@@ -187,9 +90,9 @@ public class SQLCustomer {
         ResultSet rs=null;
         try
         {
-            rs=stmt.executeQuery("select USER_ID from CUSTOMER where (login=\""+log+"\" and password=\""+pw+"\")");
+            rs=stmt.executeQuery("select id_customer from customer where (login=\""+log+"\" and password=\""+pw+"\")");
             rs.next();
-            id=Integer.parseInt(rs.getString("USER_ID"));
+            id=Integer.parseInt(rs.getString("id_customer"));
         }
         catch(Exception e2)
         {
@@ -214,7 +117,7 @@ public class SQLCustomer {
         try
         {
             stmt=connexion.getConn().createStatement();
-            rs = stmt.executeQuery("select id_user from CUSTOMER where (login=\""+log+"\" and password=\""+pw+"\")");
+            rs = stmt.executeQuery("select id_customer from customer where (login=\""+log+"\" and password=\""+pw+"\")");
         }
         catch(SQLException e2)
         {
@@ -238,7 +141,7 @@ public class SQLCustomer {
         try
         {
                 stmt=connexion.getConn().createStatement();
-                stmt.executeUpdate("update CUSTOMER set valide=1 where id_user=\""+id+"\";");
+                stmt.executeUpdate("update customer set valid=1 where id_customer=\""+id+"\";");
         }
         catch(SQLException e2)
         {
@@ -263,7 +166,7 @@ public class SQLCustomer {
         try
         {
                 stmt=connexion.getConn().createStatement();
-                rs=stmt.executeQuery("select * from CUSTOMER where id_user=\""+id+"\" and valide=0;");
+                rs=stmt.executeQuery("select * from customer where id_customer=\""+id+"\" and valid=0;");
                 if (rs.next()==true)
                 {okay=true;}
                 else 
@@ -278,42 +181,15 @@ public class SQLCustomer {
         return okay;
     }
 
-     /** Vérifie qu'un utilisateur est abonné à des flux RSS à partir de son id
-      * @param id
-      * @return boolean
-      */
-    static public boolean hasRssUrl(int id)
-    {
-        boolean okay=true;
-        Statement stmt;
-        ResultSet rs=null;
-        ConnectionDatabase connexion=new ConnectionDatabase();
-        try
-        {
-                stmt=connexion.getConn().createStatement();
-                rs=stmt.executeQuery("select * from sabonne where id_user=\""+id+"\";");
-                if (rs.next()==true)
-                {okay=true;}
-                else 
-                {okay=false;}
-        }
-        catch(SQLException e2)
-        {
-            System.out.println("SqlException"+e2);
-            okay=false;
-        }
-        try {connexion.close();} catch (Exception e3) {System.out.println("Erreur fermeture"+e3);}
-        return okay;
-    }
     
-         /** Retourne la valeur du PRENOM à partir du login & mdp passés en arguments
+     /** Retourne la valeur du PRENOM à partir du login & mdp passés en arguments
       * 
       * @param log
       * @param pw
       * @return String
       * @throws java.lang.Exception
       */
-    static public String getName(String log, String pw) throws Exception
+    static public String getFirstName(String log, String pw) throws Exception
     {
         String result ="";
         Statement stmt;
@@ -322,9 +198,9 @@ public class SQLCustomer {
         ResultSet rs=null;
         try
         {
-            rs=stmt.executeQuery("select PRENOM from CUSTOMER where (login=\""+log+"\" and password=\""+pw+"\")");
+            rs=stmt.executeQuery("select first_name from customer where (login=\""+log+"\" and password=\""+pw+"\")");
             rs.next();
-            result=rs.getString("PRENOM");
+            result=rs.getString("first_name");
         }
         catch(Exception e2)
         {
@@ -342,7 +218,7 @@ public class SQLCustomer {
       * @return String
       * @throws java.lang.Exception
       */
-    static public String getSurname(String log, String pw) throws Exception
+    static public String getLastName(String log, String pw) throws Exception
     {
         String result ="";
         Statement stmt;
@@ -351,9 +227,9 @@ public class SQLCustomer {
         ResultSet rs=null;
         try
         {
-            rs=stmt.executeQuery("select NOM from CUSTOMER where (login=\""+log+"\" and password=\""+pw+"\")");
+            rs=stmt.executeQuery("select last_name from customer where (login=\""+log+"\" and password=\""+pw+"\")");
             rs.next();
-            result=rs.getString("NOM");
+            result=rs.getString("last_name");
         }
         catch(Exception e2)
         {
@@ -378,7 +254,7 @@ public class SQLCustomer {
         try
         {
                 stmt=connexion.getConn().createStatement();
-                rs=stmt.executeQuery("select * from CUSTOMER where (LOGIN=\""+login+"\" and MAIL=\""+email+"\");");
+                rs=stmt.executeQuery("select * from customer where (login=\""+login+"\" and mail=\""+email+"\");");
                 if (rs.next()==true)
                 {okay=true;}
                 else 

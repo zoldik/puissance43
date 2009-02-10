@@ -30,7 +30,7 @@ public class Authentification extends javax.servlet.http.HttpServlet {
                         Customer account = new Customer();
                         
                         if (login!="" && password!="") {
-                            //account = new Customer(login,password);
+                            account = new Customer(login,password);
                         }
 
 			if (account.isAllowed()){

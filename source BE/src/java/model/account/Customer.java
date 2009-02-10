@@ -14,20 +14,19 @@ import model.database.*;
 
 public class Customer {
     private int id;
-    private String log;
-    private String pw;
-    private String name;
-    private String surname;
-    private String societe;
+    private String login;
+    private String password;
+    private String first_name;
+    private String last_name;
     private String mail;
     private String sexe;
-    private String userType;
-    private String accountLevel;
-    private String typeUserVod;
-    private String creditVod;
-    private String tel;
-    private String gsm;
-    private String born;
+    private String birthday;
+    private String phone;
+    private String cell_phone;
+    private String profession;
+    private String company;
+    private String account_level;
+    private boolean valid;
     private boolean allowed;
     
     //******************
@@ -39,20 +38,19 @@ public class Customer {
      */
     public Customer() {
         this.id=0;
-        this.log="";
-        this.pw="";
-        this.name="";
-        this.surname="";
-        this.societe="";
+        this.login="";
+        this.password="";
+        this.first_name="";
+        this.last_name="";
         this.mail="";
         this.sexe="";
-        this.userType="";
-        this.accountLevel="";
-        this.typeUserVod="";
-        this.creditVod="";
-        this.tel="";
-        this.gsm="";
-        this.born="";
+        this.birthday="";
+        this.phone="";
+        this.cell_phone="";
+        this.profession="";
+        this.company="";
+        this.account_level="";
+        this.valid=false;
         this.allowed=false;
     }
     
@@ -64,27 +62,26 @@ public class Customer {
      */
     public Customer(String login, String password) throws Exception {
         this.id=0;
-        this.log=login;
-        this.pw=password;
-        this.name="";
-        this.surname="";
-        this.societe="";
+        this.login=login;
+        this.password=password;
+        this.first_name="";
+        this.last_name="";
         this.mail="";
         this.sexe="";
-        this.userType="";
-        this.accountLevel="";
-        this.typeUserVod="";
-        this.creditVod="";
-        this.tel="";
-        this.gsm="";
-        this.born="";
+        this.birthday="";
+        this.phone="";
+        this.cell_phone="";
+        this.profession="";
+        this.company="";
+        this.account_level="";
+        this.valid=false;
         boolean tmp_allowed = false;
         tmp_allowed = SQLCustomer.isAllowed(login,password);
         this.allowed=tmp_allowed;
         if (this.allowed) {
             this.id=SQLCustomer.getID(login, password);
-            this.name=SQLCustomer.getName(login, password);
-            this.surname=SQLCustomer.getSurname(login, password);
+            this.first_name=SQLCustomer.getFirstName(login, password);
+            this.last_name=SQLCustomer.getLastName(login, password);
         }
     }
     
@@ -92,24 +89,20 @@ public class Customer {
         return id;
     }
 
-    public String getLog() {
-        return log;
+    public String getLogin() {
+        return login;
     }
 
-    public String getPw() {
-        return pw;
+    public String getPassword() {
+        return password;
     }
 
-    public String getName() {
-        return name;
+    public String getFirstName() {
+        return first_name;
     }
 
-    public String getSurname() {
-        return surname;
-    }
-
-    public String getSociete() {
-        return societe;
+    public String getLastName() {
+        return last_name;
     }
 
     public String getMail() {
@@ -120,34 +113,34 @@ public class Customer {
         return sexe;
     }
 
-    public String getUserType() {
-        return userType;
+    public String getBirthday() {
+        return birthday;
+    }
+    
+    public String getPhone() {
+        return phone;
     }
 
+    public String getCellPhone() {
+        return cell_phone;
+    }    
+    
+    public String getProfession() {
+        return profession;
+    } 
+    
+    public String getCompany() {
+        return company;
+    }
+    
     public String getAccountLevel() {
-        return accountLevel;
+        return account_level;
+    }    
+    
+    public boolean isValid() {
+        return valid;
     }
-
-    public String getTypeUserVod() {
-        return typeUserVod;
-    }
-
-    public String getCreditVod() {
-        return creditVod;
-    }
-
-    public String getTel() {
-        return tel;
-    }
-
-    public String getGsm() {
-        return gsm;
-    }
-
-    public String getBorn() {
-        return born;
-    }
-
+    
     public boolean isAllowed() {
         return allowed;
     }
