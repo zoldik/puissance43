@@ -1,7 +1,7 @@
 package DAO.factory;
 
 import DAO.factory.MySqlDAOFactory;
-import DAO.interfaces.CustomerDAOInterface;
+import DAO.interfaces.*;
 import model.database.CustomerDAO;
 
 /**Abstract class DAO Factory
@@ -25,6 +25,9 @@ public abstract class DAOFactory {
 
 //    public abstract AccountDAO getAccountDAO();
 
+    
+    public abstract LineDAOInterface getLineDAO();
+    
     //public abstract OrderDAO getOrderDAO();
     public static DAOFactory getDAOFactory(
             int whichFactory) {
@@ -42,4 +45,7 @@ public abstract class DAOFactory {
                 return null;
         }
     }
+    
+    
+    
 }

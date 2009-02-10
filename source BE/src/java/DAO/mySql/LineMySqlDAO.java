@@ -12,11 +12,8 @@ import DAO.transfertObject.LineTO;
 import java.util.LinkedList;
 
 import java.sql.Connection;
-import java.sql.SQLException;
 import java.sql.ResultSet;
 import java.sql.Statement;
-
-
 
 
 /**
@@ -220,7 +217,6 @@ public class LineMySqlDAO implements LineDAOInterface {
         MySqlDAOFactory.closeConnection();
         return okay;
     }
-    
 
     public boolean deleteLine(String id){
         
@@ -323,8 +319,28 @@ public class LineMySqlDAO implements LineDAOInterface {
         return Line;
     }
 
-    public boolean updateLine(){
-        return true;
+    public boolean updateLine(String id, String name, String value){
+        
+        boolean okay=true;
+        
+        Connection conn = (Connection) MySqlDAOFactory.createConnectionWithJNDI();
+        Statement st = null;
+        ResultSet rs = null;
+        
+        try
+        {
+            st=conn.createStatement();
+            st.executeUpdate("UPDATE voip_line SET "+name+"=\""+value+"\" WHERE id_voip_line=\""+id+"\"");
+      
+        } catch (Exception e) {
+            e.printStackTrace();
+            okay=false;
+        } finally {
+            MySqlDAOFactory.closeRsAndSt(rs,st);
+        }
+        MySqlDAOFactory.closeConnection();
+        
+        return okay;
     }
     
     public LinkedList<LineTO> selectAllLineTO(String order){
