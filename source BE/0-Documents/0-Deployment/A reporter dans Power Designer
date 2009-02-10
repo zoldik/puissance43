@@ -17,6 +17,10 @@ dans alter table customer add constraint FK_CUSTOMER_HAS_INTERNET_SUBSCRIBE fore
 Philippe, 09-02-08 : Merci pour le passage en lowercase, plus rien ne marche! :)
 1-ajout table cdr et de d'un contenu de test dans les scripts
 
+Philippe, 10-02-08 :
+1-ajout valid dans table customer
+
 Vincent, 09-02-08 : De tout façon énormément de choses ont changer aussi, la migration suit sont cours...dsl
 1-ajout de unique (`login`) dans la table customer
 2-Philippe attention à mettre le drop pour que le reinit.sh fonctionne bien quand tu crées une table
+
