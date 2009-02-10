@@ -23,6 +23,8 @@
                  int Connexion = Integer.parseInt(request.getParameter("Connexion"));
                    if (Connexion==2) {
                        fonctionJS="displayIdentification(2);";
+                   } else if (Connexion==1) {
+                       fonctionJS="displayAccount();";
                    } else {
                        fonctionJS="displayIdentification(404);";
                    }

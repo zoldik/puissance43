@@ -22,7 +22,7 @@
                    }
                }
 %>
-<form class="account" name="Authentification" action="./Authentification" method="POST">
+                        <form class="account" name="Authentification" action="./Authentification" method="POST">
                             <table align="center">
                                 <tr>
                                     <td align="right"><label for="username"> Nom d'utilisateur :</label></td>

@@ -22,8 +22,8 @@
                         <form class="account" name="Account" action="./Deconnection" method="POST">
                             <table align="center">
                                 <tr style="font-size:12px;" >
-                                    <td align="left">Bonjour <%=CustomerObject.getSurname()%> <%=CustomerObject.getName()%></td>
-                                    <td align="left">[<%=idCustomer%>/<%=CustomerObject.getLog()%>]</td>
+                                    <td align="left">Bonjour <%=CustomerObject.getFirstName()%> <%=CustomerObject.getLastName()%></td>
+                                    <td align="left">[<%=idCustomer%>/<%=CustomerObject.getLogin()%>]</td>
                                     <td>&nbsp;</td>
                                 </tr>
                                <tr style="font-size:12px;" >
@@ -52,19 +52,19 @@
             %>
             <form class="account" name="Authentification" action="./Authentification" method="POST">
                             <table align="center">
-                                <tr style="font-size:12px;" >
+                                <tr>
                                     <td align="right"><label for="username"> Nom d'utilisateur :</label></td>
-                                    <td align="left"><input type="text" id="username" name="username" class="LoginBox" value="genie" /></td>
-                                    <td>&nbsp;</td>
+                                    <td align="left"><input type="text" id="username" name="username" class="LoginBox" value="" /></td>
+                                    <td align="right" ><input type="button" onclick="displayLostPassword();" value="Mot de passe oublié" name="Mot de passe oublié" /></td>
                                 </tr>
-                               <tr style="font-size:12px;" >
+                               <tr>
                                     <td align="right"><label for="password"> Mot de passe :</label></td>
-                                    <td align="left"><input type="password" id="password" name="password" class="LoginBox" value="genie"  /></td>
-                                    <td>&nbsp;</td>
+                                    <td align="left"><input type="password" id="password" name="password" class="LoginBox" value=""  /></td>
+                                    <td align="left"><input type="submit" value="Connexion" name="Connexion" /></td>
                                 </tr>
                                 <tr>
-                                    <td align="right" ><input type="button" onclick="displayLostPassword();" value="Mot de passe oublié" name="Mot de passe oublié" /></td>
-                                    <td align="left"><input type="submit" value="Connexion" name="Connexion" /></td>
+                                    <td>&nbsp;</td>
+                                    <td align="center"><div id="subAccount"></div></td>
                                     <td>&nbsp;</td>
                                 </tr>
                             </table>

@@ -47,7 +47,7 @@
     function fonctionOpenPage(url)
     {
         if (url=="0") {
-            //displayIdentification(99);
+            displayIdentification(99);
         } else {
             updateDivContent("main", "<object class='page' data='"+url+"' type='text/html'/>");
         }
