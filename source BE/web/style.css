@@ -37,6 +37,7 @@ a.onglet:hover {color:red} /* lors du survol d'un lien, la police devient verte 
     background-repeat: repeat;
     padding: 0;
     font-family: Verdana,Arial,Helvetica,sans-serif;
+    font-size:12px;
     width:100%;
     height:90px;
 } /* marge intérieure basse */

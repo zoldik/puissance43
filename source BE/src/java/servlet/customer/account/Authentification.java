@@ -30,7 +30,7 @@ public class Authentification extends javax.servlet.http.HttpServlet {
                         Customer account = new Customer();
                         
                         if (login!="" && password!="") {
-                            account = new Customer(login,password);
+                            //account = new Customer(login,password);
                         }
 
 			if (account.isAllowed()){
@@ -40,7 +40,7 @@ public class Authentification extends javax.servlet.http.HttpServlet {
 			}
 			else {
 				//Sinon, on revient à la page d'authentification
-				response.sendRedirect("./index.jsp?Connexion=refused");
+				response.sendRedirect("./index.jsp?Connexion=2");
 			}
 		}catch (Exception e){
 			System.err.println("Erreur à l'authentification !");
