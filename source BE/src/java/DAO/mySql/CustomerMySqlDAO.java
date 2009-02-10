@@ -2,6 +2,7 @@ package DAO.mySql;
 
 import DAO.interfaces.CustomerDAOInterface;
 import DAO.factory.MySqlDAOFactory;
+import DAO.transfertObject.AddressTO;
 import DAO.transfertObject.CustomerTO;
 
 import java.util.ArrayList;
@@ -19,22 +20,21 @@ import model.account.Customer;
  * 
  * This class can contain all        RowSet rs = null;
 
-        return rs;
+return rs;
 // Cloudscape specific code and SQL statements. 
 // The client is thus shielded from knowing 
 // these implementation details.
 
  * @author vincent
  */
-public class CustomerMySqlDAO extends MySqlGeneralObjectDAO implements CustomerDAOInterface  {
-    
-     public CustomerMySqlDAO() {
+public class CustomerMySqlDAO extends MySqlGeneralObjectDAO implements CustomerDAOInterface {
+
+    public CustomerMySqlDAO() {
         //initialization
     }
     // The following methods can use MySqlDAOFactory.createConnection() 
     // to get a connection as required
-
-     public boolean deleteCustomer() {
+    public boolean deleteCustomer() {
         boolean isOk = true;
 
         // Implement delete customer here
@@ -54,8 +54,8 @@ public class CustomerMySqlDAO extends MySqlGeneralObjectDAO implements CustomerD
 
         return customer;
     }
-    
-    public String insertCustomer(CustomerTO customerTO) {
+
+    public String insertCustomer(CustomerTO customerTO, AddressTO addressTO) {
 
         //Implement insert customer here.
 
@@ -68,79 +68,81 @@ public class CustomerMySqlDAO extends MySqlGeneralObjectDAO implements CustomerD
 
         //transaction or sequence of queries
         Statement st = null;
-
-        //Test 1
-        /*
-        String insert = "INSERT INTO `customer` ( `id_address` , `first_name` , " +
-        "`last_name` , `login` , `password`, `mail` , `sexe` , `birthday` , `phone` , `cell_phone` , `profession` , " +
-        "`company` , `account_level` ) ";
         
-        String values = " VALUES ( " + "\""+ "5" + "\",\"" + "getFirstName()" +
-        "\",\"" + "getLastName()" + "\",\"" + "getLogin()" +
-        "\",\"" + "getPassword()" + "\",\"" + "getMail()" +
-        "\",\"" + "M" + "\",\"" + "Birthday" +
-        "\",\"" + "getPhone()" + "\",\"" + "getCellPhone()" +
-        "\",\"" + "profession" + "\",\"" + "company" + "\",\"" + "1" + "\");";
+        //result of the queries
+        ResultSet rs = null;
         
-        insert += values;
-         */
-
-        //Test 2
-        //Il y a 13 champs sur les 15 que contient la table customer. En effet :
-        //Pas de `id_customer`, the field is on auto_increment;
-        //Pas de `id_internet_subscribe`
-
-        //Pour le moment `id_address` a une valeur par défaut de 5. En effet, id_address is not null car
-        //IMPORTANT un customer à au moins 1 adresse
-
         //IMPORTANT
         //name column between `` 
         //value between ' or "/ 
-        /*
-        String insert = "INSERT INTO `customer` ( `id_address` , `first_name` , " +
-        "`last_name` , `login` , `password`, `mail` , `sexe` , `birthday` , `phone` , `cell_phone` , `profession` , " +
-        "`company` , `account_level` ) ";
-        
-        String values = " VALUES ( " + " 5 ," + " 'getFirstName()' ," +
-        " 'getLastName()' ," + " 'getLogin()' ," +
-        " 'getPassword()' ," + " 'getMail()' ," +
-        " 'M' ," + " 'Birthday' ," +
-        " 'getPhone()' ," + " 'getCellPhone()' ," +
-        " 'profession' ," + " 'company' ," + " '1' " + ");";
-        
-        insert += values;
-         */
 
-        //Test3
+        //Il y a 4 champs sur les 6 que contient la table address. En effet :
+        //Pas de `id_address`, the field is on auto_increment;
+        //Pas de `type_address`
+        
+        //version1
         /*
-        String insert = "INSERT INTO `customer` ( `id_address` , `first_name` , " +
-        "`last_name` , `login` , `password`, `mail` , `sexe` , `birthday` , `phone` , `cell_phone` , `profession` , " +
-        "`company` , `account_level` ) ";
-        
-        String values = " VALUES ( " + "\"" + "5" + "\",\"" + customerTO.getFirstName() +
-        "\",\"" + customerTO.getLastName() + "\",\"" + customerTO.getLogin() +
-        "\",\"" + customerTO.getPassword() + "\",\"" + customerTO.getMail() +
-        "\",\"" + customerTO.getSexe() + "\",\"" + customerTO.getBirthday() +
-        "\",\"" + customerTO.getPhone() + "\",\"" + customerTO.getCellPhone() +
-        "\",\"" + "profession" + "\",\"" + "company" + "\",\"" + "1" + "\");";
-        
-        insert += values;
-         */
+        String insertAddress = "INSERT INTO `address` ( `street` , `postal_code` , `city` , `country` ) ";
 
-        //Test4
+        String valuesAddress = "VALUES ( '111, avenue Roger Salengro' , '59 160' , 'LOMME' , 'FRANCE' ) ";
+    
+        
+        insertAddress += valuesAddress;
+        */
+        
+        String insertAddress = "INSERT INTO `address` ( `street` , `postal_code` , `city` , `country` ) ";
+
+        String valuesAddress = "VALUES ( " + "'" + addressTO.getStreet() + "','" + addressTO.getPostalCode() +
+                "','" + addressTO.getCity() + "','" + addressTO.getCountry() + "');";
+    
+        
+        insertAddress += valuesAddress;
+        
+        try {
+            st = conn.createStatement();
+            st.executeUpdate(insertAddress);            
+        } catch (SQLException e) {
+            System.out.println("SqlException : " + e);
+            //error = -1;
+            error = e.toString();
+        }
+        
+        String selectId = "SELECT `id_address` FROM `address` WHERE `street` = '" + addressTO.getStreet() + "' AND `postal_code` ='" + 
+                addressTO.getPostalCode() + "' AND `city` = '" + addressTO.getCity() + "' AND `country` = '"+ addressTO.getCountry() + 
+                "' LIMIT 0 , 30";
+        
+        String idAddress = null;
+        try {
+            st = conn.createStatement();
+            rs = st.executeQuery(selectId);
+            
+            rs.next();
+            idAddress = rs.getString("id_address");
+        } catch (SQLException e) {
+            System.out.println("SqlException : " + e);
+            //error = -1;
+            error = e.toString();
+        }
+        
+        
+        //Il y a 13 champs sur les 15 que contient la table customer. En effet :
+        //Pas de `id_customer`, the field is on auto_increment;
+        //Pas de `id_internet_subscribe` 
+        //Pour le moment `id_address` a une valeur par défaut de 5. En effet, id_address is not null car
+        //IMPORTANT un customer à au moins 1 adresse
         //ATTENTION à ne pas mettre d'espace pour les values
-        String insert = "INSERT INTO `customer` ( `id_address` , `first_name` , " +
+        String insertCustomer = "INSERT INTO `customer` ( `id_address` , `first_name` , " +
                 "`last_name` , `login` , `password`, `mail` , `sexe` , `birthday` , `phone` , `cell_phone` , `profession` , " +
                 "`company` , `account_level` ) ";
 
-        String values = " VALUES ( " + "'" + "5" + "','" + customerTO.getFirstName() +
+        String valuesCustomer = " VALUES ( " + "'" + idAddress + "','" + customerTO.getFirstName() +
                 "','" + customerTO.getLastName() + "','" + customerTO.getLogin() +
                 "','" + customerTO.getPassword() + "','" + customerTO.getMail() +
                 "','" + customerTO.getSexe() + "','" + customerTO.getBirthday() +
                 "','" + customerTO.getPhone() + "','" + customerTO.getCellPhone() +
                 "','" + "profession" + "','" + "company" + "','" + "1" + "');";
 
-        insert += values;
+        insertCustomer += valuesCustomer;
 
         /*
         String values = "values (\"" + firstName + "\",\"" + lastName + "\",\"" + login + "\",\"" + password +
@@ -161,10 +163,10 @@ public class CustomerMySqlDAO extends MySqlGeneralObjectDAO implements CustomerD
         
         insert += ") " + values + ");";
          */
-
+        
         try {
             st = conn.createStatement();
-            st.executeUpdate(insert);
+            st.executeUpdate(insertCustomer);            
         } catch (SQLException e) {
             System.out.println("SqlException : " + e);
             //error = -1;
@@ -179,14 +181,14 @@ public class CustomerMySqlDAO extends MySqlGeneralObjectDAO implements CustomerD
         // or a -1 on error    
         return error;
     }
-    
+
     /** Verifie si l'utilisateur passé en argument existe dans la DB
      * 
      * @param log
      * @return boolean
      * @throws java.lang.Exception
      */
-    public boolean isLoginUsed(String login){
+    public boolean isLoginUsed(String login) {
 
         //Return object
         boolean isUsed = false;
@@ -204,9 +206,9 @@ public class CustomerMySqlDAO extends MySqlGeneralObjectDAO implements CustomerD
 
             st = conn.createStatement();
             rs = st.executeQuery("select * from customer where login='" + login + "'");
-            
+
             //rs.beforeFirst();
-            
+
             if (rs.next() == true) {
                 //The login is already used
                 isUsed = true;
@@ -229,7 +231,7 @@ public class CustomerMySqlDAO extends MySqlGeneralObjectDAO implements CustomerD
         return isUsed;
     }
 
-     public RowSet selectAllCustomersRS() {
+    public RowSet selectAllCustomersRS() {
         RowSet rs = null;
 
         return rs;
@@ -241,7 +243,7 @@ public class CustomerMySqlDAO extends MySqlGeneralObjectDAO implements CustomerD
 
         return customerTOs;
     }
-   
+
     public boolean updateCustomer() {
         boolean isOk = true;
         // implement update record here using data
@@ -250,5 +252,5 @@ public class CustomerMySqlDAO extends MySqlGeneralObjectDAO implements CustomerD
         // error
 
         return isOk;
-    }   
+    }
 }
