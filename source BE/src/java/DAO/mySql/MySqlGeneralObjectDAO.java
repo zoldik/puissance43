@@ -16,9 +16,10 @@ import javax.naming.InitialContext;
  */
 public class MySqlGeneralObjectDAO {
 
-    private Connection conn = null;
+    //private Connection conn = null;
 
     public Connection getConnectionWithJNDI() {
+        Connection conn = null;
         if (conn == null) {
             try {
                 Context initCtx = new InitialContext();
@@ -37,6 +38,7 @@ public class MySqlGeneralObjectDAO {
      * close uses the service JNDI.     * 
      */
     public void closeConnection() {
+        Connection conn = null;
         try {
             conn.close();
         } catch (Exception e) {

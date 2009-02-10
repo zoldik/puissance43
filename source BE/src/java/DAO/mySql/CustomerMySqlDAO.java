@@ -205,6 +205,7 @@ public class CustomerMySqlDAO extends MySqlGeneralObjectDAO implements CustomerD
             st = conn.createStatement();
             rs = st.executeQuery("select * from customer where login='" + login + "'");
             
+            //rs.beforeFirst();
             
             if (rs.next() == true) {
                 //The login is already used
