@@ -5,7 +5,7 @@
 --%>
 
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
-<%@page language="Java" import="java.util.*,DAO.transfertObject.CustomerTO,DAO.interfaces.CustomerDAOInterface,DAO.factory.MySqlDAOFactory" %>
+<%@page language="Java" import="java.util.*,DAO.transfertObject.*,DAO.interfaces.CustomerDAOInterface,DAO.factory.*" %>
 
 <html>
     <head>
@@ -25,10 +25,12 @@
     //Test customerDAO.insertCustomer(customerTO)
     //**************************************
     
+    //Pas d'apostrophe dans les values sinon erreur dans sql 
+
     String error ;
     CustomerTO customerTO = new CustomerTO();
     
-    customerTO.setFirstName("anya");
+    customerTO.setFirstName("michel");
     customerTO.setLastName("Dujmovic");
     customerTO.setLogin("anya");
     customerTO.setPassword("anya");
@@ -38,12 +40,21 @@
     customerTO.setPhone("03 20 00 56 12");
     customerTO.setCellPhone("06 68 97 12 32"); 
     
+    AddressTO addressTO = new AddressTO();
+    
+    addressTO.setStreet("12, avenue de jen ai plein le cul");
+    addressTO.setPostalCode("53 464");
+    addressTO.setCity("MARRE");
+    addressTO.setCountry("FRANCE");
+    
     //Test
     out.println(customerTO.getLastName());    
     
-    CustomerDAOInterface customerDAO = MySqlDAOFactory.getCustomerDAO(); 
+    DAOFactory daoFactory = DAOFactory.getDAOFactory(DAOFactory.MYSQL);
+
+    CustomerDAOInterface customerDAO = daoFactory.getCustomerDAO();
     
-    error = customerDAO.insertCustomer(customerTO);    
+    error = customerDAO.insertCustomer(customerTO, addressTO);    
     
     //Test
     out.println(error);    
