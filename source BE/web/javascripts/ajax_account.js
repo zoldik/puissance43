@@ -22,6 +22,8 @@ function displayIdentification(connexion)
       parameters = '?Connexion=';
       if (connexion==2) {
           parameters = parameters+'2';
+      } else if(connexion==99) {
+          parameters = parameters+'99';
       } else if(connexion==404) {
           parameters = parameters+'404';
       } else {

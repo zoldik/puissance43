@@ -1,16 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <root>
-    <Accueil name="Accueil">
-        <link name="Internet" url="internet.jsp"/>
-        <link name="WebMail" url="0"/>
-    </Accueil>
     <Compte name="Compte">
+        <link name="WebMail" url="0"/>
         <link name="Creation" url="CreateCustomerAccount.jsp" />
         <link name="Gestion" url="0"/>
         <link name="Resiliation" url="0"/>
     </Compte>
     <VOD name="VOD">
-        <link name="VOD"  url="accueil.jsp" />
     </VOD>
     <VoIP name="VoIP">
         <link name="Compte" url="0"/>
@@ -20,18 +16,15 @@
         <link name="Admin" url="0"/>
         <link name="CDR" url="0"/>
     </VoIP>
-    <WebMail name="WebMail">
-        <link name="WebMail"  url="0" />
-    </WebMail>
     <Assistance name="menu assistance">
         <link name="Assistance"  url="" />
     </Assistance>
-    <NetworkDevices name="menu NetworkDevices">
+    <Magasin name="Magasin">
         <link name="Search" url="Search.jsp" />
         <link name="AdvancedSearch" url="AdvancedSearch.jsp" />
         <link name="Cart" url="DisplayCart.jsp" />
         <link name="Order" url="Order.jsp" />
-    </NetworkDevices>
+    </Magasin>
     <NetworkSolutions name="menu NetworkSolutions">
         <link name="Solutions" url="" />
     </NetworkSolutions>
