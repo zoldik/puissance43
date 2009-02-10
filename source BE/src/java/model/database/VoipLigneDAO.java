@@ -17,7 +17,6 @@ import java.sql.*;
 public class VoipLigneDAO {
     
     
-    
     public static LinkedList<VoipLigne> extractAllVoipLigne() {
 
         LinkedList<VoipLigne> voipLignes = new LinkedList<VoipLigne>();
@@ -451,8 +450,90 @@ public class VoipLigneDAO {
     }
     
     
-    
-    
+    /**
+    * Extract Voip Ligne by Owner
+    * @param id
+    * @return boolean
+    */ 
+    public static VoipLigne extractVoipLignebyOwner(String id) {
+
+        VoipLigne voipLigne = new VoipLigne();
+
+        //transaction or sequence of queries
+        Statement st = null;
+
+        //result of the queries
+        ResultSet rs = null;
+
+        ConnectionDatabase connectionDatabase = new ConnectionDatabase();
+        Connection conn = (Connection) connectionDatabase.getConn();
+
+        try {
+
+            st = conn.createStatement();
+            rs = st.executeQuery("SELECT * FROM VOIP_LIGNE WHERE (VOIP_LIGNE_ID=\""+id+"\")");
+
+            while (rs.next()) {
+                VoipLigne li = new VoipLigne();
+
+                li.setid(rs.getString("VOIP_LIGNE_ID"));
+                li.setaccountcode(rs.getString("accountcode"));
+                li.setallow(rs.getString("allow"));
+                li.setamaflags(rs.getString("amaflags"));
+                li.setcallerid(rs.getString("callerid"));
+                li.setcallgroup(rs.getString("callgroup"));
+                li.setcalllimit(rs.getString("call-limit"));
+                li.setcancallforward(rs.getString("cancallforward"));
+                li.setcanreinvite(rs.getString("canreinvite"));
+                li.setcontext(rs.getString("context"));
+                li.setdefaultip(rs.getString("defaultip"));
+                li.setdefaultuser(rs.getString("defaultuser"));
+                li.setdeny(rs.getString("deny"));
+                li.setdisallow(rs.getString("disallow"));
+                li.setdtmfmode(rs.getString("dtmfmode"));
+                li.setfromdomain(rs.getString("fromdomain"));
+                li.setfromuser(rs.getString("fromuser"));
+                li.setfullcontact(rs.getString("fullcontact"));
+                li.sethost(rs.getString("host"));
+                li.setinsecure(rs.getString("insecure"));
+                li.setipaddr(rs.getString("ipaddr"));
+                li.setlanguage(rs.getString("language"));
+                li.setmailbox(rs.getString("mailbox"));
+                li.setmask(rs.getString("mask"));
+                li.setmd5secret(rs.getString("md5secret"));
+                li.setmusiconhold(rs.getString("musiconhold"));
+                li.setname(rs.getString("name"));
+                li.setnat(rs.getString("nat"));
+                li.setpermit(rs.getString("permit"));
+                li.setpickupgroup(rs.getString("pickupgroup"));
+                li.setport(rs.getString("port"));
+                li.setqualify(rs.getString("qualify"));
+                li.setregexten(rs.getString("regexten"));
+                li.setregseconds(rs.getString("regseconds"));
+                li.setregserver(rs.getString("regserver"));
+                li.setrestrictcid(rs.getString("restrictcid"));
+                li.setrtpholdtimeout(rs.getString("rtpholdtimeout"));
+                li.setrtptimeout(rs.getString("rtptimeout"));
+                li.setsecret(rs.getString("secret"));
+                li.setsetvar(rs.getString("setvar"));
+                li.setsubsribecontext(rs.getString("subscribecontext"));
+                li.settype(rs.getString("type"));
+                li.setusername(rs.getString("username"));
+                li.setvisible(rs.getBoolean("visible"));
+                
+                voipLigne = li;
+            }
+
+        } catch (Exception e) {
+            e.printStackTrace();
+
+        } finally {
+            ConnectionDatabase.closeRsAndSt(rs, st);
+        }
+
+        connectionDatabase.close();
+        return voipLigne;
+    }
     
     
     
