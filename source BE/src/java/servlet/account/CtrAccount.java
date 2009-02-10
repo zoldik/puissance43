@@ -61,8 +61,11 @@ public class CtrAccount extends javax.servlet.http.HttpServlet {
 
     public void doPost(HttpServletRequest request, HttpServletResponse response) throws IOException, ServletException {
         HttpSession session = request.getSession();
-
-        CustomerDAOInterface customerDAO = (CustomerDAOInterface) MySqlDAOFactory.getCustomerDAO();
+        
+        // a faire dans le init() de la servlet 
+        DAOFactory daoFactory = DAOFactory.getDAOFactory(DAOFactory.MYSQL);
+        
+        CustomerDAOInterface customerDAO = daoFactory.getCustomerDAO();
 
         //Check if the login is not already used
         if (customerDAO.isLoginUsed(request.getParameter("login")) == true) {

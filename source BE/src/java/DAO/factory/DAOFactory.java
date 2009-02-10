@@ -1,6 +1,8 @@
 package DAO.factory;
 
 import DAO.factory.MySqlDAOFactory;
+import DAO.interfaces.CustomerDAOInterface;
+import model.database.CustomerDAO;
 
 /**Abstract class DAO Factory
  *
@@ -8,18 +10,20 @@ import DAO.factory.MySqlDAOFactory;
  */
 public abstract class DAOFactory {
     // List of DAO types supported by the factory
-    private static final int MYSQL = 1;
-    private static final int POSTGRESQL = 2;
-    private static final int ORACLE = 3;
-    private static final int SYBASE = 4;
+    //Normal que se soit en public 
+    public static final int MYSQL = 1;
+    public static final int POSTGRESQL = 2;
+    public static final int ORACLE = 3;
+    public static final int SYBASE = 4;
     
-
+    
+    
     // There will be a method for each DAO that can be 
     // created. The concrete factories will have to 
     // implement these methods.
-    //public abstract CustomerDAO getCustomerDAO();
+    public abstract CustomerDAOInterface getCustomerDAO();
 
-    //public abstract AccountDAO getAccountDAO();
+//    public abstract AccountDAO getAccountDAO();
 
     //public abstract OrderDAO getOrderDAO();
     public static DAOFactory getDAOFactory(
@@ -29,11 +33,11 @@ public abstract class DAOFactory {
             case MYSQL:
                 return new MySqlDAOFactory();
             //case POSTGRESQL :
-                //return new PostGreSqlDAOFactory();
+            //return new PostGreSqlDAOFactory();
             //case ORACLE:
-                //return new OracleDAOFactory();
+            //return new OracleDAOFactory();
             //case SYBASE:
-                //return new SybaseDAOFactory();
+            //return new SybaseDAOFactory();
             default:
                 return null;
         }
