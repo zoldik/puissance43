@@ -8,7 +8,6 @@ package DAO.mySql;
 import DAO.interfaces.LineDAOInterface;
 import DAO.factory.MySqlDAOFactory;
 import DAO.transfertObject.LineTO;
-
 import java.util.LinkedList;
 
 import java.sql.Connection;
@@ -16,21 +15,22 @@ import java.sql.ResultSet;
 import java.sql.Statement;
 
 
+
 /**
  *
  * @author francois
  */
-public class LineMySqlDAO implements LineDAOInterface {
+public class LineMySqlDAO extends MySqlGeneralObjectDAO implements LineDAOInterface  {
     
-    public boolean insertLine(String id,String name,String host,String nat,String type,String accountcode,String amaflags,String calllimit,String callgroup,String callerid,String cancallforward,String canreinvite,String context,String defaultip,String dtmfmode,String fromuser,String fromdomain,String insecure,String language,String mailbox,String md5secret,String deny,String permit,String mask,String musiconhold,String pickupgroup,String qualify,String regexten,String restrictcid,String rtptimeout,String rtpholdtimeout,String secret,String setvar,String disallow,String allow,String fullcontact,String ipaddr,String port,String regserver,String regseconds,String username,String defaultuser,String subscribecontext,Boolean visible){
+    public boolean insertLine(String id,String name,String host,String nat,String type,String accountcode,String amaflags,String calllimit,String callgroup,String callerid,String cancallforward,String canreinvite,String context,String defaultip,String dtmfmode,String fromuser,String fromdomain,String insecure,String language,String mailbox,String md5secret,String deny,String permit,String mask,String musiconhold,String pickupgroup,String qualify,String regexten,String restrictcid,String rtptimeout,String rtpholdtimeout,String secret,String setvar,String disallow,String allow,String fullcontact,String ipaddr,String port,String regserver,String regseconds,String username,Boolean visible){
 
         boolean okay = true;
-
+        
         Connection conn = (Connection) MySqlDAOFactory.createConnectionWithJNDI();
         Statement st = null;
         ResultSet rs = null;
         
-        String insert= "insert into VOIP_LIGNE (name,visible";
+        String insert= "insert into voip_line (name,visible";
         String values="values (\""+name+"\",\""+visible+"\"";
         
         
@@ -195,26 +195,19 @@ public class LineMySqlDAO implements LineDAOInterface {
             insert+=",username";
             values+=",\""+username+"\"";
         }        
-        if (defaultuser.compareTo("")!=0 && defaultuser.compareTo("null")!=0){
-            insert+=",defaultuser";
-            values+=",\""+defaultuser+"\"";
-        }        
-        if (subscribecontext.compareTo("")!=0 && subscribecontext.compareTo("null")!=0){
-            insert+=",subscribecontext";
-            values+=",\""+subscribecontext+"\"";
-        }
         insert+=") "+values+");";
         try
         {
             st=conn.createStatement();
-            st.executeUpdate(insert);
+            rs = st.executeQuery(insert);
+            
         } catch (Exception e) {
+            System.out.println("Exception" + e);
             e.printStackTrace();
-            okay=false;
         } finally {
-            MySqlDAOFactory.closeRsAndSt(rs,st);
+            closeRsAndSt(rs, st);
         }
-        MySqlDAOFactory.closeConnection();
+        closeConnection();
         return okay;
     }
 
@@ -229,7 +222,7 @@ public class LineMySqlDAO implements LineDAOInterface {
         try
         {
             st=conn.createStatement();
-            st.executeUpdate("DELETE FROM VOIP_LINE WHERE id_voip_line ="+id+";");
+            st.executeUpdate("DELETE FROM voip_line WHERE id_voip_line ="+id+";");
       
         } catch (Exception e) {
             e.printStackTrace();
@@ -253,7 +246,7 @@ public class LineMySqlDAO implements LineDAOInterface {
         try {
 
             st = conn.createStatement();
-            rs = st.executeQuery("SELECT * FROM VOIP_LINE WHERE (id_voip_line=\""+id+"\") ORDER BY \""+order+"\"");
+            rs = st.executeQuery("SELECT * FROM voip_line WHERE (id_voip_line=\""+id+"\") ORDER BY \""+order+"\"");
 
             while (rs.next()) {
                 LineTO li = new LineTO();
@@ -269,7 +262,6 @@ public class LineMySqlDAO implements LineDAOInterface {
                 li.setcanreinvite(rs.getString("canreinvite"));
                 li.setcontext(rs.getString("context"));
                 li.setdefaultip(rs.getString("defaultip"));
-                li.setdefaultuser(rs.getString("defaultuser"));
                 li.setdeny(rs.getString("deny"));
                 li.setdisallow(rs.getString("disallow"));
                 li.setdtmfmode(rs.getString("dtmfmode"));
@@ -298,7 +290,6 @@ public class LineMySqlDAO implements LineDAOInterface {
                 li.setrtptimeout(rs.getString("rtptimeout"));
                 li.setsecret(rs.getString("secret"));
                 li.setsetvar(rs.getString("setvar"));
-                li.setsubsribecontext(rs.getString("subscribecontext"));
                 li.settype(rs.getString("type"));
                 li.setusername(rs.getString("username"));
                 //li.setvisible(rs.getBoolean("visible"));
@@ -307,15 +298,16 @@ public class LineMySqlDAO implements LineDAOInterface {
             }
 
         } catch (Exception e) {
+
+            System.out.println("Exception" + e);
             e.printStackTrace();
 
         } finally {
 
-            MySqlDAOFactory.closeRsAndSt(rs, st);
+            closeRsAndSt(rs, st);
 
         }
-        MySqlDAOFactory.closeConnection();
-
+        closeConnection();
         return Line;
     }
 
@@ -332,13 +324,17 @@ public class LineMySqlDAO implements LineDAOInterface {
             st=conn.createStatement();
             st.executeUpdate("UPDATE voip_line SET "+name+"=\""+value+"\" WHERE id_voip_line=\""+id+"\"");
       
-        } catch (Exception e) {
+         } catch (Exception e) {
+
+            System.out.println("Exception" + e);
             e.printStackTrace();
-            okay=false;
+
         } finally {
-            MySqlDAOFactory.closeRsAndSt(rs,st);
+
+            closeRsAndSt(rs, st);
+
         }
-        MySqlDAOFactory.closeConnection();
+        closeConnection();
         
         return okay;
     }
@@ -354,12 +350,12 @@ public class LineMySqlDAO implements LineDAOInterface {
         try {
 
             st = conn.createStatement();
-            rs = st.executeQuery("SELECT * FROM VOIP_LINE ORDER BY \""+order+"\"");
+            rs = st.executeQuery("SELECT * FROM voip_line ORDER BY \""+order+"\"");
 
             while (rs.next()) {
                 LineTO li = new LineTO();
 
-                li.setid(rs.getString("VOIP_LIGNE_ID"));
+                li.setid(rs.getString("id_voip_line"));
                 li.setaccountcode(rs.getString("accountcode"));
                 li.setallow(rs.getString("allow"));
                 li.setamaflags(rs.getString("amaflags"));
@@ -370,7 +366,6 @@ public class LineMySqlDAO implements LineDAOInterface {
                 li.setcanreinvite(rs.getString("canreinvite"));
                 li.setcontext(rs.getString("context"));
                 li.setdefaultip(rs.getString("defaultip"));
-                li.setdefaultuser(rs.getString("defaultuser"));
                 li.setdeny(rs.getString("deny"));
                 li.setdisallow(rs.getString("disallow"));
                 li.setdtmfmode(rs.getString("dtmfmode"));
@@ -399,23 +394,20 @@ public class LineMySqlDAO implements LineDAOInterface {
                 li.setrtptimeout(rs.getString("rtptimeout"));
                 li.setsecret(rs.getString("secret"));
                 li.setsetvar(rs.getString("setvar"));
-                li.setsubsribecontext(rs.getString("subscribecontext"));
                 li.settype(rs.getString("type"));
                 li.setusername(rs.getString("username"));
                 //li.setvisible(rs.getBoolean("visible"));
                 
                 Lines.add(li);                
             }
-
+            
         } catch (Exception e) {
+            System.out.println("Exception" + e);
             e.printStackTrace();
-
         } finally {
-
-            MySqlDAOFactory.closeRsAndSt(rs, st);
-
+            closeRsAndSt(rs, st);
         }
-        MySqlDAOFactory.closeConnection();
+        closeConnection();
 
         return Lines;
     }
