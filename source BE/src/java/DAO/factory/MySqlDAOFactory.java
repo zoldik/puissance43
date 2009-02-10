@@ -16,6 +16,7 @@ import javax.sql.DataSource;
 import javax.naming.Context;
 import javax.naming.InitialContext;
 
+
 /**
  *
  * @author vincent
@@ -94,7 +95,7 @@ public class MySqlDAOFactory extends DAOFactory {
     //*********************
     //STATIC METHODS TO GET THE DAO OBJECTS 
     //*********************       
-    public static CustomerDAOInterface getCustomerDAO() {
+    public CustomerDAOInterface getCustomerDAO() {
         // MySqlCustomerDAO implements CustomerDAO 
         if (customerDAO == null) {
             customerDAO = new CustomerMySqlDAO();
@@ -108,6 +109,7 @@ public class MySqlDAOFactory extends DAOFactory {
         }
         return itemDAO;
     }    // public getVoIPCustomerDAO() {}
+
     /*
     public AccountDAO getAccountDAO() {
     // CloudscapeAccountDAO implements AccountDAO

@@ -24,7 +24,7 @@ import model.account.Customer;
 
  * @author vincent
  */
-public class CustomerMySqlDAO implements CustomerDAOInterface {
+public class CustomerMySqlDAO extends MySqlGeneralObjectDAO implements CustomerDAOInterface  {
     
      public CustomerMySqlDAO() {
         //initialization
@@ -62,7 +62,7 @@ public class CustomerMySqlDAO implements CustomerDAOInterface {
         String error = "pas d'erreur";
 
         //Connexion to the database with JNDI 
-        Connection conn = (Connection) MySqlDAOFactory.createConnectionWithJNDI();
+        Connection conn = (Connection) getConnectionWithJNDI();
 
         //transaction or sequence of queries
         Statement st = null;
@@ -171,7 +171,7 @@ public class CustomerMySqlDAO implements CustomerDAOInterface {
 
         //Manque fermeture st 
 
-        MySqlDAOFactory.closeConnection();
+        closeConnection();
 
         // Return newly created customer number
         // or a -1 on error    
@@ -190,7 +190,7 @@ public class CustomerMySqlDAO implements CustomerDAOInterface {
         boolean isUsed = false;
 
         //Connexion to the database with JNDI 
-        Connection conn = (Connection) MySqlDAOFactory.createConnectionWithJNDI();
+        Connection conn = (Connection) getConnectionWithJNDI();
 
         //transaction or sequence of queries
         Statement st = null;
@@ -219,10 +219,10 @@ public class CustomerMySqlDAO implements CustomerDAOInterface {
 
         } finally {
 
-            MySqlDAOFactory.closeRsAndSt(rs, st);
+            closeRsAndSt(rs, st);
 
         }
-        MySqlDAOFactory.closeConnection();
+        closeConnection();
         return isUsed;
     }
 

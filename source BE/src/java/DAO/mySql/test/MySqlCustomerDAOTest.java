@@ -1,5 +1,6 @@
 package DAO.mySql.test;
 
+import DAO.factory.DAOFactory;
 import DAO.factory.MySqlDAOFactory;
 import DAO.interfaces.CustomerDAOInterface;
 import DAO.transfertObject.CustomerTO;
@@ -12,7 +13,9 @@ public class MySqlCustomerDAOTest {
     
     public static void main(String[] args) {
         
-        CustomerDAOInterface customerDAO = MySqlDAOFactory.getCustomerDAO();
+        DAOFactory daoFactory = DAOFactory.getDAOFactory(DAOFactory.MYSQL);
+        
+        CustomerDAOInterface customerDAO = daoFactory.getCustomerDAO();
         
         CustomerTO customerTO = new CustomerTO();
         customerTO.setFirstName("firstName");

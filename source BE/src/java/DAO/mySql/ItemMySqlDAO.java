@@ -19,7 +19,7 @@ import java.sql.Connection;
  *
  * @author vincent
  */
-public class ItemMySqlDAO implements ItemDAOInterface {
+public class ItemMySqlDAO extends MySqlGeneralObjectDAO implements ItemDAOInterface {
 
     public boolean deleteItem() {
         throw new UnsupportedOperationException("Not supported yet.");
