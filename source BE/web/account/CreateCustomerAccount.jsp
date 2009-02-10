@@ -4,7 +4,7 @@
 --%>
 
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
-<%@page language="Java" import="java.util.*,servlet.account.*,model.account.*,DAO.transfertObject.CustomerTO" %>
+<%@page language="Java" import="java.util.*,servlet.account.*,model.account.*,DAO.transfertObject.CustomerTO,DAO.transfertObject.AddressTO" %>
 
 
 <html>
@@ -23,14 +23,30 @@
         <%
             RegisterCustomerErrors errorC = new RegisterCustomerErrors();
             RegisterAddressErrors errorA = new RegisterAddressErrors();
-            
-            CustomerTO customerTO = new CustomerTO();
 
-            if (session.getAttribute("errorAccount") != null) {
-                errorC = (RegisterCustomerErrors) session.getAttribute("errorsCustomer");
-                //errorA
-                customerTO = (CustomerTO) session.getAttribute("customerBegin");
-                out.print("<center><a style=color:#FFFF00>Un ou plusieurs champs ont été mal rempli, corriger les champs en jaune</a></center></center><hr>");
+            CustomerTO customerTO = new CustomerTO();
+            AddressTO addressTO = new AddressTO();
+
+            if (session.getAttribute("CreateCustomerAccount") != null) {
+                if (session.getAttribute("CreateCustomerAccount") == "loginUsed" || session.getAttribute("CreateCustomerAccount") == "errorField") {
+                    
+                    customerTO = (CustomerTO) session.getAttribute("customerBegin");
+                    addressTO = (AddressTO) session.getAttribute("addressBegin");
+
+                    if (session.getAttribute("CreateCustomerAccount") == "loginUsed") {
+
+                        out.print("<center><a style='color:#FFFF00'>Compte déja enregistré, sélectionnez un autre login</a></center><hr>");
+                    }
+
+                    if (session.getAttribute("CreateCustomerAccount") == "errorField") {
+
+                        errorC = (RegisterCustomerErrors) session.getAttribute("errorsCustomer");
+                        errorA = (RegisterAddressErrors) session.getAttribute("errorsAddress");
+
+                        out.print("<center><a style=color:#FFFF00>Un ou plusieurs champs ont été mal rempli, corriger les champs en jaune</a></center></center><hr>");
+                    }
+                }
+
             }
         %>
         
@@ -73,9 +89,7 @@
                         <td><a style="color:<%if (errorC.getErrorLogin() == 1) {
                 out.print("#FFFF00");
             }%>">* Nom d'utilisateur (15 caractères max) : </a></td>
-                        <td><input type="text" name="login" value="<%if (customerTO.getLogin() != null) {
-                out.print(customerTO.getLogin());
-            }%>" onKeyUp=verifLogin(this.value) align="left"/><div id="freeLogin"></div></td>
+                        <td><input type="text" name="login" onKeyUp=verifLogin(this.value) align="left"/><div id="freeLogin"></div></td>
                     </tr>
                     
                     
@@ -159,7 +173,9 @@
                         <td><a style="color:<%if (errorA.getErrorStreet() == 1) {
                 out.print("#FFFF00");
             }%>">* Rue : </a></td>
-                        <td><input type="text" name="street" onKeyUp=verifLength(this.value,"street","20") align="left" /><div id="street"></div></td>
+                        <td><input type="text" name="street" value="<%if (addressTO.getStreet() != null) {
+                out.print(customerTO.getPassword());
+            }%>" onKeyUp=verifLength(this.value,"street","20") align="left" /><div id="street"></div></td>
                     </tr>
                     
                     
@@ -167,7 +183,9 @@
                         <td><a style="color:<%if (errorA.getErrorPostalCode() == 1) {
                 out.print("#FFFF00");
             }%>">* Code postal : </a></td>
-                        <td><input type="text" name="postalCode" onKeyUp=verifLength(this.value,"postalCode","20") align="left" /><div id="postalCode"></div></td>
+                        <td><input type="text" name="postalCode" value="<%if (customerTO.getPassword() != null) {
+                out.print(customerTO.getPassword());
+            }%>" onKeyUp=verifLength(this.value,"postalCode","20") align="left" /><div id="postalCode"></div></td>
                     </tr>
                     
                     
@@ -175,7 +193,9 @@
                         <td><a style="color:<%if (errorA.getErrorCity() == 1) {
                 out.print("#FFFF00");
             }%>">* Ville : </a></td>
-                        <td><input type="text" name="city" onKeyUp=verifLength(this.value,"city","20") align="left" /><div id="city"></div></td>
+                        <td><input type="text" name="city" value="<%if (customerTO.getPassword() != null) {
+                out.print(customerTO.getPassword());
+            }%>" onKeyUp=verifLength(this.value,"city","20") align="left" /><div id="city"></div></td>
                     </tr>
                     
                     
@@ -183,11 +203,13 @@
                         <td><a style="color:<%if (errorA.getErrorCountry() == 1) {
                 out.print("#FFFF00");
             }%>">* Code postal : </a></td>
-                        <td><input type="text" name="country" onKeyUp=verifLength(this.value,"country","20") align="left" /><div id="country"></div></td>
+                        <td><input type="text" name="country" value="<%if (customerTO.getPassword() != null) {
+                out.print(customerTO.getPassword());
+            }%>" onKeyUp=verifLength(this.value,"country","20") align="left" /><div id="country"></div></td>
                     </tr>
                     
                     
-                     <!--zzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzz-->
+                    <!--zzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzz-->
                     
                     
                     <tr>
