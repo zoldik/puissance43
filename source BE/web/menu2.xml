@@ -5,6 +5,7 @@
         <link name="Creation" url="CreateCustomerAccount.jsp" />
         <link name="Gestion" url="0"/>
         <link name="Resiliation" url="0"/>
+        <link name="Abonnement" url="InternetSubscribe.jsp"/>
     </Compte>
     <VOD name="VOD">
     </VOD>
