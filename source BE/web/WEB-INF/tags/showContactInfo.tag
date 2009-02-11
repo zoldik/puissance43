@@ -10,8 +10,13 @@
 import="java.io.*"
 import="javax.servlet.*"
 import="javax.servlet.http.*"
-import="model.voip.*"
-import="model.database.*"
+import="DAO.interfaces.ContactVoipDAOInterface"
+import="DAO.interfaces.CustomerDAOInterface"
+import="DAO.transfertObject.ContactVoipTO"
+import="DAO.transfertObject.CustomerTO"
+import="DAO.factory.DAOFactory"
+import="DAO.factory.MySqlDAOFactory"
+import="DAO.transfertObject.CustomerTO"
 import="java.util.*"
 
 
@@ -25,17 +30,18 @@ import="java.util.*"
 
 <h2>Votre répertoire personnel</h2>
 <% 
-
+        DAOFactory daoFactory = DAOFactory.getDAOFactory(DAOFactory.MYSQL);
+        ContactVoipDAOInterface contactVoipDAO = daoFactory.getContactVoipDAO();
 
         try{
         int id=1;
-        LinkedList listeContact = new LinkedList <Contact>();
-        ListIterator<Contact> indice;
-        Contact contact;
+        LinkedList listeContact = new LinkedList <ContactVoipTO>();
+        ListIterator<ContactVoipTO> indice;
+        ContactVoipTO contact;
         int i=0;
 
         
-       listeContact = SQLContactVoip.getContactbyVoipId(id);
+       listeContact = contactVoipDAO.getContactbyVoipId(id);
        indice = listeContact.listIterator();
        out.println("<table width=\"60%\">");
        out.println("<tr>");
