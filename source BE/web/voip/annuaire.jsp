@@ -9,12 +9,10 @@ import="DAO.interfaces.LineDAOInterface"
 import="DAO.interfaces.CustomerDAOInterface"
 import="DAO.transfertObject.LineTO"
 import="DAO.transfertObject.CustomerTO"
-import="model.voip.*"
 import="java.util.*"
 
 import="DAO.factory.DAOFactory"
 import="DAO.factory.MySqlDAOFactory"
-import="DAO.transfertObject.AddressTO"
 import="DAO.transfertObject.CustomerTO"
 
 %>
@@ -53,36 +51,38 @@ import="DAO.transfertObject.CustomerTO"
             DAOFactory daoFactory = DAOFactory.getDAOFactory(DAOFactory.MYSQL);
             LineDAOInterface LineDAO = daoFactory.getLineDAO();
             
-            
             //selectionne les numeros
             LinkedList<LineTO> lines1 = new LinkedList <LineTO>();
             ListIterator<LineTO> indice;
             LineTO vl = new LineTO();
-            
-            lines1 = LineDAO.selectAllLineTO("name");
+            lines1 = LineDAO.selectAllLineTO();
             indice = lines1.listIterator();
-            
+ 
             while (indice.hasNext()){
                 vl = indice.next();
                 if( vl.getvisible() == true){
+                    
                     //recupere les informations dans customer
-                    //CustomerDAOInterface customerDAO = daoFactory.getCustomerDAO();
-                    //LinkedList<LineTO> lines2 = new LinkedList <LineTO>();
-                    //lines2 = customerDAO.findCustomer();
-                
+                    CustomerDAOInterface customerDAO = daoFactory.getCustomerDAO();
+                    CustomerTO vc = new CustomerTO() ;
+                    vc = customerDAO.findCustomerById(vl.getcustomerid());
+
+                    
+                    
+                    
         %>
         
         <tr bgcolor="white">
-            <td> </td>
-            <td> </td>
-            <td> </td>
+            <td> <%=vc.getLastName() %></td>
+            <td> <%=vc.getFirstName() %></td>
+            <td> <%=vc.getCompany() %></td>
             <td> <%=vl.getname() %> </td>
             <td> <%=vl.getcontext() %> </td>
             <td> <%=vl.getmailbox()%> </td>
         </tr>
         <%     }
         }%>
-
+        
         </table>
         
     </body>
