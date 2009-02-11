@@ -246,3 +246,21 @@ INSERT INTO `cdr` (`calldate`, `clid`, `src`, `dst`, `dcontext`, `channel`, `dst
 ('2009-02-06 16:43:44', '"francois kan" <6020>', '6020', '6300', 'DLPN_DialPlan1', 'SIP/6020-0a5723c0', '', 'MeetMe', '6300|MsIx', 5, 5, 'ANSWERED', 3, '', '1233935024.4', ''),
 ('2009-02-06 16:43:59', '"francois kan" <6020>', '6020', '6200', 'DLPN_DialPlan1', 'SIP/6020-0a5723c0', '', 'MeetMe', '6300|MsIxaA', 4, 4, 'ANSWERED', 3, '', '1233935039.5', '');
 
+
+
+
+INSERT INTO `VOD_CATEGORY` (`ID`, `NAME`) VALUES
+(1, 'Actualites et politique'),
+(2, 'Animaux'),
+(3, 'Divertissement'),
+(4, 'Education'),
+(5, 'Films et animations'),
+(6, 'Humour'),
+(7, 'Jeux'),
+(8, 'Musique'),
+(9, 'People'),
+(10, 'Science et technologie'),
+(11, 'Sport'),
+(12, 'Vehicules'),
+(13, 'Vie pratique et style'),
+(14, 'Voyages et evenements');
