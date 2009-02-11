@@ -35,7 +35,7 @@
     <!--zzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzz-->
     <servlet>
         <servlet-name>CtrCart</servlet-name>
-        <servlet-class>servlet.networkdevices.CtrCart</servlet-class>
+        <servlet-class>servlet.store.CtrCart</servlet-class>
     </servlet>
     <servlet-mapping>
         <servlet-name>CtrCart</servlet-name>
@@ -44,7 +44,7 @@
     <!--zzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzz-->
     <servlet>
         <servlet-name>CtrSearch</servlet-name>
-        <servlet-class>servlet.networkdevices.CtrSearch</servlet-class>
+        <servlet-class>servlet.store.CtrSearch</servlet-class>
     </servlet>
     <servlet-mapping>
         <servlet-name>CtrSearch</servlet-name>
@@ -53,7 +53,7 @@
     <!--zzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzz-->
     <servlet>
         <servlet-name>CtrSubscribe</servlet-name>
-        <servlet-class>servlet.account.CtrCtrSubscribe</servlet-class>
+        <servlet-class>servlet.account.CtrSubscribe</servlet-class>
     </servlet>
     <servlet-mapping>
         <servlet-name>CtrSubscribe</servlet-name>
