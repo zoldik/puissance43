@@ -30,7 +30,7 @@
     </servlet>    
     <servlet>
         <servlet-name>enregModContactInfo</servlet-name>
-        <servlet-class>servlet.enregModContactInfo</servlet-class>
+        <servlet-class>servlet.voip.enregModContactInfo</servlet-class>
     </servlet>
     <servlet-mapping>
         <servlet-name>CtrAccount</servlet-name>
@@ -222,11 +222,11 @@
     <!--PHILIPPE LARDENNOIS -->
     <servlet>
         <servlet-name>enregContactInfo</servlet-name>
-        <servlet-class>servlet.enregContactInfo</servlet-class>
+        <servlet-class>servlet.voip.enregContactInfo</servlet-class>
     </servlet>
     <servlet>
         <servlet-name>showContactInfo</servlet-name>
-        <servlet-class>servlet.showContactInfo</servlet-class>
+        <servlet-class>servlet.voip.showContactInfo</servlet-class>
     </servlet>
     <servlet>
         <servlet-name>addVoipLigne</servlet-name>
@@ -242,11 +242,11 @@
     </servlet>
     <servlet>
         <servlet-name>modContactInfo</servlet-name>
-        <servlet-class>servlet.modContactInfo</servlet-class>
+        <servlet-class>servlet.voip.modContactInfo</servlet-class>
     </servlet>
     <servlet>
         <servlet-name>supprContactInfo</servlet-name>
-        <servlet-class>servlet.supprContactInfo</servlet-class>
+        <servlet-class>servlet.voip.supprContactInfo</servlet-class>
     </servlet>
     <servlet-mapping>
         <servlet-name>action</servlet-name>
