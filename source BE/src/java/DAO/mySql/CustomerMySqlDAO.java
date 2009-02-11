@@ -175,7 +175,7 @@ public class CustomerMySqlDAO extends MySqlGeneralObjectDAO implements CustomerD
 
         //Manque fermeture st 
 
-        closeConnection();
+        closeConnection(conn);
 
         // Return newly created customer number
         // or a -1 on error    
@@ -227,7 +227,7 @@ public class CustomerMySqlDAO extends MySqlGeneralObjectDAO implements CustomerD
             closeRsAndSt(rs, st);
 
         }
-        closeConnection();
+        closeConnection(conn);
         return isUsed;
     }
 
