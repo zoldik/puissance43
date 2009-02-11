@@ -22,7 +22,7 @@ import java.sql.Statement;
  */
 public class LineMySqlDAO extends MySqlGeneralObjectDAO implements LineDAOInterface  {
     
-    public boolean insertLine(String id,String name,String host,String nat,String type,String accountcode,String amaflags,String calllimit,String callgroup,String callerid,String cancallforward,String canreinvite,String context,String defaultip,String dtmfmode,String fromuser,String fromdomain,String insecure,String language,String mailbox,String md5secret,String deny,String permit,String mask,String musiconhold,String pickupgroup,String qualify,String regexten,String restrictcid,String rtptimeout,String rtpholdtimeout,String secret,String setvar,String disallow,String allow,String fullcontact,String ipaddr,String port,String regserver,String regseconds,String username,Boolean visible){
+    public boolean insertLine(String id,String name,String host,String nat,String type,String accountcode,String amaflags,String calllimit,String callgroup,String callerid,String cancallforward,String canreinvite,String context,String defaultip,String dtmfmode,String fromuser,String fromdomain,String insecure,String language,String mailbox,String md5secret,String deny,String permit,String mask,String musiconhold,String pickupgroup,String qualify,String regexten,String restrictcid,String rtptimeout,String rtpholdtimeout,String secret,String setvar,String disallow,String allow,String fullcontact,String ipaddr,String port,String regserver,String regseconds,String username,Boolean visible,String customerid){
 
         boolean okay = true;
         
@@ -194,7 +194,11 @@ public class LineMySqlDAO extends MySqlGeneralObjectDAO implements LineDAOInterf
         if (username.compareTo("")!=0 && username.compareTo("null")!=0){
             insert+=",username";
             values+=",\""+username+"\"";
-        }        
+        }
+        if (customerid.compareTo("")!=0 && customerid.compareTo("null")!=0){
+            insert+=",id_customer";
+            values+=",\""+customerid+"\"";
+        }  
         insert+=") "+values+");";
         try
         {
@@ -292,7 +296,8 @@ public class LineMySqlDAO extends MySqlGeneralObjectDAO implements LineDAOInterf
                 li.setsetvar(rs.getString("setvar"));
                 li.settype(rs.getString("type"));
                 li.setusername(rs.getString("username"));
-                //li.setvisible(rs.getBoolean("visible"));
+                li.setvisible(rs.getBoolean("visible"));
+                li.setcustomerid(rs.getInt("id_customer"));
                 
                 Line=li;                
             }
@@ -397,6 +402,7 @@ public class LineMySqlDAO extends MySqlGeneralObjectDAO implements LineDAOInterf
                 li.settype(rs.getString("type"));
                 li.setusername(rs.getString("username"));
                 li.setvisible(rs.getBoolean("visible"));
+                li.setcustomerid(rs.getInt("id_customer"));
                 
                 Lines.add(li);                
                 
