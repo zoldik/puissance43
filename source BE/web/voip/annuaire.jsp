@@ -5,6 +5,8 @@
 --%>
 
 <%@page contentType="text/html" pageEncoding="UTF-8"
+import="model.voip.Annuaire"
+import="model.voip.RowAnnuaire"
 import="DAO.interfaces.LineDAOInterface"
 import="DAO.interfaces.CustomerDAOInterface"
 import="DAO.transfertObject.LineTO"
@@ -24,30 +26,12 @@ import="DAO.transfertObject.CustomerTO"
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <title>Annuaire</title>
     </head>
-    <body>
-
-        <h2>Annuaire</h2>
+    <body>        
+    
+    <%
+            //Creation de l'Annuaire
+            Annuaire annuaire = new Annuaire();
         
-        <p>
-        <i>Vous pouvez consultez la liste des lignes VoIP disponibles sur le serveur RedNeck. </i>
-        </p>
-        
-        <!-- Table of a list of users -->   
-        <h4>annuaire</h4>
-        <table bgcolor="black" width="100%">
-
-        <!-- titles -->
-        <tr style="color:white">
-            <td> nom </td>
-            <td> prenom </td>
-            <td> Societe </td>
-            <td> Numero </td>
-            <td> Groupe</td>
-            <td> Mail </td>
-        </tr>
-        
-        <!-- Contents -->
-        <%
             DAOFactory daoFactory = DAOFactory.getDAOFactory(DAOFactory.MYSQL);
             LineDAOInterface LineDAO = daoFactory.getLineDAO();
             
@@ -66,24 +50,77 @@ import="DAO.transfertObject.CustomerTO"
                     CustomerDAOInterface customerDAO = daoFactory.getCustomerDAO();
                     CustomerTO vc = new CustomerTO() ;
                     vc = customerDAO.findCustomerById(vl.getcustomerid());
+                    
+                    RowAnnuaire ra = new RowAnnuaire();
+                    ra.setFirstName(vc.getFirstName());
+                    ra.setLastName(vc.getLastName());
+                    ra.setCompany(vc.getCompany());
+                    ra.setNumber(vl.getname());
+                    ra.setMail(vl.getmailbox());
+                    ra.setGroupe(vl.getcontext());
 
-                    
-                    
-                    
+                    annuaire.addRow(ra);
+                }
+            }
+    %>
+
+        <h2>Annuaire</h2>
+        
+        <p>
+        <i>Vous pouvez consultez la liste des lignes VoIP disponibles sur le serveur RedNeck. </i>
+        </p>
+        
+        
+        <!--Tool Research --> 
+        <p>
+        <form action="post">
+            <input type="text" value="" name="value"/>
+            <select name="type" >
+                    <option value="type">--type--</option>
+                    <option value="nom">nom</option>
+                    <option value="prenom">prenom</option>
+                    <option value="societe">societe</option>
+                    <option value="numero">numero</option>
+                    <option value="groupe">groupe</option>
+                    <option value="mail">mail</option>
+            </select>
+            <input type="submit" value="Rechercher"/>
+        </form>
+        </p>
+        
+        
+        <!-- Table of a list of users -->
+        <table bgcolor="black" width="100%">
+
+        <!-- titles -->
+        <tr style="color:white">
+            <td> nom </td>
+            <td> prenom </td>
+            <td> Societe </td>
+            <td> Numero </td>
+            <td> Groupe</td>
+            <td> Mail </td>
+        </tr>
+        
+        <!-- Contents -->
+        <%
+            for(int index=0;index<annuaire.getSize();index++){
+                RowAnnuaire row = annuaire.getRow(index);
         %>
         
         <tr bgcolor="white">
-            <td> <%=vc.getLastName() %></td>
-            <td> <%=vc.getFirstName() %></td>
-            <td> <%=vc.getCompany() %></td>
-            <td> <%=vl.getname() %> </td>
-            <td> <%=vl.getcontext() %> </td>
-            <td> <%=vl.getmailbox()%> </td>
+            <td> <%=row.getLastName() %></td>
+            <td> <%=row.getFirstName() %></td>
+            <td> <%=row.getCompany() %></td>
+            <td> <%=row.getNumber() %> </td>
+            <td> <%=row.getGroupe() %> </td>
+            <td> <%=row.getMail() %> </td>
         </tr>
-        <%     }
-        }%>
         
+        <%}%>
+
         </table>
-        
+
+
     </body>
 </html>
