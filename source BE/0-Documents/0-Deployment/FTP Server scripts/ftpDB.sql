@@ -1,5 +1,5 @@
 CREATE DB pureftpd;
-USED Pureftpd;
+USED pureftpd;
 CREATE TABLE users (
 User varchar(16) NOT NULL default '',
 Password varchar(64) NOT NULL default '',
