@@ -46,25 +46,27 @@ drop table if exists user_vod;
 
 drop table if exists video;
 
-drop table if exists vod_acheter;
+DROP TABLE IF EXISTS `VOD_CATEGORY`;
 
-drop table if exists vod_associer;
+DROP TABLE IF EXISTS `VOD_COMMENT`;
 
-drop table if exists vod_attribuer;
+DROP TABLE IF EXISTS `VOD_MARK`;
 
-drop table if exists vod_codifier;
+DROP TABLE IF EXISTS `VOD_PLAYLIST`;
 
-drop table if exists vod_contenir;
+DROP TABLE IF EXISTS `VOD_TAG`;
 
-drop table if exists vod_ecrire;
+DROP TABLE IF EXISTS `VOD_TAG_IN_VIDEO`;
 
-drop table if exists vod_lier;
+DROP TABLE IF EXISTS `VOD_USER`;
 
-drop table if exists vod_possede;
+DROP TABLE IF EXISTS `VOD_VIDEO`;
 
-drop table if exists vod_subscribe;
+DROP TABLE IF EXISTS `VOD_CHAINE`;
 
-drop table if exists vod_uploader;
+DROP TABLE IF EXISTS `VOD_VIDEO_IN_PLAYLIST`;
+
+DROP TABLE IF EXISTS `VOD_CUSTOMER_VIDEO`;
 
 drop table if exists voip_call;
 

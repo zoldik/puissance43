@@ -22,12 +22,7 @@ create table bill
 );
 
 
-create table categorie
-(
-   catid                bigint not null,
-   catnom               text,
-   primary key (catid)
-);
+
 
 
 CREATE TABLE cdr (
@@ -47,16 +42,6 @@ CREATE TABLE cdr (
   `accountcode` varchar(20) NOT NULL default '',
   `uniqueid` varchar(32) NOT NULL default '',
   `userfield` varchar(255) NOT NULL default ''
-);
-
-
-create table chaine
-(
-   chaineid             bigint not null,
-   voddescription       text,
-   vodadresse           text,
-   vodnom               text,
-   primary key (chaineid)
 );
 
 
@@ -90,15 +75,6 @@ create table command_has_network_solutions
 );
 
 
-create table commentaire
-(
-   comid                bigint not null,
-   comdate              datetime,
-   comvalue             text,
-   primary key (comid)
-);
-
-
 create table customer
 (
    id_customer              bigint not null auto_increment,
@@ -119,6 +95,7 @@ create table customer
    company              varchar(20),
    account_level        smallint, 
    valid                varchar(20),
+   vod_debit            float(8,2),
    unique (`login`),
    primary key (id_customer)
 );
@@ -183,21 +160,6 @@ create table network_solution
 );
 
 
-create table note
-(
-   noteid               bigint not null,
-   valeur               smallint,
-   primary key (noteid)
-);
-
-
-create table playlist
-(
-   playlist_id          bigint not null,
-   playlist_nom         text,
-   primary key (playlist_id)
-);
-
 
 create table possede_facture
 (
@@ -219,15 +181,6 @@ create table possede_mail_addresse
 );
 
 
-create table tag
-(
-   tagid                bigint not null,
-   tagvalue             text,
-   searchcounter        int,
-   primary key (tagid)
-);
-
-
 create table transport
 (
    id_transport         bigint not null,
@@ -236,127 +189,109 @@ create table transport
 );
 
 
-create table user_vod
-(
-   id_vod               bigint not null,
-   id_customer          bigint not null,
-   vod_login            text,
-   vod_password         text,
-   vod_mail             text,
-   primary key (id_vod)
-);
+
+CREATE TABLE `VOD_CATEGORY` (
+  `ID` int(11) NOT NULL auto_increment,
+  `NAME` text NOT NULL,
+  PRIMARY KEY  (`ID`)
+) ENGINE=MyISAM  DEFAULT CHARSET=latin1 AUTO_INCREMENT=4 ;
 
 
-create table video
-(
-   videoid              bigint not null,
-   videoduree           time,
-   videodate            datetime,
-   videonom             text,
-   watchcounter         bigint,
-   videoprice           float(8,2),
-   primary key (videoid)
-);
+CREATE TABLE `VOD_COMMENT` (
+  `ID` int(11) NOT NULL auto_increment,
+  `VIDEO_ID` int(11) NOT NULL,
+  `USER_ID` int(11) NOT NULL,
+  `POSTED` datetime NOT NULL,
+  `VALUE` text NOT NULL,
+  PRIMARY KEY  (`ID`),
+  KEY `FK_VOD_COMMENT_VOD_VIDEO` (`VIDEO_ID`),
+  KEY `FK_VOD_COMMENT_VOD_USER` (`USER_ID`)
+) ENGINE=MyISAM  DEFAULT CHARSET=latin1 AUTO_INCREMENT=5 ;
+
+CREATE TABLE `VOD_MARK` (
+  `ID` int(11) NOT NULL auto_increment,
+  `VIDEO_ID` int(11) NOT NULL,
+  `USER_ID` int(11) NOT NULL,
+  `VALUE` int(11) NOT NULL,
+  PRIMARY KEY  (`ID`),
+  KEY `FK_VOD_MARK_VOD_VIDEO` (`VIDEO_ID`),
+  KEY `FK_VOD_MARK_VOD_USER` (`USER_ID`)
+) ENGINE=MyISAM  DEFAULT CHARSET=latin1 AUTO_INCREMENT=4 ;
 
 
-create table vod_acheter
-(
-   vid_videoid          bigint not null,
-   use_id_vod           bigint not null,
-   id_vod               bigint,
-   videoid              bigint,
-   primary key (vid_videoid, use_id_vod)
-);
+CREATE TABLE `VOD_PLAYLIST` (
+  `ID` int(11) NOT NULL auto_increment,
+  `USER_ID` int(11) NOT NULL,
+  `NAME` text NOT NULL,
+  PRIMARY KEY  (`ID`),
+  KEY `FK_VOD_PLAYLIST_VOD_USER` (`USER_ID`)
+) ENGINE=MyISAM  DEFAULT CHARSET=latin1 AUTO_INCREMENT=3 ;
 
 
-create table vod_associer
-(
-   vid_videoid          bigint not null,
-   com_comid            bigint not null,
-   comid                bigint,
-   videoid              bigint,
-   primary key (vid_videoid, com_comid)
-);
+CREATE TABLE `VOD_TAG` (
+  `ID` int(11) NOT NULL auto_increment,
+  `VALUE` text NOT NULL,
+  `SEARCH_COUNTER` int(11) NOT NULL default '0',
+  PRIMARY KEY  (`ID`)
+) ENGINE=MyISAM DEFAULT CHARSET=latin1 AUTO_INCREMENT=4 ;
 
 
-create table vod_attribuer
-(
-   not_noteid           bigint not null,
-   use_id_vod           bigint not null,
-   id_vod               bigint,
-   noteid               bigint,
-   primary key (not_noteid, use_id_vod)
-);
+CREATE TABLE `VOD_TAG_IN_VIDEO` (
+  `TAG_ID` int(11) NOT NULL,
+  `VIDEO_ID` int(11) NOT NULL,
+  PRIMARY KEY  (`TAG_ID`,`VIDEO_ID`)
+) ENGINE=MyISAM DEFAULT CHARSET=latin1 AUTO_INCREMENT=5;
 
 
-create table vod_codifier
-(
-   vid_videoid          bigint not null,
-   not_noteid           bigint not null,
-   videoid              bigint,
-   noteid               bigint,
-   primary key (vid_videoid, not_noteid)
-);
+CREATE TABLE `VOD_USER` (
+  `ID` int(11) NOT NULL auto_increment,
+  `LOGIN` text NOT NULL,
+  `PASSWORD` text NOT NULL,
+  `EMAIL` text NOT NULL,
+  PRIMARY KEY  (`ID`)
+) ENGINE=MyISAM  DEFAULT CHARSET=latin1 AUTO_INCREMENT=4 ;
 
 
-create table vod_contenir
-(
-   tag_tagid            bigint not null,
-   vid_videoid          bigint not null,
-   videoid              bigint,
-   tagid                bigint,
-   primary key (tag_tagid, vid_videoid)
-);
+CREATE TABLE `VOD_VIDEO` (
+  `ID` int(11) NOT NULL auto_increment,
+  `CATEGORY_ID` int(11) NOT NULL,
+  `USER_ID` int(11) NOT NULL,
+  `DURATION` time NOT NULL,
+  `RECORDED` datetime NOT NULL,
+  `NAME` text NOT NULL,
+  `WATCH_COUNTER` int(11) NOT NULL default '0',
+  `PRICE` float(8,2) NOT NULL default '0',
+  
+  PRIMARY KEY  (`ID`),
+  KEY `FK_VOD_VIDEO_VOD_CATEGORY` (`CATEGORY_ID`),
+  KEY `FK_VOD_VIDEO_VOD_USER` (`USER_ID`)
+
+) ENGINE=MyISAM  DEFAULT CHARSET=latin1 AUTO_INCREMENT=5 ;
 
 
-create table vod_ecrire
-(
-   use_id_vod           bigint not null,
-   com_comid            bigint not null,
-   id_vod               bigint,
-   comid                bigint,
-   primary key (use_id_vod, com_comid)
-);
+CREATE TABLE `VOD_CHAINE` (
+  `ID` int(11) NOT NULL auto_increment,
+  `DESCRIPTION` text NOT NULL,
+  `ADRESS` text NOT NULL,
+  `NAME` text NOT NULL,
+  
+  PRIMARY KEY  (`ID`)
+
+) ENGINE=MyISAM  DEFAULT CHARSET=latin1 AUTO_INCREMENT=5 ;
 
 
-create table vod_lier
-(
-   cat_catid            bigint not null,
-   vid_videoid          bigint not null,
-   videoid              bigint,
-   catid                bigint,
-   primary key (cat_catid, vid_videoid)
-);
+CREATE TABLE `VOD_VIDEO_IN_PLAYLIST` (
+  `VIDEO_ID` int(11) NOT NULL,
+  `PLAYLIST_ID` int(11) NOT NULL,
+  PRIMARY KEY  (`VIDEO_ID`,`PLAYLIST_ID`)
+) ENGINE=MyISAM DEFAULT CHARSET=latin1 AUTO_INCREMENT=4;
 
 
-create table vod_possede
-(
-   pla_playlist_id      bigint not null,
-   use_id_vod           bigint not null,
-   id_vod               bigint,
-   playlist_id          bigint,
-   primary key (pla_playlist_id, use_id_vod)
-);
-
-create table vod_subscribe
-(
-   id_vod_subscribe    bigint not null auto_increment,
-   name_vod_subscribe                   varchar(32),
-   description_vod_subscribe            text,
-   price                                float(8,2),
-   type_vod_subscribe                   varchar(32),
-   
-   primary key (id_vod_subscribe)
-);
-
-create table vod_uploader
-(
-   vid_videoid          bigint not null,
-   use_id_vod           bigint not null,
-   id_vod               bigint,
-   videoid              bigint,
-   primary key (vid_videoid, use_id_vod)
-);
+CREATE TABLE `VOD_CUSTOMER_VIDEO` (
+  `VIDEO_ID` int(11) NOT NULL,
+  `CUSTOMER_ID` int(11) NOT NULL,
+  PRIMARY KEY  (`VIDEO_ID`,`CUSTOMER_ID`)
+) ENGINE=MyISAM DEFAULT CHARSET=latin1 AUTO_INCREMENT=4;
 
 
 create table voip_call
@@ -465,6 +400,19 @@ create table voip_subscribe
    
    primary key (id_voip_subscribe)
 );
+
+
+
+
+
+alter table VOD_USER add constraint FK_VOD_USER_HAS_CUSTOMER foreign key (id_customer)
+      references customer (id_customer) on delete restrict on update restrict;
+
+
+
+
+
+
 
 alter table bill add constraint FK_CUSTOMER_HAS_BILL foreign key (id_customer)
       references customer (id_customer) on delete restrict on update restrict;
