@@ -27,6 +27,9 @@ public abstract class DAOFactory {
     
     public abstract InternetSubscribeDAOInterface getInternetSubscribeDAO();
     
+    public abstract ContactVoipDAOInterface getContactVoipDAO();
+
+    
     //***********************    
     
     public static DAOFactory getDAOFactory(

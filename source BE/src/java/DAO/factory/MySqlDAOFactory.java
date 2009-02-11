@@ -26,6 +26,7 @@ public class MySqlDAOFactory extends DAOFactory {
     private static CustomerDAOInterface customerDAO = null;
     private static LineDAOInterface lineDAO = null;
     private static InternetSubscribeDAOInterface internetSubscribeDAO = null;
+    private static ContactVoipDAOInterface contactVoipDAO = null;
 
     //*********************
     //STATIC METHODS TO GET THE DAO OBJECTS 
@@ -59,4 +60,12 @@ public class MySqlDAOFactory extends DAOFactory {
         }
         return lineDAO;
     }
+    public ContactVoipDAOInterface getContactVoipDAO() {
+        // MySqlContactVoipDAO implements ContactVoipDAO 
+        if (contactVoipDAO == null) {
+            contactVoipDAO = new ContactVoipMySqlDAO();
+        }
+        return contactVoipDAO;
+    }     
+    
 }
