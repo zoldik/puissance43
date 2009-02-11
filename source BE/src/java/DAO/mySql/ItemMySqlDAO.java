@@ -164,9 +164,3 @@ public class ItemMySqlDAO extends MySqlGeneralObjectDAO implements ItemDAOInterf
         throw new UnsupportedOperationException("Not supported yet.");
     }
 }
-
-        
-    
-    
-    
-   
