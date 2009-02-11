@@ -28,6 +28,10 @@
         <servlet-name>CtrAccount</servlet-name>
         <servlet-class>servlet.account.CtrAccount</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>CtrSubscribe</servlet-name>
+        <servlet-class>servlet.customer.account.CtrSubscribe</servlet-class>
+    </servlet>
     <servlet-mapping>
         <servlet-name>CtrAccount</servlet-name>
         <url-pattern>/CtrAccount</url-pattern>
@@ -89,6 +93,15 @@
         <servlet-name>DisplayItems.jsp</servlet-name>
         <url-pattern>/DisplayItems.jsp</url-pattern>
     </servlet-mapping>
+    <!--zzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzz-->
+    <servlet>
+        <servlet-name>InternetSubscribe.jsp</servlet-name>
+        <jsp-file>/account/InternetSubscribe.jsp</jsp-file>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>InternetSubscribe.jsp</servlet-name>
+        <url-pattern>/InternetSubscribe.jsp</url-pattern>
+    </servlet-mapping>    
     <!--zzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzz-->   
     <servlet>
         <servlet-name>NotificationCreationAccount.jsp</servlet-name>
@@ -250,6 +263,10 @@
         <servlet-name>doVoipUser</servlet-name>
         <url-pattern>/doVoipUser</url-pattern>
     </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>CtrSubscribe</servlet-name>
+        <url-pattern>/CtrSubscribe</url-pattern>
+    </servlet-mapping>
     <session-config>
         <session-timeout>
             30
@@ -305,4 +322,7 @@
     </servlet-mapping>
     <!-- /JSP -->
     <!-- /AURELIEN BAUDET -->    
-</web-app>
+
+    
+    InternetSubscribe
+    </web-app>
