@@ -235,7 +235,7 @@ public class LineMySqlDAO extends MySqlGeneralObjectDAO implements LineDAOInterf
         return okay;
     }
 
-    public LineTO findLine(String id, String order){
+    public LineTO findLine(String id){
         
         LineTO Line = new LineTO();
 
@@ -246,7 +246,7 @@ public class LineMySqlDAO extends MySqlGeneralObjectDAO implements LineDAOInterf
         try {
 
             st = conn.createStatement();
-            rs = st.executeQuery("SELECT * FROM voip_line WHERE (id_voip_line=\""+id+"\") ORDER BY \""+order+"\"");
+            rs = st.executeQuery("SELECT * FROM voip_line WHERE (id_voip_line=\""+id+"\") ");
 
             while (rs.next()) {
                 LineTO li = new LineTO();
@@ -339,7 +339,7 @@ public class LineMySqlDAO extends MySqlGeneralObjectDAO implements LineDAOInterf
         return okay;
     }
     
-    public LinkedList<LineTO> selectAllLineTO(String order){
+    public LinkedList<LineTO> selectAllLineTO(){
         
         LinkedList<LineTO> Lines = new LinkedList<LineTO>();
 
@@ -350,7 +350,7 @@ public class LineMySqlDAO extends MySqlGeneralObjectDAO implements LineDAOInterf
         try {
 
             st = conn.createStatement();
-            rs = st.executeQuery("SELECT * FROM voip_line ORDER BY \""+order+"\"");
+            rs = st.executeQuery("SELECT * FROM voip_line ");
 
             while (rs.next()) {
                 LineTO li = new LineTO();
@@ -396,7 +396,7 @@ public class LineMySqlDAO extends MySqlGeneralObjectDAO implements LineDAOInterf
                 li.setsetvar(rs.getString("setvar"));
                 li.settype(rs.getString("type"));
                 li.setusername(rs.getString("username"));
-                //li.setvisible(rs.getBoolean("visible"));
+                li.setvisible(rs.getBoolean("visible"));
                 
                 Lines.add(li);                
                 
