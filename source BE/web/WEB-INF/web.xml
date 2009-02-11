@@ -65,7 +65,7 @@
     <!--JSP-->
     <servlet>
         <servlet-name>AdvancedSearch.jsp</servlet-name>
-        <jsp-file>/networkDevices/ViewCart/AdvancedSearch.jsp</jsp-file>
+        <jsp-file>/shop/ViewCart/AdvancedSearch.jsp</jsp-file>
     </servlet>
     <servlet-mapping>
         <servlet-name>AdvancedSearch.jsp</servlet-name>
@@ -83,7 +83,7 @@
     <!--zzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzz-->
     <servlet>
         <servlet-name>DisplayCart.jsp</servlet-name>
-        <jsp-file>/networkDevices/ViewCart/DisplayCart.jsp</jsp-file>
+        <jsp-file>/shop/ViewCart/DisplayCart.jsp</jsp-file>
     </servlet>
     <servlet-mapping>
         <servlet-name>DisplayCart.jsp</servlet-name>
@@ -92,7 +92,7 @@
     <!--zzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzz-->
     <servlet>
         <servlet-name>DisplayItems.jsp</servlet-name>
-        <jsp-file>/networkDevices/ViewCart/DisplayItems.jsp</jsp-file>
+        <jsp-file>/shop/ViewCart/DisplayItems.jsp</jsp-file>
     </servlet>
     <servlet-mapping>
         <servlet-name>DisplayItems.jsp</servlet-name>
