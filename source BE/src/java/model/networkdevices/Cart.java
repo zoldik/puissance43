@@ -1,9 +1,11 @@
 package model.networkdevices;
 
+import DAO.factory.DAOFactory;
+import DAO.interfaces.ItemDAOInterface;
+import DAO.mySql.ItemMySqlDAO;
+
 import java.util.ArrayList;
 import java.util.Iterator;
-import model.database.FactoryDAO;
-import DAO.mySql.ItemMySqlDAO;
 
 /**
  * Cart simulate a shopping cart of the real life.
@@ -95,8 +97,10 @@ public class Cart {
     }
 
     public synchronized void addRowById(int id) {
+        
+        DAOFactory daoFactory = DAOFactory.getDAOFactory(DAOFactory.MYSQL);
 
-        ItemMySqlDAO itemDAO = FactoryDAO.getItemDAO();
+        ItemDAOInterface itemDAO = daoFactory.getItemDAO();
         
         addRow(itemDAO.findItemById(id));
     }
