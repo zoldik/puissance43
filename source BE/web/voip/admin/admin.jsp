@@ -17,7 +17,6 @@
         <h2>VoIP admin</h2>
         
         <a href="./reporting.jsp">Reporting</a><br/>
-        <a href="./annuaireManagement.jsp">Annuaire Management</a><br/>
         <a href="./ligneManagement.jsp">Ligne Management</a><br/>
         <a href="./userManagement.jsp">User Management</a><br/>
         

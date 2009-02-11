@@ -18,6 +18,9 @@ import="model.voip.*"
     </head>
     <body>
         <h2>VoIP admin - Edit the VoIP ligne</h2>
+
+        
+        
         
         <% String id = request.getParameter("id");
         
@@ -27,42 +30,107 @@ import="model.voip.*"
 
         <h4>Detail</h4>
         <table>
-            
-        <tr><td><h5>Title</h5></td></tr>
+        
         <tr><td>id</td><td><%= vl.getid()%></td></tr>
-        <tr><td>name</td><td><input type="text" value="<%= vl.getname() %>" ></td></tr>
+        <tr><td>numero de la ligne</td><td><input type="text" value="<%= vl.getname() %>" ></td></tr>
         <tr><td>username</td><td><input type="text" value="<%= vl.getusername() %>" ></td></tr>
-        <tr><td>mailbox</td><td><input type="text" value="<%= vl.getmailbox()%>" ></td></tr>
-        <tr><td>musiconhold</td><td><input type="text" value="<%= vl.getmusiconhold() %>" ></td></tr>
-        <tr><td>language</td><td><input type="text" value="<%= vl.getlanguage()%>" ></td></tr>
-        <tr><td>accountcode</td><td><input type="text" value="<%= vl.getaccountcode()%>" ></td></tr>
-        
-        <tr><td>secret</td><td><input type="text" value="<%= vl.getsecret()%>" ></td></tr>
-        <tr><td>md5secret</td><td><input type="text" value="<%= vl.getmd5secret()%>" ></td></tr>        
-        
-        
-        <tr><td><h5>Title</h5></td></tr>
-        <tr><td>type</td><td><input type="text" value="<%= vl.gettype()%>" ></td></tr>
+        <tr><td>Mail</td><td><input type="text" value="<%= vl.getmailbox()%>" ></td></tr>
+        <tr><td>Musique d'attente</td><td><input type="text" value="<%= vl.getmusiconhold() %>" ></td></tr>
+        <tr><td>accountcode</td><td><input type="text" value="<%= vl.getaccountcode()%>" ></td></tr>    
         <tr><td>context</td><td><input type="text" value="<%= vl.getcontext()%>" ></td></tr>
-        <tr><td>call-limit</td><td><input type="text" value="<%= vl.getcalllimit()%>" ></td></tr>
-        <tr><td>nat</td><td><input type="text" value="<%= vl.getcanreinvite()%>" ></td></tr>
+
+        <tr>
+            <td>Langue :</td>
+            <td><select name="type" >
+                    <option value="<%= vl.getlanguage()%>">
+                        <% if (vl.getlanguage()=="en") {out.print("Anglais");
+                        }else if(vl.getlanguage()=="fr"){out.print("Francais");}
+                        %>
+                    </option>
+                    <option value="en">Anglais</option>
+                    <option value="fr">Francais</option>
+                </select>
+            </td>
+        </tr>
         
         
-        <tr><td><h5>Title</h5></td></tr>        
+        <tr>
+            <td>Visibilité dans l'annuaire :</td>
+            <td><select name="visible" >
+                    <option value="<%= vl.getvisible() %>"><% if (vl.getvisible()==false){out.print("--Non visible--");}else{out.print("--Visible--");} %></option>
+                    <option value="true">Visible</option>
+                    <option value="false">Non visible</option>
+                </select>
+            </td>
+        </tr>
+        
+        
+        <tr>
+            <td>Type :</td>
+            <td><select name="type" >
+                    <option value="<%= vl.gettype()%>">--<%= vl.gettype()%>--</option>
+                    <option value="user">user</option>
+                    <option value="peer">peer</option>
+                    <option value="friend">friend</option>
+                </select>
+            </td>
+        </tr>
+        
+        
+        <tr>
+            <td>Nat :</td>
+            <td><select name="type" >
+                    <option value="<%= vl.getnat()%>">--<%= vl.getnat()%>--</option>
+                    <option value="yes">yes</option>
+                    <option value="no">no</option>
+                </select>
+            </td>
+        </tr>
+        
+        
+        <tr>
+            <td>canreinvite :</td>
+            <td><select name="canreinvite" >
+                    <option value="<%= vl.getcanreinvite()%>">--<%= vl.getcanreinvite()%>--</option>
+                    <option value="yes">yes</option>
+                    <option value="no">no</option>
+                </select>
+            </td>
+        </tr>
+
+ 
+        <tr>
+            <td>dtmfmode :</td>
+            <td><select name="dtmfmode" >
+                    <option value="<%= vl.getdtmfmode()%>">--<%= vl.getdtmfmode()%>--</option>
+                    <option value="rfc2833">rfc2833</option>
+                    <option value="INFO">INFO</option>
+                </select>
+            </td>
+        </tr>
+
+        <tr><td>codec autorisé :</td><td><input type="text" value="<%= vl.getallow()%>" ></td></tr>
+        <tr><td>Hote</td><td><input type="text" value="<%= vl.gethost()%>" ></td></tr>
+        <tr><td>Adresse IP par default</td><td><input type="text" value="<%= vl.getdefaultip()%>" ></td></tr> 
+        <tr><td>Adresse IP</td><td><input type="text" value="<%= vl.getipaddr()%>" ></td></tr>
+        <tr><td>Masque</td><td><input type="text" value="<%= vl.getmask()%>" ></td></tr>
         <tr><td>deny</td><td><input type="text" value="<%= vl.getdeny()%>" ></td></tr>
         <tr><td>permit</td><td><input type="text" value="<%= vl.getpermit()%>" ></td></tr>
-        <tr><td>dtmfmode</td><td><input type="text" value="<%= vl.getdtmfmode()%>" ></td></tr>
-        <tr><td>host</td><td><input type="text" value="<%= vl.gethost()%>" ></td></tr>
-        <tr><td>mask</td><td><input type="text" value="<%= vl.getmask()%>" ></td></tr>
         <tr><td>port</td><td><input type="text" value="<%= vl.getport()%>" ></td></tr>
-        <tr><td>nat</td><td><input type="text" value="<%= vl.getnat()%>" ></td></tr>
-        <tr><td>getipaddr</td><td><input type="text" value="<%= vl.getipaddr()%>" ></td></tr>
+        
+        
+        
+        
+        
+        
+        
+        
         <tr><td>insecure</td><td><input type="text" value="<%= vl.getinsecure()%>" ></td></tr>        
-        <tr><td>defaultip</td><td><input type="text" value="<%= vl.getdefaultip()%>" ></td></tr>        
+               
         
         
-        <tr><td><h5>Title</h5></td></tr>
-        <tr><td>allow</td><td><input type="text" value="<%= vl.getallow()%>" ></td></tr>
+        <tr><td><h5>============</h5></td></tr>
+
         <tr><td>amaflags</td><td><input type="text" value="<%= vl.getamaflags()%>" ></td></tr>
         <tr><td>callerid</td><td><input type="text" value="<%= vl.getcallerid()%>" ></td></tr>
         <tr><td>callgroup</td><td><input type="text" value="<%= vl.getcallgroup()%>" ></td></tr>
@@ -82,15 +150,27 @@ import="model.voip.*"
         <tr><td>rtptimeout</td><td><input type="text" value="<%= vl.getrtptimeout()%>" ></td></tr>
         <tr><td>setvar</td><td><input type="text" value="<%= vl.getsetvar()%>" ></td></tr>
         <tr><td>subsribecontext</td><td><input type="text" value="<%= vl.getsubsribecontext()%>" ></td></tr>
-        <tr><td>type</td><td><input type="text" value="<%= vl.gettype()%>" ></td></tr>
+
+        <tr><td>call-limit</td><td><input type="text" value="<%= vl.getcalllimit()%>" ></td></tr>
        
         <tr><td></td><td><input type="submit" value="cancel"><input type="submit" value="ok"></td></tr>
+
         
         
         </table>
         
         
         <h4>Option</h4>
+        
+        conference
+        transfert d'appel
+        
+        
+        
+        
+        
+        
+        
         
     </body>
 </html>

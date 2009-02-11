@@ -30,14 +30,22 @@ import="model.database.*"
         
         <!-- Table of a list of users -->   
         <h4>List of VoIP User </h4>
+        
+        <form method="post" action="./userManagement/addVoipUser.jsp">
+            <input type="submit" value="+"/> Nouvel utilisateur
+            <input type="hidden" value="id customer"/>
+        </form>
+         <br/>
+        
+        
         <table bgcolor="black">
 
-        <!-- Actions -->
-        <input type="button" value="DELETE"/>
-         <a href="./addVoipLigne.jsp">Add</a>
             
-        <!-- titles -->
+        <!-- TITLES -->
+        
         <tr style="color:white">
+
+            <td> </td>
             <td> </td>
             <td> Id </td>
             <td> login </td>
@@ -47,9 +55,12 @@ import="model.database.*"
             <td> Lignes </td>
         </tr>
         
+        <!-- CONTENTS -->
         
         
-        <!-- Contents -->
+
+        
+        <!-- Creation de la liste des USERS -->
         <%
             LinkedList<VoipUser> voipUsers = new LinkedList <VoipUser>();
             ListIterator<VoipUser> indice;
@@ -62,8 +73,26 @@ import="model.database.*"
                 vu = indice.next();
         %>
         
+
         <tr bgcolor="white">
-            <td> <input type="checkbox" name="<%=vu.getid() %>"/> </td>            
+
+           <!-- Bouton action -->
+           
+           <td> <!--edit button-->
+                 <form method='post' action="./userManagement/editVoipUser.jsp">
+                 <input type="submit" value="edit" />
+                 <input type='hidden' name='id' value="<%=vu.getid() %>">
+                 <!--input type="hidden" name='action' value='edit'-->
+                 </form>
+                 </td>
+                 
+            <td> <!--delete button-->
+                 <form method='post' action="./userManagement/deleteVoipUser.jsp">
+                 <input type="submit" value="delete" />
+                 <input type='hidden' name='id' value="<%=vu.getid() %>">
+                 <input type='hidden' name='name' value="<%=vu.getid() %>">
+                 </form>
+                 </td>
            
             <td> <%=vu.getid() %> </td>
             <td> <%=vu.getlogin() %> </td>
@@ -71,20 +100,21 @@ import="model.database.*"
             <td> <%=vu.getisactivated() %> </td>
             
             
-            <td> <!--edit button-->
-                 <form method='post' action="./ligneManagement/editVoipLigne.jsp">
-                 <input type="submit" value="edit" />
-                 <input type='hidden' name='id' value="<%=vu.getid() %>">
-                 <!--input type="hidden" name='action' value='edit'-->
-                 </form>
-                 </td>
-            <td> <!--delete button-->
-                 <form method='post' action="./ligneManagement/deleteVoipLigne.jsp">
-                 <input type="submit" value="delete" />
-                 <input type='hidden' name='id' value="<%=vu.getid() %>">
-                 <input type='hidden' name='name' value="<%=vu.getid() %>">
-                 </form>
-                 </td>
+            <!--Creation d'une liste de lignes d'un user-->
+            
+            <%--LinkedList<lignes> listlignes = new LinkedList <lignes>();
+            ListIterator<VoipUser> indice;
+            VoipUser vu = new VoipUser();
+            
+            voipUsers = VoipUserDAO.extractAllVoipUser();
+            indice = voipUsers.listIterator();
+            
+            while (indice.hasNext()){
+                vu = indice.next();--%>
+            <td></td>
+            
+             <%-- } --%>
+
         </tr>
         
         <%}%>
