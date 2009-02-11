@@ -18,3 +18,7 @@ USE `RedNeckMail`;
      `emplacement` varchar(255) NOT NULL default '',
      PRIMARY KEY  (`login`)
     ) TYPE=MyISAM;
+
+-- Values
+INSERT INTO `RedNeckMail`.`compte` (`login`,`motdepasse`,`emplacement`)
+VALUES ('voip@RedNeck.fr','adminmailvoip','/home/vmail/RedNeck.fr/voip');
