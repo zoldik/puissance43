@@ -33,7 +33,7 @@ public class ItemMySqlDAO extends MySqlGeneralObjectDAO implements ItemDAOInterf
         Item item = new Item();
 
         //Connexion to the database with JNDI 
-        Connection conn = (Connection) MySqlDAOFactory.createConnectionWithJNDI();
+        Connection conn = (Connection) getConnectionWithJNDI();
 
         //transaction or sequence of queries
         PreparedStatement pSt = null;
@@ -59,9 +59,9 @@ public class ItemMySqlDAO extends MySqlGeneralObjectDAO implements ItemDAOInterf
         } catch (Exception e) {
             e.printStackTrace();
         } finally {
-            MySqlDAOFactory.closeRsAndSt(rs, pSt);
+            closeRsAndSt(rs, pSt);
         }
-        MySqlDAOFactory.closeConnection();
+        closeConnection();
         return item;
     }
 
@@ -113,9 +113,9 @@ public class ItemMySqlDAO extends MySqlGeneralObjectDAO implements ItemDAOInterf
             e.printStackTrace();
 
         } finally {
-            MySqlDAOFactory.closeRsAndSt(rs, st);
+            closeRsAndSt(rs, st);
         }
-        MySqlDAOFactory.closeConnection();
+        closeConnection();
         return items;
     }
 
@@ -125,7 +125,7 @@ public class ItemMySqlDAO extends MySqlGeneralObjectDAO implements ItemDAOInterf
         ArrayList<Item> items = new ArrayList<Item>();
 
         //Connexion to the database with JNDI 
-        Connection conn = (Connection) MySqlDAOFactory.createConnectionWithJNDI();
+        Connection conn = (Connection) getConnectionWithJNDI();
 
         //transaction or sequence of queries
         PreparedStatement pSt = null;
@@ -154,9 +154,9 @@ public class ItemMySqlDAO extends MySqlGeneralObjectDAO implements ItemDAOInterf
         } catch (Exception e) {
             e.printStackTrace();
         } finally {
-            MySqlDAOFactory.closeRsAndSt(rs, pSt);
+            closeRsAndSt(rs, pSt);
         }
-        MySqlDAOFactory.closeConnection();
+        closeConnection();
         return items;
     }
 
