@@ -27,11 +27,7 @@
     <servlet>
         <servlet-name>CtrAccount</servlet-name>
         <servlet-class>servlet.account.CtrAccount</servlet-class>
-    </servlet>
-    <servlet>
-        <servlet-name>CtrSubscribe</servlet-name>
-        <servlet-class>servlet.customer.account.CtrSubscribe</servlet-class>
-    </servlet>
+    </servlet>    
     <servlet-mapping>
         <servlet-name>CtrAccount</servlet-name>
         <url-pattern>/CtrAccount</url-pattern>
@@ -53,6 +49,15 @@
     <servlet-mapping>
         <servlet-name>CtrSearch</servlet-name>
         <url-pattern>/CtrSearch</url-pattern>
+    </servlet-mapping> 
+    <!--zzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzz-->
+    <servlet>
+        <servlet-name>CtrSubscribe</servlet-name>
+        <servlet-class>servlet.account.CtrCtrSubscribe</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>CtrSubscribe</servlet-name>
+        <url-pattern>/CtrSubscribe</url-pattern>
     </servlet-mapping>    
     <!--Servlet-->
     <!--zzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzz-->
@@ -321,8 +326,7 @@
         <url-pattern>/CreateMailAddress.jsp</url-pattern>
     </servlet-mapping>
     <!-- /JSP -->
-    <!-- /AURELIEN BAUDET -->    
-
+    <!-- /AURELIEN BAUDET -->
     
     InternetSubscribe
     </web-app>
