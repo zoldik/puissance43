@@ -1,11 +1,11 @@
 package DAO.transfertObject;
 
+
 /**
  *
  * @author vincent
  */
-public class VoipSubscribeTO {
-    
+public class VodSubscribeTO {
     
     private String name ;
     private String description ;
