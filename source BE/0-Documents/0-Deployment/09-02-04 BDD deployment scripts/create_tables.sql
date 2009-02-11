@@ -30,7 +30,7 @@ create table categorie
 );
 
 
-CREATE TABLE IF NOT EXISTS `cdr` (
+CREATE TABLE cdr (
   `calldate` datetime NOT NULL default '0000-00-00 00:00:00',
   `clid` varchar(80) NOT NULL default '',
   `src` varchar(80) NOT NULL default '',
@@ -101,9 +101,11 @@ create table commentaire
 
 create table customer
 (
-   id_customer          bigint not null auto_increment,
-   id_address           bigint not null,
-   id_internet_subscribe bigint,
+   id_customer              bigint not null auto_increment,
+   id_address               bigint not null,
+   id_internet_subscribe    bigint,
+   id_voip_subscribe        bigint,
+   id_vod_subscribe         bigint,
    first_name           varchar(20),
    last_name            varchar(20),
    login                varchar(15),
@@ -336,6 +338,16 @@ create table vod_possede
    primary key (pla_playlist_id, use_id_vod)
 );
 
+create table vod_subscribe
+(
+   id_vod_subscribe    bigint not null auto_increment,
+   name_vod_subscribe                   varchar(32),
+   description_vod_subscribe            text,
+   price                                float(8,2),
+   type_vod_subscribe                   varchar(32),
+   
+   primary key (id_vod_subscribe)
+);
 
 create table vod_uploader
 (
@@ -441,6 +453,17 @@ create table voip_rss
    primary key (id_voip_rss)
 );
 
+create table voip_subscribe
+(
+   id_voip_subscribe    bigint not null auto_increment,
+   name_voip_subscribe              varchar(32),
+   description_voip_subscribe       text,
+   price                            float(8,2),
+   type_voip_subscribe              varchar(20),
+   
+   primary key (id_voip_subscribe)
+);
+
 alter table bill add constraint FK_CUSTOMER_HAS_BILL foreign key (id_customer)
       references customer (id_customer) on delete restrict on update restrict;
 
@@ -467,6 +490,12 @@ alter table customer add constraint FK_CUSTOMER_HAS_AN_ADDRESS foreign key (id_a
 
 alter table customer add constraint FK_CUSTOMER_HAS_INTERNET_SUBSCRIBE foreign key (id_internet_subscribe)
       references internet_subscribe (id_internet_subscribe) on delete restrict on update restrict;
+
+alter table customer add constraint FK_CUSTOMER_HAS_VOIP_SUBSCRIBE foreign key (id_voip_subscribe)
+      references voip_subscribe (id_voip_subscribe) on delete restrict on update restrict;
+
+alter table customer add constraint FK_CUSTOMER_HAS_VOD_SUBSCRIBE foreign key (id_vod_subscribe)
+      references vod_subscribe (id_vod_subscribe) on delete restrict on update restrict;
 
 alter table customer_has_command add constraint FK_CUSTOMER_HAS_COMMAND foreign key (id_customer)
       references customer (id_customer) on delete restrict on update restrict;
