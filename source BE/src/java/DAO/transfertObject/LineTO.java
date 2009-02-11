@@ -58,6 +58,7 @@ public class LineTO {
       private String defaultuser;
       private String subsribecontext;
       private Boolean visible;
+      private int customerid;
 
       
       public LineTO(){
@@ -106,6 +107,7 @@ public class LineTO {
         this.defaultuser="";
         this.subsribecontext="";
         this.visible=false;
+        this.customerid=0;
      }
       
       /**
@@ -155,7 +157,7 @@ public class LineTO {
       * @param subsribecontext
       * @param visible
       */
-      public LineTO(String id,String name,String host,String nat,String type,String accountcode,String amaflags,String calllimit,String callgroup,String callerid,String cancallforward,String canreinvite,String context,String defaultip,String dtmfmode,String fromuser,String fromdomain,String insecure,String language,String mailbox,String md5secret,String deny,String permit,String mask,String musiconhold,String pickupgroup,String qualify,String regexten,String restrictcid,String rtptimeout,String rtpholdtimeout,String secret,String setvar,String disallow,String allow,String fullcontact,String ipaddr,String port,String regserver,String regseconds,String username,String defaultuser,String subsribecontext,Boolean visible){
+      public LineTO(String id,String name,String host,String nat,String type,String accountcode,String amaflags,String calllimit,String callgroup,String callerid,String cancallforward,String canreinvite,String context,String defaultip,String dtmfmode,String fromuser,String fromdomain,String insecure,String language,String mailbox,String md5secret,String deny,String permit,String mask,String musiconhold,String pickupgroup,String qualify,String regexten,String restrictcid,String rtptimeout,String rtpholdtimeout,String secret,String setvar,String disallow,String allow,String fullcontact,String ipaddr,String port,String regserver,String regseconds,String username,String defaultuser,String subsribecontext,Boolean visible, int customerid){
           
         this.id=id;  
         this.name=name;
@@ -201,6 +203,7 @@ public class LineTO {
         this.defaultuser=defaultuser;
         this.subsribecontext=subsribecontext;
         this.visible=visible;
+        this.customerid=customerid;
      }
       
     //*****************
@@ -209,6 +212,9 @@ public class LineTO {
     
      public String getid (){
          return this.id;
+     }
+     public int getcustomerid (){
+         return this.customerid;
      }
      public String getname (){
          return this.name;
@@ -345,6 +351,9 @@ public class LineTO {
     //*****************
      public void setid (String id){
          this.id=id;
+     }
+     public void setcustomerid (int customerid){
+         this.customerid=customerid;
      }     
      public void setname (String name){
          this.name=name;
