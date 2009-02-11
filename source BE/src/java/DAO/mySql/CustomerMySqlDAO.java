@@ -5,7 +5,7 @@ import DAO.factory.MySqlDAOFactory;
 import DAO.transfertObject.AddressTO;
 import DAO.transfertObject.CustomerTO;
 
-import java.util.ArrayList;
+import java.util.LinkedList;
 
 import java.sql.PreparedStatement;
 import java.sql.Connection;
@@ -368,8 +368,46 @@ public class CustomerMySqlDAO extends MySqlGeneralObjectDAO implements CustomerD
 
     }
 
-    public ArrayList<CustomerTO> selectAllCustomersTO() {
-        ArrayList<CustomerTO> customerTOs = null;
+    public LinkedList<CustomerTO> selectAllCustomersTO() {
+        LinkedList<CustomerTO> customerTOs = null;
+
+        Connection conn = (Connection) getConnectionWithJNDI();
+        Statement st = null;
+        ResultSet rs = null;
+
+        try {
+
+            st = conn.createStatement();
+            rs = st.executeQuery("SELECT * FROM customer ");
+
+            while (rs.next()) {
+                CustomerTO cu = new CustomerTO();
+
+                cu.setAccountLevel(rs.getInt("account_level"));
+                cu.setBirthday(rs.getString("birthday"));
+                cu.setCellPhone(rs.getString("cell_phone"));
+                cu.setCompany(rs.getString("company"));
+                cu.setFirstName(rs.getString("first_name"));
+                cu.setId(rs.getInt("id_customer"));
+                cu.setLastName(rs.getString("last_name"));
+                cu.setLogin(rs.getString("login"));
+                cu.setMail(rs.getString("mail"));
+                cu.setPhone(rs.getString("phone"));
+                cu.setProfession(rs.getString("profession"));
+                cu.setSexe(rs.getString("sexe"));
+                cu.setValid(rs.getBoolean("valid"));
+                
+                customerTOs.add(cu);                
+                
+            }
+            
+        } catch (Exception e) {
+            System.out.println("Exception" + e);
+            e.printStackTrace();
+        } finally {
+            closeRsAndSt(rs, st);
+        }
+        closeConnection(conn);
 
         return customerTOs;
     }
