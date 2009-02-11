@@ -8,9 +8,14 @@ package servlet.voip;
 import java.io.*;
 import javax.servlet.*;
 import javax.servlet.http.*;
-import model.voip.*;
-import model.database.*;
 import java.util.*;
+import DAO.interfaces.ContactVoipDAOInterface;
+import DAO.interfaces.CustomerDAOInterface;
+import DAO.transfertObject.ContactVoipTO;
+import DAO.transfertObject.CustomerTO;
+import DAO.factory.DAOFactory;
+import DAO.factory.MySqlDAOFactory;
+import DAO.transfertObject.CustomerTO;
 
 
 /**
@@ -32,18 +37,22 @@ public class showContactInfo extends javax.servlet.http.HttpServlet {
     * @param response servlet response
     */
    public void doGet(HttpServletRequest request, HttpServletResponse response) throws IOException, ServletException {
-	response.setContentType("text/html;charset=UTF-8") ;
+	
+        response.setContentType("text/html;charset=UTF-8") ;
         PrintWriter out = response.getWriter(); 
+        DAOFactory daoFactory = DAOFactory.getDAOFactory(DAOFactory.MYSQL);
+        ContactVoipDAOInterface contactVoipDAO = daoFactory.getContactVoipDAO();
+    
         
         try{
         
         int id=1;
-        LinkedList listeContact = new LinkedList <Contact>();
-        ListIterator<Contact> indice;
-        Contact contact;
+        LinkedList listeContact = new LinkedList <ContactVoipTO>();
+        ListIterator<ContactVoipTO> indice;
+        ContactVoipTO contact;
 
         
-       listeContact = SQLContactVoip.getContactbyVoipId(id);
+       listeContact = contactVoipDAO.getContactbyVoipId(id);
        indice = listeContact.listIterator();
        out.println("<FORM Method=\"POST\" Action=\"../modContactInfo\">");
        out.println("<table border=\"1\" bordercolor=\"#FF3300\" style=\"background-color:#FFFFFF\" width=\"600\" cellpadding=\"3\" cellspacing=\"3\">");

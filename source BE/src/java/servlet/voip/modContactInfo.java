@@ -8,8 +8,13 @@ package servlet.voip;
 import java.io.*;
 import javax.servlet.*;
 import javax.servlet.http.*;
-import model.database.*;
-import model.voip.*;
+import DAO.interfaces.ContactVoipDAOInterface;
+import DAO.interfaces.CustomerDAOInterface;
+import DAO.transfertObject.ContactVoipTO;
+import DAO.transfertObject.CustomerTO;
+import DAO.factory.DAOFactory;
+import DAO.factory.MySqlDAOFactory;
+import DAO.transfertObject.CustomerTO;
 
 
 /**
@@ -38,10 +43,12 @@ public class modContactInfo extends HttpServlet {
     response.setContentType("text/html;charset=UTF-8") ;
     PrintWriter out = response.getWriter();
     String id = request.getParameter("id"); 
+    DAOFactory daoFactory = DAOFactory.getDAOFactory(DAOFactory.MYSQL);
+    ContactVoipDAOInterface contactVoipDAO = daoFactory.getContactVoipDAO();
 
 
     try {
-        Contact contact=SQLContactVoip.selectbyId(id);
+        ContactVoipTO contact=contactVoipDAO.selectbyId(id);
         out.println("<h1>Modifier votre contact</h1>");
         out.println("<FORM Method=\"POST\" Action=\"enregModContactInfo\">");
         out.println("<table>");

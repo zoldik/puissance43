@@ -2,17 +2,22 @@
  * To change this template, choose Tools | Templates
  * and open the template in the editor.
  */
-
 package servlet.voip;
-import model.database.*;
-import java.lang.Integer.*;
 
+import java.lang.Integer.*;
 import java.io.IOException;
 import java.io.PrintWriter;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import DAO.interfaces.ContactVoipDAOInterface;
+import DAO.interfaces.CustomerDAOInterface;
+import DAO.transfertObject.ContactVoipTO;
+import DAO.transfertObject.CustomerTO;
+import DAO.factory.DAOFactory;
+import DAO.factory.MySqlDAOFactory;
+import DAO.transfertObject.CustomerTO;
 
 /**
  *
@@ -27,22 +32,7 @@ public class supprContactInfo extends HttpServlet {
     */
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
     throws ServletException, IOException {
-        response.setContentType("text/html;charset=UTF-8");
-        PrintWriter out = response.getWriter();
-        try {
-            out.println("hello");
-            out.println("ID : "+request.getParameter("id"));
-            String id = request.getParameter("id");
-            //SQLContactVoip.deletebyId(id);
-        }
-        catch (Exception e) {
-            System.out.println("Erreur dans la suppression"+e);
-        }
-         
-        finally { 
-            response.sendRedirect(response.encodeRedirectURL("voip/repertoire.jsp"));    
-            out.close();
-        }
+    doGet(request,response);
     } 
 
 
@@ -58,12 +48,14 @@ public class supprContactInfo extends HttpServlet {
     PrintWriter out = response.getWriter();
     String id_string = request.getParameter("id");
     System.out.println(id_string);
+    DAOFactory daoFactory = DAOFactory.getDAOFactory(DAOFactory.MYSQL);
+    ContactVoipDAOInterface contactVoipDAO = daoFactory.getContactVoipDAO();
     int id = Integer.parseInt(id_string);
 
 
     
     try {
-        SQLContactVoip.deletebyId(id);
+        contactVoipDAO.deletebyId(id);
         }
     catch (Exception e) {System.out.println("Erreur dans la suppression"+e);}
         
