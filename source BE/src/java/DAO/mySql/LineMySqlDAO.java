@@ -26,7 +26,7 @@ public class LineMySqlDAO extends MySqlGeneralObjectDAO implements LineDAOInterf
 
         boolean okay = true;
         
-        Connection conn = (Connection) MySqlDAOFactory.createConnectionWithJNDI();
+        Connection conn = (Connection) getConnectionWithJNDI();
         Statement st = null;
         ResultSet rs = null;
         
@@ -215,7 +215,7 @@ public class LineMySqlDAO extends MySqlGeneralObjectDAO implements LineDAOInterf
         
         boolean okay=true;
         
-        Connection conn = (Connection) MySqlDAOFactory.createConnectionWithJNDI();
+        Connection conn = (Connection) getConnectionWithJNDI();
         Statement st = null;
         ResultSet rs = null;
         
@@ -239,7 +239,7 @@ public class LineMySqlDAO extends MySqlGeneralObjectDAO implements LineDAOInterf
         
         LineTO Line = new LineTO();
 
-        Connection conn = (Connection) MySqlDAOFactory.createConnectionWithJNDI();
+        Connection conn = (Connection) getConnectionWithJNDI();
         Statement st = null;
         ResultSet rs = null;
 
@@ -315,7 +315,7 @@ public class LineMySqlDAO extends MySqlGeneralObjectDAO implements LineDAOInterf
         
         boolean okay=true;
         
-        Connection conn = (Connection) MySqlDAOFactory.createConnectionWithJNDI();
+        Connection conn = (Connection) getConnectionWithJNDI();
         Statement st = null;
         ResultSet rs = null;
         
@@ -343,7 +343,7 @@ public class LineMySqlDAO extends MySqlGeneralObjectDAO implements LineDAOInterf
         
         LinkedList<LineTO> Lines = new LinkedList<LineTO>();
 
-        Connection conn = (Connection) MySqlDAOFactory.createConnectionWithJNDI();
+        Connection conn = (Connection) getConnectionWithJNDI();
         Statement st = null;
         ResultSet rs = null;
 
