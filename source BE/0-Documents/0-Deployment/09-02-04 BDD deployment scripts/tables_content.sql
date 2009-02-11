@@ -122,28 +122,6 @@ VALUES (
 
 
 
-INSERT INTO `vod_subscribe` (
-`name_vod_subscribe` ,
-`description_vod_subscribe` ,
-`price` ,
-`type_vod_subscribe`
-)
-VALUES (
-'serie', 'abonnement au séries débiles', '50', 'particulier');
-
-
-INSERT INTO `vod_subscribe` (
-`name_vod_subscribe` ,
-`description_vod_subscribe` ,
-`price` ,
-`type_vod_subscribe`
-)
-VALUES (
-'film de formation', 'film sur comment améliorer la productivité en entreprise', '100', 'entreprise');
-
-
-
-
 INSERT INTO `voip_subscribe` (
 `name_voip_subscribe` ,
 `description_voip_subscribe` ,
