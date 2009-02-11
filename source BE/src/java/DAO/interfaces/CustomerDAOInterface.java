@@ -3,7 +3,7 @@ package DAO.interfaces;
 import DAO.transfertObject.AddressTO;
 import DAO.transfertObject.CustomerTO;
 
-import java.util.ArrayList;
+import java.util.LinkedList;
 
 import javax.sql.RowSet;
 
@@ -33,7 +33,7 @@ public interface CustomerDAOInterface {
 
     public RowSet selectAllCustomersRS();
 
-    public ArrayList<CustomerTO> selectAllCustomersTO();
+    public LinkedList<CustomerTO> selectAllCustomersTO();
     
     public boolean updateCustomer();
     

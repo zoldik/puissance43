@@ -407,7 +407,6 @@ public class LineMySqlDAO extends MySqlGeneralObjectDAO implements LineDAOInterf
                 Lines.add(li);                
                 
             }
-            System.out.println("HELLO !!!!");
             
         } catch (Exception e) {
             System.out.println("Exception" + e);
