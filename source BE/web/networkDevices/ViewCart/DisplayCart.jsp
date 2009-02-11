@@ -9,7 +9,7 @@
    "http://www.w3.org/TR/html4/loose.dtd">
 <%@ page import="java.util.*" %>
 <%@ page import="model.networkdevices.*" %>
-
+<%@ page import="DAO.transfertObject.ItemTO" %>
 
 <html>
     <head>
@@ -46,7 +46,7 @@
         Iterator it = cartRows.iterator();
         while(it.hasNext()){
         CartRow cartRow = (CartRow) it.next();
-        Item item = cartRow.getItem();
+        ItemTO item = cartRow.getItem();
 %>
             <tr><td><%=item.getName()%></td>
                 <td><%=item.getType()%></td>            
