@@ -28,6 +28,10 @@
         <servlet-name>CtrAccount</servlet-name>
         <servlet-class>servlet.account.CtrAccount</servlet-class>
     </servlet>    
+    <servlet>
+        <servlet-name>enregModContactInfo</servlet-name>
+        <servlet-class>servlet.enregModContactInfo</servlet-class>
+    </servlet>
     <servlet-mapping>
         <servlet-name>CtrAccount</servlet-name>
         <url-pattern>/CtrAccount</url-pattern>
@@ -279,6 +283,10 @@
     <servlet-mapping>
         <servlet-name>CtrSubscribe</servlet-name>
         <url-pattern>/CtrSubscribe</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>enregModContactInfo</servlet-name>
+        <url-pattern>/enregModContactInfo</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>
