@@ -89,7 +89,9 @@
                         <td><a style="color:<%if (errorC.getErrorLogin() == 1) {
                 out.print("#FFFF00");
             }%>">* Nom d'utilisateur (15 caractères max) : </a></td>
-                        <td><input type="text" name="login" onKeyUp=verifLogin(this.value) align="left"/><div id="freeLogin"></div></td>
+                        <td><input type="text" name="login" value="<%if (customerTO.getLogin() != null) {
+                out.print(customerTO.getLogin());
+            }%>" onKeyUp=verifLogin(this.value) align="left"/><div id="freeLogin"></div></td>
                     </tr>
                     
                     
@@ -174,7 +176,7 @@
                 out.print("#FFFF00");
             }%>">* Rue : </a></td>
                         <td><input type="text" name="street" value="<%if (addressTO.getStreet() != null) {
-                out.print(customerTO.getPassword());
+                out.print(addressTO.getStreet());
             }%>" onKeyUp=verifLength(this.value,"street","20") align="left" /><div id="street"></div></td>
                     </tr>
                     
@@ -183,8 +185,8 @@
                         <td><a style="color:<%if (errorA.getErrorPostalCode() == 1) {
                 out.print("#FFFF00");
             }%>">* Code postal : </a></td>
-                        <td><input type="text" name="postalCode" value="<%if (customerTO.getPassword() != null) {
-                out.print(customerTO.getPassword());
+                        <td><input type="text" name="postalCode" value="<%if (addressTO.getPostalCode() != null) {
+                out.print(addressTO.getPostalCode());
             }%>" onKeyUp=verifLength(this.value,"postalCode","20") align="left" /><div id="postalCode"></div></td>
                     </tr>
                     
@@ -193,8 +195,8 @@
                         <td><a style="color:<%if (errorA.getErrorCity() == 1) {
                 out.print("#FFFF00");
             }%>">* Ville : </a></td>
-                        <td><input type="text" name="city" value="<%if (customerTO.getPassword() != null) {
-                out.print(customerTO.getPassword());
+                        <td><input type="text" name="city" value="<%if (addressTO.getCity() != null) {
+                out.print(addressTO.getCity());
             }%>" onKeyUp=verifLength(this.value,"city","20") align="left" /><div id="city"></div></td>
                     </tr>
                     
@@ -202,9 +204,9 @@
                     <tr align="left">
                         <td><a style="color:<%if (errorA.getErrorCountry() == 1) {
                 out.print("#FFFF00");
-            }%>">* Code postal : </a></td>
-                        <td><input type="text" name="country" value="<%if (customerTO.getPassword() != null) {
-                out.print(customerTO.getPassword());
+            }%>">* Pays : </a></td>
+                        <td><input type="text" name="country" value="<%if (addressTO.getCountry() != null) {
+                out.print(addressTO.getCountry());
             }%>" onKeyUp=verifLength(this.value,"country","20") align="left" /><div id="country"></div></td>
                     </tr>
                     
