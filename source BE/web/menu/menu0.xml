@@ -7,15 +7,13 @@
         <link name="Gestion" url="0"/>
         <link name="Resiliation" url="0"/>
     </Compte>
-    <VOD name="VOD">
-    </VOD>
     <VoIP name="VoIP">
-        <link name="Compte" url="0"/>
         <link name="Annuaire" url="voip/annuaire.jsp"/>
-        <link name="ZoIPer" url="voip/telechargement.jsp"/>
-        <link name="Support" url="voip/support.jsp"/>
-        <link name="Admin" url="0"/>
+        <link name="Abonnement" url="InternetSubscribe.jsp"/>
     </VoIP>
+    <VOD name="VOD">
+        <link name="Abonnement" url="InternetSubscribe.jsp"/>
+    </VOD>
     <Assistance name="Assistance">
         <link name="Assistance"  url="" />
     </Assistance>
@@ -25,7 +23,7 @@
         <link name="Cart" url="DisplayCart.jsp" />
         <link name="Order" url="Order.jsp" />
     </Magasin>
-    <NetworkSolutions name="menu NetworkSolutions">
+    <NetworkSolutions name="NetworkSolutions">
         <link name="Solutions" url="" />
     </NetworkSolutions>
 </root>

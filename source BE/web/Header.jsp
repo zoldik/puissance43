@@ -18,7 +18,10 @@
                     CustomerTO customerObject =(CustomerTO)CustomerSession.getAttribute("Customer");
                     if (customerObject.getValid()) {
                         sessionOK=true;
-                        int idCustomer=customerObject.getId();
+                        int idCustomer = customerObject.getId();
+                        int level = customerObject.getAccountLevel();
+                        
+                        
                         %>
                         <div class="menu">
                             <table align="center">

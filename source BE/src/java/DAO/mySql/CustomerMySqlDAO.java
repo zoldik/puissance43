@@ -472,4 +472,71 @@ public class CustomerMySqlDAO extends MySqlGeneralObjectDAO implements CustomerD
         return isAllowed;
     }
     
+    
+    
+    public boolean validAccount(int id) {
+        
+        boolean okay=true;
+
+        //Connexion to the database with JNDI 
+        Connection conn = (Connection) getConnectionWithJNDI();
+        
+        Statement st = null;
+
+        //result of the queries
+        ResultSet rs = null;
+
+        try {
+            st=conn.createStatement();
+            st.executeUpdate("update customer set valid=1 where id_customer=\""+id+"\";");
+            
+        } catch (Exception e) {
+            e.printStackTrace();
+        } finally {
+            closeRsAndSt(rs, st);
+        }
+        closeConnection(conn);
+
+        return okay;
+    }
+    
+         /** Vérifie qu'un email correspond à un login donné
+      * @param login
+      * @param email
+      * @return boolean
+      */
+    public boolean isValidEmail(String login, String email)
+    {
+        boolean okay=false;
+
+        //Connexion to the database with JNDI 
+        Connection conn = (Connection) getConnectionWithJNDI();
+        
+        Statement st = null;
+
+        //result of the queries
+        ResultSet rs = null;
+
+        try {
+            st=conn.createStatement();
+            rs = st.executeQuery("select * from customer where (login='"+login+"' and mail='"+email+"');");
+
+            //rs.beforeFirst();
+
+            if (rs.next() == true) {
+                //The login is already used
+                okay = true;
+            } else {
+                okay = false;
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+        } finally {
+            closeRsAndSt(rs, st);
+        }
+        closeConnection(conn);
+
+        return okay;
+    }
+    
 }

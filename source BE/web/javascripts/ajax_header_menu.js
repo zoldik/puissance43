@@ -43,6 +43,12 @@
         bouton_menu = menu;
         myRequest = getDataAsynchronous('./menu.xml', alertContenu);
     }
+    
+    function fonctionContenu(level,menu)
+    {
+        bouton_menu = menu;
+        myRequest = getDataAsynchronous('./menu/menu'+level+'.xml', alertContenu);
+    }
                 
     function fonctionOpenPage(url)
     {
