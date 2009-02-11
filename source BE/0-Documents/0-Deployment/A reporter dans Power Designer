@@ -21,11 +21,9 @@ Vincent, 09-02-08 : De tout façon énormément de choses ont changer aussi, la 
 1-ajout de unique (`login`) dans la table customer
 2-Philippe attention à mettre le drop pour que le reinit.sh fonctionne bien quand tu crées une table
 
-Philippe, 10-02-08 :
-1-ajout valid dans table customer
-
 Vincent, 10-02-08 :
 1-ajout de auto_increment : id_address           bigint not null auto_increment, dans la table address
 
 Vincent, 1A-02-08 :
 1-ajout de auto_increment : id_internet_subscribe bigint not null auto_increment,
+2-ajout valid dans table customer
