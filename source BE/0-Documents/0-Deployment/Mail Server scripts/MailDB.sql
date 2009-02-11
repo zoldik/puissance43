@@ -19,6 +19,9 @@ USE `RedNeckMail`;
      PRIMARY KEY  (`login`)
     ) TYPE=MyISAM;
 
--- Values
+-- Values table compte
 INSERT INTO `RedNeckMail`.`compte` (`login`,`motdepasse`,`emplacement`)
 VALUES ('voip@RedNeck.fr','adminmailvoip','/home/vmail/RedNeck.fr/voip');
+--Values table domaines
+INSERT INTO `RedNeckMail`.`domaines` (`domaine`)
+VALUES ('RedNeck.fr');
