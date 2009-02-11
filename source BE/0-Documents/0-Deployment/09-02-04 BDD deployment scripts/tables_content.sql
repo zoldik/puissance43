@@ -47,6 +47,7 @@ NULL ,
 1
 );
 
+
 INSERT INTO `internet_subscribe` (
 `id_internet_subscribe` ,
 `name_subscribe` ,
@@ -57,6 +58,31 @@ INSERT INTO `internet_subscribe` (
 )
 VALUES (
 '', 'bronze', 'abonnement internet de faible qualité', '10', NULL , '5 Mbps');
+
+
+INSERT INTO `internet_subscribe` (
+`id_internet_subscribe` ,
+`name_subscribe` ,
+`description_subscribe` ,
+`price` ,
+`overload` ,
+`rate`
+)
+VALUES (
+'', 'silver', 'abonnement internet de moyenne qualité', '20', NULL , '10 Mbps');
+
+
+INSERT INTO `internet_subscribe` (
+`id_internet_subscribe` ,
+`name_subscribe` ,
+`description_subscribe` ,
+`price` ,
+`overload` ,
+`rate`
+)
+VALUES (
+'', 'golden', 'abonnement internet de haute qualité', '30', NULL , '20 Mbps');
+
 
 INSERT INTO `cdr` (`calldate`, `clid`, `src`, `dst`, `dcontext`, `channel`, `dstchannel`, `lastapp`, `lastdata`, `duration`, `billsec`, `disposition`, `amaflags`, `accountcode`, `uniqueid`, `userfield`) VALUES
 ('2009-01-22 16:15:15', '"6000" <6000>', '6000', 's', 'default', 'SIP/6000-091d65e8', '', 'BackGround', 'demo-congrats', 4, 3, 'ANSWERED', 3, '', '1232637315.0', ''),
