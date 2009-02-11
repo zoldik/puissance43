@@ -362,6 +362,10 @@ public class CustomerMySqlDAO extends MySqlGeneralObjectDAO implements CustomerD
     }
 
     public RowSet selectAllCustomersRS() {
+        
+        Connection conn = (Connection) getConnectionWithJNDI();
+        
+        Statement st = null;
         RowSet rs = null;
 
         return rs;
