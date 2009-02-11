@@ -474,5 +474,5 @@ public class LineTO {
      }
      public void setvisible (Boolean visible){
          this.visible=visible;
-     }  
+     }
 }

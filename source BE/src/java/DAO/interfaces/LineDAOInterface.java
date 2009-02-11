@@ -18,11 +18,11 @@ public interface LineDAOInterface {
 
     public boolean deleteLine(String id);
 
-    public LineTO findLine(String id, String order);
+    public LineTO findLine(String id);
 
     public boolean updateLine(String id, String name, String value);
 
-    public LinkedList<LineTO> selectAllLineTO(String order);
+    public LinkedList<LineTO> selectAllLineTO();
     
     
     
