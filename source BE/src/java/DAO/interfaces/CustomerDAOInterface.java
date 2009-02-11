@@ -38,4 +38,8 @@ public interface CustomerDAOInterface {
     public boolean updateCustomer();
     
     public boolean isAllowed(String login, String password);
+    
+    public boolean validAccount(int id);
+    
+    public boolean isValidEmail(String login, String email);
 }
