@@ -228,9 +228,9 @@ public class LineMySqlDAO extends MySqlGeneralObjectDAO implements LineDAOInterf
             e.printStackTrace();
             okay=false;
         } finally {
-            MySqlDAOFactory.closeRsAndSt(rs,st);
+            closeRsAndSt(rs,st);
         }
-        MySqlDAOFactory.closeConnection();
+        closeConnection();
         
         return okay;
     }
