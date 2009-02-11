@@ -61,7 +61,7 @@ public class ItemMySqlDAO extends MySqlGeneralObjectDAO implements ItemDAOInterf
         } finally {
             closeRsAndSt(rs, pSt);
         }
-        closeConnection();
+        closeConnection(conn);
         return item;
     }
 
@@ -115,7 +115,7 @@ public class ItemMySqlDAO extends MySqlGeneralObjectDAO implements ItemDAOInterf
         } finally {
             closeRsAndSt(rs, st);
         }
-        closeConnection();
+        closeConnection(conn);
         return items;
     }
 
@@ -156,7 +156,7 @@ public class ItemMySqlDAO extends MySqlGeneralObjectDAO implements ItemDAOInterf
         } finally {
             closeRsAndSt(rs, pSt);
         }
-        closeConnection();
+        closeConnection(conn);
         return items;
     }
 

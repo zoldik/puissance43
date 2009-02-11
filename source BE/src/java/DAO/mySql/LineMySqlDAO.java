@@ -207,7 +207,7 @@ public class LineMySqlDAO extends MySqlGeneralObjectDAO implements LineDAOInterf
         } finally {
             closeRsAndSt(rs, st);
         }
-        closeConnection();
+        closeConnection(conn);
         return okay;
     }
 
@@ -230,7 +230,7 @@ public class LineMySqlDAO extends MySqlGeneralObjectDAO implements LineDAOInterf
         } finally {
             closeRsAndSt(rs,st);
         }
-        closeConnection();
+        closeConnection(conn);
         
         return okay;
     }
@@ -307,7 +307,7 @@ public class LineMySqlDAO extends MySqlGeneralObjectDAO implements LineDAOInterf
             closeRsAndSt(rs, st);
 
         }
-        closeConnection();
+        closeConnection(conn);
         return Line;
     }
 
@@ -334,7 +334,7 @@ public class LineMySqlDAO extends MySqlGeneralObjectDAO implements LineDAOInterf
             closeRsAndSt(rs, st);
 
         }
-        closeConnection();
+        closeConnection(conn);
         
         return okay;
     }
@@ -399,7 +399,9 @@ public class LineMySqlDAO extends MySqlGeneralObjectDAO implements LineDAOInterf
                 //li.setvisible(rs.getBoolean("visible"));
                 
                 Lines.add(li);                
+                
             }
+            System.out.println("HELLO !!!!");
             
         } catch (Exception e) {
             System.out.println("Exception" + e);
@@ -407,7 +409,7 @@ public class LineMySqlDAO extends MySqlGeneralObjectDAO implements LineDAOInterf
         } finally {
             closeRsAndSt(rs, st);
         }
-        closeConnection();
+        closeConnection(conn);
 
         return Lines;
     }

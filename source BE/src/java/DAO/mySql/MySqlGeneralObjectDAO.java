@@ -43,8 +43,7 @@ public class MySqlGeneralObjectDAO {
     /**Close the BDD's connection
      * close uses the service JNDI.     * 
      */
-    public void closeConnection() {
-        Connection conn = null;
+    public void closeConnection(Connection conn) {
         try {
             conn.close();
         } catch (Exception e) {
