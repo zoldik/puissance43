@@ -1,25 +1,55 @@
-Notice installation Serveur FTP
-
-Liste des paquets :
-- Vsftpd
-
 Pré-requis :
-- distribution linux sous laquelle Vsftpd est connue
+- Distribution Debian (Ubuntu/Kubuntu)
+- Serveur MySQL
+
+Installation :
+
+1) Téléchargement des paquets
+sudo apt-get install pure-ftpd-common pure-ftpd-mysql
+
+2) Configuration du serveur
+a) Création du group/user
+sudo groupadd -g 6000 ftpgroup
+sudo useradd -g ftpgroup -u 6000 ftpgroup -d /home/ftpgroup -m
+
+b) Création des fichiers de configurations suivants :
+/etc/pure-ftpd/conf/ChrootEveryone (de contenu yes ou no)
+/etc/pure-ftpd/conf/CreateHomeDir (de contenu yes ou no : permet de créer le dossier à la première connexion)
+/etc/pure-ftpd/conf/MaxDisUsage (de la taille désirée en mo. Par exemple 1000)
+
+c) Configuration accès base de données
+Modification du fichier :
+	/etc/pure-ftpd/db/mysql.conf
+- Si votre serveur mysql n'est pas sur la même machine que le serveur ftp, décommentez :
+	MYSQLServer     <ip du serveur>
+- Si vous avez modifiez le port de votre serveur mysql, décommentez :
+	MYSQLPort      <port du serveur mysql>
+- Décommentez/Complètez les lignes :
+	MYSQLUser	<login db>
+	MYSQLPassword	<password db>
+	MYSQLDefaultUID 6000
+	MYSQLDefaultGID 6000
+- Commentez les lignes :
+	MYSQLGetUID     SELECT Uid FROM users WHERE User="\L"
+	MYSQLGetGID     SELECT Gid FROM users WHERE User="\L"
+- CHMOD du fichier
+	sudo chmod 600 /etc/pure-ftpd/db/mysql.conf
+
+3) Configuration de la base de données
+- Utilisation du script ftpDB.sql
+
+4) Relancez le service
+sudo /etc/init.d/pure-ftpd-mysql restart -login mysql:/etc/pure-ftpd/db/mysql.conf
 
 
-I] Installation :
-1) Utilisez votre gestionnaire de paquet (adept par exemple) pour installer le paquet Vsftpd
-2) Editez le fichier /etc/vsftpd.conf comme suivant :
-	local_enable=YES (pour bloquer les utilisateurs dans leur dossier home)
-	write_enable=YES (pour activer l'autorisation d'écriture aux utilisateurs)
-	local_umask=077 (permet d'avoir un chmod des dossiers en 755 et fichiers en 644)
-	ftpd_banner=<Message de bienvenu>
-	anonymous_enable=NO (pour désactiver le compte anonyme)
-	hide_file={.bashrc,.bash_logout,.profile,Maildir}
-3) Rédemarrez le service
-	sudo /etc/init.d/vsftpd reload
+Utilisation :
+1) Créer le compte dans la table user
+2) Créer le dossier /home/ftpgroup/<nom du compte>
 
-II] utilisation :
-Vous pouvez dès à présent vous connecter sur votre compte ftp :
-Login : Nom de votre compte sur le serveur (le même que votre adresse mail sans @RedNeck.fr)
-Mdp : Le même que pour votre mail
+
+TODO :
+Création automatique du dossier lors de la création du compte
+Utilisation de la base de donnée pour gèrer plus de paramètre :
+- UID/GID afin d'avoir différents types de niveau pour les users
+- Quota
+- Etc

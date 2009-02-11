@@ -30,25 +30,8 @@ a) Ajouter l'utilisateur vmail
     sudo groupadd -g 5000 vmail 
     sudo useradd -g vmail -u 5000 vmail -d /home/vmail –m
 
-b) Création des tables /!\ A INCLURE DANS LE SCRIPT DE LA DB /!\
-    -- Dans la table domaines, entrez vos domaines qui recevront du courrier, par exemple RedNeck.fr (pas de sous domaine)
-    CREATE TABLE `domaines` (
-     `domaine` varchar(100) NOT NULL default '',
-     UNIQUE KEY `domaine` (`domaine`)
-    ) TYPE=MyISAM;
-    -- Dans forward, entrez tout vos forwards, par ex contact@RedNeck.com vers webmaster@RedNeck.fr
-    CREATE TABLE `forward` (
-     `source` varchar(255) NOT NULL default '',
-     `destination` varchar(255) NOT NULL default '',
-     PRIMARY KEY  (`source`)
-    ) TYPE=MyISAM;
-    -- Enfin cette dernière table définie vos comptes. Le login est de la forme d’un email (par ex contact@sos-dedie.com), ensuite emplacement contient un chemin relatif au répertoire de base (normalement /home/vmail/) de type contact/ pour un format de boite aux lettres maildir
-    CREATE TABLE `compte` (
-     `login` varchar(255) NOT NULL default '',
-     `motdepasse` varchar(255) NOT NULL default '',
-     `emplacement` varchar(255) NOT NULL default '',
-     PRIMARY KEY  (`login`)
-    ) TYPE=MyISAM;
+b) Création des tables :
+- Utilisation du script MailDB.sql
 
 3) Configuration du serveur smtp (postfix)
 a) Modification du fichier main.cf de postfix
@@ -168,32 +151,54 @@ c) Connexion au pop (si installé)
 
 
 
-II] Service optionnel :
-1) Webmail : OpenWebMail
-a) Installation
-Lancez l'installation du paquet owm2.53-2.deb
+II] Service optionnel : Webmail RoundCube
+a) Pré-requis :
+    - Serveur mysql
+    - Serveur type apache
+    - Module php
+    - Module pear
+    - Serveur smtp (postfix)
+    - Serveur imap
 
-b) Configuration
-- Editez le fichier /etc/openwebmail/openwebmail.conf
-	Modifiez le paramètre domainnames en
-		domainnames	<nom de l'entreprise>
-	Par exemple pour Redneck.f
-		domainnames	Redneck.fr
-- Supprimez le fichier index.html
-	sudo rm index.html
-- Renommez le fichier redirect.html
-	sudo mv redirect.html index.html
+b) Exécutez les instructions suivantes :
+    cd /var/www/
+    wget http://dfn.dl.sourceforge.net/sourceforge/roundcubemail/roundcubemail-0.2-stable.tar.gz
+    tar xvzf roundcubemail-0.2-stable.tar.gz
+    mv roundcubemail-0.2-stable roundcube
+    chown -R www-data: roundcube
+    cd roundcube/config
+    mv main.inc.php.dist main.inc.php
+    mv db.inc.php.dist db.inc.php
+    chmod 640 *
+    cd ..
+    rm -R installer/ 
+
+c) Configurez la base de données :
+    - Créez une base de données roundcube
+    - Utilisez le fichier SQL/mysql.initial.sql pour remplir cette table
+    - Ajoutez un compte pour accèder à cette base
+
+d) Modifiez les fichiers suivants :
+main.inc.php
+    - $rcmail_config['db_dsnw'] = 'mysql://<login connexion DB>:<mdp connexion DB>@<ip du serveur sql>/roundcube';
+    - $rcmail_config['default_host'] = 'localhost';
+
+db.inc.php
+    - $rcmail_config['default_host'] = '<ip du serveur sql>';
+
 
 
 Utilisation :
-I] SMTP/IMAP
-Vous pouvez créer des comptes grâce au script createMailAddress
-Afin de vous connecter au serveur mail (via thunderbird par exemple), il vous suffit de remplir les informations du compte avec :
-Le login & le mdp que vous avez mis lors de l'utilisation du script createMailAddress
-L'adresse du serveur imap étant celle de votre serveur mail
+I] SMTP/IMAP/POP
+    a) Ajout de compte sur l'IMAP/POP
+    Vous pouvez créer un compte via votre interface utilisateur (vous pouvez également le faire en ajoutant directement une ligne dans la table compte)
 
-II] Webmail OpenWebMail
-Pour vous y connectez, rendez vous sur
-http://<adresse ip du serveur mail>/openwebmail/
-L'user_id correspond à votre login utilisé lors de la création du compte avec createMailAddress
-Le mot de passe étant le même que lors de la création du compte
+    b) Configuration accès distant :
+    Afin de vous connecter au serveur mail (via thunderbird par exemple), il vous suffit de remplir les informations du compte avec :
+    Le login & le mdp que vous avez mis lors de la création de votre compte
+    L'adresse du serveur imap étant celle de votre serveur mail
+
+II] Webmail RoundCube
+    Pour vous y connectez, rendez vous sur
+    - Rendez vous sur http://<ip de votre serveur>/roundcube/
+    - Utilisez votre login & mot de passe mail (la connexion s'effectuera sur l'imap) & remplira la base de données roundcube en conséquence.
