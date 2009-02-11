@@ -5,9 +5,14 @@
 --%>
 
 <%@page contentType="text/html" pageEncoding="UTF-8"
-import="model.voip.* "
 import="java.util.*"
-import="model.database.*"
+import="DAO.interfaces.LineDAOInterface"
+import="DAO.interfaces.CustomerDAOInterface"
+import="DAO.transfertObject.LineTO"
+import="DAO.transfertObject.CustomerTO"
+import="DAO.factory.DAOFactory"
+import="DAO.factory.MySqlDAOFactory"
+import="DAO.transfertObject.CustomerTO"
 %>
 <!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"
    "http://www.w3.org/TR/html4/loose.dtd">
@@ -62,15 +67,19 @@ import="model.database.*"
         
         <!-- Creation de la liste des USERS -->
         <%
-            LinkedList<VoipUser> voipUsers = new LinkedList <VoipUser>();
-            ListIterator<VoipUser> indice;
-            VoipUser vu = new VoipUser();
+            DAOFactory daoFactory = DAOFactory.getDAOFactory(DAOFactory.MYSQL);
             
-            voipUsers = VoipUserDAO.extractAllVoipUser();
-            indice = voipUsers.listIterator();
+            CustomerDAOInterface customerDAO = daoFactory.getCustomerDAO();
+            LinkedList<CustomerTO> customers = new LinkedList<CustomerTO>();
+            ListIterator<CustomerTO> indice;
+            CustomerTO vc = new CustomerTO();
+            
+            customers = customerDAO.selectAllCustomersTO();
+            indice = customers.listIterator();
             
             while (indice.hasNext()){
-                vu = indice.next();
+                vc = indice.next();
+                if( vc.getValid() == true ) {
         %>
         
 
@@ -81,7 +90,7 @@ import="model.database.*"
            <td> <!--edit button-->
                  <form method='post' action="./userManagement/editVoipUser.jsp">
                  <input type="submit" value="edit" />
-                 <input type='hidden' name='id' value="<%=vu.getid() %>">
+                 <input type='hidden' name='id' value="<%=vc.getId() %>">
                  <!--input type="hidden" name='action' value='edit'-->
                  </form>
                  </td>
@@ -89,15 +98,15 @@ import="model.database.*"
             <td> <!--delete button-->
                  <form method='post' action="./userManagement/deleteVoipUser.jsp">
                  <input type="submit" value="delete" />
-                 <input type='hidden' name='id' value="<%=vu.getid() %>">
-                 <input type='hidden' name='name' value="<%=vu.getid() %>">
+                 <input type='hidden' name='id' value="<%= vc.getId() %>">
+                 <input type='hidden' name='name' value="<%= vc.getId() %>">
                  </form>
                  </td>
            
-            <td> <%=vu.getid() %> </td>
-            <td> <%=vu.getlogin() %> </td>
-            <td> <%=vu.getaccountlevel() %> </td>
-            <td> <%=vu.getisactivated() %> </td>
+            <td> <%= vc.getId() %> </td>
+            <td> <%=vc.getLogin() %> </td>
+            <td> <%=vc.getAccountLevel() %> </td>
+            <td> <%=vc.getValid() %> </td>
             
             
             <!--Creation d'une liste de lignes d'un user-->
@@ -117,7 +126,7 @@ import="model.database.*"
 
         </tr>
         
-        <%}%>
+        <%}}%>
 
         </table>
         
