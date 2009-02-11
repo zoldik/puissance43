@@ -4,7 +4,7 @@ import java.util.ArrayList;
 
 import javax.sql.RowSet;
 
-import model.networkdevices.Item;
+import DAO.transfertObject.ItemTO;
 
 /**
  *
@@ -14,15 +14,15 @@ public interface ItemDAOInterface {
     
     public boolean deleteItem();
     
-    public Item findItemById(int id);
+    public ItemTO findItemById(int id);
     
-    public int insertItem(Item itemTO);
+    public int insertItem(ItemTO itemTO);
 
     public RowSet selectAllItemsRS();
 
-    public ArrayList<Item> selectAllItems();
+    public ArrayList<ItemTO> selectAllItemTOs();
     
-    public ArrayList<Item> selectItemsByType(String type);
+    public ArrayList<ItemTO> selectItemsByType(String type);
     
     public boolean updateItem();
 

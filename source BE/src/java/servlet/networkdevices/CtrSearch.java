@@ -15,7 +15,7 @@ import javax.servlet.http.HttpServletResponse;
 
 import javax.servlet.http.HttpSession;
 
-import model.networkdevices.Item;
+import DAO.transfertObject.ItemTO;
 
 /**
  *
@@ -84,7 +84,7 @@ public class CtrSearch extends HttpServlet {
 
         ItemDAOInterface itemDAO = (ItemDAOInterface) daoFactory.getItemDAO();
         
-        ArrayList<Item> items = itemDAO.selectAllItems();
+        ArrayList<ItemTO> items = itemDAO.selectAllItemTOs();
         
         request.setAttribute("results", items);
 
@@ -108,7 +108,7 @@ public class CtrSearch extends HttpServlet {
 
         ItemDAOInterface itemDAO = (ItemDAOInterface) daoFactory.getItemDAO();
                 
-        ArrayList<Item> items = itemDAO.selectItemsByType(type);
+        ArrayList<ItemTO> items = itemDAO.selectItemsByType(type);
 
         request.setAttribute("results", items);
 

@@ -1,14 +1,10 @@
-/*
- * To change this template, choose Tools | Templates
- * and open the template in the editor.
- */
-package model.networkdevices;
+package DAO.transfertObject;
 
 /**Classe entité représentant un objet
  * 
  * @author vincent
  */
-public class Item {
+public class ItemTO {
 
     private int id;
     private String name;
