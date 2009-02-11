@@ -24,6 +24,15 @@ Vincent, 09-02-08 : De tout façon énormément de choses ont changer aussi, la 
 Vincent, 10-02-08 :
 1-ajout de auto_increment : id_address           bigint not null auto_increment, dans la table address
 
-Vincent, 1A-02-08 :
+Vincent, 11-02-08 :
 1-ajout de auto_increment : id_internet_subscribe bigint not null auto_increment,
 2-ajout valid dans table customer
+3-ajout de drop pour cdr
+4-Creation de la table voip_subscribe et du drop de cette table
+5-Creation de la table vod_subscribe et du drop de cette table
+6-ajout de la liaison 0,1-----0,inf entre respectivement customer et voip_subscribe
+alter table customer add constraint FK_CUSTOMER_HAS_VOIP_SUBSCRIBE foreign key (id_voip_subscribe)
+      references voip_subscribe (id_voip_subscribe) on delete restrict on update restrict;
+7-ajout de la liaison 0,1-----0,inf entre respectivement customer et vod_subscribe
+alter table customer add constraint FK_CUSTOMER_HAS_VOIP_SUBSCRIBE foreign key (id_vod_subscribe)
+      references voip_subscribe (id_vod_subscribe) on delete restrict on update restrict;

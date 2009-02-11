@@ -4,6 +4,8 @@ drop table if exists bill;
 
 drop table if exists categorie;
 
+drop table if exists cdr;
+
 drop table if exists chaine;
 
 drop table if exists command;
@@ -60,6 +62,8 @@ drop table if exists vod_lier;
 
 drop table if exists vod_possede;
 
+drop table if exists vod_subscribe;
+
 drop table if exists vod_uploader;
 
 drop table if exists voip_call;
@@ -69,4 +73,6 @@ drop table if exists voip_contact;
 drop table if exists voip_line;
 
 drop table if exists voip_rss;
+
+drop table if exists voip_subscribe;
 
