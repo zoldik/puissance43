@@ -36,34 +36,24 @@ public class enregContactInfo extends javax.servlet.http.HttpServlet {
        response.setContentType("text/html;charset=UTF-8") ;
        PrintWriter out = response.getWriter(); 
        try{
-
-        int id_voip=1;
-
-                    
+       
+ 
+       int id_voip=1;
        String Titre = request.getParameter("titre");
-       out.println("titre ="+Titre+"");
+       out.println(Titre);
        String Categorie = request.getParameter("categorie");
-       out.println("categorie ="+Categorie+"");
        String Nom = request.getParameter("nom");
-       out.println("nom ="+Nom+"");
        String Prenom = request.getParameter("prenom");
-       out.println("prénom ="+Prenom+"");
        String Telephone = request.getParameter("telephone");
-       out.println();
        String Email = request.getParameter("email");
-       out.println();
        int id=SQLContactVoip.getlastId();
-       out.println("enregistrement réussi id =  "+id+""); 
        Contact contact = new Contact(id,Titre,Categorie,Nom,Prenom,Telephone,Email,id_voip);
-        
        SQLContactVoip.insertContact(contact);
+       
        out.println("enregistrement réussi");
        response.sendRedirect(response.encodeRedirectURL("voip/repertoire.jsp"));
       
        
-
-     //   insert().Contact
-        
 
         }  
         catch (Exception e){
