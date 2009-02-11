@@ -5,6 +5,8 @@
 
 package model.networkdevices;
 
+import DAO.transfertObject.ItemTO;
+
 /**Ligne panier.
  * 
  * @author vincent
@@ -15,14 +17,14 @@ public class CartRow {
     //Attributs
     //*******
     
-    private Item item; 
+    private ItemTO item; 
     private int quantity =1;
     
     //*******
     //Constructeur
     //*******
     
-    public CartRow(Item item){
+    public CartRow(ItemTO item){
         setItem(item);
     }
  
@@ -30,7 +32,7 @@ public class CartRow {
     //Getters
     //*******
     
-    public Item getItem() {
+    public ItemTO getItem() {
         return item;
     }
 
@@ -42,7 +44,7 @@ public class CartRow {
     //Setters
     //*******
     
-    public void setItem(Item item) {
+    public void setItem(ItemTO item) {
         this.item = item;
     }
 

@@ -4,7 +4,7 @@ import DAO.interfaces.ItemDAOInterface;
 import DAO.factory.MySqlDAOFactory;
 
 
-import model.networkdevices.Item;
+import DAO.transfertObject.ItemTO;
 
 import java.util.ArrayList;
 
@@ -24,12 +24,12 @@ public class ItemMySqlDAO extends MySqlGeneralObjectDAO implements ItemDAOInterf
         throw new UnsupportedOperationException("Not supported yet.");
     }
 
-    public Item findItemById(int id) {
+    public ItemTO findItemById(int id) {
 
         Integer idInteger = new Integer(id);
 
         //Return object
-        Item item = new Item();
+        ItemTO item = new ItemTO();
 
         //Connexion to the database with JNDI 
         Connection conn = (Connection) getConnectionWithJNDI();
@@ -64,7 +64,7 @@ public class ItemMySqlDAO extends MySqlGeneralObjectDAO implements ItemDAOInterf
         return item;
     }
 
-    public int insertItem(Item item) {
+    public int insertItem(ItemTO item) {
         //Return object???
         int error = 0;
 
@@ -78,9 +78,9 @@ public class ItemMySqlDAO extends MySqlGeneralObjectDAO implements ItemDAOInterf
         throw new UnsupportedOperationException("Not supported yet.");
     }
 
-    public ArrayList<Item> selectAllItems() {
+    public ArrayList<ItemTO> selectAllItemTOs() {
         //Returned object
-        ArrayList<Item> items = new ArrayList<Item>();
+        ArrayList<ItemTO> items = new ArrayList<ItemTO>();
 
         //Connexion to the database with JNDI 
         Connection conn = (Connection) getConnectionWithJNDI();
@@ -97,7 +97,7 @@ public class ItemMySqlDAO extends MySqlGeneralObjectDAO implements ItemDAOInterf
             rs = st.executeQuery("SELECT * FROM item");
 
             while (rs.next()) {
-                Item item = new Item();
+                ItemTO item = new ItemTO();
 
                 item.setId(rs.getInt("id_item"));
                 item.setName(rs.getString("name"));
@@ -118,10 +118,10 @@ public class ItemMySqlDAO extends MySqlGeneralObjectDAO implements ItemDAOInterf
         return items;
     }
 
-    public ArrayList<Item> selectItemsByType(String type) {
+    public ArrayList<ItemTO> selectItemsByType(String type) {
 
         //Returned object
-        ArrayList<Item> items = new ArrayList<Item>();
+        ArrayList<ItemTO> items = new ArrayList<ItemTO>();
 
         //Connexion to the database with JNDI 
         Connection conn = (Connection) getConnectionWithJNDI();
@@ -139,7 +139,7 @@ public class ItemMySqlDAO extends MySqlGeneralObjectDAO implements ItemDAOInterf
             rs = pSt.executeQuery();
 
             while (rs.next()) {
-                Item item = new Item();
+                ItemTO item = new ItemTO();
 
                 item.setId(rs.getInt("id_item"));
                 item.setName(rs.getString("name"));

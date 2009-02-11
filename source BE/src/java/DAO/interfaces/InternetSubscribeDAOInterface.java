@@ -9,6 +9,6 @@ import java.util.ArrayList;
  */
 public interface InternetSubscribeDAOInterface {
     
-    public ArrayList<InternetSubscribeTO> selectAllInternetSubscribeTO();
+    public ArrayList<InternetSubscribeTO> selectAllInternetSubscribeTOs();
 
 }

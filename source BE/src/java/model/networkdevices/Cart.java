@@ -1,5 +1,6 @@
 package model.networkdevices;
 
+import DAO.transfertObject.ItemTO;
 import DAO.factory.DAOFactory;
 import DAO.interfaces.ItemDAOInterface;
 import DAO.mySql.ItemMySqlDAO;
@@ -81,7 +82,7 @@ public class Cart {
      * 
      * @param item
      */
-    public synchronized void addRow(Item item) {
+    public synchronized void addRow(ItemTO item) {
 
         //Not adding row if it's already exist one for the item
         Iterator it = cartRows.iterator();

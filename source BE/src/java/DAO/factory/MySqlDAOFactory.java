@@ -43,18 +43,20 @@ public class MySqlDAOFactory extends DAOFactory {
             itemDAO = new ItemMySqlDAO();
         }
         return itemDAO;
-    }    // public getVoIPCustomerDAO() {}
+    }
 
     public InternetSubscribeDAOInterface getInternetSubscribeDAO() {
-        throw new UnsupportedOperationException("Not supported yet.");
+        if (internetSubscribeDAO == null) {
+            internetSubscribeDAO = new InternetSubscribeMySqlDAO();
+        }
+        return internetSubscribeDAO;
     }
-    
+
     public LineDAOInterface getLineDAO() {
         // MySqlCustomerDAO implements CustomerDAO 
         if (lineDAO == null) {
             lineDAO = new LineMySqlDAO();
         }
         return lineDAO;
-    }    
-    
+    }
 }
