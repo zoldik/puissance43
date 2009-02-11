@@ -1,5 +1,8 @@
 SET NAMES 'utf8';
 
+
+
+
 INSERT INTO `item` (`id_item`, `name`, `type`, `description`, `unit_price`, `stock`) VALUES
 (1, 'routeur X200', 'routeur', 'implémente les fonctions NAT, DHCP, ', 11, 120),
 (2, 'switch 200', 'switch', '4 ports', 21, 130),
@@ -8,6 +11,8 @@ INSERT INTO `item` (`id_item`, `name`, `type`, `description`, `unit_price`, `sto
 (5, 'hub a', 'hub', 'USB', 31, 120),
 (6, 'hub b', 'hub', 'RJ45', 32, 130),
 (7, 'hub c', 'hub', 'RJ45', 33, 140);
+
+
 
 
 INSERT INTO `customer` (
@@ -48,8 +53,9 @@ NULL ,
 );
 
 
+
+
 INSERT INTO `internet_subscribe` (
-`id_internet_subscribe` ,
 `name_subscribe` ,
 `description_subscribe` ,
 `price` ,
@@ -57,11 +63,10 @@ INSERT INTO `internet_subscribe` (
 `rate`
 )
 VALUES (
-'', 'bronze', 'abonnement internet de faible qualité', '10', NULL , '5 Mbps');
+'bronze', 'abonnement internet de faible qualité', '10', NULL , '5 Mbps');
 
 
 INSERT INTO `internet_subscribe` (
-`id_internet_subscribe` ,
 `name_subscribe` ,
 `description_subscribe` ,
 `price` ,
@@ -69,11 +74,10 @@ INSERT INTO `internet_subscribe` (
 `rate`
 )
 VALUES (
-'', 'silver', 'abonnement internet de moyenne qualité', '20', NULL , '10 Mbps');
+'silver', 'abonnement internet de moyenne qualité', '20', NULL , '10 Mbps');
 
 
 INSERT INTO `internet_subscribe` (
-`id_internet_subscribe` ,
 `name_subscribe` ,
 `description_subscribe` ,
 `price` ,
@@ -81,7 +85,85 @@ INSERT INTO `internet_subscribe` (
 `rate`
 )
 VALUES (
-'', 'golden', 'abonnement internet de haute qualité', '30', NULL , '20 Mbps');
+'golden', 'abonnement internet de haute qualité', '30', NULL , '20 Mbps');
+
+
+
+
+INSERT INTO `vod_subscribe` (
+`name_vod_subscribe` ,
+`description_vod_subscribe` ,
+`price` ,
+`type_vod_subscribe`
+)
+VALUES (
+'serie', 'abonnement au séries débiles', '50', 'particulier');
+
+
+INSERT INTO `vod_subscribe` (
+`name_vod_subscribe` ,
+`description_vod_subscribe` ,
+`price` ,
+`type_vod_subscribe`
+)
+VALUES (
+'film de formation', 'film sur comment améliorer la productivité en entreprise', '100', 'entreprise');
+
+
+INSERT INTO `vod_subscribe` (
+`name_vod_subscribe` ,
+`description_vod_subscribe` ,
+`price` ,
+`type_vod_subscribe`
+)
+VALUES (
+'films actions', 'batman, spiderman', '40', 'particulier');
+
+
+
+
+INSERT INTO `vod_subscribe` (
+`name_vod_subscribe` ,
+`description_vod_subscribe` ,
+`price` ,
+`type_vod_subscribe`
+)
+VALUES (
+'serie', 'abonnement au séries débiles', '50', 'particulier');
+
+
+INSERT INTO `vod_subscribe` (
+`name_vod_subscribe` ,
+`description_vod_subscribe` ,
+`price` ,
+`type_vod_subscribe`
+)
+VALUES (
+'film de formation', 'film sur comment améliorer la productivité en entreprise', '100', 'entreprise');
+
+
+
+
+INSERT INTO `voip_subscribe` (
+`name_voip_subscribe` ,
+`description_voip_subscribe` ,
+`price` ,
+`type_voip_subscribe`
+)
+VALUES (
+'appels dans lentreprise', 'vous avez déjà des équipements', '1000', 'entreprise');
+
+
+INSERT INTO `voip_subscribe` (
+`name_voip_subscribe` ,
+`description_voip_subscribe` ,
+`price` ,
+`type_voip_subscribe`
+)
+VALUES (
+'appels perso', 'super offre', '40', 'particulier');
+
+
 
 
 INSERT INTO `cdr` (`calldate`, `clid`, `src`, `dst`, `dcontext`, `channel`, `dstchannel`, `lastapp`, `lastdata`, `duration`, `billsec`, `disposition`, `amaflags`, `accountcode`, `uniqueid`, `userfield`) VALUES
