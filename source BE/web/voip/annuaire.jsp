@@ -5,9 +5,18 @@
 --%>
 
 <%@page contentType="text/html" pageEncoding="UTF-8"
-import="model.database.*"
+import="DAO.interfaces.LineDAOInterface"
+import="DAO.interfaces.CustomerDAOInterface"
+import="DAO.transfertObject.LineTO"
+import="DAO.transfertObject.CustomerTO"
 import="model.voip.*"
 import="java.util.*"
+
+import="DAO.factory.DAOFactory"
+import="DAO.factory.MySqlDAOFactory"
+import="DAO.transfertObject.AddressTO"
+import="DAO.transfertObject.CustomerTO"
+
 %>
 <!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"
 "http://www.w3.org/TR/html4/loose.dtd">
@@ -33,35 +42,43 @@ import="java.util.*"
         <tr style="color:white">
             <td> nom </td>
             <td> prenom </td>
+            <td> Societe </td>
             <td> Numero </td>
             <td> Groupe</td>
             <td> Mail </td>
         </tr>
         
-        
-        
         <!-- Contents -->
         <%
-            LinkedList<VoipLigne> voipLignes = new LinkedList <VoipLigne>();
-            ListIterator<VoipLigne> indice;
-            VoipLigne vl = new VoipLigne();
+            DAOFactory daoFactory = DAOFactory.getDAOFactory(DAOFactory.MYSQL);
+            LineDAOInterface LineDAO = daoFactory.getLineDAO();
             
-            voipLignes = VoipLigneDAO.extractAllVoipLigne();
-            indice = voipLignes.listIterator();
+            
+            //selectionne les numeros
+            LinkedList<LineTO> lines1 = new LinkedList <LineTO>();
+            ListIterator<LineTO> indice;
+            LineTO vl = new LineTO();
+            
+            lines1 = LineDAO.selectAllLineTO("name");
+            indice = lines1.listIterator();
             
             while (indice.hasNext()){
                 vl = indice.next();
                 if( vl.getvisible() == true){
+                    //recupere les informations dans customer
+                    //CustomerDAOInterface customerDAO = daoFactory.getCustomerDAO();
+                    //LinkedList<LineTO> lines2 = new LinkedList <LineTO>();
+                    //lines2 = customerDAO.findCustomer();
+                
         %>
         
         <tr bgcolor="white">
             <td> </td>
             <td> </td>
+            <td> </td>
             <td> <%=vl.getname() %> </td>
             <td> <%=vl.getcontext() %> </td>
-            <td> <%=vl.getmailbox() %> </td>
-            
-
+            <td> <%=vl.getmailbox()%> </td>
         </tr>
         <%     }
         }%>
