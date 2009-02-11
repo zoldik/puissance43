@@ -187,7 +187,7 @@
             }%>">* Code postal : </a></td>
                         <td><input type="text" name="postalCode" value="<%if (addressTO.getPostalCode() != null) {
                 out.print(addressTO.getPostalCode());
-            }%>" onKeyUp=verifLength(this.value,"postalCode","20") align="left" /><div id="postalCode"></div></td>
+            }%>" onKeyUp=verifLength(this.value,"CP","5") align="left" /><div id="CP"></div></td>
                     </tr>
                     
                     
