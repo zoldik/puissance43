@@ -47,9 +47,16 @@ NULL ,
 1
 );
 
---
--- Dumping data for table `cdr`
---
+INSERT INTO `internet_subscribe` (
+`id_internet_subscribe` ,
+`name_subscribe` ,
+`description_subscribe` ,
+`price` ,
+`overload` ,
+`rate`
+)
+VALUES (
+'', 'bronze', 'abonnement internet de faible qualité', '10', NULL , '5 Mbps');
 
 INSERT INTO `cdr` (`calldate`, `clid`, `src`, `dst`, `dcontext`, `channel`, `dstchannel`, `lastapp`, `lastdata`, `duration`, `billsec`, `disposition`, `amaflags`, `accountcode`, `uniqueid`, `userfield`) VALUES
 ('2009-01-22 16:15:15', '"6000" <6000>', '6000', 's', 'default', 'SIP/6000-091d65e8', '', 'BackGround', 'demo-congrats', 4, 3, 'ANSWERED', 3, '', '1232637315.0', ''),
