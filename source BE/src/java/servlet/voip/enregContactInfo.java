@@ -8,8 +8,13 @@ package servlet.voip;
 import java.io.*;
 import javax.servlet.*;
 import javax.servlet.http.*;
-import model.voip.*;
-import model.database.*;
+import DAO.interfaces.ContactVoipDAOInterface;
+import DAO.interfaces.CustomerDAOInterface;
+import DAO.transfertObject.ContactVoipTO;
+import DAO.transfertObject.CustomerTO;
+import DAO.factory.DAOFactory;
+import DAO.factory.MySqlDAOFactory;
+import DAO.transfertObject.CustomerTO;
 
 
 
@@ -33,8 +38,13 @@ public class enregContactInfo extends javax.servlet.http.HttpServlet {
     * @param response servlet response
     */
    public void doGet(HttpServletRequest request, HttpServletResponse response) throws IOException, ServletException {
+       
        response.setContentType("text/html;charset=UTF-8") ;
        PrintWriter out = response.getWriter(); 
+       DAOFactory daoFactory = DAOFactory.getDAOFactory(DAOFactory.MYSQL);
+       ContactVoipDAOInterface contactVoipDAO = daoFactory.getContactVoipDAO();
+
+
        try{
        
  
@@ -46,9 +56,9 @@ public class enregContactInfo extends javax.servlet.http.HttpServlet {
        String Prenom = request.getParameter("prenom");
        String Telephone = request.getParameter("telephone");
        String Email = request.getParameter("email");
-       int id=SQLContactVoip.getlastId();
-       Contact contact = new Contact(id,Titre,Categorie,Nom,Prenom,Telephone,Email,id_voip);
-       SQLContactVoip.insertContact(contact);
+       int id=contactVoipDAO.getlastId();
+       ContactVoipTO contact = new ContactVoipTO(id,Titre,Categorie,Nom,Prenom,Telephone,Email,id_voip);
+       contactVoipDAO.insertContact(contact);
        
        out.println("enregistrement réussi");
        response.sendRedirect(response.encodeRedirectURL("voip/repertoire.jsp"));
