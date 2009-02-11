@@ -140,7 +140,7 @@ create table facture
 
 create table internet_subscribe
 (
-   id_internet_subscribe bigint not null,
+   id_internet_subscribe bigint not null auto_increment,
    name_subscribe       varchar(32),
    description_subscribe text,
    price                float(8,2),
