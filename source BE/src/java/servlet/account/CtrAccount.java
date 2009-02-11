@@ -21,42 +21,7 @@ import model.account.RegisterCustomerErrors;
 public class CtrAccount extends javax.servlet.http.HttpServlet {
 
     public void doGet(HttpServletRequest request, HttpServletResponse response) throws IOException, ServletException {
-        response.setContentType("text/html");
-
-    /*    
-    CustomerDAO customerDAO = FactoryDAO.getCustomerDAO(); 
-    //check not used login
-    if(customerDAO.isUsed(newCustomer.getLogin())==true)
-    {
-    session.setAttribute("Creation","used");
-    response.sendRedirect("CreateCustomerAccount.jsp");
-    }
-    else
-    {
-    //On vérifie qu'il n'y a pas d'erreur dans le formulaire
-    RegisterErrors registerErrors=new RegisterErrors();
-    registerErrors.checkInfos(newCustomer);
-    if (registerErrors.isError()!=0)
-    {
-    session.setAttribute("Creation","fail");
-    session.setAttribute("error",registerErrors);
-    response.sendRedirect("CreateCustomerAccount.jsp");
-    }
-    else
-    {
-    //Create the account in the DB 
-    Register register =  new Register(newCustomer);
-    
-    //Booleen qui donne ou non la permission d'accéder à l'application
-    session.setAttribute("used",register.getUsed());
-    
-    Object allowed=session.getAttribute("used");
-    String used=allowed.toString();
-    
-    //Object failed=session.getAttribute("user_id");
-    //String fail=failed.toString();
-    
-     */
+        response.setContentType("text/html");    
     }
 
     public void doPost(HttpServletRequest request, HttpServletResponse response) throws IOException, ServletException {

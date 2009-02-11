@@ -14,8 +14,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import javax.servlet.http.HttpSession;
-import model.database.FactoryDAO;
-import DAO.mySql.ItemMySqlDAO;
+
 import model.networkdevices.Item;
 
 /**
