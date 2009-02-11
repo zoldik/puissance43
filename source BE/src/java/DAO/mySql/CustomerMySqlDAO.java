@@ -7,13 +7,13 @@ import DAO.transfertObject.CustomerTO;
 
 import java.util.ArrayList;
 
+import java.sql.PreparedStatement;
 import java.sql.Connection;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
 import javax.sql.RowSet;
 
-import model.account.Customer;
 
 /** *CloudscapeCustomerDAO implementation of the 
 // CustomerDAO interface. 
@@ -43,9 +43,9 @@ public class CustomerMySqlDAO extends MySqlGeneralObjectDAO implements CustomerD
         return isOk;
     }
 
-    public Customer findCustomer() {
+    public CustomerTO findCustomer() {
 
-        Customer customer = null;
+        CustomerTO customer = null;
 
         // Implement find a customer here using supplied               
         // argument values as search criteria
@@ -54,6 +54,136 @@ public class CustomerMySqlDAO extends MySqlGeneralObjectDAO implements CustomerD
 
         return customer;
     }
+    
+    
+    public CustomerTO findCustomerById(int id) {
+
+        Integer idInteger = new Integer(id);
+
+        //Return object
+        CustomerTO customer = new CustomerTO();
+
+        //Connexion to the database with JNDI 
+        Connection conn = (Connection) getConnectionWithJNDI();
+
+        //transaction or sequence of queries
+        PreparedStatement pSt = null;
+
+        //result of the queries
+        ResultSet rs = null;
+
+        try {
+            boolean okay=false;
+            pSt = conn.prepareStatement("SELECT * FROM `customer` WHERE `id_customer` = ? ");
+            pSt.setString(1, idInteger.toString());
+            rs = pSt.executeQuery();
+
+            if (rs.next()==true)
+                {okay=true;}
+                else 
+                {okay=false;}
+            
+            if (okay) {
+                customer.setId(rs.getInt("id_customer"));
+                customer.setFirstName(rs.getString("first_name"));
+                customer.setLastName(rs.getString("last_name"));
+                customer.setLogin(rs.getString("login"));
+                customer.setPassword(rs.getString("password"));
+                customer.setMail(rs.getString("mail"));
+                customer.setSexe(rs.getString("sexe"));
+                customer.setBirthday(rs.getString("birthday"));
+                customer.setPhone(rs.getString("phone"));
+                customer.setCellPhone(rs.getString("cell_phone"));
+                customer.setProfession(rs.getString("profession"));
+                customer.setCompany(rs.getString("company"));
+                customer.setAccountLevel(rs.getInt("account_level"));
+                customer.setValid(rs.getBoolean("valid"));
+            }
+            
+
+        } catch (Exception e) {
+            e.printStackTrace();
+        } finally {
+            closeRsAndSt(rs, pSt);
+        }
+        closeConnection(conn);
+
+        return customer;
+    }
+    
+    public CustomerTO findCustomerByLogin(String login) {
+
+        //Return object
+        CustomerTO customer = new CustomerTO();
+
+        //Connexion to the database with JNDI 
+        Connection conn = (Connection) getConnectionWithJNDI();
+
+        //transaction or sequence of queries
+        PreparedStatement pSt = null;
+
+        //result of the queries
+        ResultSet rs = null;
+
+        try {
+            boolean okay=false;
+            pSt = conn.prepareStatement("SELECT * FROM `customer` WHERE `login` = ? ");
+            pSt.setString(1, login);
+            rs = pSt.executeQuery();
+
+            if (rs.next()==true)
+                {okay=true;}
+                else 
+                {okay=false;}
+            
+            if (okay) {
+                customer = findCustomerById(rs.getInt("id_customer"));
+            }
+            
+
+        } catch (Exception e) {
+            e.printStackTrace();
+        } finally {
+            closeRsAndSt(rs, pSt);
+        }
+        closeConnection(conn);
+
+        return customer;
+    }
+    
+    
+    public CustomerTO findCustomer(String login, String password) {
+
+        //Return object
+        CustomerTO customer = new CustomerTO();
+
+        //Connexion to the database with JNDI 
+        Connection conn = (Connection) getConnectionWithJNDI();
+
+        //transaction or sequence of queries
+        PreparedStatement pSt = null;
+
+        //result of the queries
+        ResultSet rs = null;
+
+        try {
+            
+            if (isAllowed(login,password)) {
+                customer = findCustomerByLogin(login);
+                
+            }
+            
+
+        } catch (Exception e) {
+            e.printStackTrace();
+        } finally {
+            closeRsAndSt(rs, pSt);
+        }
+        closeConnection(conn);
+
+        return customer;
+    }
+    
 
     public String insertCustomer(CustomerTO customerTO, AddressTO addressTO) {
 
@@ -253,4 +383,55 @@ public class CustomerMySqlDAO extends MySqlGeneralObjectDAO implements CustomerD
 
         return isOk;
     }
+    
+    /** Vérifie si le login et le password correspondent
+     * 
+     * @param login
+     * @param password
+     * @return boolean
+     * @throws java.lang.Exception
+     */
+    public boolean isAllowed(String login, String password) {
+
+        //Return object
+        boolean isAllowed = false;
+
+        //Connexion to the database with JNDI 
+        Connection conn = (Connection) getConnectionWithJNDI();
+
+        //transaction or sequence of queries
+        Statement st = null;
+
+        //result of the queries
+        ResultSet rs = null;
+
+        try {
+
+            st = conn.createStatement();
+            rs = st.executeQuery("select * from customer where (login='" + login + "' and password='"+password+"')");
+
+            //rs.beforeFirst();
+
+            if (rs.next() == true) {
+                //The login is already used
+                isAllowed = true;
+            } else {
+                isAllowed = false;
+            }
+
+
+        } catch (Exception e) {
+
+            System.out.println("Exception" + e);
+            e.printStackTrace();
+
+        } finally {
+
+            closeRsAndSt(rs, st);
+
+        }
+        closeConnection(conn);
+        return isAllowed;
+    }
+    
 }

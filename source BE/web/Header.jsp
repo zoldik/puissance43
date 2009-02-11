@@ -5,7 +5,7 @@
 --%>
 
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
-<%@page language="Java" import="javax.servlet.*,javax.servlet.http.*,java.io.*,java.util.*,model.account.*;" %>
+<%@page language="Java" import="javax.servlet.*,javax.servlet.http.*,java.io.*,java.util.*,DAO.transfertObject.*;" %>
 <!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"
    "http://www.w3.org/TR/html4/loose.dtd">   
         <%
@@ -15,10 +15,10 @@
                   sessionOK=true;
                 if (CustomerSession.getAttribute("Customer")!=null) {
                     sessionOK=true;
-                    Customer CustomerObject =(Customer)CustomerSession.getAttribute("Customer");
-                    if (CustomerObject.isAllowed()) {
+                    CustomerTO customerObject =(CustomerTO)CustomerSession.getAttribute("Customer");
+                    if (customerObject.getValid()) {
                         sessionOK=true;
-                        int idCustomer=CustomerObject.getId();
+                        int idCustomer=customerObject.getId();
                         %>
                         <div class="menu">
                             <table align="center">

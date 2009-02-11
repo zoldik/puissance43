@@ -24,12 +24,31 @@ public class CustomerTO {
     private String cellPhone;
     private String profession;
     private String company;
-    private String account_level;
+    private int account_level;
+    private boolean valid;
 
+    
+    public CustomerTO() {
+        this.id=0;
+        this.firstName="";
+        this.lastName="";
+        this.login="";
+        this.password="";
+        this.mail="";
+        this.sexe="";
+        this.birthday="";
+        this.phone="";
+        this.cellPhone="";
+        this.profession="";
+        this.company="";
+        this.account_level=0;
+        this.valid=false;
+    }
+    
     //******************
     //GETTERS
     //******************
-    public String getAccount_level() {
+    public int getAccountLevel() {
         return account_level;
     }
 
@@ -80,10 +99,16 @@ public class CustomerTO {
     public String getSexe() {
         return sexe;
     }
+    
+    public boolean getValid() {
+        return valid;
+    }
+    
+    
     //******************
     //SETTERS
     //******************
-    public void setAccount_level(String account_level) {
+    public void setAccountLevel(int account_level) {
         this.account_level = account_level;
     }
 
@@ -133,5 +158,9 @@ public class CustomerTO {
 
     public void setSexe(String sexe) {
         this.sexe = sexe;
+    }
+    
+    public void setValid(boolean valid) {
+        this.valid = valid;
     }
 }

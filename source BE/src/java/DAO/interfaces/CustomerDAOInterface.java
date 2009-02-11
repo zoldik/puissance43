@@ -7,7 +7,6 @@ import java.util.ArrayList;
 
 import javax.sql.RowSet;
 
-import model.account.Customer;
 
 /**Interface customerDAO is a part of DAO pattern.
  * 
@@ -20,7 +19,13 @@ public interface CustomerDAOInterface {
 
     public boolean deleteCustomer();
     
-    public Customer findCustomer();
+    public CustomerTO findCustomer();
+    
+    public CustomerTO findCustomerById(int id);
+    
+    public CustomerTO findCustomerByLogin(String login);
+    
+    public CustomerTO findCustomer(String login, String password);
     
     public String insertCustomer(CustomerTO customerTO, AddressTO addressTO);
  
@@ -30,5 +35,7 @@ public interface CustomerDAOInterface {
 
     public ArrayList<CustomerTO> selectAllCustomersTO();
     
-    public boolean updateCustomer();    
+    public boolean updateCustomer();
+    
+    public boolean isAllowed(String login, String password);
 }

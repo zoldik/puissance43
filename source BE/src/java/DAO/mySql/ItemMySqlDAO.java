@@ -4,7 +4,6 @@ import DAO.interfaces.ItemDAOInterface;
 import DAO.factory.MySqlDAOFactory;
 
 
-import model.database.*;
 import model.networkdevices.Item;
 
 import java.util.ArrayList;
@@ -66,7 +65,7 @@ public class ItemMySqlDAO extends MySqlGeneralObjectDAO implements ItemDAOInterf
     }
 
     public int insertItem(Item item) {
-        //Return object
+        //Return object???
         int error = 0;
 
 

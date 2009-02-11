@@ -172,6 +172,14 @@
         <servlet-name>Deconnection</servlet-name>
         <url-pattern>/Deconnection</url-pattern>
     </servlet-mapping>
+    <servlet>
+        <servlet-name>checkRSS</servlet-name>
+        <servlet-class>servlet.voip.checkRSS</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>checkRSS</servlet-name>
+        <url-pattern>/checkRSS</url-pattern>
+    </servlet-mapping>
     <!--Servlet-->
     <!--JSP-->
     <servlet>
