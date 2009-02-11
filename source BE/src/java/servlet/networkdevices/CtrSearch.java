@@ -1,5 +1,6 @@
 package servlet.networkdevices;
 
+import DAO.factory.DAOFactory;
 import DAO.factory.MySqlDAOFactory;
 import DAO.interfaces.ItemDAOInterface;
 import java.io.IOException;
@@ -79,8 +80,10 @@ public class CtrSearch extends HttpServlet {
 
     
     public void searchAll(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+    
+        DAOFactory daoFactory = DAOFactory.getDAOFactory(DAOFactory.MYSQL);
 
-        ItemDAOInterface itemDAO = (ItemDAOInterface) MySqlDAOFactory.getItemDAO();
+        ItemDAOInterface itemDAO = (ItemDAOInterface) daoFactory.getItemDAO();
         
         ArrayList<Item> items = itemDAO.selectAllItems();
         
@@ -102,8 +105,10 @@ public class CtrSearch extends HttpServlet {
         
         String type = (String) session.getAttribute("type");
                
-        ItemDAOInterface itemDAO = MySqlDAOFactory.getItemDAO();
-        
+        DAOFactory daoFactory = DAOFactory.getDAOFactory(DAOFactory.MYSQL);
+
+        ItemDAOInterface itemDAO = (ItemDAOInterface) daoFactory.getItemDAO();
+                
         ArrayList<Item> items = itemDAO.selectItemsByType(type);
 
         request.setAttribute("results", items);
