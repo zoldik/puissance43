@@ -1,7 +1,8 @@
-1. Finir le document <Deployment Mail Server v2> pour utiliser les comptes virtuels
-    a) Partie imap
-    b) Partie OpenWebMail
-    c) Inclure la création des tables pour le mail au script de création de la DB
-2. Créer compte VoIP sur le serveur mail
 3. Entrer les infos du serveur mail dans Mail.java (actuellement, utilisons du Gmail du projet RSS)
-4. Debuggage WebMail pour fonctionnement avec comptes virtuels
+
+1. Finir le document <Deployment Mail Server v2> pour utiliser les comptes virtuels
+    //a) Partie imap
+    //b) Partie RoundCube
+    //c) Inclure la création des tables pour le mail au script de création de la DB => Ne pas à faire !
+//2. Créer compte VoIP sur le serveur mail
+//4. Debuggage WebMail pour fonctionnement avec comptes virtuels
