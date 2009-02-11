@@ -17,7 +17,13 @@ import javax.naming.InitialContext;
 public class MySqlGeneralObjectDAO {
 
     //private Connection conn = null;
-
+    
+     /** Connect to the main database (RedNeck database).
+     * method to create MySql connections.
+     * init uses service JNDI
+     * Attention à l'erreurjavax.naming.NoInitialContextException, c'est parce que le serveur n'est pas déployer.     
+     * @return Statement
+     */
     public Connection getConnectionWithJNDI() {
         Connection conn = null;
         if (conn == null) {

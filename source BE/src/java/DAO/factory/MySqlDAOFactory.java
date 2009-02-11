@@ -3,6 +3,7 @@ package DAO.factory;
 import DAO.interfaces.*;
 import DAO.mySql.*;
 
+import DAO.transfertObject.InternetSubscribeTO;
 import java.sql.Connection;
 import java.sql.ResultSet;
 import java.sql.SQLException;
@@ -13,7 +14,6 @@ import javax.sql.DataSource;
 import javax.naming.Context;
 import javax.naming.InitialContext;
 
-
 /**
  *
  * @author vincent
@@ -21,74 +21,11 @@ import javax.naming.InitialContext;
 public class MySqlDAOFactory extends DAOFactory {
     //*********************
     //STATIC ATTRIBUTES
-    //*********************
-    //private static Connection conn = null;
+    //*********************    
     private static ItemDAOInterface itemDAO = null;
     private static CustomerDAOInterface customerDAO = null;
     private static LineDAOInterface lineDAO = null;
-    //*********************
-    //STATIC COMMONS METHODS FOR THE DAO OBJECTS
-    //*********************
-    /** Connect to the main database (RedNeck database).
-     * method to create MySql connections.
-     * init uses service JNDI
-     * Attention à l'erreurjavax.naming.NoInitialContextException, c'est parce que le serveur n'est pas déployer.     
-     * @return Statement
-     */
-    public static Connection createConnectionWithJNDI() {
-        //if (conn == null) {
-        Connection conn = null;
-        try {
-            Context initCtx = new InitialContext();
-            DataSource ds = (DataSource) initCtx.lookup("java:MySqlDS");
-            conn = ds.getConnection();
-        } catch (Exception e) {
-            //System.out.println("Connection issue : ");
-            e.printStackTrace();
-        }
-        //System.out.println("Success connection \n");
-        //}
-        return conn;
-    }
-
-    /**Close the BDD's connection
-     * close uses the service JNDI.     * 
-     */
-    public static void closeConnection() {
-        try {
-            Connection conn = null;
-            conn.close();
-        } catch (Exception e) {
-            System.out.println("\n Impossible de se déconnecter de la base de donnée\n");
-            e.printStackTrace();
-        }
-    }
-
-    /**Method static to close the rs and the st.
-     * Use in the DAO objects.
-     * 
-     * @param rs
-     * @param st
-     */
-    public static void closeRsAndSt(ResultSet rs, Statement st) {
-        if (rs != null) {
-            try {
-                rs.close();
-            } catch (SQLException sqlEx) {
-                //ignore
-                }
-            rs = null;
-        }
-
-        if (st != null) {
-            try {
-                st.close();
-            } catch (SQLException sqlEx) {
-                //ignore
-                }
-        }
-        st = null;
-    }
+    private static InternetSubscribeDAOInterface internetSubscribeDAO = null;
 
     //*********************
     //STATIC METHODS TO GET THE DAO OBJECTS 
@@ -101,32 +38,23 @@ public class MySqlDAOFactory extends DAOFactory {
         return customerDAO;
     }
 
-    public static ItemDAOInterface getItemDAO() {
+    public ItemDAOInterface getItemDAO() {
         if (itemDAO == null) {
             itemDAO = new ItemMySqlDAO();
         }
         return itemDAO;
     }    // public getVoIPCustomerDAO() {}
 
-        public LineDAOInterface getLineDAO() {
+    public InternetSubscribeDAOInterface getInternetSubscribeDAO() {
+        throw new UnsupportedOperationException("Not supported yet.");
+    }
+    
+    public LineDAOInterface getLineDAO() {
         // MySqlCustomerDAO implements CustomerDAO 
         if (lineDAO == null) {
             lineDAO = new LineMySqlDAO();
         }
         return lineDAO;
-    }
+    }    
     
-    
-    /*
-    public AccountDAO getAccountDAO() {
-    // CloudscapeAccountDAO implements AccountDAO
-    return new CloudscapeAccountDAO();
-    }
-     */
-    /*
-    public OrderDAO getOrderDAO() {
-    // CloudscapeOrderDAO implements OrderDAO
-    return new CloudscapeOrderDAO();
-    }
-     */
 }

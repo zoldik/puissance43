@@ -84,7 +84,7 @@ public class ItemMySqlDAO extends MySqlGeneralObjectDAO implements ItemDAOInterf
         ArrayList<Item> items = new ArrayList<Item>();
 
         //Connexion to the database with JNDI 
-        Connection conn = (Connection) MySqlDAOFactory.createConnectionWithJNDI();
+        Connection conn = (Connection) getConnectionWithJNDI();
 
         //transaction or sequence of queries
         Statement st = null;
