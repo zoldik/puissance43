@@ -1,5 +1,5 @@
 
-package servlet.customer.account;
+package servlet.voip;
 
 
 import java.io.*;
@@ -10,6 +10,7 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
+import model.account.*;
 
 /**
  *
@@ -27,9 +28,9 @@ public class checkRSS extends HttpServlet {
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
     throws ServletException, IOException {
         try{
-            HttpSession CustomerSession = request.getSession(false);
-            CustomerSession.removeAttribute("Customer");
-            response.sendRedirect("./index.jsp");
+            
+            
+            
         } catch (Exception e) {
             System.err.println("Erreur à la déconnexion !");
             e.printStackTrace();		

@@ -9,7 +9,9 @@ package servlet.customer.account;
 import java.io.*;
 import javax.servlet.*;
 import javax.servlet.http.*;
-import model.account.*;
+import DAO.factory.*;
+import DAO.interfaces.*;
+import DAO.transfertObject.*;
 
 
 /**
@@ -27,14 +29,18 @@ public class Authentification extends javax.servlet.http.HttpServlet {
                         String login = request.getParameter("username");
                         String password = request.getParameter("password");
                         
-                        Customer account = new Customer();
+                        CustomerTO customer = new CustomerTO();
                         
+                        DAOFactory daoFactory = DAOFactory.getDAOFactory(DAOFactory.MYSQL);
+
+                        CustomerDAOInterface customerDAO = daoFactory.getCustomerDAO();
+                            
                         if (login!="" && password!="") {
-                            account = new Customer(login,password);
+                            customer = customerDAO.findCustomer(login,password);
                         }
 
-			if (account.isAllowed()){
-                                session.setAttribute("Customer",account);
+			if (customer.getId()!=0){
+                                session.setAttribute("Customer",customer);
 				//Si on a la permission, on accède à la suite
                                 response.sendRedirect("./index.jsp?Connexion=1");
 			}
