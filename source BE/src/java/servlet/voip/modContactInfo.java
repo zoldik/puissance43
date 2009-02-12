@@ -54,6 +54,7 @@ public class modContactInfo extends HttpServlet {
         out.println("<table>");
         out.println("<tr>");
         out.println("<input type=\"hidden\" name=\"id\" value=\""+id+"\">");
+        out.println("<input type=\"hidden\" name=\"id_line\" value=\""+contact.getId_line()+"\">");
         out.println("<td>Titre </td>");
         out.println("<td><input type=\"text\" name=\"titre\" value=\"");
         out.println(contact.getTitre());

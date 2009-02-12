@@ -48,7 +48,8 @@ public class enregModContactInfo extends javax.servlet.http.HttpServlet {
        try{
        
  
-       int id_voip=1;
+       int id_voip=1; // à recup dans la session
+       int id_line=1; // à recup dans la session
        String id_string = request.getParameter("id");
        int id = Integer.parseInt(id_string);
        String Titre = request.getParameter("titre");
@@ -57,7 +58,7 @@ public class enregModContactInfo extends javax.servlet.http.HttpServlet {
        String Prenom = request.getParameter("prenom");
        String Telephone = request.getParameter("telephone");
        String Email = request.getParameter("mail");
-       ContactVoipTO contact = new ContactVoipTO(id,Titre,Categorie,Nom,Prenom,Telephone,Email,id_voip);
+       ContactVoipTO contact = new ContactVoipTO(id,id_line,Titre,Categorie,Nom,Prenom,Telephone,Email,id_voip);
        contactVoipDAO.updateContactInfo(id,contact);
        
        
