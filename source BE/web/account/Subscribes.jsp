@@ -32,7 +32,7 @@
                     <th>S'abonner</th>
                 </tr>          
             </tr>
-            
+<!--zzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzz-->            
             <%
             DAOFactory daoFactory = DAOFactory.getDAOFactory(DAOFactory.MYSQL);
             InternetSubscribeDAOInterface internetSubscribeDAO = daoFactory.getInternetSubscribeDAO();
@@ -50,7 +50,7 @@
                 <td><%=internetSubscribeTO.getPrice()%></td>
                 <td><%=internetSubscribeTO.getRate()%></td>
                 <td><form method='post' action="CtrCart">
-                        <input type='submit' value='Sabonner'>
+                        <input type='submit' value='S abonner'>
                         <!--<input type='hidden' name='id' value='item.getId()'>
                     <input type="hidden" name='actionCart' value='delete'>-->
                 </form></td>
@@ -75,6 +75,7 @@
                 </tr>          
             </tr>
             
+<!--zzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzz-->      
             <%
            
             VoipSubscribeDAOInterface voipSubscribeDAO = daoFactory.getVoipSubscribeDAO();
@@ -92,6 +93,51 @@
                 <td><%=voipSubscribeTO.getDescription()%></td>            
                 <td><%=voipSubscribeTO.getType() %></td>
                 <td><%=voipSubscribeTO.getPrice()%></td>                
+                <td><form method='post' action="CtrCart">
+                        <input type='submit' value='S abonner'>
+                        <!--<input type='hidden' name='id' value='item.getId()'>
+                    <input type="hidden" name='actionCart' value='delete'>-->
+                </form></td>
+            </tr>
+            <%
+            }//Fin du while    
+%>        
+        </table>
+        
+        
+        <h2>Souscrire à une offre Vod</h2>
+        
+        <table width="100%" border="1">
+            
+            <!-- titles -->
+            <tr style="color:white">
+                <tr>          
+                    <th>Nom</th>
+                    <th>Description</th>    
+                    <th>Type</th>
+                    <th>Prix (parMois)</th>                                   
+                    <th>S'abonner</th>
+                </tr>          
+            </tr>
+            
+<!--zzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzz-->            
+            <%
+           
+            VodSubscribeDAOInterface vodSubscribeDAO = daoFactory.getVodSubscribeDAO();
+
+            LinkedList<VodSubscribeTO> vodSubscribeTOs = vodSubscribeDAO.selectAllVodSubscribeTOs();
+                        
+            ListIterator<VodSubscribeTO> itVod = vodSubscribeTOs.listIterator();
+
+            while (itVod.hasNext()) {
+                
+                VodSubscribeTO vodSubscribeTO = (VodSubscribeTO) itVod.next();
+            %>
+            
+            <tr><td><%=vodSubscribeTO.getName() %></td>
+                <td><%=vodSubscribeTO.getDescription()%></td>            
+                <td><%=vodSubscribeTO.getType() %></td>
+                <td><%=vodSubscribeTO.getPrice()%></td>                
                 <td><form method='post' action="CtrCart">
                         <input type='submit' value='Sabonné'>
                         <!--<input type='hidden' name='id' value='item.getId()'>
