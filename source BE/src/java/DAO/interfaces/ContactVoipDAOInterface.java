@@ -13,7 +13,7 @@ import java.util.LinkedList;
  */
 public interface ContactVoipDAOInterface {
     
-public boolean insert(int voip_contact_id, String titre, String categorie, String nom, String prenom, String telephone, String mail, int id_voip);
+public boolean insert(int voip_contact_id, int voip_line_id,String titre, String categorie, String nom, String prenom, String telephone, String mail, int id_voip);
 public boolean insertContact(ContactVoipTO contact);
 public int getlastId();
 public ContactVoipTO selectbyId(String id);

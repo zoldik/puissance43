@@ -12,10 +12,11 @@ package DAO.transfertObject;
 public class ContactVoipTO {
 
 /**
- * Classe de gestion des contacts (id, titre, categorie,nom,prenom,telephone,mail)
+ * Classe de gestion des contacts (id, id_line,titre, categorie,nom,prenom,telephone,mail)
  * @author thomas
  */
     public int id;
+    public int id_line;
     public String titre;
     public String categorie;
     public String nom;
@@ -30,6 +31,7 @@ public class ContactVoipTO {
  */ 
 public ContactVoipTO() {
     this.id=0;
+    this.id_line=0;
     this.titre="";
     this.categorie="";
     this.nom="";
@@ -41,6 +43,7 @@ public ContactVoipTO() {
  /**
   * Constructeur Contact
   * @param id
+  * @param id_line
   * @param titre
   * @param categorie
   * @param nom
@@ -49,8 +52,9 @@ public ContactVoipTO() {
   * @param mail
   * @param id_voip
   */
-public ContactVoipTO(int id,String titre,String categorie,String nom,String prenom,String telephone,String mail,int id_voip) {
+public ContactVoipTO(int id,int id_line,String titre,String categorie,String nom,String prenom,String telephone,String mail,int id_voip) {
     this.id=id;
+    this.id_line=id_line;
     this.titre=titre;
     this.categorie=categorie;
     this.nom=nom;
@@ -69,6 +73,11 @@ public ContactVoipTO(int id,String titre,String categorie,String nom,String pren
         return id;
     }
 
+    public int getId_line() {
+        return id_line;
+    }
+    
+        
     public String getMail() {
         return mail;
     }
@@ -97,6 +106,11 @@ public ContactVoipTO(int id,String titre,String categorie,String nom,String pren
         this.id = id;
     }
 
+    public void setId_line(int id_line) {
+        this.id_line = id_line;
+    }
+
+    
     public void setMail(String mail) {
         this.mail = mail;
     }
