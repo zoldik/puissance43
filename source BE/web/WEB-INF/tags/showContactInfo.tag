@@ -43,14 +43,15 @@ import="java.util.*"
         
        listeContact = contactVoipDAO.getContactbyVoipId(id);
        indice = listeContact.listIterator();
-       out.println("<table width=\"60%\">");
-       out.println("<tr>");
+       out.println("<table bgcolor=\"black\" width=\"50%\">");
+       out.println("<tr style=\"color: white;\">");
        
        out.println("<td>Choississez votre action</td>");
        out.println("<td>Vos contacts</td>");
        out.println("</tr>");
-
-
+       
+       out.println("<t/able>");
+       out.println("<table width=\"82%\">");
        while (indice.hasNext()){
        contact = indice.next();
        id=contact.getId();
