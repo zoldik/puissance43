@@ -22,15 +22,25 @@ public class MySqlDAOFactory extends DAOFactory {
     //*********************
     //STATIC ATTRIBUTES
     //*********************    
-    private static ItemDAOInterface itemDAO = null;
-    private static CustomerDAOInterface customerDAO = null;
-    private static LineDAOInterface lineDAO = null;
+    private static ContactVoipDAOInterface contactVoipDAO = null;    
+    private static CustomerDAOInterface customerDAO = null;    
     private static InternetSubscribeDAOInterface internetSubscribeDAO = null;
-    private static ContactVoipDAOInterface contactVoipDAO = null;
-
+    private static ItemDAOInterface itemDAO = null;
+    private static LineDAOInterface lineDAO = null;
+    private static VodSubscribeDAOInterface vodSubscribeDAO = null;
+    private static VoipSubscribeDAOInterface voipSubscribeDAO = null;
+    
     //*********************
     //STATIC METHODS TO GET THE DAO OBJECTS 
     //*********************       
+    public ContactVoipDAOInterface getContactVoipDAO() {
+        // MySqlContactVoipDAO implements ContactVoipDAO 
+        if (contactVoipDAO == null) {
+            contactVoipDAO = new ContactVoipMySqlDAO();
+        }
+        return contactVoipDAO;
+    }
+    
     public CustomerDAOInterface getCustomerDAO() {
         // MySql CustomerDAO implements CustomerDAO 
         if (customerDAO == null) {
@@ -39,18 +49,18 @@ public class MySqlDAOFactory extends DAOFactory {
         return customerDAO;
     }
 
-    public ItemDAOInterface getItemDAO() {
-        if (itemDAO == null) {
-            itemDAO = new ItemMySqlDAO();
-        }
-        return itemDAO;
-    }
-
     public InternetSubscribeDAOInterface getInternetSubscribeDAO() {
         if (internetSubscribeDAO == null) {
             internetSubscribeDAO = new InternetSubscribeMySqlDAO();
         }
         return internetSubscribeDAO;
+    }
+    
+    public ItemDAOInterface getItemDAO() {
+        if (itemDAO == null) {
+            itemDAO = new ItemMySqlDAO();
+        }
+        return itemDAO;
     }
 
     public LineDAOInterface getLineDAO() {
@@ -60,12 +70,19 @@ public class MySqlDAOFactory extends DAOFactory {
         }
         return lineDAO;
     }
-    public ContactVoipDAOInterface getContactVoipDAO() {
-        // MySqlContactVoipDAO implements ContactVoipDAO 
-        if (contactVoipDAO == null) {
-            contactVoipDAO = new ContactVoipMySqlDAO();
+
+    public VodSubscribeDAOInterface getVodSubscribeDAO() {
+        if (vodSubscribeDAO == null) {
+            vodSubscribeDAO = new VodSubscribeMySqlDAO();
         }
-        return contactVoipDAO;
-    }     
-    
+        return vodSubscribeDAO;
+    }
+
+    public VoipSubscribeDAOInterface getVoipSubscribeDAO() {
+         if (voipSubscribeDAO == null) {
+            voipSubscribeDAO = new VoipSubscribeMySqlDAO();
+        }
+        return voipSubscribeDAO;
+    }
+      
 }
