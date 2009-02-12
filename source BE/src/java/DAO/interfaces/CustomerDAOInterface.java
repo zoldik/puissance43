@@ -12,7 +12,7 @@ import javax.sql.RowSet;
  * 
  * The CustomerDAO interface shown in Example 9.3 defines the DAO methods for Customer
  * persistent object that are implemented by all concrete DAO implementations, such as
- * CloudscapeCustomerDAO, OracleCustomerDAO, MySqlCustomerDAO and SybaseCustomerDAO.
+ * CloudscapeCustomerDAO, OracleCustomerDAO, MySql CustomerDAO and SybaseCustomerDAO.
  * @author vincent
  */
 public interface CustomerDAOInterface {

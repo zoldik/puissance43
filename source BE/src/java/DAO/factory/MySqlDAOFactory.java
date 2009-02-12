@@ -32,7 +32,7 @@ public class MySqlDAOFactory extends DAOFactory {
     //STATIC METHODS TO GET THE DAO OBJECTS 
     //*********************       
     public CustomerDAOInterface getCustomerDAO() {
-        // MySqlCustomerDAO implements CustomerDAO 
+        // MySql CustomerDAO implements CustomerDAO 
         if (customerDAO == null) {
             customerDAO = new CustomerMySqlDAO();
         }
