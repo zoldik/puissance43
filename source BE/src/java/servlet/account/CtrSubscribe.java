@@ -1,11 +1,5 @@
 package servlet.account;
 
-/*
- * To change this template, choose Tools | Templates
- * and open the template in the editor.
- */
-
-
 import java.io.IOException;
 import java.io.PrintWriter;
 import javax.servlet.ServletException;
@@ -44,7 +38,7 @@ public class CtrSubscribe extends HttpServlet {
         }
     } 
 
-    // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">
+    
     /** 
     * Handles the HTTP <code>GET</code> method.
     * @param request servlet request
@@ -64,12 +58,4 @@ public class CtrSubscribe extends HttpServlet {
     throws ServletException, IOException {
         processRequest(request, response);
     }
-
-    /** 
-    * Returns a short description of the servlet.
-    */
-    public String getServletInfo() {
-        return "Short description";
-    }// </editor-fold>
-
 }
