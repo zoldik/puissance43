@@ -414,6 +414,7 @@ create table voip_rss
    id_voip_rss          bigint not null,
    id_voip_line         bigint not null,
    url                  varchar(255),
+   update               boolean default 0,
    primary key (id_voip_rss)
 );
 
