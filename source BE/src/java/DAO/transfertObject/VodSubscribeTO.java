@@ -1,26 +1,27 @@
 package DAO.transfertObject;
 
-
 /**
  *
  * @author vincent
  */
 public class VodSubscribeTO {
-    
-    private String name ;
-    private String description ;
+
+    private int id;
+    private String name;
+    private String description;
     //per month
-    private String price ;
-    
-    //private String overload;
-    
+    private String price;    //private String overload;
     //type : particulier ou professionnel
     private String type;
- 
+
     //**********************************
     //GETTERS
     //**********************************
-     public String getDescription() {
+    public int getId() {
+        return id;
+    }
+
+    public String getDescription() {
         return description;
     }
 
@@ -35,11 +36,13 @@ public class VodSubscribeTO {
     public String getType() {
         return type;
     }
-    
     //**********************************
     //SETTERS
     //**********************************
-            
+    public void setId(int id) {
+        this.id = id;
+    }
+
     public void setDescription(String description) {
         this.description = description;
     }
@@ -55,5 +58,4 @@ public class VodSubscribeTO {
     public void setType(String type) {
         this.type = type;
     }
-
 }
