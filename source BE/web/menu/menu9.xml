@@ -7,13 +7,14 @@
     </Compte>
     <VoIP name="VoIP">
         <link name="Annuaire" url="voip/annuaire.jsp"/>
-        <link name="Abonnement" url="InternetSubscribe.jsp"/>
+        <link name="Abonnement" url="Subscribes.jsp"/>
     </VoIP>
     <VOD name="VOD">
-        <link name="Abonnement" url="InternetSubscribe.jsp"/>
+        <link name="SiteVod" url="vod/vod.jsp"/>
+        <link name="Abonnement" url="Subscribes.jsp"/>
     </VOD>
     <Assistance name="Assistance">
-        <link name="Assistance"  url="0" />
+        <link name="Assistance"  url="" />
     </Assistance>
     <Magasin name="Magasin">
         <link name="Search" url="Search.jsp" />

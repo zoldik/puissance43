@@ -26,6 +26,8 @@ function displayIdentification(connexion)
           parameters = parameters+'3';
       } else if(connexion==4) {
           parameters = parameters+'4';
+      } else if(connexion==5) {
+          parameters = parameters+'5';
       } else if(connexion==99) {
           parameters = parameters+'99';
       } else if(connexion==404) {
