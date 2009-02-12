@@ -1,11 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <root>
     <Compte name="Compte">
-        <link name="Creation" url="CreateCustomerAccount.jsp" />
         <link name="Abonnement" url="InternetSubscribe.jsp"/>
-        <link name="WebMail" url="0"/>
-        <link name="Gestion" url="account/gestion.jsp"/>
-        <link name="Resiliation" url="account/resiliation.jsp"/>
+        <link name="Gestion" url="GestionCompte.jsp"/>
+        <link name="Suppression" url="SuppressionCompte.jsp"/>
     </Compte>
     <VoIP name="VoIP">
         <link name="Compte" url="0"/>
@@ -15,7 +13,7 @@
         <link name="Support" url="voip/support.jsp"/>
     </VoIP>
     <VOD name="VOD">
-        <link name="Abonnement" url="InternetSubscribe.jsp"/>
+        <link name="Abonnement" url="1"/>
     </VOD>
     <Assistance name="Assistance">
         <link name="Assistance"  url="" />

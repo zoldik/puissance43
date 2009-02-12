@@ -1,13 +1,30 @@
 <?xml version="1.0" encoding="UTF-8"?>
-
-<!--
-    Document   : menu3.xml
-    Created on : 11 février 2009, 15:23
-    Author     : isen
-    Description:
-        Purpose of the document follows.
--->
-
 <root>
-
+    <Compte name="Compte">
+        <link name="Abonnement" url="1"/>
+        <link name="Gestion" url="GestionCompte.jsp"/>
+        <link name="Suppression" url="SuppressionCompte.jsp"/>
+    </Compte>
+    <VoIP name="VoIP">
+        <link name="Compte" url="0"/>
+        <link name="Répertoire" url="voip/repertoire.jsp"/>
+        <link name="Annuaire" url="voip/annuaire.jsp"/>
+        <link name="ZoIPer" url="voip/telechargement.jsp"/>
+        <link name="Support" url="voip/support.jsp"/>
+    </VoIP>
+    <VOD name="VOD">
+        <link name="VOD" url="2"/>
+    </VOD>
+    <Assistance name="Assistance">
+        <link name="Assistance"  url="" />
+    </Assistance>
+    <Magasin name="Magasin">
+        <link name="Search" url="Search.jsp" />
+        <link name="AdvancedSearch" url="AdvancedSearch.jsp" />
+        <link name="Cart" url="DisplayCart.jsp" />
+        <link name="Order" url="Order.jsp" />
+    </Magasin>
+    <NetworkSolutions name="NetworkSolutions">
+        <link name="Solutions" url="" />
+    </NetworkSolutions>
 </root>
