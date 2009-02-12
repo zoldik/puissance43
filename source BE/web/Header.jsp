@@ -24,7 +24,7 @@
                             <table align="center">
                                 <tr>
                                     <a class="onglet" href="./Deconnection" ><div id="Déconnexion">Déconnexion</div></a>
-                                    <a class="onglet" href="#" onclick="fonctionOpenPage('accueil.jsp');" onmouseover="fonctionContenu(<%= level%>,'Compte'); fonctionClean('Compte'); fonctionMenu('Compte'); return false;"><div id="Compte">Compte</div></a>
+                                    <a class="onglet" href="#" onclick="fonctionOpenPage('accueil.jsp');displayAccount();" onmouseover="fonctionContenu(<%= level%>,'Compte'); fonctionClean('Compte'); fonctionMenu('Compte'); return false;"><div id="Compte">Compte</div></a>
                                     <a class="onglet" href="#" onmouseover="fonctionContenu(<%= level%>,'VOD'); fonctionClean('VOD'); fonctionMenu('VOD'); return false;"><div id="VOD">VOD</div></a>
                                     <a class="onglet" href="#" onclick="fonctionOpenPage('voip/voip.jsp');" onmouseover="fonctionContenu(<%= level%>,'VoIP'); fonctionClean('VoIP'); fonctionMenu('VoIP'); return false;"><div id="VoIP">VoIP</div></a>
                                     <a class="onglet" href="#" onmouseover="fonctionContenu(<%= level%>,'Assistance'); fonctionClean('Assistance'); fonctionMenu('Assistance'); return false;"><div id="Assistance">Assistance</div></a>
