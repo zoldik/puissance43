@@ -40,11 +40,17 @@ public class Authentification extends javax.servlet.http.HttpServlet {
                         }
 
 			if (customer.getId()!=0){
-                                session.setAttribute("Customer",customer);
-				//Si on a la permission, on accède à la suite
-                                response.sendRedirect("./index.jsp?Connexion=1");
-			}
-			else {
+                                int level = customer.getAccountLevel();
+                                if  (level>=0 && level<9){
+                                    if (customer.getValid()) {
+                                        session.setAttribute("Customer",customer);
+                                        //Si on a la permission, on accède à la suite
+                                        response.sendRedirect("./index.jsp?Connexion=1");
+                                    } else {
+                                        response.sendRedirect("./index.jsp?Connexion=3");
+                                    }
+                                }
+			} else {
 				//Sinon, on revient à la page d'authentification
 				response.sendRedirect("./index.jsp?Connexion=2");
 			}

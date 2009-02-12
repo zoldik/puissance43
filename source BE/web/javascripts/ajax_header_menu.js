@@ -32,16 +32,10 @@
         updateDivContent(menu, "<b>"+menu+"</b>");
     }
     
-    function fonctionContenuPublic(menu)
+    function fonctionHeader(menu)
     {
         bouton_menu = menu;
-        myRequest = getDataAsynchronous('./menu2.xml', alertContenu);
-    }
-    
-    function fonctionContenuCustomer(menu)
-    {
-        bouton_menu = menu;
-        myRequest = getDataAsynchronous('./menu.xml', alertContenu);
+        myRequest = getDataAsynchronous('./menu/menu9.xml', alertContenu);
     }
     
     function fonctionContenu(level,menu)
@@ -54,6 +48,9 @@
     {
         if (url=="0") {
             displayIdentification(99);
+        } else if (url=="1") {
+            displayAccount();
+            updateDivContent("main", "<object class='page' data='InternetSubscribe.jsp' type='text/html'/>");
         } else {
             updateDivContent("main", "<object class='page' data='"+url+"' type='text/html'/>");
         }
