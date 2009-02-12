@@ -102,15 +102,6 @@
     <servlet-mapping>
         <servlet-name>DisplayItems.jsp</servlet-name>
         <url-pattern>/DisplayItems.jsp</url-pattern>
-    </servlet-mapping>
-    <!--zzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzz-->
-    <servlet>
-        <servlet-name>InternetSubscribe.jsp</servlet-name>
-        <jsp-file>/account/InternetSubscribe.jsp</jsp-file>
-    </servlet>
-    <servlet-mapping>
-        <servlet-name>InternetSubscribe.jsp</servlet-name>
-        <url-pattern>/InternetSubscribe.jsp</url-pattern>
     </servlet-mapping>    
     <!--zzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzz-->
     <servlet>
@@ -139,6 +130,15 @@
         <servlet-name>Search.jsp</servlet-name>
         <url-pattern>/Search.jsp</url-pattern>
     </servlet-mapping>  
+    <!--zzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzz-->
+    <servlet>
+        <servlet-name>Subscribes.jsp</servlet-name>
+        <jsp-file>/account/Subscribes.jsp</jsp-file>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>Subscribes.jsp</servlet-name>
+        <url-pattern>/Subscribes.jsp</url-pattern>
+    </servlet-mapping>    
     <!--zzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzz-->
     <servlet>
         <servlet-name>VerifLogin.jsp</servlet-name>
