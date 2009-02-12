@@ -10,6 +10,9 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
+import DAO.factory.*;
+import DAO.interfaces.*;
+import DAO.transfertObject.*;
 
 /**
  *
@@ -27,6 +30,12 @@ public class checkRSS extends HttpServlet {
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
     throws ServletException, IOException {
         try{
+            CustomerTO customer = new CustomerTO();
+                        
+            DAOFactory daoFactory = DAOFactory.getDAOFactory(DAOFactory.MYSQL);
+
+            CustomerDAOInterface customerDAO = daoFactory.getCustomerDAO();
+            
             
             
             
