@@ -30,15 +30,15 @@ public class VoipSubscribeMySqlDAO extends MySqlGeneralObjectDAO implements Voip
         try {
 
             st = conn.createStatement();
-            rs = st.executeQuery("SELECT * FROM vod_subscribe ");
+            rs = st.executeQuery("SELECT * FROM voip_subscribe ");
 
             while (rs.next()) {
                 VoipSubscribeTO voipSubscribeTO = new VoipSubscribeTO();
                 
-                voipSubscribeTO.setName(rs.getString("name_vod_subscribe"));
-                voipSubscribeTO.setDescription(rs.getString("description_vod_subscribe"));
-                voipSubscribeTO.setPrice("price");
-                voipSubscribeTO.setType("type_vod_subscribe"); 
+                voipSubscribeTO.setName(rs.getString("name_voip_subscribe"));
+                voipSubscribeTO.setDescription(rs.getString("description_voip_subscribe"));
+                voipSubscribeTO.setPrice(rs.getString("price"));
+                voipSubscribeTO.setType(rs.getString("type_voip_subscribe")); 
                 
                 voipSubscribeTOs.add(voipSubscribeTO);
             } 
