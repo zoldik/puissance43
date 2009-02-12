@@ -21,16 +21,17 @@
     </servlet>
     <!--STRUTS-->
     
+    <servlet>
+        <servlet-name>enregModContactInfo</servlet-name>
+        <servlet-class>servlet.voip.enregModContactInfo</servlet-class>
+    </servlet>    
+    
         
     <!--VINCENT DESTAILLEUR -->    
     <!--Servlet-->
     <servlet>
         <servlet-name>CtrAccount</servlet-name>
         <servlet-class>servlet.account.CtrAccount</servlet-class>
-    </servlet>    
-    <servlet>
-        <servlet-name>enregModContactInfo</servlet-name>
-        <servlet-class>servlet.voip.enregModContactInfo</servlet-class>
     </servlet>
     <servlet-mapping>
         <servlet-name>CtrAccount</servlet-name>
@@ -111,7 +112,7 @@
         <servlet-name>InternetSubscribe.jsp</servlet-name>
         <url-pattern>/InternetSubscribe.jsp</url-pattern>
     </servlet-mapping>    
-    <!--zzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzz-->   
+    <!--zzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzz-->
     <servlet>
         <servlet-name>NotificationCreationAccount.jsp</servlet-name>
         <jsp-file>/account/NotificationCreationAccount.jsp</jsp-file>
@@ -209,7 +210,7 @@
     <servlet-mapping>
         <servlet-name>LostPassword.jsp</servlet-name>
         <url-pattern>/LostPassword.jsp</url-pattern>
-    </servlet-mapping> 
+    </servlet-mapping>
     <servlet>
         <servlet-name>Header.jsp</servlet-name>
         <jsp-file>/Header.jsp</jsp-file>
@@ -333,7 +334,7 @@
     </servlet-mapping>    
     <!-- /Servlet-->
     <!-- JSP -->
-        <servlet>
+    <servlet>
         <servlet-name>CreateMailAddress.jsp</servlet-name>
         <jsp-file>/customer/CreateMailAddress.jsp</jsp-file>
     </servlet>
@@ -345,4 +346,4 @@
     <!-- /AURELIEN BAUDET -->
     
     InternetSubscribe
-    </web-app>
+</web-app>
