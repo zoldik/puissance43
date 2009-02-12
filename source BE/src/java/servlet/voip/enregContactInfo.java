@@ -48,7 +48,8 @@ public class enregContactInfo extends javax.servlet.http.HttpServlet {
        try{
        
  
-       int id_voip=1;
+       int id_voip=1; // à récup dans la session
+       int id_line=1; // à récup dans la session
        String Titre = request.getParameter("titre");
        out.println(Titre);
        String Categorie = request.getParameter("categorie");
@@ -57,7 +58,7 @@ public class enregContactInfo extends javax.servlet.http.HttpServlet {
        String Telephone = request.getParameter("telephone");
        String Email = request.getParameter("email");
        int id=contactVoipDAO.getlastId();
-       ContactVoipTO contact = new ContactVoipTO(id,Titre,Categorie,Nom,Prenom,Telephone,Email,id_voip);
+       ContactVoipTO contact = new ContactVoipTO(id,id_line,Titre,Categorie,Nom,Prenom,Telephone,Email,id_voip);
        contactVoipDAO.insertContact(contact);
        
        out.println("enregistrement réussi");
