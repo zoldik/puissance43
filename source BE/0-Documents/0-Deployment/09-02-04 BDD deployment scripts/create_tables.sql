@@ -22,10 +22,8 @@ create table bill
 );
 
 
-
-
-
-CREATE TABLE cdr (
+CREATE TABLE cdr 
+(
   `calldate` datetime NOT NULL default '0000-00-00 00:00:00',
   `clid` varchar(80) NOT NULL default '',
   `src` varchar(80) NOT NULL default '',
@@ -190,14 +188,29 @@ create table transport
 
 
 
-CREATE TABLE `VOD_CATEGORY` (
+
+CREATE TABLE `VOD_CATEGORY` 
+(
   `ID` int(11) NOT NULL auto_increment,
   `NAME` text NOT NULL,
   PRIMARY KEY  (`ID`)
-) ENGINE=MyISAM  DEFAULT CHARSET=latin1 AUTO_INCREMENT=4 ;
+);
 
 
-CREATE TABLE `VOD_COMMENT` (
+CREATE TABLE `VOD_CHAINE` 
+(
+  `ID` int(11) NOT NULL auto_increment,
+  `DESCRIPTION` text NOT NULL,
+  `ADRESS` text NOT NULL,
+  `NAME` text NOT NULL,
+  
+  PRIMARY KEY  (`ID`)
+
+);
+
+
+CREATE TABLE `VOD_COMMENT` 
+(
   `ID` int(11) NOT NULL auto_increment,
   `VIDEO_ID` int(11) NOT NULL,
   `USER_ID` int(11) NOT NULL,
@@ -206,9 +219,19 @@ CREATE TABLE `VOD_COMMENT` (
   PRIMARY KEY  (`ID`),
   KEY `FK_VOD_COMMENT_VOD_VIDEO` (`VIDEO_ID`),
   KEY `FK_VOD_COMMENT_VOD_USER` (`USER_ID`)
-) ENGINE=MyISAM  DEFAULT CHARSET=latin1 AUTO_INCREMENT=5 ;
+);
 
-CREATE TABLE `VOD_MARK` (
+
+CREATE TABLE `VOD_CUSTOMER_VIDEO` 
+(
+  `VIDEO_ID` int(11) NOT NULL,
+  `CUSTOMER_ID` int(11) NOT NULL,
+  PRIMARY KEY  (`VIDEO_ID`,`CUSTOMER_ID`)
+);
+
+
+CREATE TABLE `VOD_MARK` 
+(
   `ID` int(11) NOT NULL auto_increment,
   `VIDEO_ID` int(11) NOT NULL,
   `USER_ID` int(11) NOT NULL,
@@ -216,7 +239,7 @@ CREATE TABLE `VOD_MARK` (
   PRIMARY KEY  (`ID`),
   KEY `FK_VOD_MARK_VOD_VIDEO` (`VIDEO_ID`),
   KEY `FK_VOD_MARK_VOD_USER` (`USER_ID`)
-) ENGINE=MyISAM  DEFAULT CHARSET=latin1 AUTO_INCREMENT=4 ;
+);
 
 
 CREATE TABLE `VOD_PLAYLIST` (
@@ -225,34 +248,51 @@ CREATE TABLE `VOD_PLAYLIST` (
   `NAME` text NOT NULL,
   PRIMARY KEY  (`ID`),
   KEY `FK_VOD_PLAYLIST_VOD_USER` (`USER_ID`)
-) ENGINE=MyISAM  DEFAULT CHARSET=latin1 AUTO_INCREMENT=3 ;
+);
 
 
-CREATE TABLE `VOD_TAG` (
+create table vod_subscribe
+(
+   id_vod_subscribe    bigint not null auto_increment,
+   name_vod_subscribe                   varchar(32),
+   description_vod_subscribe            text,
+   price                                float(8,2),
+   type_vod_subscribe                   varchar(32),
+   
+   primary key (id_vod_subscribe)
+);
+
+
+CREATE TABLE `VOD_TAG` 
+(
   `ID` int(11) NOT NULL auto_increment,
   `VALUE` text NOT NULL,
   `SEARCH_COUNTER` int(11) NOT NULL default '0',
   PRIMARY KEY  (`ID`)
-) ENGINE=MyISAM DEFAULT CHARSET=latin1 AUTO_INCREMENT=4 ;
+);
 
 
-CREATE TABLE `VOD_TAG_IN_VIDEO` (
+CREATE TABLE `VOD_TAG_IN_VIDEO` 
+(
   `TAG_ID` int(11) NOT NULL,
   `VIDEO_ID` int(11) NOT NULL,
   PRIMARY KEY  (`TAG_ID`,`VIDEO_ID`)
-) ENGINE=MyISAM DEFAULT CHARSET=latin1 AUTO_INCREMENT=5;
+);
 
 
-CREATE TABLE `VOD_USER` (
+CREATE TABLE `VOD_USER` 
+(
   `ID` int(11) NOT NULL auto_increment,
+   id_customer              bigint not null,
   `LOGIN` text NOT NULL,
   `PASSWORD` text NOT NULL,
   `EMAIL` text NOT NULL,
   PRIMARY KEY  (`ID`)
-) ENGINE=MyISAM  DEFAULT CHARSET=latin1 AUTO_INCREMENT=4 ;
+);
 
 
-CREATE TABLE `VOD_VIDEO` (
+CREATE TABLE `VOD_VIDEO` 
+(
   `ID` int(11) NOT NULL auto_increment,
   `CATEGORY_ID` int(11) NOT NULL,
   `USER_ID` int(11) NOT NULL,
@@ -265,33 +305,20 @@ CREATE TABLE `VOD_VIDEO` (
   PRIMARY KEY  (`ID`),
   KEY `FK_VOD_VIDEO_VOD_CATEGORY` (`CATEGORY_ID`),
   KEY `FK_VOD_VIDEO_VOD_USER` (`USER_ID`)
-
-) ENGINE=MyISAM  DEFAULT CHARSET=latin1 AUTO_INCREMENT=5 ;
-
-
-CREATE TABLE `VOD_CHAINE` (
-  `ID` int(11) NOT NULL auto_increment,
-  `DESCRIPTION` text NOT NULL,
-  `ADRESS` text NOT NULL,
-  `NAME` text NOT NULL,
-  
-  PRIMARY KEY  (`ID`)
-
-) ENGINE=MyISAM  DEFAULT CHARSET=latin1 AUTO_INCREMENT=5 ;
+);
 
 
-CREATE TABLE `VOD_VIDEO_IN_PLAYLIST` (
+CREATE TABLE `VOD_VIDEO_IN_PLAYLIST` 
+(
   `VIDEO_ID` int(11) NOT NULL,
   `PLAYLIST_ID` int(11) NOT NULL,
   PRIMARY KEY  (`VIDEO_ID`,`PLAYLIST_ID`)
-) ENGINE=MyISAM DEFAULT CHARSET=latin1 AUTO_INCREMENT=4;
+);
 
 
-CREATE TABLE `VOD_CUSTOMER_VIDEO` (
-  `VIDEO_ID` int(11) NOT NULL,
-  `CUSTOMER_ID` int(11) NOT NULL,
-  PRIMARY KEY  (`VIDEO_ID`,`CUSTOMER_ID`)
-) ENGINE=MyISAM DEFAULT CHARSET=latin1 AUTO_INCREMENT=4;
+
+
+
 
 
 create table voip_call
@@ -404,16 +431,6 @@ create table voip_subscribe
 
 
 
-
-alter table VOD_USER add constraint FK_VOD_USER_HAS_CUSTOMER foreign key (id_customer)
-      references customer (id_customer) on delete restrict on update restrict;
-
-
-
-
-
-
-
 alter table bill add constraint FK_CUSTOMER_HAS_BILL foreign key (id_customer)
       references customer (id_customer) on delete restrict on update restrict;
 
@@ -465,62 +482,14 @@ alter table possede_mail_addresse add constraint FK_POSSEDE_MAIL_ADDRESSE foreig
 alter table possede_mail_addresse add constraint FK_POSSEDE_MAIL_ADDRESSE2 foreign key (id_customer)
       references customer (id_customer) on delete restrict on update restrict;
 
-alter table user_vod add constraint FK_POSSEDE_ABONNEMENT_VOD foreign key (id_customer)
+
+
+
+alter table VOD_USER add constraint FK_VOD_USER_HAS_CUSTOMER foreign key (id_customer)
       references customer (id_customer) on delete restrict on update restrict;
 
-alter table vod_acheter add constraint FK_VOD_ACHETER foreign key (vid_videoid)
-      references video (videoid) on delete restrict on update restrict;
 
-alter table vod_acheter add constraint FK_VOD_ACHETER2 foreign key (use_id_vod)
-      references user_vod (id_vod) on delete restrict on update restrict;
 
-alter table vod_associer add constraint FK_VOD_ASSOCIER foreign key (vid_videoid)
-      references video (videoid) on delete restrict on update restrict;
-
-alter table vod_associer add constraint FK_VOD_ASSOCIER2 foreign key (com_comid)
-      references commentaire (comid) on delete restrict on update restrict;
-
-alter table vod_attribuer add constraint FK_VOD_ATTRIBUER foreign key (not_noteid)
-      references note (noteid) on delete restrict on update restrict;
-
-alter table vod_attribuer add constraint FK_VOD_ATTRIBUER2 foreign key (use_id_vod)
-      references user_vod (id_vod) on delete restrict on update restrict;
-
-alter table vod_codifier add constraint FK_VOD_CODIFIER foreign key (vid_videoid)
-      references video (videoid) on delete restrict on update restrict;
-
-alter table vod_codifier add constraint FK_VOD_CODIFIER2 foreign key (not_noteid)
-      references note (noteid) on delete restrict on update restrict;
-
-alter table vod_contenir add constraint FK_VOD_CONTENIR foreign key (tag_tagid)
-      references tag (tagid) on delete restrict on update restrict;
-
-alter table vod_contenir add constraint FK_VOD_CONTENIR2 foreign key (vid_videoid)
-      references video (videoid) on delete restrict on update restrict;
-
-alter table vod_ecrire add constraint FK_VOD_ECRIRE foreign key (use_id_vod)
-      references user_vod (id_vod) on delete restrict on update restrict;
-
-alter table vod_ecrire add constraint FK_VOD_ECRIRE2 foreign key (com_comid)
-      references commentaire (comid) on delete restrict on update restrict;
-
-alter table vod_lier add constraint FK_VOD_LIER foreign key (cat_catid)
-      references categorie (catid) on delete restrict on update restrict;
-
-alter table vod_lier add constraint FK_VOD_LIER2 foreign key (vid_videoid)
-      references video (videoid) on delete restrict on update restrict;
-
-alter table vod_possede add constraint FK_VOD_POSSEDE foreign key (pla_playlist_id)
-      references playlist (playlist_id) on delete restrict on update restrict;
-
-alter table vod_possede add constraint FK_VOD_POSSEDE2 foreign key (use_id_vod)
-      references user_vod (id_vod) on delete restrict on update restrict;
-
-alter table vod_uploader add constraint FK_VOD_UPLOADER foreign key (vid_videoid)
-      references video (videoid) on delete restrict on update restrict;
-
-alter table vod_uploader add constraint FK_VOD_UPLOADER2 foreign key (use_id_vod)
-      references user_vod (id_vod) on delete restrict on update restrict;
 
 alter table voip_call add constraint FK_VOIP_LINE_HAS_VOIP_CALL foreign key (id_voip_line)
       references voip_line (id_voip_line) on delete restrict on update restrict;
