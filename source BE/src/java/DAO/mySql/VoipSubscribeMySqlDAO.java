@@ -35,6 +35,7 @@ public class VoipSubscribeMySqlDAO extends MySqlGeneralObjectDAO implements Voip
             while (rs.next()) {
                 VoipSubscribeTO voipSubscribeTO = new VoipSubscribeTO();
                 
+                voipSubscribeTO.setId(rs.getInt("id_voip_subscribe"));
                 voipSubscribeTO.setName(rs.getString("name_voip_subscribe"));
                 voipSubscribeTO.setDescription(rs.getString("description_voip_subscribe"));
                 voipSubscribeTO.setPrice(rs.getString("price"));

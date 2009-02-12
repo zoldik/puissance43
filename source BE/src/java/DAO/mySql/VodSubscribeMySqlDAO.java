@@ -35,6 +35,7 @@ public class VodSubscribeMySqlDAO extends MySqlGeneralObjectDAO implements VodSu
             while (rs.next()) {
                 VodSubscribeTO vodSubscribeTO = new VodSubscribeTO();
                 
+                vodSubscribeTO.setId(rs.getInt("id_vod_subscribe"));
                 vodSubscribeTO.setName(rs.getString("name_vod_subscribe"));
                 vodSubscribeTO.setDescription(rs.getString("description_vod_subscribe"));
                 vodSubscribeTO.setPrice(rs.getString("price"));
