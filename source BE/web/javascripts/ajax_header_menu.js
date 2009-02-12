@@ -50,7 +50,7 @@
             displayIdentification(99);
         } else if (url=="1") {
             displayAccount();
-            updateDivContent("main", "<object class='page' data='InternetSubscribe.jsp' type='text/html'/>");
+            updateDivContent("main", "<object class='page' data='Subscribes.jsp' type='text/html'/>");
         } else {
             updateDivContent("main", "<object class='page' data='"+url+"' type='text/html'/>");
         }

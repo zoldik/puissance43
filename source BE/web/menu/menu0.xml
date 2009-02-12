@@ -3,6 +3,7 @@
     <Compte name="Compte">
         <link name="Gestion" url="GestionCompte.jsp"/>
         <link name="Suppression" url="SuppressionCompte.jsp"/>
+        <link name="Abonnement" url="Subscribes.jsp"/>
     </Compte>
     <VoIP name="VoIP">
         <link name="Annuaire" url="voip/annuaire.jsp"/>

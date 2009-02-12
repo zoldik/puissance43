@@ -9,7 +9,8 @@
 <%@ page import="java.util.*" %>
 <%@ page import="DAO.factory.*, DAO.transfertObject.InternetSubscribeTO, DAO.interfaces.InternetSubscribeDAOInterface" %>
 <%@ page import="DAO.transfertObject.VoipSubscribeTO, DAO.interfaces.VoipSubscribeDAOInterface" %>
-<%@ page import="DAO.factory.*, DAO.transfertObject.VodSubscribeTO, DAO.interfaces.VodSubscribeDAOInterface" %>
+<%@ page import="DAO.transfertObject.VodSubscribeTO, DAO.interfaces.VodSubscribeDAOInterface" %>
+<%@ page import="DAO.transfertObject.CustomerTO" %>
 
 <html>
     <head>
@@ -33,6 +34,24 @@
             </tr>
             <!--zzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzz-->            
             <%
+            String button_sabonne="<input type=\'button\' onclick=\"displayIdentification(5);\" value=\"S\'abonner\">";
+            
+            HttpSession CustomerSession = request.getSession(false);
+              if (CustomerSession!=null) {
+                if (CustomerSession.getAttribute("Customer")!=null) {
+                    CustomerTO customerObject =(CustomerTO)CustomerSession.getAttribute("Customer");
+                    if (customerObject.getValid()) {
+                        int level = customerObject.getAccountLevel();
+                        if (level>=0 && level<9) {
+                            button_sabonne="<input type='submit' value=\"S\'abonner\">";
+                        }
+                    }
+                }
+            }
+            
+                        
+            
+            
             DAOFactory daoFactory = DAOFactory.getDAOFactory(DAOFactory.MYSQL);
             InternetSubscribeDAOInterface internetSubscribeDAO = daoFactory.getInternetSubscribeDAO();
 
@@ -44,14 +63,14 @@
                 InternetSubscribeTO internetSubscribeTO = (InternetSubscribeTO) it.next();
             %>
             
-            <tr><td><%=internetSubscribeTO.getNameSubscribe()%></td>
+            <tr><td><%=internetSubscribeTO.getId()%></td>
+                <td><%=internetSubscribeTO.getNameSubscribe()%></td>
                 <td><%=internetSubscribeTO.getDescriptionSubscribe()%></td>            
                 <td><%=internetSubscribeTO.getPrice()%></td>
                 <td><%=internetSubscribeTO.getRate()%></td>
-                <td><form method='post' action="CtrCart">
-                        <input type='submit' value='S abonner'>
-                        <!--<input type='hidden' name='id' value='item.getId()'>
-                    <input type="hidden" name='actionCart' value='delete'>-->
+                <td><form method='post' action="CtrSubscribe">
+                        <%= button_sabonne%>
+                        <input type='hidden' name='idInternet' value='<%=internetSubscribeTO.getId()%>'>                        
                 </form></td>
             </tr>
             <%
@@ -93,10 +112,9 @@
                 <td><%=voipSubscribeTO.getDescription()%></td>            
                 <td><%=voipSubscribeTO.getType()%></td>
                 <td><%=voipSubscribeTO.getPrice()%></td>                
-                <td><form method='post' action="CtrCart">
-                        <input type='submit' value='S abonner'>
-                        <input type='hidden' name='id' value='<%=voipSubscribeTO.getId()%>'>
-                        <input type="hidden" name='actionCart' value='delete'>
+                <td><form method='post' action="CtrSubscribe">
+                        <%= button_sabonne%>
+                        <input type='hidden' name='idVoip' value='<%=voipSubscribeTO.getId()%>'>                       
                 </form></td>
             </tr>
             <%
@@ -139,10 +157,9 @@
                 <td><%=vodSubscribeTO.getDescription()%></td>            
                 <td><%=vodSubscribeTO.getType()%></td>
                 <td><%=vodSubscribeTO.getPrice()%></td>                
-                <td><form method='post' action="CtrCart">
-                        <input type='submit' value='Sabonner'>
-                        <input type='hidden' name='id' value='<%=vodSubscribeTO.getId()%>'>
-                        <input type="hidden" name='actionCart' value='delete'>
+                <td><form method='post' action="CtrSubscribe">
+                        <%= button_sabonne%>
+                        <input type='hidden' name='idVod' value='<%=vodSubscribeTO.getId()%>'>                       
                 </form></td>
             </tr>
             <%

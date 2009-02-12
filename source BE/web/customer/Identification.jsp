@@ -26,7 +26,11 @@
                        message3="$ = level_account ";
                        log ="value=\"user1\"";
                        pwd ="value=\"pwd1\"";
-                   } else if (Connexion==99) {
+                   } else if (Connexion==5) {
+                       message1 ="Vous devez";
+                       message2="créer préalablement un compte";
+                       message3="pour pouvoir vous abonner.";
+                   }  else if (Connexion==99) {
                        message1 ="Connexion";
                        message2="requise pour accès à la page";
                    } else if (Connexion==404) {
