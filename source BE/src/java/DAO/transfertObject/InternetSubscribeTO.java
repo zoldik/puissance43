@@ -6,21 +6,21 @@ package DAO.transfertObject;
  */
 public class InternetSubscribeTO {
 
-    private String nameSubscribe ;
-    private String descriptionSubscribe ;
+    private int id;
+    private String nameSubscribe;
+    private String descriptionSubscribe;
     //per month
-    private String price ;
-    
-    //private String overload;
-    
+    private String price;    //private String overload;
     //debit
     private String rate;
- 
     //**********************************
     //GETTERS
     //**********************************
-    
-     public String getDescriptionSubscribe() {
+    public int getId() {
+        return id;
+    }
+
+    public String getDescriptionSubscribe() {
         return descriptionSubscribe;
     }
 
@@ -40,6 +40,10 @@ public class InternetSubscribeTO {
     //SETTERS
     //**********************************
     
+    public void setId(int id) {
+        this.id = id;
+    }
+    
     public void setDescriptionSubscribe(String descriptionSubscribe) {
         this.descriptionSubscribe = descriptionSubscribe;
     }
@@ -55,5 +59,4 @@ public class InternetSubscribeTO {
     public void setRate(String rate) {
         this.rate = rate;
     }
-    
 }

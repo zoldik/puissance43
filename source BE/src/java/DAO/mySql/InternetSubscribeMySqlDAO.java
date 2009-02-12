@@ -36,6 +36,7 @@ public class InternetSubscribeMySqlDAO extends MySqlGeneralObjectDAO implements 
         while (rs.next()) {
             InternetSubscribeTO internetSubscribeTO = new InternetSubscribeTO();
             
+            internetSubscribeTO.setId(rs.getInt("id_internet_subscribe"));
             internetSubscribeTO.setNameSubscribe(rs.getString("name_subscribe"));
             internetSubscribeTO.setDescriptionSubscribe(rs.getString("description_subscribe"));
             internetSubscribeTO.setPrice(rs.getString("price"));
