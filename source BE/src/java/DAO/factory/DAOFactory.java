@@ -19,16 +19,19 @@ public abstract class DAOFactory {
     // There will be a method for each DAO that can be 
     // created. The concrete factories will have to 
     // implement these methods.
-    public abstract CustomerDAOInterface getCustomerDAO();
+    public abstract ContactVoipDAOInterface getContactVoipDAO();
     
-    public abstract LineDAOInterface getLineDAO();
-
+    public abstract CustomerDAOInterface getCustomerDAO();
+        
+    public abstract InternetSubscribeDAOInterface getInternetSubscribeDAO();
+        
     public abstract ItemDAOInterface getItemDAO();
     
-    public abstract InternetSubscribeDAOInterface getInternetSubscribeDAO();
+    public abstract LineDAOInterface getLineDAO();
     
-    public abstract ContactVoipDAOInterface getContactVoipDAO();
-
+    public abstract VodSubscribeDAOInterface getVodSubscribeDAO();
+    
+    public abstract VoipSubscribeDAOInterface getVoipSubscribeDAO();
     
     //***********************    
     
