@@ -1,7 +1,6 @@
 
 package servlet.customer.account;
 
-
 import java.io.*;
 import java.util.*;
 
@@ -11,6 +10,8 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 import model.database.*;
+import DAO.factory.*;
+import DAO.interfaces.*;
 
 /**
  *
@@ -32,8 +33,12 @@ public class LostPassword extends HttpServlet {
                         String login = request.getParameter("username");
                         String email = request.getParameter("email");
                         
+                        DAOFactory daoFactory = DAOFactory.getDAOFactory(DAOFactory.MYSQL);
+
+                        CustomerDAOInterface customerDAO = daoFactory.getCustomerDAO();
+                            
                         if(login!="" && email.length()<30 && email.toString().indexOf("@",0)!=-1 && email.toString().indexOf(".",0)!=-1) {
-                            if(SQLCustomer.isValidEmail(login,email)) {
+                            if(customerDAO.isValidEmail(login,email)) {
                                 //Envoi mail
                                 envoi=true;
                             } else {

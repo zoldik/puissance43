@@ -4,7 +4,7 @@
 --%>
 
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
-<%@page language="Java" import="java.util.*,servlet.account.*,model.account.*,DAO.transfertObject.CustomerTO,DAO.transfertObject.AddressTO" %>
+<%@page language="Java" import="java.util.*,servlet.account.*,DAO.transfertObject.CustomerTO,DAO.transfertObject.AddressTO" %>
 
 
 <html>
