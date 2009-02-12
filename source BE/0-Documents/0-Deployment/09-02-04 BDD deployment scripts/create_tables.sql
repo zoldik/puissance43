@@ -411,10 +411,10 @@ create table voip_line
 
 create table voip_rss
 (
-   id_voip_rss          bigint not null,
+   id_voip_rss          bigint not null auto_increment,
    id_voip_line         bigint not null,
    url                  varchar(255),
-   update               boolean default 0,
+   update_rss            boolean default 0,
    primary key (id_voip_rss)
 );
 
@@ -483,14 +483,8 @@ alter table possede_mail_addresse add constraint FK_POSSEDE_MAIL_ADDRESSE foreig
 alter table possede_mail_addresse add constraint FK_POSSEDE_MAIL_ADDRESSE2 foreign key (id_customer)
       references customer (id_customer) on delete restrict on update restrict;
 
-
-
-
 alter table VOD_USER add constraint FK_VOD_USER_HAS_CUSTOMER foreign key (id_customer)
       references customer (id_customer) on delete restrict on update restrict;
-
-
-
 
 alter table voip_call add constraint FK_VOIP_LINE_HAS_VOIP_CALL foreign key (id_voip_line)
       references voip_line (id_voip_line) on delete restrict on update restrict;
