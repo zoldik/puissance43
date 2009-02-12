@@ -33,24 +33,17 @@ INSERT INTO `customer` (
 `account_level` ,
 `valid`
 )
-VALUES (
-NULL ,
-'',
-NULL ,
-'albert', 
-'einstein', 
-'genie', 
-'genie', 
-'albert.einstein@relativemail.com', 
-'M', 
-'19/03/1950', 
-'03 20 00 76 43', 
-'06 12 58 37 29', 
-'physicien', 
-'relativeCoporation',
-NULL ,
-1
-);
+VALUES
+(NULL ,'',NULL ,'Compte','non validé','user','pwd','albert.einstein@redneck.fr','M', '19/03/1950','03 20 00 76 43','06 12 58 37 29','physicien','relativeCoporation',0,0),
+(NULL ,'',NULL ,'Utilisateur','sans abonnement','user0','pwd0','albert.einstein@redneck.fr','M', '19/03/1950','03 20 00 76 43','06 12 58 37 29','physicien','relativeCoporation',0,1),
+(NULL ,'',NULL ,'Utilisateur','VoIP','user1','pwd1','albert.einstein@redneck.fr','M', '19/03/1950','03 20 00 76 43','06 12 58 37 29','physicien','relativeCoporation',1,1),
+(NULL ,'',NULL ,'Utilisateur','VOD','user2','pwd2','albert.einstein@redneck.fr','M', '19/03/1950','03 20 00 76 43','06 12 58 37 29','physicien','relativeCoporation',2,1),
+(NULL ,'',NULL ,'Utilisateur','VOD+VoIP','user3','pwd3','albert.einstein@redneck.fr','M', '19/03/1950','03 20 00 76 43','06 12 58 37 29','physicien','relativeCoporation',3,1),
+(NULL ,'',NULL ,'Utilisateur','FAI','user4','pwd4','albert.einstein@redneck.fr','M', '19/03/1950','03 20 00 76 43','06 12 58 37 29','physicien','relativeCoporation',4,1),
+(NULL ,'',NULL ,'Utilisateur','FAI+VoIP','user5','pwd5','albert.einstein@redneck.fr','M', '19/03/1950','03 20 00 76 43','06 12 58 37 29','physicien','relativeCoporation',5,1),
+(NULL ,'',NULL ,'Utilisateur','FAI+VOD','user6','pwd6','albert.einstein@redneck.fr','M', '19/03/1950','03 20 00 76 43','06 12 58 37 29','physicien','relativeCoporation',6,1),
+(NULL ,'',NULL ,'Utilisateur','TriplePlay','user7','pwd7','albert.einstein@redneck.fr','M', '19/03/1950','03 20 00 76 43','06 12 58 37 29','physicien','relativeCoporation',7,1),
+(NULL ,'',NULL ,'Admin','VoIP','admin1','admin1','admin1@redneck.fr','M', '19/03/1950','03 20 00 76 43','06 12 58 37 29','physicien','relativeCoporation',8,1);
 
 
 
