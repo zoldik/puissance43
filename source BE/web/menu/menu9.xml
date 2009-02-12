@@ -2,7 +2,7 @@
 <root>
     <Compte name="Compte">
         <link name="Creation" url="CreateCustomerAccount.jsp" />
-        <link name="Abonnement" url="InternetSubscribe.jsp"/>
+        <link name="Abonnement" url="Subscribes.jsp"/>
         <link name="Resiliation" url="0"/>
     </Compte>
     <VoIP name="VoIP">
