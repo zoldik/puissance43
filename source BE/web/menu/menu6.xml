@@ -1,7 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
+<!-- Menu FAI + VOD -->
 <root>
     <Compte name="Compte">
-        <link name="Webmail" url="Webmail.jsp"/>
+        <link name="Webmail" url="customer/Webmail.jsp"/>
         <link name="Gestion" url="GestionCompte.jsp"/>
         <link name="Suppression" url="SuppressionCompte.jsp"/>
     </Compte>
@@ -13,7 +14,7 @@
         <link name="VOD" url="2"/>
     </VOD>
     <Assistance name="Assistance">
-        <link name="Assistance"  url="" />
+        <link name="Assistance FAI"  url="custom/FAIAssistance.jsp" />
     </Assistance>
     <Magasin name="Magasin">
         <link name="Search" url="Search.jsp" />
