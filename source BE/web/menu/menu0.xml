@@ -1,7 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <root>
-    <Compte name="Compte">        
-        <link name="Abonnements" url="1"/>
+    <Compte name="Compte">
         <link name="Gestion" url="GestionCompte.jsp"/>
         <link name="Suppression" url="SuppressionCompte.jsp"/>
     </Compte>

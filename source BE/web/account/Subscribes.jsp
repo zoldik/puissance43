@@ -7,7 +7,6 @@
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 
 <%@ page import="java.util.*" %>
-<%@ page import="model.networkdevices.*" %>
 <%@ page import="DAO.factory.*, DAO.transfertObject.InternetSubscribeTO, DAO.interfaces.InternetSubscribeDAOInterface" %>
 <%@ page import="DAO.transfertObject.VoipSubscribeTO, DAO.interfaces.VoipSubscribeDAOInterface" %>
 <%@ page import="DAO.factory.*, DAO.transfertObject.VodSubscribeTO, DAO.interfaces.VodSubscribeDAOInterface" %>
@@ -32,7 +31,7 @@
                     <th>S'abonner</th>
                 </tr>          
             </tr>
-<!--zzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzz-->            
+            <!--zzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzz-->            
             <%
             DAOFactory daoFactory = DAOFactory.getDAOFactory(DAOFactory.MYSQL);
             InternetSubscribeDAOInterface internetSubscribeDAO = daoFactory.getInternetSubscribeDAO();
@@ -75,28 +74,29 @@
                 </tr>          
             </tr>
             
-<!--zzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzz-->      
+            <!--zzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzz-->      
             <%
-           
+
             VoipSubscribeDAOInterface voipSubscribeDAO = daoFactory.getVoipSubscribeDAO();
 
             LinkedList<VoipSubscribeTO> voipSubscribeTOs = voipSubscribeDAO.selectAllVoipSubscribeTOs();
-                        
+
             ListIterator<VoipSubscribeTO> itVoip = voipSubscribeTOs.listIterator();
 
             while (itVoip.hasNext()) {
-                
+
                 VoipSubscribeTO voipSubscribeTO = (VoipSubscribeTO) itVoip.next();
             %>
             
-            <tr><td><%=voipSubscribeTO.getName() %></td>
+            <tr><td><%=voipSubscribeTO.getId()%></td>
+                <td><%=voipSubscribeTO.getName()%></td>
                 <td><%=voipSubscribeTO.getDescription()%></td>            
-                <td><%=voipSubscribeTO.getType() %></td>
+                <td><%=voipSubscribeTO.getType()%></td>
                 <td><%=voipSubscribeTO.getPrice()%></td>                
                 <td><form method='post' action="CtrCart">
                         <input type='submit' value='S abonner'>
-                        <!--<input type='hidden' name='id' value='item.getId()'>
-                    <input type="hidden" name='actionCart' value='delete'>-->
+                        <input type='hidden' name='id' value='<%=voipSubscribeTO.getId()%>'>
+                        <input type="hidden" name='actionCart' value='delete'>
                 </form></td>
             </tr>
             <%
@@ -120,28 +120,29 @@
                 </tr>          
             </tr>
             
-<!--zzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzz-->            
+            <!--zzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzz-->            
             <%
-           
+
             VodSubscribeDAOInterface vodSubscribeDAO = daoFactory.getVodSubscribeDAO();
 
             LinkedList<VodSubscribeTO> vodSubscribeTOs = vodSubscribeDAO.selectAllVodSubscribeTOs();
-                        
+
             ListIterator<VodSubscribeTO> itVod = vodSubscribeTOs.listIterator();
 
             while (itVod.hasNext()) {
-                
+
                 VodSubscribeTO vodSubscribeTO = (VodSubscribeTO) itVod.next();
             %>
             
-            <tr><td><%=vodSubscribeTO.getName() %></td>
+            <tr><td><%=vodSubscribeTO.getId()%></td>
+                <td><%=vodSubscribeTO.getName()%></td>
                 <td><%=vodSubscribeTO.getDescription()%></td>            
-                <td><%=vodSubscribeTO.getType() %></td>
+                <td><%=vodSubscribeTO.getType()%></td>
                 <td><%=vodSubscribeTO.getPrice()%></td>                
                 <td><form method='post' action="CtrCart">
-                        <input type='submit' value='Sabonné'>
-                        <!--<input type='hidden' name='id' value='item.getId()'>
-                    <input type="hidden" name='actionCart' value='delete'>-->
+                        <input type='submit' value='Sabonner'>
+                        <input type='hidden' name='id' value='<%=vodSubscribeTO.getId()%>'>
+                        <input type="hidden" name='actionCart' value='delete'>
                 </form></td>
             </tr>
             <%
