@@ -22,14 +22,14 @@ public class ContactVoipMySqlDAO extends MySqlGeneralObjectDAO implements Contac
  /**Méthode d'insertion d'un contact dans la table ContactVoip
      *
      */
-    public boolean insert(int voip_contact_id, String titre, String categorie, String nom, String prenom, String telephone, String mail, int id_voip){   
+    public boolean insert(int voip_contact_id, int voip_line_id, String titre, String categorie, String nom, String prenom, String telephone, String mail, int id_voip){   
         
         boolean okay=true;
         Statement stmt=null;
         
         Connection conn = (Connection) getConnectionWithJNDI();
         
-        String insert = "INSERT INTO VOIP_CONTACT VALUES('" + voip_contact_id + "','" + titre + "','" + categorie + "', '" + nom + "', '" + prenom + "', '" + telephone + "', '" + mail + "', '" + id_voip + "')";
+        String insert = "INSERT INTO voip_contact VALUES('" + voip_contact_id + "','" + voip_line_id + "','" + titre + "','" + categorie + "', '" + nom + "', '" + prenom + "', '" + telephone + "', '" + mail + "', '" + id_voip + "')";
         
         try {   
              stmt = conn.createStatement();
@@ -57,7 +57,7 @@ public class ContactVoipMySqlDAO extends MySqlGeneralObjectDAO implements Contac
         
         Connection conn = (Connection) getConnectionWithJNDI();
         
-        String insert = "INSERT INTO VOIP_CONTACT VALUES('" + contact.id + "','" + contact.titre + "','" + contact.categorie + "', '" + contact.nom + "', '" + contact.prenom + "', '" + contact.telephone + "', '" + contact.mail + "', '" + contact.id_voip + "')";
+        String insert = "INSERT INTO voip_contact VALUES('" + contact.id + "','" + contact.id_line + "','" + contact.titre + "','" + contact.categorie + "', '" + contact.nom + "', '" + contact.prenom + "', '" + contact.telephone + "', '" + contact.mail + "', '" + contact.id_voip + "')";
         try {   
              stmt = conn.createStatement();
              stmt.executeUpdate(insert);		
@@ -91,7 +91,7 @@ public class ContactVoipMySqlDAO extends MySqlGeneralObjectDAO implements Contac
 
     try {
         stmt=conn.createStatement();
-        String query = "SELECT MAX(VOIP_CONTACT_ID) FROM VOIP_CONTACT; ";
+        String query = "SELECT MAX(id_voip_contact) FROM voip_contact; ";
         rs = stmt.executeQuery(query);
         rs.next();
         id = rs.getInt(1)+1;
@@ -123,17 +123,18 @@ public class ContactVoipMySqlDAO extends MySqlGeneralObjectDAO implements Contac
         try
         {   
             stmt=conn.createStatement();           
-            rs = stmt.executeQuery("SELECT * FROM VOIP_CONTACT WHERE (VOIP_CONTACT_ID="+id+");");
+            rs = stmt.executeQuery("SELECT * FROM voip_contact WHERE (id_voip_contact="+id+");");
             rs.next();
             ContactVoipTO tmp=new ContactVoipTO();
-            tmp.setId_voip(rs.getInt("VOIP_CONTACT_ID"));
+            tmp.setId_voip(rs.getInt("id_voip_contact"));
+            tmp.setId_voip(rs.getInt("id_voip_line"));
             tmp.setTitre(rs.getString("TITRE"));
             tmp.setCategorie(rs.getString("CATEGORIE"));
             tmp.setNom(rs.getString("NOM"));
             tmp.setPrenom(rs.getString("PRENOM"));
             tmp.setMail(rs.getString("MAIL"));
             tmp.setTelephone(rs.getString("TELEPHONE"));
-            tmp.setId_voip(rs.getInt("ID_VOIP"));
+            tmp.setId_voip(rs.getInt("user_voip"));
             contact=tmp;
 
         } 
@@ -164,16 +165,17 @@ public class ContactVoipMySqlDAO extends MySqlGeneralObjectDAO implements Contac
         try
         {
             stmt=conn.createStatement();           
-            rs = stmt.executeQuery("select * from VOIP_CONTACT where (ID_VOIP="+id+");");
+            rs = stmt.executeQuery("select * from voip_contact where (user_voip="+id+");");
             while (rs.next()){
-            int IdContact = rs.getInt("VOIP_CONTACT_ID");   
+            int IdContact = rs.getInt("id_voip_contact");
+            int IdLine = rs.getInt("id_voip_line");   
             String Titre = rs.getString("TITRE");
             String Categorie = rs.getString("CATEGORIE");
             String Nom = rs.getString("NOM");
             String Prenom = rs.getString("PRENOM");
             String Email = rs.getString("MAIL");
             String Telephone = rs.getString("TELEPHONE");
-            ContactVoipTO contact = new ContactVoipTO(IdContact,Titre,Categorie,Nom,Prenom,Email,Telephone,id);
+            ContactVoipTO contact = new ContactVoipTO(IdContact,IdLine,Titre,Categorie,Nom,Prenom,Email,Telephone,id);
             listeContact.add(contact);
                              }
                     }
@@ -200,7 +202,7 @@ public class ContactVoipMySqlDAO extends MySqlGeneralObjectDAO implements Contac
         try
         {
             stmt=conn.createStatement();
-            stmt.executeUpdate("DELETE from VOIP_CONTACT where VOIP_CONTACT_ID="+id+";");
+            stmt.executeUpdate("DELETE from voip_contact where id_voip_contact="+id+";");
         }
         catch(Exception e2)
         {
@@ -229,9 +231,10 @@ public class ContactVoipMySqlDAO extends MySqlGeneralObjectDAO implements Contac
         try
         {
             stmt=conn.createStatement();
-            rs = stmt.executeQuery("select * from VOIP_CONTACT where CATEGORIE="+categorie+";");
+            rs = stmt.executeQuery("select * from voip_contact where CATEGORIE="+categorie+";");
             while (rs.next()){
-            int IdContact = rs.getInt("VOIP_CONTACT_ID");   
+            int IdContact = rs.getInt("id_voip_contact");
+            int IdLine = rs.getInt("id_voip_line");   
             String Titre = rs.getString("TITRE");
             String Categorie = rs.getString("CATEGORIE");
             String Nom = rs.getString("NOM");
@@ -239,7 +242,7 @@ public class ContactVoipMySqlDAO extends MySqlGeneralObjectDAO implements Contac
             String Email = rs.getString("MAIL");
             String Telephone = rs.getString("TELEPHONE");
             int id = rs.getInt("VOIP_ID");
-            ContactVoipTO contact = new ContactVoipTO(IdContact,Titre,Categorie,Nom,Prenom,Email,Telephone,id);
+            ContactVoipTO contact = new ContactVoipTO(IdContact,IdLine,Titre,Categorie,Nom,Prenom,Email,Telephone,id);
             listeContact.add(contact);
                             }
         }
@@ -288,7 +291,7 @@ public class ContactVoipMySqlDAO extends MySqlGeneralObjectDAO implements Contac
         try
         {
             stmt=conn.createStatement();
-            stmt.executeUpdate("UPDATE  VOIP_CONTACT SET " + field + " = '" + value + "' WHERE VOIP_CONTACT_ID = '" + id + "'");
+            stmt.executeUpdate("UPDATE  voip_contact SET " + field + " = '" + value + "' WHERE id_voip_contact = '" + id + "'");
         }
         catch(Exception e2)
         {
