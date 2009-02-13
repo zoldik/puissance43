@@ -1,4 +1,4 @@
-package servlet.store;
+package servlet.shop;
 
 import java.io.IOException;
 import java.io.PrintWriter;
