@@ -1,4 +1,4 @@
-package servlet.store;
+package servlet.shop;
 
 import DAO.factory.DAOFactory;
 import DAO.factory.MySqlDAOFactory;
