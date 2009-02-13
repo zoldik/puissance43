@@ -3,16 +3,16 @@
 <root>
     <Compte name="Compte">
         <link name="Creation" url="CreateCustomerAccount.jsp" />
-        <link name="Abonnement" url="Subscribes.jsp"/>
+        <link name="Abonnement" url="SubscribesDisconnect.jsp"/>
         <link name="Resiliation" url="0"/>
     </Compte>
     <VoIP name="VoIP">
         <link name="Annuaire" url="voip/annuaire.jsp"/>
-        <link name="Abonnement" url="Subscribes.jsp"/>
+        <link name="Abonnement" url="SubscribesDisconnect.jsp"/>
     </VoIP>
     <VOD name="VOD">
         <link name="SiteVod" url="vod/vod.jsp"/>
-        <link name="Abonnement" url="Subscribes.jsp"/>
+        <link name="Abonnement" url="SubscribesDisconnect.jsp"/>
     </VOD>
     <Assistance name="Assistance">
         <link name="Assistance"  url="" />
