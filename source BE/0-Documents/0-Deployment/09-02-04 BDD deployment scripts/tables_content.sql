@@ -146,33 +146,6 @@ VALUES (
 
 
 INSERT INTO `cdr` (`calldate`, `clid`, `src`, `dst`, `dcontext`, `channel`, `dstchannel`, `lastapp`, `lastdata`, `duration`, `billsec`, `disposition`, `amaflags`, `accountcode`, `uniqueid`, `userfield`) VALUES
-('2009-01-22 16:15:15', '"6000" <6000>', '6000', 's', 'default', 'SIP/6000-091d65e8', '', 'BackGround', 'demo-congrats', 4, 3, 'ANSWERED', 3, '', '1232637315.0', ''),
-('2009-01-22 16:15:52', '"6000" <6000>', '6000', 's', 'default', 'SIP/6000-091d65e8', '', 'BackGround', 'demo-congrats', 24, 23, 'ANSWERED', 3, '', '1232637352.1', ''),
-('2009-01-25 14:38:13', '"6000" <6000>', '6000', 's', 'default', 'SIP/6000-081a9840', '', 'BackGround', 'demo-congrats', 5, 4, 'ANSWERED', 3, '', '1232890693.0', ''),
-('2009-01-25 14:44:12', '"6005" <6005>', '6005', '#', 'default', 'SIP/6005-09813da8', '', 'Hangup', '', 11, 10, 'ANSWERED', 3, '', '1232891052.0', ''),
-('2009-01-25 14:47:46', '"6005" <6005>', '6005', '#', 'default', 'SIP/6005-0980e118', '', 'Hangup', '', 11, 10, 'ANSWERED', 3, '', '1232891266.3', ''),
-('2009-01-25 14:53:59', '"6006" <6006>', '6006', '#', 'default', 'SIP/6006-0981b5f8', '', 'Hangup', '', 12, 11, 'ANSWERED', 3, '', '1232891639.4', ''),
-('2009-01-25 15:02:10', '"6006" <6006>', '6006', '#', 'default', 'SIP/6006-08760108', '', 'Hangup', '', 11, 10, 'ANSWERED', 3, '', '1232892130.0', ''),
-('2009-01-25 15:02:31', '"6006" <6006>', '6006', 's', 'default', 'SIP/6006-08760108', '', 'WaitExten', '', 0, 0, 'ANSWERED', 3, '', '1232892151.1', ''),
-('2009-01-25 15:04:00', '"6005" <6005>', '6005', '#', 'default', 'SIP/6005-08760108', '', 'Hangup', '', 11, 10, 'ANSWERED', 3, '', '1232892240.2', ''),
-('2009-01-25 15:09:19', '"6001" <6001>', '6001', 's', 'default', 'SIP/6001-08767e40', '', 'BackGround', 'demo-congrats', 6, 5, 'ANSWERED', 3, '', '1232892559.3', ''),
-('2009-01-25 15:10:38', '"6006" <6006>', '6006', '#', 'default', 'SIP/6006-08762170', '', 'Hangup', '', 11, 10, 'ANSWERED', 3, '', '1232892638.6', ''),
-('2009-01-25 15:27:34', '"6006" <6006>', '6006', '#', 'default', 'SIP/6006-099f7c90', '', 'Hangup', '', 11, 10, 'ANSWERED', 3, '', '1232893654.0', ''),
-('2009-01-25 15:28:36', '"6006" <6006>', '6006', '#', 'default', 'SIP/6006-099f37e8', '', 'Hangup', '', 11, 10, 'ANSWERED', 3, '', '1232893716.1', ''),
-('2009-01-25 15:29:14', '"6006" <6006>', '6006', '#', 'default', 'SIP/6006-099f37e8', '', 'Hangup', '', 11, 10, 'ANSWERED', 3, '', '1232893754.2', ''),
-('2009-01-25 15:30:07', '"6006" <6006>', '6006', '#', 'default', 'SIP/6006-099f37e8', '', 'Hangup', '', 11, 10, 'ANSWERED', 3, '', '1232893807.3', ''),
-('2009-01-25 15:44:26', '"6006" <6006>', '6006', '#', 'default', 'SIP/6006-09a98198', '', 'Hangup', '', 11, 10, 'ANSWERED', 3, '', '1232894666.0', ''),
-('2009-01-25 15:47:58', '"6006" <6006>', '6006', '#', 'default', 'SIP/6006-088a7968', '', 'Hangup', '', 12, 11, 'ANSWERED', 3, '', '1232894878.0', ''),
-('2009-01-25 15:51:22', '"6006" <6006>', '6006', '#', 'default', 'SIP/6006-088a9710', '', 'Hangup', '', 11, 10, 'ANSWERED', 3, '', '1232895082.1', ''),
-('2009-01-25 15:53:53', '"6000" <6000>', '6000', '6005', 'default', 'SIP/6000-0958e5a0', 'SIP/6005-095939e0', 'Dial', 'SIP/6005|20|rt', 2, 0, 'BUSY', 3, '', '1232895233.0', ''),
-('2009-01-25 15:54:40', '"6000" <6000>', '6000', '6005', 'default', 'SIP/6000-0958c5f0', 'SIP/6005-0958e5a0', 'Dial', 'SIP/6005|20|rt', 51, 39, 'ANSWERED', 3, '', '1232895280.2', ''),
-('2009-01-25 15:57:02', '"6000" <6000>', '6000', '6006', 'default', 'SIP/6000-088591d0', 'SIP/6006-0885e3e0', 'Dial', 'SIP/6006|20|rt', 20, 0, 'NO ANSWER', 3, '', '1232895422.0', ''),
-('2009-01-25 16:04:22', '"6000" <6000>', '6000', '6006', 'default', 'SIP/6000-0a211500', 'SIP/6006-0a216ca8', 'Dial', 'SIP/6006|20|rt', 21, 14, 'ANSWERED', 3, '', '1232895862.0', ''),
-('2009-01-28 15:36:13', '"6005" <6005>', '6005', 's', 'default', 'SIP/6005-09fc0158', '', 'BackGround', 'demo-congrats', 3, 2, 'ANSWERED', 3, '', '1233153373.0', ''),
-('2009-01-28 15:37:37', '"6005" <6005>', '6005', 's', 'default', 'SIP/6005-09fc16e8', '', 'BackGround', 'demo-congrats', 3, 2, 'ANSWERED', 3, '', '1233153457.1', ''),
-('2009-02-05 14:34:57', '"Server" <6000>', '6000', '6008', 'DLPN_DialPlan1', 'SIP/6000-08c7a4d8', 'SIP/6008-08c7f348', 'Dial', 'SIP/6008|20|rt', 20, 0, 'NO ANSWER', 3, '', '1233840897.1', ''),
-('2009-02-05 14:36:01', '"Server" <6000>', '6000', '6003', 'DLPN_DialPlan1', 'SIP/6000-08c7ba68', 'SIP/6003-08c818b8', 'Dial', 'SIP/6003|20|rt', 16, 2, 'ANSWERED', 3, '', '1233840961.3', ''),
-('2009-02-05 14:37:10', '"Server" <6000>', '6000', '6003', 'DLPN_DialPlan1', 'SIP/6000-090be3e8', '', 'VoiceMail', '6003|u', 8, 8, 'ANSWERED', 3, '', '1233841030.0', ''),
 ('2009-02-05 14:38:02', '"Pierre Vandenbussche" <6003>', '6003', '6000', 'DLPN_DialPlan1', 'SIP/6003-090c47c8', '', 'VoiceMail', '6000|u', 5, 4, 'ANSWERED', 3, '', '1233841082.1', ''),
 ('2009-02-06 10:21:12', '"francois kan" <6020>', '6020', '6000', 'DLPN_DialPlan1', 'SIP/6020-086d2c48', 'SIP/6000-086e5620', 'VoiceMail', '6000|b', 10, 8, 'ANSWERED', 3, '', '1233912072.0', ''),
 ('2009-02-06 10:41:55', '"Server" <6000>', '6000', '6020', 'DLPN_DialPlan1', 'SIP/6000-086ab6d8', 'SIP/6020-086acc68', 'Dial', 'SIP/6020|20|rt', 30, 14, 'ANSWERED', 3, '', '1233913315.2', ''),
@@ -265,3 +238,13 @@ INSERT INTO `VOD_CATEGORY` (`ID`, `NAME`) VALUES
 (12, 'Vehicules'),
 (13, 'Vie pratique et style'),
 (14, 'Voyages et evenements');
+
+INSERT INTO `VOD_USER` (`ID`, `id_customer`,`LOGIN`,`PASSWORD`,`EMAIL`) VALUES
+(1, 1, 'isen', 'isen', 'isen@isen.fr');
+
+
+INSERT INTO `voip_line` (`id_voip_line`, `id_customer`, `name`, `host`, `call-limit`, `type`, `accountcode`, `amaflags`, `callgroup`, `callerid`, `cancallforward`, `canreinvite`, `context`, `defaultip`, `dtmfmode`, `fromuser`, `fromdomain`, `insecure`, `language`, `mailbox`, `md5secret`, `deny`, `permit`, `mask`, `musiconhold`, `pickupgroup`, `qualify`, `regexten`, `restrictcid`, `rtptimeout`, `rtpholdtimeout`, `secret`, `setvar`, `disallow`, `allow`, `fullcontact`, `ipaddr`, `port`, `regserver`, `regseconds`, `username`, `nat`, `visible`) VALUES
+(1, 1, '4000', 'dynamic', NULL, 'friend', NULL, NULL, NULL, '"francois kan" <4000>', NULL, NULL, 'DLPN_VOIP', NULL, 'rfc2833', NULL, NULL, NULL, 'fr', '4000', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, '1234', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, '4000', 'no', 0),
+(2, 1, '4001', 'dynamic', NULL, 'friend', NULL, NULL, NULL, '"valerie kan" <4000>', NULL, NULL, 'DLPN_voip', NULL, 'rfc2833', NULL, NULL, NULL, 'fr', '4001', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, '1234', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, '4001', 'no', 0);
+
+
