@@ -37,25 +37,7 @@
                 }
             }
             %>
-            
-
-
-
-           <!--zzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzz-->     
-            <%
-
-            if (customerSession != null) {
-                if (customerSession.getAttribute("Customer") != null) {
-                    CustomerTO customer = (CustomerTO) customerSession.getAttribute("Customer");
-                    if (customer.getValid()) {
-                        int accountLevel = customer.getAccountLevel();
-                        // 4 : client internet
-                        // 5 : client internet + Voip
-                        // 6 : client internet + VoD
-                        // 7 : client Triple play            
-                        if (!(accountLevel >= 4 && accountLevel < 7)) {
-
-                            %>
+       
         <h2>Souscrire à une offre internet</h2>
         
         <table width="100%" border="1">
@@ -72,15 +54,15 @@
             </tr>                            
             
             <%
-                            DAOFactory daoFactory = DAOFactory.getDAOFactory(DAOFactory.MYSQL);
-                            InternetSubscribeDAOInterface internetSubscribeDAO = daoFactory.getInternetSubscribeDAO();
+            DAOFactory daoFactory = DAOFactory.getDAOFactory(DAOFactory.MYSQL);
+            InternetSubscribeDAOInterface internetSubscribeDAO = daoFactory.getInternetSubscribeDAO();
 
-                            ArrayList<InternetSubscribeTO> internetSubscribeTOs = internetSubscribeDAO.selectAllInternetSubscribeTOs();
+            ArrayList<InternetSubscribeTO> internetSubscribeTOs = internetSubscribeDAO.selectAllInternetSubscribeTOs();
 
-                            Iterator it = internetSubscribeTOs.iterator();
+            Iterator it = internetSubscribeTOs.iterator();
 
-                            while (it.hasNext()) {
-                                InternetSubscribeTO internetSubscribeTO = (InternetSubscribeTO) it.next();
+            while (it.hasNext()) {
+                InternetSubscribeTO internetSubscribeTO = (InternetSubscribeTO) it.next();
             %>
             
             <tr><td><%=internetSubscribeTO.getId()%></td>
@@ -93,34 +75,17 @@
                         <input type='hidden' name='idInternet' value='<%=internetSubscribeTO.getId()%>'>                        
                 </form></td>
             </tr>
+            
             <%
-                            }//Fin du while  
-                        } //Fin du if accountLevel
-                    } //Fin du if getValid
 
-                } //Fin du if Attribut customer
+            }//Fin du while
 
-            } //Fin du if session
-%>        
+            %>
+            
         </table>
         
         
         
-        
-        <!--zzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzz-->  
-        <%
-
-            if (customerSession != null) {
-                if (customerSession.getAttribute("Customer") != null) {
-                    CustomerTO customer = (CustomerTO) customerSession.getAttribute("Customer");
-                    if (customer.getValid()) {
-                        int accountLevel = customer.getAccountLevel();
-                        // 1 : client Voip
-                        // 3 : client VoD + Voip
-                        // 5 : client internet + Voip                        
-                        // 7 : client Triple play            
-                        if (!(accountLevel == 1 || accountLevel == 3 || accountLevel == 5 || accountLevel == 7)) {
-        %>
         
         <h2>Souscrire à une offre Voip</h2>
         
@@ -140,17 +105,15 @@
             
             <%
 
-                            DAOFactory daoFactory = DAOFactory.getDAOFactory(DAOFactory.MYSQL);
+            VoipSubscribeDAOInterface voipSubscribeDAO = daoFactory.getVoipSubscribeDAO();
 
-                            VoipSubscribeDAOInterface voipSubscribeDAO = daoFactory.getVoipSubscribeDAO();
+            LinkedList<VoipSubscribeTO> voipSubscribeTOs = voipSubscribeDAO.selectAllVoipSubscribeTOs();
 
-                            LinkedList<VoipSubscribeTO> voipSubscribeTOs = voipSubscribeDAO.selectAllVoipSubscribeTOs();
+            ListIterator<VoipSubscribeTO> itVoip = voipSubscribeTOs.listIterator();
 
-                            ListIterator<VoipSubscribeTO> itVoip = voipSubscribeTOs.listIterator();
+            while (itVoip.hasNext()) {
 
-                            while (itVoip.hasNext()) {
-
-                                VoipSubscribeTO voipSubscribeTO = (VoipSubscribeTO) itVoip.next();
+                VoipSubscribeTO voipSubscribeTO = (VoipSubscribeTO) itVoip.next();
             %>
             
             <tr><td><%=voipSubscribeTO.getId()%></td>
@@ -163,34 +126,19 @@
                         <input type='hidden' name='idVoip' value='<%=voipSubscribeTO.getId()%>'>                       
                 </form></td>
             </tr>
+            
             <%
-                            }//Fin du while  
-                        } //Fin du if accountLevel
-                    } //Fin du if getValid
 
-                } //Fin du if Attribut customer
+            }//Fin du while
 
-            } //Fin du if session
-%>        
+            %>
+            
         </table>
         
         
         
         
-        <!--zzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzz-->  
-        <%
-
-            if (customerSession != null) {
-                if (customerSession.getAttribute("Customer") != null) {
-                    CustomerTO customer = (CustomerTO) customerSession.getAttribute("Customer");
-                    if (customer.getValid()) {
-                        int accountLevel = customer.getAccountLevel();
-                        // 2 : client VoD
-                        // 3 : client VoD + Voip
-                        // 6 : client internet + Voip                        
-                        // 7 : client Triple play            
-                        //if (!(accountLevel == 2 || accountLevel == 3 || accountLevel == 6 || accountLevel == 7)) {
-        %>
+        
         <h2>Souscrire à une offre Vod</h2>
         
         <table width="100%" border="1">
@@ -208,38 +156,33 @@
             
             <%
 
-                            DAOFactory daoFactory = DAOFactory.getDAOFactory(DAOFactory.MYSQL);
+            VodSubscribeDAOInterface vodSubscribeDAO = daoFactory.getVodSubscribeDAO();
 
-                            VodSubscribeDAOInterface vodSubscribeDAO = daoFactory.getVodSubscribeDAO();
+            LinkedList<VodSubscribeTO> vodSubscribeTOs = vodSubscribeDAO.selectAllVodSubscribeTOs();
 
-                            LinkedList<VodSubscribeTO> vodSubscribeTOs = vodSubscribeDAO.selectAllVodSubscribeTOs();
+            ListIterator<VodSubscribeTO> itVod = vodSubscribeTOs.listIterator();
 
-                            ListIterator<VodSubscribeTO> itVod = vodSubscribeTOs.listIterator();
+            while (itVod.hasNext()) {
 
-                            while (itVod.hasNext()) {
-
-                                VodSubscribeTO vodSubscribeTO = (VodSubscribeTO) itVod.next();
+                VodSubscribeTO vodSubscribeTO = (VodSubscribeTO) itVod.next();
             %>
             
             <tr><td><%=vodSubscribeTO.getId()%></td>
                 <td><%=vodSubscribeTO.getName()%></td>
                 <td><%=vodSubscribeTO.getDescription()%></td>            
                 <td><%=vodSubscribeTO.getType()%></td>
-                <td><%=vodSubscribeTO.getPrice()%></td>                
+                <td><%=vodSubscribeTO.getPrice()%></td>                 
                 <td><form method='post' action="CtrSubscribe">
                         <%= button_sabonne%>
                         <input type='hidden' name='idVod' value='<%=vodSubscribeTO.getId()%>'>                       
                 </form></td>
             </tr>
             <%
-                            }//Fin du while  
-                        //} //Fin du if accountLevel
-                    } //Fin du if getValid
 
-                } //Fin du if Attribut customer
+            }//Fin du while
 
-            } //Fin du if session
-%>        
+            %>
+            
         </table>
     </body>
 </html>
