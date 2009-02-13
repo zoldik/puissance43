@@ -141,6 +141,15 @@
     </servlet-mapping>    
     <!--zzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzz-->
     <servlet>
+        <servlet-name>SubscribesDisconnect.jsp</servlet-name>
+        <jsp-file>/account/SubscribesDisconnect.jsp</jsp-file>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>SubscribesDisconnect.jsp</servlet-name>
+        <url-pattern>/SubscribesDisconnect.jsp</url-pattern>
+    </servlet-mapping>        
+    <!--zzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzz-->
+    <servlet>
         <servlet-name>VerifLogin.jsp</servlet-name>
         <jsp-file>/account/VerifLogin.jsp</jsp-file>
     </servlet>
