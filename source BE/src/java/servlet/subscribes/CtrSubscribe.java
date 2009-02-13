@@ -2,8 +2,14 @@ package servlet.subscribes;
 
 import DAO.factory.DAOFactory;
 import DAO.interfaces.CustomerDAOInterface;
+import DAO.interfaces.InternetSubscribeDAOInterface;
+import DAO.interfaces.VodSubscribeDAOInterface;
+import DAO.interfaces.VoipSubscribeDAOInterface;
 import DAO.mySql.CustomerMySqlDAO;
 import DAO.transfertObject.CustomerTO;
+import DAO.transfertObject.InternetSubscribeTO;
+import DAO.transfertObject.VodSubscribeTO;
+import DAO.transfertObject.VoipSubscribeTO;
 import java.io.IOException;
 import java.io.PrintWriter;
 import javax.servlet.ServletException;
@@ -34,12 +40,40 @@ public class CtrSubscribe extends HttpServlet {
      */
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        
-        if (request.getParameter("addSubscribe") != null){
-            if (request.getParameter("addSubscribe") ==  "internet"){
+
+        response.setContentType("text/html");
+        PrintWriter writer = response.getWriter();
+        writer.println("<html>");
+        writer.println("<body>");
+        writer.println("<h1>POST</h1>");
+        writer.println("</body>");
+        writer.println("</html");
+
+        String addSubscribe = request.getParameter("addSubscribe");
+
+        if (addSubscribe != null) {
+            if (addSubscribe.equals("internet")) {
+                /*
+                writer.println("<html>");
+                writer.println("<body>");
+                writer.println("<h1>dans le if internet</h1>");
+                writer.println("</body>");
+                writer.println("</html");
+                 */
                 addInternetSubscribe(request, response);
             }
-        }
+            if (addSubscribe.equals("voip")) {
+                addVoipSubscribe(request, response);
+            }
+            if (addSubscribe.equals("vod")) {
+                addVodSubscribe(request, response);
+            }
+
+
+        }// Fin du if ("addSubscribe") != null     
+
+
+        //zzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzz
 
         if (request.getParameter("idInternet") != null) {
             updateInternetSubscribe(request, response);
@@ -52,16 +86,105 @@ public class CtrSubscribe extends HttpServlet {
         if (request.getParameter("idVod") != null) {
             updateVodSubscribe(request, response);
         }
-        
-        }
-    
-        
-    private void addInternetSubscribe(HttpServletRequest request, HttpServletResponse response) throws IOException{
+
+    }
+
+    private void addInternetSubscribe(HttpServletRequest request, HttpServletResponse response) throws IOException {
         HttpSession session = request.getSession();
 
-        response.setContentType("text/html;charset=UTF-8");
-        PrintWriter out = response.getWriter();
+        //Creation of the transfert object customer 
+        InternetSubscribeTO internetSubscribeTO = new InternetSubscribeTO();
+
+        //Set the attibutes of customerTO with parameters from the CreateCustomerAccount
+        internetSubscribeTO.setNameSubscribe(request.getParameter("name"));
+        internetSubscribeTO.setDescriptionSubscribe(request.getParameter("description"));
+        internetSubscribeTO.setPrice(Float.parseFloat(request.getParameter("price")));
+        internetSubscribeTO.setRate(request.getParameter("rate"));
+
+        DAOFactory daoFactory = DAOFactory.getDAOFactory(DAOFactory.MYSQL);
+        InternetSubscribeDAOInterface internetSubscribeDAO = daoFactory.getInternetSubscribeDAO();
+
+        String error = internetSubscribeDAO.insertInternetSubscribe(internetSubscribeTO);
+    /*
+    response.setContentType("text/html");
+    PrintWriter writer = response.getWriter();
+    writer.println("<html>");
+    writer.println("<body>");
+    writer.println("<h1>addInternetSubscribe</h1>");
+    //writer.println(request.getParameter("rate") + " " + request.getParameter("price"));
+    writer.println(error);
+    writer.println("</body>");
+    writer.println("</html");
+     */
+
+        //Ajouter un truc pour confirmer une request pour l'ajax
+        response.sendRedirect("./AddSubscribes.jsp");
     }
+
+    
+    private void addVoipSubscribe(HttpServletRequest request, HttpServletResponse response) throws IOException {
+    
+         //Creation of the transfert object customer 
+        VoipSubscribeTO voipSubscribeTO = new VoipSubscribeTO();
+        
+        //Set the attibutes of customerTO with parameters from the CreateCustomerAccount
+        voipSubscribeTO.setName(request.getParameter("name"));
+        voipSubscribeTO.setDescription(request.getParameter("description"));
+        voipSubscribeTO.setPrice(Float.parseFloat(request.getParameter("price")));
+        voipSubscribeTO.setType(request.getParameter("type"));
+        
+        DAOFactory daoFactory = DAOFactory.getDAOFactory(DAOFactory.MYSQL);
+        VoipSubscribeDAOInterface voipSubscribeDAO = daoFactory.getVoipSubscribeDAO();
+        
+        String error = voipSubscribeDAO.insertVoipSubscribe(voipSubscribeTO);
+        
+    /*    
+    response.setContentType("text/html");
+    PrintWriter writer = response.getWriter();
+    writer.println("<html>");
+    writer.println("<body>");
+    writer.println("<h1>addVoipSubscribe</h1>");
+    //writer.println(request.getParameter("rate") + " " + request.getParameter("price"));
+    writer.println(error);
+    writer.println("</body>");
+    writer.println("</html");
+    */ 
+    
+        response.sendRedirect("./AddSubscribes.jsp");
+    }
+    
+    
+    private void addVodSubscribe(HttpServletRequest request, HttpServletResponse response) throws IOException {
+    
+         //Creation of the transfert object customer 
+        VodSubscribeTO vodSubscribeTO = new VodSubscribeTO();
+        
+        //Set the attibutes of customerTO with parameters from the CreateCustomerAccount
+        vodSubscribeTO.setName(request.getParameter("name"));
+        vodSubscribeTO.setDescription(request.getParameter("description"));
+        vodSubscribeTO.setPrice(Float.parseFloat(request.getParameter("price")));
+        vodSubscribeTO.setType(request.getParameter("type"));
+        
+        DAOFactory daoFactory = DAOFactory.getDAOFactory(DAOFactory.MYSQL);
+        VodSubscribeDAOInterface vodSubscribeDAO = daoFactory.getVodSubscribeDAO();
+        
+        String error = vodSubscribeDAO.insertVodSubscribe(vodSubscribeTO);
+        
+    /*    
+    response.setContentType("text/html");
+    PrintWriter writer = response.getWriter();
+    writer.println("<html>");
+    writer.println("<body>");
+    writer.println("<h1>addVodSubscribe</h1>");
+    //writer.println(request.getParameter("rate") + " " + request.getParameter("price"));
+    writer.println(error);
+    writer.println("</body>");
+    writer.println("</html");
+    */
+    
+        response.sendRedirect("./AddSubscribes.jsp");
+    }
+    
     
     private void updateInternetSubscribe(HttpServletRequest request, HttpServletResponse response) throws IOException {
 
@@ -105,7 +228,7 @@ public class CtrSubscribe extends HttpServlet {
         } //Fin du if idInternet
 
     }
-    
+
     private void updateVoipSubscribe(HttpServletRequest request, HttpServletResponse response) throws IOException {
 
         HttpSession session = request.getSession();
@@ -149,7 +272,7 @@ public class CtrSubscribe extends HttpServlet {
         } //Fin du if idInternet
 
     }
-    
+
     private void updateVodSubscribe(HttpServletRequest request, HttpServletResponse response) throws IOException {
 
         HttpSession session = request.getSession();

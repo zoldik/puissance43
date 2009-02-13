@@ -8,7 +8,8 @@ import java.util.LinkedList;
  * @author vincent
  */
 public interface VoipSubscribeDAOInterface {
-    
-    public LinkedList<VoipSubscribeTO> selectAllVoipSubscribeTOs();
 
+    public String insertVoipSubscribe(VoipSubscribeTO voipSubscribeTO);
+
+    public LinkedList<VoipSubscribeTO> selectAllVoipSubscribeTOs();
 }

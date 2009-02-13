@@ -8,7 +8,8 @@ import java.util.ArrayList;
  * @author vincent
  */
 public interface InternetSubscribeDAOInterface {
-    
-    public ArrayList<InternetSubscribeTO> selectAllInternetSubscribeTOs();
 
+    public String insertInternetSubscribe(InternetSubscribeTO internetSubscribeTO);
+
+    public ArrayList<InternetSubscribeTO> selectAllInternetSubscribeTOs();
 }

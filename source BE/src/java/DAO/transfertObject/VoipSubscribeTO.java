@@ -9,8 +9,10 @@ public class VoipSubscribeTO {
     private int id;
     private String name;
     private String description;
+    
     //per month
-    private String price;    //private String overload;
+    private float price;    
+    
     //type : particulier ou professionnel
     private String type;
     //**********************************
@@ -28,7 +30,7 @@ public class VoipSubscribeTO {
         return name;
     }
 
-    public String getPrice() {
+    public float getPrice() {
         return price;
     }
 
@@ -50,7 +52,7 @@ public class VoipSubscribeTO {
         this.name = name;
     }
 
-    public void setPrice(String price) {
+    public void setPrice(float price) {
         this.price = price;
     }
 

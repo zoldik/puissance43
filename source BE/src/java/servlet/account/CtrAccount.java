@@ -116,7 +116,20 @@ public class CtrAccount extends javax.servlet.http.HttpServlet {
 
                 //Put in the BDD
                 String error = customerDAO.insertCustomer(customerTO, addressTO);
-
+                
+                /*
+                response.setContentType("text/html");
+                PrintWriter writer = response.getWriter();
+                writer.println("<html>");
+                writer.println("<head>");
+                writer.println("<title>Hello World Application Servlet Page</title>");
+                writer.println("<head>");
+                writer.println("<body>");
+                writer.println(error);
+                writer.println("</body>");
+                writer.println("</html");
+                 */
+                
                 //Send confirmation mail
                 Mail mail = new Mail();
                 mail.setSubject("Bienvenu sur ProjectRSS");
@@ -131,18 +144,7 @@ public class CtrAccount extends javax.servlet.http.HttpServlet {
                     Logger.getLogger(CtrAccount.class.getName()).log(Level.SEVERE, null, ex);
                 }
 
-                /*
-                response.setContentType("text/html");
-                PrintWriter writer = response.getWriter();
-                writer.println("<html>");
-                writer.println("<head>");
-                writer.println("<title>Hello World Application Servlet Page</title>");
-                writer.println("<head>");
-                writer.println("<body>");
-                writer.println(error);
-                writer.println("</body>");
-                writer.println("</html");
-                 */
+                
 
                 session.setAttribute("CreateCustomerAccount", "registered");
 
