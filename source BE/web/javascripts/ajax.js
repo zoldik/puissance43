@@ -1,5 +1,3 @@
-
-    
 function updateDivContent(divName, text)
 {
 	document.getElementById(divName).innerHTML = text;
