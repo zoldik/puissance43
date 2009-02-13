@@ -40,7 +40,11 @@ public interface CustomerDAOInterface {
 
     public boolean updateCustomer();
     
-    public String updateCustomerInternetSubscribe(int idCustomer, int idInternetSubscribe);    
+    public String updateCustomerInternetSubscribe(int idCustomer, int idInternetSubscribe);
+    
+    public String updateCustomerVoipSubscribe(int idCustomer, int idVoipSubscribe); 
+    
+    public String updateCustomerVodSubscribe(int idCustomer, int idVodSubscribe); 
 
     public boolean validAccount(int id);
 }
