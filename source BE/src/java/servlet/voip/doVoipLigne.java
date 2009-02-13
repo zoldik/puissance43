@@ -4,7 +4,6 @@
  */
 
 package servlet.voip;
-import model.database.*;
 import model.voip.*;
 import java.io.IOException;
 import java.io.PrintWriter;
