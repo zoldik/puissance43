@@ -44,7 +44,8 @@
             
             <!-- titles -->
             <tr style="color:white">
-                <tr>          
+                <tr>
+                    <th>N°</th>
                     <th>Nom</th>
                     <th>Description</th>          
                     <th>Prix (parMois)</th>
@@ -93,7 +94,8 @@
             
             <!-- titles -->
             <tr style="color:white">
-                <tr>          
+                <tr>
+                    <th>N°</th>
                     <th>Nom</th>
                     <th>Description</th>    
                     <th>Type</th>
@@ -145,7 +147,8 @@
             
             <!-- titles -->
             <tr style="color:white">
-                <tr>          
+                <tr>
+                    <th>N°</th>
                     <th>Nom</th>
                     <th>Description</th>    
                     <th>Type</th>
