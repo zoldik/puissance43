@@ -10,7 +10,7 @@ public class InternetSubscribeTO {
     private String nameSubscribe;
     private String descriptionSubscribe;
     //per month
-    private String price;    //private String overload;
+    private float price;    //private String overload;
     //debit
     private String rate;
     //**********************************
@@ -28,7 +28,7 @@ public class InternetSubscribeTO {
         return nameSubscribe;
     }
 
-    public String getPrice() {
+    public float getPrice() {
         return price;
     }
 
@@ -52,7 +52,7 @@ public class InternetSubscribeTO {
         this.nameSubscribe = nameSubscribe;
     }
 
-    public void setPrice(String price) {
+    public void setPrice(float price) {
         this.price = price;
     }
 

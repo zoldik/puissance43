@@ -10,7 +10,7 @@ public class VodSubscribeTO {
     private String name;
     private String description;
     //per month
-    private String price;    //private String overload;
+    private float price;    //private String overload;
     //type : particulier ou professionnel
     private String type;
 
@@ -29,7 +29,7 @@ public class VodSubscribeTO {
         return name;
     }
 
-    public String getPrice() {
+    public float getPrice() {
         return price;
     }
 
@@ -51,7 +51,7 @@ public class VodSubscribeTO {
         this.name = name;
     }
 
-    public void setPrice(String price) {
+    public void setPrice(float price) {
         this.price = price;
     }
 

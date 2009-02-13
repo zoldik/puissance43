@@ -9,6 +9,8 @@ import java.util.LinkedList;
  */
 public interface VodSubscribeDAOInterface {
     
+    public String insertVodSubscribe(VodSubscribeTO vodSubscribeTO);
+    
     public LinkedList<VodSubscribeTO> selectAllVodSubscribeTOs();
 
 }
