@@ -33,8 +33,7 @@ public class Annuaire {
     
     public void sortBy (String name){
         /*
-        List l = annuaire;
-        Comparator c = annuaire ;
+        List l = annuaire.;
         Collections.sort(l, );
         */
     }

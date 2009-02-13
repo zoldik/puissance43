@@ -255,7 +255,7 @@ public class LineMySqlDAO extends MySqlGeneralObjectDAO implements LineDAOInterf
             while (rs.next()) {
                 LineTO li = new LineTO();
 
-                li.setid(rs.getString("VOIP_LIGNE_ID"));
+                li.setid(rs.getString("id_voip_line"));
                 li.setaccountcode(rs.getString("accountcode"));
                 li.setallow(rs.getString("allow"));
                 li.setamaflags(rs.getString("amaflags"));

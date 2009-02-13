@@ -38,7 +38,7 @@ public class doVoipLigne extends HttpServlet {
     }
     
     private boolean delete(String id) {
-            return VoipLigneDAO.deleteLigneById(id);
+            return true;//VoipLigneDAO.deleteLigneById(id);
     }
     
 

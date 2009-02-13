@@ -39,7 +39,7 @@ public class addVoipLigne extends HttpServlet {
             String type = request.getParameter("type");
             String host = request.getParameter("host");
             
-            VoipLigneDAO.insert(id, name, host, type, context,"rfc2833","en", mailbox, host, username);
+            //VoipLigneDAO.insert(id, name, host, type, context,"rfc2833","en", mailbox, host, username);
             
             out.println("enregistrement effectué!<br/>");
             out.println("<a href=\"./userManagement.jsp\"></a>");

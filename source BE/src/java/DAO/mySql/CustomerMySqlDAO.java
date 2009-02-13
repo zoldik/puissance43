@@ -373,7 +373,8 @@ public class CustomerMySqlDAO extends MySqlGeneralObjectDAO implements CustomerD
     }
 
     public LinkedList<CustomerTO> selectAllCustomersTO() {
-        LinkedList<CustomerTO> customerTOs = null;
+        
+        LinkedList<CustomerTO> customerTOs = new LinkedList<CustomerTO>();
 
         Connection conn = (Connection) getConnectionWithJNDI();
         Statement st = null;
