@@ -446,8 +446,7 @@ create table voip_voicemessages
   `recording` longblob,
   `mailbox` varchar(80) NOT NULL default '''''',
   PRIMARY KEY  (`id_voip_voicemessages`),
-  KEY `dir` (`dir`)
-) ENGINE=InnoDB DEFAULT CHARSET=latin1 AUTO_INCREMENT=1 ;
+) 
 
 
 
