@@ -54,6 +54,8 @@ DROP TABLE IF EXISTS `VOD_MARK`;
 
 DROP TABLE IF EXISTS `VOD_PLAYLIST`;
 
+drop table if exists vod_subscribe ;
+
 DROP TABLE IF EXISTS `VOD_TAG`;
 
 DROP TABLE IF EXISTS `VOD_TAG_IN_VIDEO`;
@@ -73,6 +75,8 @@ drop table if exists voip_call;
 drop table if exists voip_contact;
 
 drop table if exists voip_line;
+
+drop table if exists voip_voicemessages;
 
 drop table if exists voip_rss;
 
