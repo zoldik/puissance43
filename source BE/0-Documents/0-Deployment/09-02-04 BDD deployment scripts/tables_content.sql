@@ -45,7 +45,15 @@ VALUES
 (NULL ,'',NULL ,'Utilisateur','TriplePlay','user7','pwd7','albert.einstein@redneck.fr','M', '19/03/1950','03 20 00 76 43','06 12 58 37 29','physicien','relativeCoporation',7,1),
 (NULL ,'',NULL ,'Admin','VoIP','admin1','admin1','admin1@redneck.fr','M', '19/03/1950','03 20 00 76 43','06 12 58 37 29','physicien','relativeCoporation',8,1);
 
-
+INSERT INTO `voip_rss` (
+`id_voip_rss` ,
+`id_voidline` ,
+`url` ,
+`update_rss`
+) VALUES
+(1, 1, 'rss_voip_line_6007.xml', 1 ),
+(2, 3, 'rss_voip_line_6006.xml', 0 ),
+(3, 6, 'rss_voip_line_6026.xml', 1 );
 
 
 INSERT INTO `internet_subscribe` (
