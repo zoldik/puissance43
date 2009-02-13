@@ -44,6 +44,9 @@ public class CtrAccount extends javax.servlet.http.HttpServlet {
         customerTO.setBirthday(request.getParameter("birthday"));
         customerTO.setPhone(request.getParameter("phone"));
         customerTO.setCellPhone(request.getParameter("cellPhone"));
+        
+        //By default, set account level to 0
+        customerTO.setAccountLevel(0);
 
         //Creation of the transfert object customer
         AddressTO addressTO = new AddressTO();

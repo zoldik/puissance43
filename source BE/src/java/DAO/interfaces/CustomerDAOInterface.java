@@ -7,7 +7,6 @@ import java.util.LinkedList;
 
 import javax.sql.RowSet;
 
-
 /**Interface customerDAO is a part of DAO pattern.
  * 
  * The CustomerDAO interface shown in Example 9.3 defines the DAO methods for Customer
@@ -18,28 +17,30 @@ import javax.sql.RowSet;
 public interface CustomerDAOInterface {
 
     public boolean deleteCustomer();
-    
+
     public CustomerTO findCustomer();
-    
-    public CustomerTO findCustomerById(int id);
-    
-    public CustomerTO findCustomerByLogin(String login);
-    
+
     public CustomerTO findCustomer(String login, String password);
     
+    public CustomerTO findCustomerById(int id);
+
+    public CustomerTO findCustomerByLogin(String login);    
+
     public String insertCustomer(CustomerTO customerTO, AddressTO addressTO);
- 
+
+    public boolean isAllowed(String login, String password);
+
     public boolean isLoginUsed(String login);
+
+    public boolean isValidEmail(String login, String email);
 
     public RowSet selectAllCustomersRS();
 
     public LinkedList<CustomerTO> selectAllCustomersTO();
-    
+
     public boolean updateCustomer();
     
-    public boolean isAllowed(String login, String password);
-    
+    public String updateCustomerInternetSubscribe(int idCustomer, int idInternetSubscribe);    
+
     public boolean validAccount(int id);
-    
-    public boolean isValidEmail(String login, String email);
 }

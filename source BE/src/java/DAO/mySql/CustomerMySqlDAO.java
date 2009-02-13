@@ -14,7 +14,6 @@ import java.sql.SQLException;
 import java.sql.Statement;
 import javax.sql.RowSet;
 
-
 /** *CloudscapeCustomerDAO implementation of the 
 // CustomerDAO interface. 
  * 
@@ -32,8 +31,7 @@ public class CustomerMySqlDAO extends MySqlGeneralObjectDAO implements CustomerD
     public CustomerMySqlDAO() {
         //initialization
     }
-    // The following methods can use MySqlDAOFactory.createConnection() 
-    // to get a connection as required
+
     public boolean deleteCustomer() {
         boolean isOk = true;
 
@@ -54,8 +52,39 @@ public class CustomerMySqlDAO extends MySqlGeneralObjectDAO implements CustomerD
 
         return customer;
     }
-    
-    
+
+    public CustomerTO findCustomer(String login, String password) {
+
+        //Return object
+        CustomerTO customer = new CustomerTO();
+
+        //Connexion to the database with JNDI 
+        Connection conn = (Connection) getConnectionWithJNDI();
+
+        //transaction or sequence of queries
+        PreparedStatement pSt = null;
+
+        //result of the queries
+        ResultSet rs = null;
+
+        try {
+
+            if (isAllowed(login, password)) {
+                customer = findCustomerByLogin(login);
+
+            }
+
+
+        } catch (Exception e) {
+            e.printStackTrace();
+        } finally {
+            closeRsAndSt(rs, pSt);
+        }
+        closeConnection(conn);
+
+        return customer;
+    }
+
     public CustomerTO findCustomerById(int id) {
 
         Integer idInteger = new Integer(id);
@@ -73,16 +102,17 @@ public class CustomerMySqlDAO extends MySqlGeneralObjectDAO implements CustomerD
         ResultSet rs = null;
 
         try {
-            boolean okay=false;
+            boolean okay = false;
             pSt = conn.prepareStatement("SELECT * FROM `customer` WHERE `id_customer` = ? ");
             pSt.setString(1, idInteger.toString());
             rs = pSt.executeQuery();
 
-            if (rs.next()==true)
-                {okay=true;}
-                else 
-                {okay=false;}
-            
+            if (rs.next() == true) {
+                okay = true;
+            } else {
+                okay = false;
+            }
+
             if (okay) {
                 customer.setId(rs.getInt("id_customer"));
                 customer.setFirstName(rs.getString("first_name"));
@@ -99,7 +129,7 @@ public class CustomerMySqlDAO extends MySqlGeneralObjectDAO implements CustomerD
                 customer.setAccountLevel(rs.getInt("account_level"));
                 customer.setValid(rs.getBoolean("valid"));
             }
-            
+
 
         } catch (Exception e) {
             e.printStackTrace();
@@ -110,7 +140,7 @@ public class CustomerMySqlDAO extends MySqlGeneralObjectDAO implements CustomerD
 
         return customer;
     }
-    
+
     public CustomerTO findCustomerByLogin(String login) {
 
         //Return object
@@ -126,20 +156,21 @@ public class CustomerMySqlDAO extends MySqlGeneralObjectDAO implements CustomerD
         ResultSet rs = null;
 
         try {
-            boolean okay=false;
+            boolean okay = false;
             pSt = conn.prepareStatement("SELECT * FROM `customer` WHERE `login` = ? ");
             pSt.setString(1, login);
             rs = pSt.executeQuery();
 
-            if (rs.next()==true)
-                {okay=true;}
-                else 
-                {okay=false;}
-            
+            if (rs.next() == true) {
+                okay = true;
+            } else {
+                okay = false;
+            }
+
             if (okay) {
                 customer = findCustomerById(rs.getInt("id_customer"));
             }
-            
+
 
         } catch (Exception e) {
             e.printStackTrace();
@@ -150,40 +181,6 @@ public class CustomerMySqlDAO extends MySqlGeneralObjectDAO implements CustomerD
 
         return customer;
     }
-    
-    
-    public CustomerTO findCustomer(String login, String password) {
-
-        //Return object
-        CustomerTO customer = new CustomerTO();
-
-        //Connexion to the database with JNDI 
-        Connection conn = (Connection) getConnectionWithJNDI();
-
-        //transaction or sequence of queries
-        PreparedStatement pSt = null;
-
-        //result of the queries
-        ResultSet rs = null;
-
-        try {
-            
-            if (isAllowed(login,password)) {
-                customer = findCustomerByLogin(login);
-                
-            }
-            
-
-        } catch (Exception e) {
-            e.printStackTrace();
-        } finally {
-            closeRsAndSt(rs, pSt);
-        }
-        closeConnection(conn);
-
-        return customer;
-    }
-    
 
     public String insertCustomer(CustomerTO customerTO, AddressTO addressTO) {
 
@@ -198,10 +195,10 @@ public class CustomerMySqlDAO extends MySqlGeneralObjectDAO implements CustomerD
 
         //transaction or sequence of queries
         Statement st = null;
-        
+
         //result of the queries
         ResultSet rs = null;
-        
+
         //IMPORTANT
         //name column between `` 
         //value between ' or "/ 
@@ -209,43 +206,43 @@ public class CustomerMySqlDAO extends MySqlGeneralObjectDAO implements CustomerD
         //Il y a 4 champs sur les 6 que contient la table address. En effet :
         //Pas de `id_address`, the field is on auto_increment;
         //Pas de `type_address`
-        
+
         //version1
         /*
         String insertAddress = "INSERT INTO `address` ( `street` , `postal_code` , `city` , `country` ) ";
-
+        
         String valuesAddress = "VALUES ( '111, avenue Roger Salengro' , '59 160' , 'LOMME' , 'FRANCE' ) ";
-    
+        
         
         insertAddress += valuesAddress;
-        */
-        
+         */
+
         String insertAddress = "INSERT INTO `address` ( `street` , `postal_code` , `city` , `country` ) ";
 
         String valuesAddress = "VALUES ( " + "'" + addressTO.getStreet() + "','" + addressTO.getPostalCode() +
                 "','" + addressTO.getCity() + "','" + addressTO.getCountry() + "');";
-    
-        
+
+
         insertAddress += valuesAddress;
-        
+
         try {
             st = conn.createStatement();
-            st.executeUpdate(insertAddress);            
+            st.executeUpdate(insertAddress);
         } catch (SQLException e) {
             System.out.println("SqlException : " + e);
             //error = -1;
             error = e.toString();
         }
-        
-        String selectId = "SELECT `id_address` FROM `address` WHERE `street` = '" + addressTO.getStreet() + "' AND `postal_code` ='" + 
-                addressTO.getPostalCode() + "' AND `city` = '" + addressTO.getCity() + "' AND `country` = '"+ addressTO.getCountry() + 
+
+        String selectId = "SELECT `id_address` FROM `address` WHERE `street` = '" + addressTO.getStreet() + "' AND `postal_code` ='" +
+                addressTO.getPostalCode() + "' AND `city` = '" + addressTO.getCity() + "' AND `country` = '" + addressTO.getCountry() +
                 "' LIMIT 0 , 30";
-        
+
         String idAddress = null;
         try {
             st = conn.createStatement();
             rs = st.executeQuery(selectId);
-            
+
             rs.next();
             idAddress = rs.getString("id_address");
         } catch (SQLException e) {
@@ -253,8 +250,8 @@ public class CustomerMySqlDAO extends MySqlGeneralObjectDAO implements CustomerD
             //error = -1;
             error = e.toString();
         }
-        
-        
+
+
         //Il y a 13 champs sur les 15 que contient la table customer. En effet :
         //Pas de `id_customer`, the field is on auto_increment;
         //Pas de `id_internet_subscribe` 
@@ -293,10 +290,10 @@ public class CustomerMySqlDAO extends MySqlGeneralObjectDAO implements CustomerD
         
         insert += ") " + values + ");";
          */
-        
+
         try {
             st = conn.createStatement();
-            st.executeUpdate(insertCustomer);            
+            st.executeUpdate(insertCustomer);
         } catch (SQLException e) {
             System.out.println("SqlException : " + e);
             //error = -1;
@@ -310,6 +307,49 @@ public class CustomerMySqlDAO extends MySqlGeneralObjectDAO implements CustomerD
         // Return newly created customer number
         // or a -1 on error    
         return error;
+    }
+
+    public boolean isAllowed(String login, String password) {
+
+        //Return object
+        boolean isAllowed = false;
+
+        //Connexion to the database with JNDI 
+        Connection conn = (Connection) getConnectionWithJNDI();
+
+        //transaction or sequence of queries
+        Statement st = null;
+
+        //result of the queries
+        ResultSet rs = null;
+
+        try {
+
+            st = conn.createStatement();
+            rs = st.executeQuery("select * from customer where (login='" + login + "' and password='" + password + "')");
+
+            //rs.beforeFirst();
+
+            if (rs.next() == true) {
+                //The login is already used
+                isAllowed = true;
+            } else {
+                isAllowed = false;
+            }
+
+
+        } catch (Exception e) {
+
+            System.out.println("Exception" + e);
+            e.printStackTrace();
+
+        } finally {
+
+            closeRsAndSt(rs, st);
+
+        }
+        closeConnection(conn);
+        return isAllowed;
     }
 
     /** Verifie si l'utilisateur passé en argument existe dans la DB
@@ -361,10 +401,43 @@ public class CustomerMySqlDAO extends MySqlGeneralObjectDAO implements CustomerD
         return isUsed;
     }
 
-    public RowSet selectAllCustomersRS() {
-        
+    public boolean isValidEmail(String login, String email) {
+        boolean okay = false;
+
+        //Connexion to the database with JNDI 
         Connection conn = (Connection) getConnectionWithJNDI();
-        
+
+        Statement st = null;
+
+        //result of the queries
+        ResultSet rs = null;
+
+        try {
+            st = conn.createStatement();
+            rs = st.executeQuery("select * from customer where (login='" + login + "' and mail='" + email + "');");
+
+            //rs.beforeFirst();
+
+            if (rs.next() == true) {
+                //The login is already used
+                okay = true;
+            } else {
+                okay = false;
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+        } finally {
+            closeRsAndSt(rs, st);
+        }
+        closeConnection(conn);
+
+        return okay;
+    }
+
+    public RowSet selectAllCustomersRS() {
+
+        Connection conn = (Connection) getConnectionWithJNDI();
+
         Statement st = null;
         RowSet rs = null;
 
@@ -401,11 +474,11 @@ public class CustomerMySqlDAO extends MySqlGeneralObjectDAO implements CustomerD
                 cu.setProfession(rs.getString("profession"));
                 cu.setSexe(rs.getString("sexe"));
                 cu.setValid(rs.getBoolean("valid"));
-                
-                customerTOs.add(cu);                
-                
+
+                customerTOs.add(cu);
+
             }
-            
+
         } catch (Exception e) {
             System.out.println("Exception" + e);
             e.printStackTrace();
@@ -426,18 +499,11 @@ public class CustomerMySqlDAO extends MySqlGeneralObjectDAO implements CustomerD
 
         return isOk;
     }
-    
-    /** Vérifie si le login et le password correspondent
-     * 
-     * @param login
-     * @param password
-     * @return boolean
-     * @throws java.lang.Exception
-     */
-    public boolean isAllowed(String login, String password) {
 
-        //Return object
-        boolean isAllowed = false;
+    public String updateCustomerInternetSubscribe(int idCustomer, int idInternetSubscribe) {
+
+        //int error = 0;
+        String error = "pas d'erreur";
 
         //Connexion to the database with JNDI 
         Connection conn = (Connection) getConnectionWithJNDI();
@@ -445,56 +511,45 @@ public class CustomerMySqlDAO extends MySqlGeneralObjectDAO implements CustomerD
         //transaction or sequence of queries
         Statement st = null;
 
-        //result of the queries
-        ResultSet rs = null;
+        String update = "UPDATE `RedNeck`.`customer` SET `id_internet_subscribe` = '" + idInternetSubscribe + "' WHERE `customer`.`id_customer` =" +
+                idCustomer + " LIMIT 1 ;";
 
         try {
-
             st = conn.createStatement();
-            rs = st.executeQuery("select * from customer where (login='" + login + "' and password='"+password+"')");
-
-            //rs.beforeFirst();
-
-            if (rs.next() == true) {
-                //The login is already used
-                isAllowed = true;
-            } else {
-                isAllowed = false;
-            }
-
-
-        } catch (Exception e) {
-
-            System.out.println("Exception" + e);
-            e.printStackTrace();
-
-        } finally {
-
-            closeRsAndSt(rs, st);
-
+            st.executeUpdate(update);
+        } catch (SQLException e) {
+            System.out.println("SqlException : " + e);
+            error = e.toString();
         }
+
         closeConnection(conn);
-        return isAllowed;
+          
+        return error;
     }
-    
-    
-    
+
+    /** Vérifie si le login et le password correspondent
+     * 
+     * @param login
+     * @param password
+     * @return boolean
+     * @throws java.lang.Exception
+     */
     public boolean validAccount(int id) {
-        
-        boolean okay=true;
+
+        boolean okay = true;
 
         //Connexion to the database with JNDI 
         Connection conn = (Connection) getConnectionWithJNDI();
-        
+
         Statement st = null;
 
         //result of the queries
         ResultSet rs = null;
 
         try {
-            st=conn.createStatement();
-            st.executeUpdate("update customer set valid=1 where id_customer=\""+id+"\";");
-            
+            st = conn.createStatement();
+            st.executeUpdate("update customer set valid=1 where id_customer=\"" + id + "\";");
+
         } catch (Exception e) {
             e.printStackTrace();
         } finally {
@@ -504,44 +559,4 @@ public class CustomerMySqlDAO extends MySqlGeneralObjectDAO implements CustomerD
 
         return okay;
     }
-    
-         /** Vérifie qu'un email correspond à un login donné
-      * @param login
-      * @param email
-      * @return boolean
-      */
-    public boolean isValidEmail(String login, String email)
-    {
-        boolean okay=false;
-
-        //Connexion to the database with JNDI 
-        Connection conn = (Connection) getConnectionWithJNDI();
-        
-        Statement st = null;
-
-        //result of the queries
-        ResultSet rs = null;
-
-        try {
-            st=conn.createStatement();
-            rs = st.executeQuery("select * from customer where (login='"+login+"' and mail='"+email+"');");
-
-            //rs.beforeFirst();
-
-            if (rs.next() == true) {
-                //The login is already used
-                okay = true;
-            } else {
-                okay = false;
-            }
-        } catch (Exception e) {
-            e.printStackTrace();
-        } finally {
-            closeRsAndSt(rs, st);
-        }
-        closeConnection(conn);
-
-        return okay;
-    }
-    
 }

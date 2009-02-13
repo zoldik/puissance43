@@ -1,5 +1,8 @@
 package servlet.account;
 
+import DAO.factory.DAOFactory;
+import DAO.interfaces.CustomerDAOInterface;
+import DAO.mySql.CustomerMySqlDAO;
 import DAO.transfertObject.CustomerTO;
 import java.io.IOException;
 import java.io.PrintWriter;
@@ -21,8 +24,7 @@ public class CtrSubscribe extends HttpServlet {
      * @param response servlet response
      */
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
-            throws ServletException, IOException {
-    }
+            throws ServletException, IOException {}
 
     /** 
      * Handles the HTTP <code>POST</code> method.
@@ -38,40 +40,49 @@ public class CtrSubscribe extends HttpServlet {
          HttpSession session = request.getSession();
 
         if (request.getParameter("idInternet") != null) {
-            String idInternet = request.getParameter("idInternet");
+            String idInternetSubscribe = request.getParameter("idInternet");
+            int idIS = Integer.parseInt(idInternetSubscribe);
 
-            try {
+            
+           
+            
+            if (session.getAttribute("Customer") != null){
+                CustomerTO customerTO = (CustomerTO) session.getAttribute("Customer");
+                
+                int idCustomer = customerTO.getId();
+                
+                DAOFactory daoFactory = DAOFactory.getDAOFactory(DAOFactory.MYSQL);
+                CustomerDAOInterface customerDAO = daoFactory.getCustomerDAO();
+                
+                String error = customerDAO.updateCustomerInternetSubscribe(idCustomer, idIS);
+                
+                try {
                 //TODO output your page here
                 out.println("<html>");
                 out.println("<head>");
                 out.println("<title>Servlet CtrSubscribe</title>");
                 out.println("</head>");
                 out.println("<body>");
-                out.println("<h1>TEST</h1>");
-                out.println("<h1>" + idInternet + "</h1>");
-                //out.println("<h1>" + idVoip + "</h1>");
-                //out.println("<h1>" + idVod + "</h1>");
+                out.println("<h1>"+ error +", vous avez bien souscrit à l'abonnement suivant :</h1>");
+                
+                out.println("<h1>" + idInternetSubscribe + "</h1>");
+                
                 out.println("</body>");
                 out.println("</html>");
 
             } finally {
                 out.close();
             }
-            
-            if (session.getAttribute("Customer") != null){
-                CustomerTO customerTO = (CustomerTO) session.getAttribute("Customer");
                 
-                int idCustomer = customerTO.getId();
             }
             
-            //UPDATE `RedNeck`.`customer` SET `id_internet_subscribe` = '3' WHERE `customer`.`id_customer` =1 LIMIT 1 ;
             
             //CustomerTO customerObject =(CustomerTO)CustomerSession.getAttribute("Customer");
             //(CustomerSession.getAttribute("Customer")
             //Insérer le champ id de l'abonnement en clé étrangère dans le customer logger
             //DAOCustomer insertIdInternet
             
-        }
+        } //Fin du if idInternet
 
 
         String idVoip = request.getParameter("idVoip");
