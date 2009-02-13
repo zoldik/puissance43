@@ -133,7 +133,7 @@
     <!--zzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzz-->
     <servlet>
         <servlet-name>Subscribes.jsp</servlet-name>
-        <jsp-file>/account/Subscribes.jsp</jsp-file>
+        <jsp-file>/subscribes/Subscribes.jsp</jsp-file>
     </servlet>
     <servlet-mapping>
         <servlet-name>Subscribes.jsp</servlet-name>
@@ -142,7 +142,7 @@
     <!--zzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzz-->
     <servlet>
         <servlet-name>SubscribesDisconnect.jsp</servlet-name>
-        <jsp-file>/account/SubscribesDisconnect.jsp</jsp-file>
+        <jsp-file>/subscribes/SubscribesDisconnect.jsp</jsp-file>
     </servlet>
     <servlet-mapping>
         <servlet-name>SubscribesDisconnect.jsp</servlet-name>
