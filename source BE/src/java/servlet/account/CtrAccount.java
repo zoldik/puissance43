@@ -1,6 +1,8 @@
 package servlet.account;
 
 import java.io.*;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.servlet.*;
 import javax.servlet.http.*;
 
@@ -11,6 +13,7 @@ import DAO.mySql.CustomerMySqlDAO;
 import DAO.transfertObject.AddressTO;
 import DAO.transfertObject.CustomerTO;
 
+import model.account.Mail;
 import model.account.RegisterAddressErrors;
 import model.account.RegisterCustomerErrors;
 
@@ -21,7 +24,7 @@ import model.account.RegisterCustomerErrors;
 public class CtrAccount extends javax.servlet.http.HttpServlet {
 
     public void doGet(HttpServletRequest request, HttpServletResponse response) throws IOException, ServletException {
-        response.setContentType("text/html");    
+        response.setContentType("text/html");
     }
 
     public void doPost(HttpServletRequest request, HttpServletResponse response) throws IOException, ServletException {
@@ -44,7 +47,7 @@ public class CtrAccount extends javax.servlet.http.HttpServlet {
         customerTO.setBirthday(request.getParameter("birthday"));
         customerTO.setPhone(request.getParameter("phone"));
         customerTO.setCellPhone(request.getParameter("cellPhone"));
-        
+
         //By default, set account level to 0
         customerTO.setAccountLevel(0);
 
@@ -59,10 +62,10 @@ public class CtrAccount extends javax.servlet.http.HttpServlet {
         //Check if the login is not already used
         if (customerDAO.isLoginUsed(request.getParameter("login")) == true) {
             session.setAttribute("CreateCustomerAccount", "loginUsed");
-            
-            session.setAttribute("customerBegin", customerTO);            
+
+            session.setAttribute("customerBegin", customerTO);
             session.setAttribute("addressBegin", addressTO);
-            
+
             /*
             boolean isUsed = customerDAO.isLoginUsed(request.getParameter("login"));
             
@@ -76,7 +79,7 @@ public class CtrAccount extends javax.servlet.http.HttpServlet {
             writer.println("<h1>"+isUsed+"</h1>");
             writer.println("</body>");
             writer.println("</html");
-            */ 
+             */
 
             //si on rentre dans le if : meme si redirect le reste de la servlet est quand même executé
             //par contre pas de mise en base ??
@@ -109,6 +112,20 @@ public class CtrAccount extends javax.servlet.http.HttpServlet {
 
                 //Put in the BDD
                 String error = customerDAO.insertCustomer(customerTO, addressTO);
+
+                //Send confirmation mail
+                Mail mail = new Mail();
+                mail.setSubject("Bienvenu sur ProjectRSS");
+                mail.setContent("Voici un récapitulatif de vos identifiants :\nLogin : " + customerTO.getLogin() +
+                        "\nMot de passe : " + customerTO.getPassword() +
+                        "\nPour valider votre compte, veuillez vous rendre à la page suivante :\n http://localhost:8080/ProjetRSS/Validation.jsp?Creation=inProgress&compte=" + customerTO.getId());
+                //userMail.content="test";
+                mail.setAddress(customerTO.getMail());
+                try {
+                    mail.sendMail();
+                } catch (Exception ex) {
+                    Logger.getLogger(CtrAccount.class.getName()).log(Level.SEVERE, null, ex);
+                }
 
                 /*
                 response.setContentType("text/html");

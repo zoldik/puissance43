@@ -526,6 +526,60 @@ public class CustomerMySqlDAO extends MySqlGeneralObjectDAO implements CustomerD
           
         return error;
     }
+    
+     public String updateCustomerVoipSubscribe(int idCustomer, int idVoipSubscribe) {
+
+        //int error = 0;
+        String error = "pas d'erreur";
+
+        //Connexion to the database with JNDI 
+        Connection conn = (Connection) getConnectionWithJNDI();
+
+        //transaction or sequence of queries
+        Statement st = null;
+
+        String update = "UPDATE `RedNeck`.`customer` SET `id_voip_subscribe` = '" + idVoipSubscribe + "' WHERE `customer`.`id_customer` =" +
+                idCustomer + " LIMIT 1 ;";
+
+        try {
+            st = conn.createStatement();
+            st.executeUpdate(update);
+        } catch (SQLException e) {
+            System.out.println("SqlException : " + e);
+            error = e.toString();
+        }
+
+        closeConnection(conn);
+          
+        return error;
+    }
+     
+      public String updateCustomerVodSubscribe(int idCustomer, int idVodSubscribe) {
+
+        //int error = 0;
+        String error = "pas d'erreur";
+
+        //Connexion to the database with JNDI 
+        Connection conn = (Connection) getConnectionWithJNDI();
+
+        //transaction or sequence of queries
+        Statement st = null;
+
+        String update = "UPDATE `RedNeck`.`customer` SET `id_vod_subscribe` = '" + idVodSubscribe + "' WHERE `customer`.`id_customer` =" +
+                idCustomer + " LIMIT 1 ;";
+
+        try {
+            st = conn.createStatement();
+            st.executeUpdate(update);
+        } catch (SQLException e) {
+            System.out.println("SqlException : " + e);
+            error = e.toString();
+        }
+
+        closeConnection(conn);
+          
+        return error;
+    }
 
     /** Vérifie si le login et le password correspondent
      * 
