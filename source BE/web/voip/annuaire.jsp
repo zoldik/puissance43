@@ -7,15 +7,20 @@
 <%@page contentType="text/html" pageEncoding="UTF-8"
 import="model.voip.Annuaire"
 import="model.voip.RowAnnuaire"
+
+import="model.voip.Annuaire"
+import="model.voip.RowAnnuaire"
 import="DAO.interfaces.LineDAOInterface"
 import="DAO.interfaces.CustomerDAOInterface"
 import="DAO.transfertObject.LineTO"
 import="DAO.transfertObject.CustomerTO"
-import="java.util.*"
-
 import="DAO.factory.DAOFactory"
 import="DAO.factory.MySqlDAOFactory"
 import="DAO.transfertObject.CustomerTO"
+
+import="java.util.*"
+
+
 
 %>
 <!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"
@@ -28,10 +33,13 @@ import="DAO.transfertObject.CustomerTO"
     </head>
     <body>        
     
-    <%
+    
+        <%if ( (Annuaire)session.getAttribute("annuaire") == null ) { %>
+            <!--jsp:include page="../createAnnuaire" /-->
+        <%
             //Creation de l'Annuaire
-            Annuaire annuaire = new Annuaire();
-        
+            Annuaire an = new Annuaire();
+            
             DAOFactory daoFactory = DAOFactory.getDAOFactory(DAOFactory.MYSQL);
             LineDAOInterface LineDAO = daoFactory.getLineDAO();
             
@@ -58,11 +66,15 @@ import="DAO.transfertObject.CustomerTO"
                     ra.setNumber(vl.getname());
                     ra.setMail(vl.getmailbox());
                     ra.setGroupe(vl.getcontext());
-
-                    annuaire.addRow(ra);
+                    an.addRow(ra);
                 }
             }
-    %>
+            //Register annuaire in a Session
+            session = request.getSession(true);
+            session.setAttribute("annuaire", an);
+        }
+        %>
+        <% Annuaire annuaire = (Annuaire)session.getAttribute("annuaire"); %>
 
         <h2>Annuaire</h2>
         
@@ -117,10 +129,10 @@ import="DAO.transfertObject.CustomerTO"
             <td> <%=row.getMail() %> </td>
         </tr>
         
-        <%}%>
+        <%  }%>
 
         </table>
-
+        
 
     </body>
 </html>
