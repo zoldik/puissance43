@@ -69,6 +69,15 @@
     <!--zzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzz-->
     <!--JSP-->
     <servlet>
+        <servlet-name>AddSubscribes.jsp</servlet-name>
+        <jsp-file>/subscribe/admin/AddSubscribes.jsp</jsp-file>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>AddSubscribes.jsp</servlet-name>
+        <url-pattern>/AddSubscribes.jsp</url-pattern>
+    </servlet-mapping>
+    <!--zzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzz-->
+    <servlet>
         <servlet-name>AdvancedSearch.jsp</servlet-name>
         <jsp-file>/shop/ViewCart/AdvancedSearch.jsp</jsp-file>
     </servlet>

@@ -21,7 +21,7 @@
         
         <!--Le bouton s'abonner-->       
             <%
-            String button_sabonne = "<input type=\'button\' onclick=\"displayIdentification(5);\" value=\"S\'abonnerD\">";
+            String button_sabonne = "<input type=\'button\' onclick=\"displayIdentification(5);\" value=\"S\'abonner\">";
 
             HttpSession customerSession = request.getSession(false);
 
