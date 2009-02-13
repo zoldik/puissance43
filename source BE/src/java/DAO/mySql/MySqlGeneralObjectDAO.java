@@ -17,8 +17,7 @@ import javax.naming.InitialContext;
 public class MySqlGeneralObjectDAO {
 
     //private Connection conn = null;
-    
-     /** Connect to the main database (RedNeck database).
+    /** Connect to the main database (RedNeck database).
      * method to create MySql connections.
      * init uses service JNDI
      * Attention à l'erreurjavax.naming.NoInitialContextException, c'est parce que le serveur n'est pas déployer.     
@@ -39,7 +38,7 @@ public class MySqlGeneralObjectDAO {
         }
         return conn;
     }
-
+  
     /**Close the BDD's connection
      * close uses the service JNDI.     * 
      */
@@ -51,7 +50,7 @@ public class MySqlGeneralObjectDAO {
             e.printStackTrace();
         }
     }
-
+   
     /**Method static to close the rs and the st.
      * Use in the DAO objects.
      * 

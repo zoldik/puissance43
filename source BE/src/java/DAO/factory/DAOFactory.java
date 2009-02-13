@@ -29,6 +29,8 @@ public abstract class DAOFactory {
     
     public abstract LineDAOInterface getLineDAO();
     
+    public abstract MailDAOInterface getMailDAO();
+    
     public abstract VodSubscribeDAOInterface getVodSubscribeDAO();
     
     public abstract VoipSubscribeDAOInterface getVoipSubscribeDAO();
