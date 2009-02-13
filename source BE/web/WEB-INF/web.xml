@@ -70,7 +70,7 @@
     <!--JSP-->
     <servlet>
         <servlet-name>AddSubscribes.jsp</servlet-name>
-        <jsp-file>/subscribe/admin/AddSubscribes.jsp</jsp-file>
+        <jsp-file>/subscribes/admin/AddSubscribes.jsp</jsp-file>
     </servlet>
     <servlet-mapping>
         <servlet-name>AddSubscribes.jsp</servlet-name>
