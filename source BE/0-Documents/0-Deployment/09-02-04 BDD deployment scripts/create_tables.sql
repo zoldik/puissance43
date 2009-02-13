@@ -323,7 +323,7 @@ CREATE TABLE `VOD_VIDEO_IN_PLAYLIST`
 
 create table voip_call
 (
-   id_voip_call         bigint not null,
+   id_voip_call         bigint not null auto_increment,
    id_voip_line         bigint not null,
    calldate             datetime,
    clid                 varchar(80),
@@ -347,7 +347,7 @@ create table voip_call
 
 create table voip_contact
 (
-   id_voip_contact      bigint not null,
+   id_voip_contact      bigint not null auto_increment,
    id_voip_line         bigint not null,
    titre                varchar(80),
    categorie            varchar(80),
@@ -362,7 +362,7 @@ create table voip_contact
 
 create table voip_line
 (
-  `id_voip_line` bigint(20) NOT NULL,
+  `id_voip_line` bigint(20) NOT NULL auto_increment,
   `id_customer` bigint(20) NOT NULL,
   `name` varchar(80) default NULL,
   `host` varchar(31) default NULL,
@@ -430,6 +430,25 @@ create table voip_subscribe
 );
 
 
+create table voip_voicemessages 
+(
+  `id` int(11) NOT NULL auto_increment,
+  `id_voip_line` bigint(20) NOT NULL,
+  `msgnum` int(11) NOT NULL default '0',
+  `dir` varchar(80) default '',
+  `context` varchar(80) default '',
+  `macrocontext` varchar(80) default '',
+  `callerid` varchar(40) default '',
+  `origtime` varchar(40) default '',
+  `duration` varchar(20) default '',
+  `mailboxuser` varchar(80) default '',
+  `mailboxcontext` varchar(80) default '',
+  `recording` longblob,
+  `mailbox` varchar(80) NOT NULL default '''''',
+  PRIMARY KEY  (`id`),
+  KEY `dir` (`dir`)
+) ENGINE=InnoDB DEFAULT CHARSET=latin1 AUTO_INCREMENT=1 ;
+
 
 
 alter table bill add constraint FK_CUSTOMER_HAS_BILL foreign key (id_customer)
@@ -496,5 +515,8 @@ alter table voip_line add constraint FK_CUSTOMER_HAS_VOIP_LINE foreign key (id_c
       references customer (id_customer) on delete restrict on update restrict;
 
 alter table voip_rss add constraint FK_VOIP_LINE_HAS_VOIP_RSS foreign key (id_voip_line)
+      references voip_line (id_voip_line) on delete restrict on update restrict;
+
+alter table voip_voicemessages  add constraint FK_VOIP_LINE_HAS_VOIP_VOICEMESSAGES foreign key (id_voip_line)
       references voip_line (id_voip_line) on delete restrict on update restrict;
 
