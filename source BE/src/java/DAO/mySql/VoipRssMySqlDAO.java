@@ -73,34 +73,75 @@ public class VoipRssMySqlDAO extends MySqlGeneralObjectDAO implements VoipRssDAO
         
         VoipRss tempRss = rss.getRss();
         
+        int id_voip_line = rss.getIdVoipLine();
+        
+                
         LinkedList<VoipRssChannelItem> tmpItemList = tempRss.getRssChannel().getItemList();
         
         VoipRssChannelItem tempItem = new VoipRssChannelItem();
         
         tempItem=tmpItemList.get(0);
         
-        String dateStringForCdr = "";
-        String dateStringForRss = "";
+        String currentDateStringForCdr = "";
+        String currentDateStringForRss = "";
+        String currentDateMinusFiveMinStringForCdr = "";
         //dateString = tempItem.getPubDate();
         
         String dateFormat1 = "yyyy-MM-dd hh:mm:ss";
-        String dateFormat2 = "yyyy-MM-dd'T'hh:mm:ssZ";
+        String dateFormat2 = "yyyy-MM-dd hh:mm:ss Z";
         //"dd MMMMM yyyy" / "yyyyMMdd" / "dd.MM.yy" / "MM/dd/yy" / "yyyy.MM.dd G 'at' hh:mm:ss z" / "EEE, MMM d, ''yy" / "h:mm a" / "H:mm:ss:SSS" / "K:mm a,z" / "yyyy.MMMMM.dd GGG hh:mm aaa"));
 
         Date currentDate = new Date();
-        Calendar cal = Calendar.getInstance();
+        long tempMinusFiveMin = 0;
+        Date currentDateMinusFiveMin = new Date();
+        
         SimpleDateFormat sdf1 = new SimpleDateFormat(dateFormat1);
         SimpleDateFormat sdf2 = new SimpleDateFormat(dateFormat2);
+        
+        Calendar cal = Calendar.getInstance();
         currentDate = cal.getTime();
-        dateStringForCdr=sdf1.format(currentDate);
-        dateStringForRss=sdf2.format(currentDate);
-        dateStringForCdr=dateStringForRss;
+        tempMinusFiveMin = currentDate.getTime();
+        tempMinusFiveMin = tempMinusFiveMin - 5000;
+        currentDateMinusFiveMin.setTime(tempMinusFiveMin);
+        
+        currentDateStringForCdr = sdf1.format(currentDate);
+        currentDateMinusFiveMinStringForCdr = sdf1.format(currentDateMinusFiveMin);
+        currentDateStringForRss=sdf2.format(currentDate);
         
         //2009-01-22 16:15:15
         //2009-01-22T16:15:15+01:00
         //Date()??
         
-        return dateStringForCdr;
+        //Connexion to the database with JNDI 
+        Connection conn = (Connection) getConnectionWithJNDI();
+        
+        Statement st = null;
+
+        //result of the queries
+        ResultSet rs = null;
+        
+        String callerid = getCallerId(rss);
+        String calldate =callerid;
+        try {            
+            st=conn.createStatement();
+            rs = st.executeQuery("select * from cdr where dst=\""+callerid+"\" order by calldate desc;");
+            while (rs.next()) {
+                calldate=rs.getString("calldate");
+                //if (currentDate>currentDateMinusFiveMin) {
+                    
+                //}211
+            }
+            
+            
+            
+        } catch (Exception e) {
+            e.printStackTrace();
+        } finally {
+            closeRsAndSt(rs, st);
+        }
+        closeConnection(conn);
+        
+        return calldate;
     }
     
     
@@ -136,7 +177,35 @@ public class VoipRssMySqlDAO extends MySqlGeneralObjectDAO implements VoipRssDAO
     
     
     
-    
+    public String getCallerId(VoipRssTO rss) {
+        
+        int id_voip_line = rss.getIdVoipLine();
+        
+        //Connexion to the database with JNDI 
+        Connection conn = (Connection) getConnectionWithJNDI();
+        
+        Statement st = null;
+
+        //result of the queries
+        ResultSet rs = null;
+        
+        String callerid = "";
+        try {
+            st=conn.createStatement();
+            rs = st.executeQuery("select * from voip_line where id_voip_line=\""+id_voip_line+"\";");
+            if (rs.next()) {
+                callerid=rs.getString("callerid");
+            }
+            
+        } catch (Exception e) {
+            e.printStackTrace();
+        } finally {
+            closeRsAndSt(rs, st);
+        }
+        closeConnection(conn);
+        
+        return callerid;
+    }
     
     
     public VoipRssTO findVoipRss(int id_line_rss) {

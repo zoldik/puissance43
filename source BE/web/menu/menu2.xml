@@ -11,7 +11,7 @@
         <link name="Abonnement" url="1"/>
     </VoIP>
     <VOD name="VOD">
-        <link name="VOD" url="2"/>
+        <link name="VOD" url="http://192.168.1.214:8080/VOD"/>
     </VOD>
     <Assistance name="Assistance">
         <link name="Assistance"  url="" />
