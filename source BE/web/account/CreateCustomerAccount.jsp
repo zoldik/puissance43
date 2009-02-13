@@ -11,7 +11,7 @@
     <head>
         <script language="JavaScript" src="javascripts/ajax_register.js"></script>
         
-        <title>Création of a new account</title>
+        <title>Creation of a new account</title>
         
         <link rel="stylesheet" href="style.css">
         
@@ -65,103 +65,76 @@
                     
                     
                     <tr align="left">
-                        <td><a style="color:
-                                   <%if (errorC.getErrorFirstName() == 1) {
-                out.print("#FFFF00");
-            }%>">* Prénom (15 caractères max) : </a></td>
-                        <td><input type="text" name="firstName" value="<%if (customerTO.getFirstName() != null) {
-                out.print(customerTO.getFirstName());
-            }%>" onKeyUp=verifLength(this.value,"firstName","15") align="left" /><div id="firstName"></div></td>
+                        <td><a style="color: <%if (errorC.getErrorFirstName() == 1) {out.print("#FFFF00");}%>">* Prénom (15 caractères max) : </a></td>
+                        <td><input type="text" name="firstName" value="<%if (customerTO.getFirstName() != null) {out.print(customerTO.getFirstName());}%>" onKeyUp=verifLength(this.value,"firstName","15") align="left" />
+                        <div id="firstName"></div></td>
+                    </tr>
+                    
+                    
+                    <tr align="left"><td><a style="color:<%if (errorC.getErrorLastName() == 1) {out.print("#FFFF00");}%>">* nom (15 caractères max) : </a></td>
+                        <td><input type="text" name="lastName" value="<%if (customerTO.getLastName() != null) {out.print(customerTO.getLastName());}%>"onKeyUp=verifLength(this.value,"lastName","15") align="left" />
+                        <div id="lastName"></div></td>
                     </tr>
                     
                     
                     <tr align="left">
-                        <td><a style="color:<%if (errorC.getErrorLastName() == 1) {
-                out.print("#FFFF00");
-            }%>">* nom (15 caractères max) : </a></td>
-                        <td><input type="text" name="lastName" value="<%if (customerTO.getLastName() != null) {
-                out.print(customerTO.getLastName());
-            }%>"onKeyUp=verifLength(this.value,"lastName","15") align="left" /><div id="lastName"></div></td>
+                        <td><a style="color:<%if (errorC.getErrorLogin() == 1) {out.print("#FFFF00");}%>">* Nom d'utilisateur (15 caractères max) : </a></td>
+                        <td><input type="text" name="login" value="<%if (customerTO.getLogin() != null) {out.print(customerTO.getLogin());}%>" onKeyUp=verifLogin(this.value) align="left"/>
+                        <div id="freeLogin"></div></td>
                     </tr>
                     
                     
                     <tr align="left">
-                        <td><a style="color:<%if (errorC.getErrorLogin() == 1) {
-                out.print("#FFFF00");
-            }%>">* Nom d'utilisateur (15 caractères max) : </a></td>
-                        <td><input type="text" name="login" value="<%if (customerTO.getLogin() != null) {
-                out.print(customerTO.getLogin());
-            }%>" onKeyUp=verifLogin(this.value) align="left"/><div id="freeLogin"></div></td>
+                        <td><a style="color:<%if (errorC.getErrorPassword() == 1) {out.print("#FFFF00");}%>">* Mot de passe (8 min / 15 max) : </a></td>
+                        <td><input type="password" name="password" value="<%if (customerTO.getPassword() != null) {out.print(customerTO.getPassword());}%>" onKeyUp=levelPassword(this.value) align="left" />
+                        <div id="levelPassword"></div></td>
                     </tr>
                     
                     
                     <tr align="left">
-                        <td><a style="color:<%if (errorC.getErrorPassword() == 1) {
-                out.print("#FFFF00");
-            }%>">* Mot de passe (8 min / 15 max) : </a></td>
-                        <td><input type="password" name="password" value="<%if (customerTO.getPassword() != null) {
-                out.print(customerTO.getPassword());
-            }%>" onKeyUp=levelPassword(this.value) align="left" /><div id="levelPassword"></div></td>
+                        <td><a style="color:<%if (errorC.getErrorMail() == 1) {out.print("#FFFF00");}%>">* Mail (Valide) : </a></td>
+                        <td><input type="text" name="mail" value="<%if (customerTO.getMail() != null) {out.print(customerTO.getMail());}%>"  onKeyUp=verifMail(this.value) align="left" />
+                        <div id="mail"></div></td>
                     </tr>
                     
                     
                     <tr align="left">
-                        <td><a style="color:<%if (errorC.getErrorMail() == 1) {
-                out.print("#FFFF00");
-            }%>">* Mail (Valide) : </a></td>
-                        <td><input type="text" name="mail" value="<%if (customerTO.getMail() != null) {
-                out.print(customerTO.getMail());
-            }%>"  onKeyUp=verifMail(this.value) align="left" /><div id="mail"></div></td>
+                        <td><a style="color:<%if (errorC.getErrorSexe() == 1) {out.print("#FFFF00");}%>">* Sexe (M/F/X): </a></td>
+                        <td><input type="text" name="sexe" value="<%if (customerTO.getSexe() != null) {out.print(customerTO.getSexe());}%>" onKeyUp=verifSexe(this.value) align="left" />
+                        <div id="sexe"></div></td>
                     </tr>
                     
                     
                     <tr align="left">
-                        <td><a style="color:<%if (errorC.getErrorSexe() == 1) {
-                out.print("#FFFF00");
-            }%>">* Sexe (M/F/X): </a></td>
-                        <td><input type="text" name="sexe" value="<%if (customerTO.getSexe() != null) {
-                out.print(customerTO.getSexe());
-            }%>" onKeyUp=verifSexe(this.value) align="left" /><div id="sexe"></div></td>
+                        <td><a style="color:<%if (errorC.getErrorBirthday() == 1) {out.print("#FFFF00");}%>">* Date de Naissance (dd/mm/yyyy) : </a></td>
+                        <td><input type="text" name="birthday" value="<%if (customerTO.getBirthday() != null) {out.print(customerTO.getBirthday());}%>" onKeyUp=verifLength(this.value,"birthday","10") align="left" />
+                        <div id="birthday"></div></td>
                     </tr>
                     
                     
                     <tr align="left">
-                        <td><a style="color:<%if (errorC.getErrorBirthday() == 1) {
-                out.print("#FFFF00");
-            }%>">* Date de Naissance (dd/mm/yyyy) : </a></td>
-                        <td><input type="text" name="birthday" value="<%if (customerTO.getBirthday() != null) {
-                out.print(customerTO.getBirthday());
-            }%>" onKeyUp=verifLength(this.value,"birthday","10") align="left" /><div id="birthday"></div></td>
+                        <td><a style="color:<%if (errorC.getErrorPhone() == 1) {out.print("#FFFF00");}%>">Téléphone Fixe : </a></td>
+                        <td><input type="text" name="phone" onKeyUp=verifLength(this.value,"phone","20") align="left" />
+                        <div id="phone"></div></td>
                     </tr>
                     
                     
                     <tr align="left">
-                        <td><a style="color:<%if (errorC.getErrorPhone() == 1) {
-                out.print("#FFFF00");
-            }%>">Téléphone Fixe : </a></td>
-                        <td><input type="text" name="phone" onKeyUp=verifLength(this.value,"phone","20") align="left" /><div id="phone"></div></td>
-                    </tr>
-                    
-                    
-                    <tr align="left">
-                        <td><a style="color:<%if (errorC.getErrorCellPhone() == 1) {
-                out.print("#FFFF00");
-            }%>">Téléphone gsm : </a></td>
-                        <td><input type="text" name="cellPhone" onKeyUp=verifLength(this.value,"cellPhone","20") align="left" /><div id="cellPhone"></div></td>
+                        <td><a style="color:<%if (errorC.getErrorCellPhone() == 1) {out.print("#FFFF00");}%>">Téléphone gsm : </a></td>
+                        <td><input type="text" name="cellPhone" onKeyUp=verifLength(this.value,"cellPhone","20") align="left" />
+                        <div id="cellPhone"></div></td>
                     </tr>
                     
                     
                     <%
-            //randomly generate two int in order to avoid boot attack
-            int int1 = (int) ((float) Math.random() * 100);
-            int int2 = (int) ((float) Math.random() * 100);
+                    //randomly generate two int in order to avoid bot attack
+                    //int int1 = (int) ((float) Math.random() * 100);
+                    //int int2 = (int) ((float) Math.random() * 100);
                     %>
                     
                     <!--
                     <tr align="left">
-                        <td><a style="color://if (error.isErrorProtect() == 1) {
-                out.print("#FF0000");
-            //>">* Anti-Bot : //out.print(int1 + " + " + int2 + " =\n");//</a></td>
+                        <td><a style="color:if (error.isErrorProtect() == 1) {out.print("#FF0000");>">* Anti-Bot : out.print(int1 + " + " + int2 + " =\n");</a></td>
                         <td><input type="text" name="protect" align="left" /></td>
                     </tr>
                     -->
@@ -172,42 +145,30 @@
                     
                     
                     <tr align="left">
-                        <td><a style="color:<%if (errorA.getErrorStreet() == 1) {
-                out.print("#FFFF00");
-            }%>">* Rue : </a></td>
-                        <td><input type="text" name="street" value="<%if (addressTO.getStreet() != null) {
-                out.print(addressTO.getStreet());
-            }%>" onKeyUp=verifLength(this.value,"street","20") align="left" /><div id="street"></div></td>
+                        <td><a style="color:<%if (errorA.getErrorStreet() == 1) {out.print("#FFFF00");}%>">* Rue : </a></td>
+                        <td><input type="text" name="street" value="<%if (addressTO.getStreet() != null) {out.print(addressTO.getStreet());}%>" onKeyUp=verifLength(this.value,"street","20") align="left" />
+                        <div id="street"></div></td>
                     </tr>
                     
                     
                     <tr align="left">
-                        <td><a style="color:<%if (errorA.getErrorPostalCode() == 1) {
-                out.print("#FFFF00");
-            }%>">* Code postal : </a></td>
-                        <td><input type="text" name="postalCode" value="<%if (addressTO.getPostalCode() != null) {
-                out.print(addressTO.getPostalCode());
-            }%>" onKeyUp=verifLength(this.value,"CP","5") align="left" /><div id="CP"></div></td>
+                        <td><a style="color:<%if (errorA.getErrorPostalCode() == 1) {out.print("#FFFF00");}%>">* Code postal : </a></td>
+                        <td><input type="text" name="postalCode" value="<%if (addressTO.getPostalCode() != null) {out.print(addressTO.getPostalCode());}%>" onKeyUp=verifLength(this.value,"CP","5") align="left" />
+                        <div id="CP"></div></td>
                     </tr>
                     
                     
                     <tr align="left">
-                        <td><a style="color:<%if (errorA.getErrorCity() == 1) {
-                out.print("#FFFF00");
-            }%>">* Ville : </a></td>
-                        <td><input type="text" name="city" value="<%if (addressTO.getCity() != null) {
-                out.print(addressTO.getCity());
-            }%>" onKeyUp=verifLength(this.value,"city","20") align="left" /><div id="city"></div></td>
+                        <td><a style="color:<%if (errorA.getErrorCity() == 1) {out.print("#FFFF00");}%>">* Ville : </a></td>
+                        <td><input type="text" name="city" value="<%if (addressTO.getCity() != null) {out.print(addressTO.getCity());}%>" onKeyUp=verifLength(this.value,"city","20") align="left" />
+                        <div id="city"></div></td>
                     </tr>
                     
                     
                     <tr align="left">
-                        <td><a style="color:<%if (errorA.getErrorCountry() == 1) {
-                out.print("#FFFF00");
-            }%>">* Pays : </a></td>
-                        <td><input type="text" name="country" value="<%if (addressTO.getCountry() != null) {
-                out.print(addressTO.getCountry());
-            }%>" onKeyUp=verifLength(this.value,"country","20") align="left" /><div id="country"></div></td>
+                        <td><a style="color:<%if (errorA.getErrorCountry() == 1) {out.print("#FFFF00");}%>">* Pays : </a></td>
+                        <td><input type="text" name="country" value="<%if (addressTO.getCountry() != null) {out.print(addressTO.getCountry());}%>" onKeyUp=verifLength(this.value,"country","20") align="left" />
+                        <div id="country"></div></td>
                     </tr>
                     
                     
@@ -217,8 +178,8 @@
                     <tr>
                         <td></td>
                         <td align="left">
-                            <!--<input type="hidden" name="key1" value="<%out.print(int1);%>"/>
-                            <input type="hidden" name="key2" value="<%out.print(int2);%>"/>-->
+                            <!--<input type="hidden" name="key1" value="<%//out.print(int1);%>"/>
+                            <input type="hidden" name="key2" value="<%//out.print(int2);%>"/>-->
                             <input type="submit" value="Créer" name="Connexion" />
                         </td>
                     </tr>
