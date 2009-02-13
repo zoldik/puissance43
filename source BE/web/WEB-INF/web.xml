@@ -58,7 +58,7 @@
     <!--zzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzz-->
     <servlet>
         <servlet-name>CtrSubscribe</servlet-name>
-        <servlet-class>servlet.account.CtrSubscribe</servlet-class>
+        <servlet-class>servlet.subscribes.CtrSubscribe</servlet-class>
     </servlet>
     <servlet-mapping>
         <servlet-name>CtrSubscribe</servlet-name>
