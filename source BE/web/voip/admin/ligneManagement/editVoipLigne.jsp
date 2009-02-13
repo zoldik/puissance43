@@ -5,7 +5,14 @@
 --%>
 
 <%@page contentType="text/html" pageEncoding="UTF-8"
-import="model.database.*"
+import="java.util.*"
+import="DAO.interfaces.LineDAOInterface"
+import="DAO.interfaces.CustomerDAOInterface"
+import="DAO.transfertObject.LineTO"
+import="DAO.transfertObject.CustomerTO"
+import="DAO.factory.DAOFactory"
+import="DAO.factory.MySqlDAOFactory"
+import="DAO.transfertObject.CustomerTO"
 import="model.voip.*"
 %>
 <!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"
@@ -17,16 +24,19 @@ import="model.voip.*"
         <title>VoIP admin - Edit the VoIP ligne</title>
     </head>
     <body>
-        <h2>VoIP admin - Edit the VoIP ligne</h2>
+        
+        <%  String id = request.getParameter("id");
 
-        
-        
-        
-        <% String id = request.getParameter("id");
-        
-        VoipLigne vl = VoipLigneDAO.extractVoipLignebyId(id);
+            DAOFactory daoFactory = DAOFactory.getDAOFactory(DAOFactory.MYSQL);
+            LineDAOInterface LineDAO = daoFactory.getLineDAO();
+            
+            //selectionne les numeros
+            LineTO vl = new LineTO();
+            vl = LineDAO.findLine(id);             
         %>
-        
+
+
+        <h2>VoIP admin - Edit the VoIP ligne</h2>
 
         <h4>Detail</h4>
         <table>

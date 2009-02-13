@@ -13,6 +13,7 @@ import="DAO.transfertObject.CustomerTO"
 import="DAO.factory.DAOFactory"
 import="DAO.factory.MySqlDAOFactory"
 import="DAO.transfertObject.CustomerTO"
+import="model.voip.*"
 %>
 <!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"
    "http://www.w3.org/TR/html4/loose.dtd">
@@ -24,6 +25,59 @@ import="DAO.transfertObject.CustomerTO"
     </head>
     
     <body>
+        
+        
+        <%
+            ListUser lu = new ListUser();
+        
+            DAOFactory daoFactory = DAOFactory.getDAOFactory(DAOFactory.MYSQL);
+            CustomerDAOInterface CustomerDAO = daoFactory.getCustomerDAO();
+            
+            //selectionne les numeros
+            LinkedList<CustomerTO> customers = new LinkedList <CustomerTO>();
+            ListIterator<CustomerTO> indice;
+            CustomerTO vcustomer = new CustomerTO();
+            
+            customers = CustomerDAO.selectAllCustomersTO();
+            indice = customers.listIterator();
+ 
+            while (indice.hasNext()){
+                vcustomer = indice.next();
+                //regarde le levelaccount
+                if( vcustomer.getValid() == true){
+                    
+                    //recupere les informations dans customer                    
+                    RowListUser rl = new RowListUser();
+                    rl.setCustomerId(vcustomer.getId());
+                    rl.setLogin(vcustomer.getLastName());
+                    rl.setAccountLevel(vcustomer.getAccountLevel());
+                    
+                    //Retrieve line's numbers
+                    LineDAOInterface LineDAO = daoFactory.getLineDAO();
+                    LinkedList<LineTO> lines = new LinkedList <LineTO>();
+                    ListIterator<LineTO> indice2;
+                    LineTO vline = new LineTO();
+                        
+                    lines = LineDAO.selectAllLineTO();
+                    indice2 = lines.listIterator();
+                        
+                    while (indice2.hasNext()){       
+                       vline = indice2.next();
+                       if( vline.getcustomerid() == vcustomer.getId()){
+                           rl.addNumber(vline);
+                       }
+                    }
+                    lu.addRow(rl);
+                }
+            }
+            //Register annuaire in a Session
+            session = request.getSession(true);
+            session.setAttribute("listUser", lu);
+        
+        %>
+        <% ListUser listUser = (ListUser)session.getAttribute("listUser"); %>
+
+        
         <h2>VoIP admin - VoIP User Management</h2>
         
         <p>
@@ -44,45 +98,22 @@ import="DAO.transfertObject.CustomerTO"
         
         
         <table bgcolor="black">
-
-            
         <!-- TITLES -->
-        
         <tr style="color:white">
-
             <td> </td>
             <td> </td>
             <td> Id </td>
             <td> login </td>
-            <td> Account Level</td>
-            <td> activated </td>
-            
+            <td> Account Level</td>            
             <td> Lignes </td>
         </tr>
-        
         <!-- CONTENTS -->
         
-        
-
-        
-        <!-- Creation de la liste des USERS -->
         <%
-            DAOFactory daoFactory = DAOFactory.getDAOFactory(DAOFactory.MYSQL);
-            
-            CustomerDAOInterface customerDAO = daoFactory.getCustomerDAO();
-            LinkedList<CustomerTO> customers = new LinkedList<CustomerTO>();
-            ListIterator<CustomerTO> indice;
-            CustomerTO vc = new CustomerTO();
-            
-            customers = customerDAO.selectAllCustomersTO();
-            indice = customers.listIterator();
-            
-            while (indice.hasNext()){
-                vc = indice.next();
-                if( vc.getValid() == true ) {
+            for(int index=0;index<listUser.getSize();index++){
+                RowListUser row = listUser.getRow(index);
         %>
-        
-
+        <!-- Creation de la liste des USERS -->
         <tr bgcolor="white">
 
            <!-- Bouton action -->
@@ -90,7 +121,7 @@ import="DAO.transfertObject.CustomerTO"
            <td> <!--edit button-->
                  <form method='post' action="./userManagement/editVoipUser.jsp">
                  <input type="submit" value="edit" />
-                 <input type='hidden' name='id' value="<%=vc.getId() %>">
+                 <input type='hidden' name='id' value="<%=row.getCustomerId() %>">
                  <!--input type="hidden" name='action' value='edit'-->
                  </form>
                  </td>
@@ -98,35 +129,30 @@ import="DAO.transfertObject.CustomerTO"
             <td> <!--delete button-->
                  <form method='post' action="./userManagement/deleteVoipUser.jsp">
                  <input type="submit" value="delete" />
-                 <input type='hidden' name='id' value="<%= vc.getId() %>">
-                 <input type='hidden' name='name' value="<%= vc.getId() %>">
+                 <input type='hidden' name='id' value="<%= row.getCustomerId()  %>">
+                 <input type='hidden' name='name' value="<%= row.getCustomerId()  %>">
                  </form>
                  </td>
            
-            <td> <%= vc.getId() %> </td>
-            <td> <%=vc.getLogin() %> </td>
-            <td> <%=vc.getAccountLevel() %> </td>
-            <td> <%=vc.getValid() %> </td>
+            <td> <%=row.getCustomerId()  %> </td>
+            <td> <%=row.getLogin() %> </td>
+            <td> <%=row.getAccountLevel() %> </td>
             
+            <%
+            for(int i=0;i<row.getNumbers().size(); i++){
+            %>
+            <td> 
+                <form methode="post" action="./ligneManagement/editVoipLigne.jsp">
+                <input type="submit" value="<%=row.getNumber(i).getname() %>"/>
+                <input type='hidden' name='id' value="<%=row.getNumber(i).getid() %>"/>
+                </form>
+            </td>
             
-            <!--Creation d'une liste de lignes d'un user-->
-            
-            <%--LinkedList<lignes> listlignes = new LinkedList <lignes>();
-            ListIterator<VoipUser> indice;
-            VoipUser vu = new VoipUser();
-            
-            voipUsers = VoipUserDAO.extractAllVoipUser();
-            indice = voipUsers.listIterator();
-            
-            while (indice.hasNext()){
-                vu = indice.next();--%>
-            <td></td>
-            
-             <%-- } --%>
+            <%}%>
 
         </tr>
         
-        <%}}%>
+        <%}%>
 
         </table>
         
