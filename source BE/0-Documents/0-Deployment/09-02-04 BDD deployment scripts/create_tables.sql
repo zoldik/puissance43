@@ -444,8 +444,8 @@ create table voip_voicemessages
   `mailboxuser` varchar(80) default '',
   `mailboxcontext` varchar(80) default '',
   `recording` longblob,
-  `mailbox` varchar(80) NOT NULL default '''''',
-  PRIMARY KEY  (`id_voip_voicemessages`),
+  `mailbox` varchar(80) NOT NULL default '',
+  PRIMARY KEY  (`id_voip_voicemessages`)
 ); 
 
 
