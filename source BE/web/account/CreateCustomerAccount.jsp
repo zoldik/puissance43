@@ -9,7 +9,8 @@
 
 <html>
     <head>
-        <script language="JavaScript" src="javascripts/ajax_register.js"></script>
+        <script language="JavaScript" src="javascripts/ajax_register_core.js"></script>
+        <script language="JavaScript" src="javascripts/ajax_register_functionsTest.js"></script>
         
         <title>Creation of a new account</title>
         
@@ -86,7 +87,7 @@
                     
                     <tr align="left">
                         <td><a style="color:<%if (errorC.getErrorPassword() == 1) {out.print("#FFFF00");}%>">* Mot de passe (8 min / 15 max) : </a></td>
-                        <td><input type="password" name="password" value="<%if (customerTO.getPassword() != null) {out.print(customerTO.getPassword());}%>" onKeyUp=levelPassword(this.value) align="left" />
+                        <td><input type="password" name="password" value="<%if (customerTO.getPassword() != null) {out.print(customerTO.getPassword());}%>" onKeyUp=levelPassword(this.value,"levelPassword") align="left" />
                         <div id="levelPassword"></div></td>
                     </tr>
                     
@@ -153,7 +154,7 @@
                     
                     <tr align="left">
                         <td><a style="color:<%if (errorA.getErrorPostalCode() == 1) {out.print("#FFFF00");}%>">* Code postal : </a></td>
-                        <td><input type="text" name="postalCode" value="<%if (addressTO.getPostalCode() != null) {out.print(addressTO.getPostalCode());}%>" onKeyUp=verifLength(this.value,"CP","5") align="left" />
+                        <td><input type="text" name="postalCode" value="<%if (addressTO.getPostalCode() != null) {out.print(addressTO.getPostalCode());}%>" onKeyUp=verifCP(this.value) align="left" />
                         <div id="CP"></div></td>
                     </tr>
                     
