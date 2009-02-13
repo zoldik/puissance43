@@ -12,11 +12,9 @@ import="javax.servlet.*"
 import="javax.servlet.http.*"
 import="DAO.interfaces.ContactVoipDAOInterface"
 import="DAO.interfaces.CustomerDAOInterface"
-import="DAO.transfertObject.ContactVoipTO"
-import="DAO.transfertObject.CustomerTO"
+import="DAO.transfertObject.*"
 import="DAO.factory.DAOFactory"
 import="DAO.factory.MySqlDAOFactory"
-import="DAO.transfertObject.CustomerTO"
 import="java.util.*"
 
 
@@ -32,9 +30,20 @@ import="java.util.*"
 <% 
         DAOFactory daoFactory = DAOFactory.getDAOFactory(DAOFactory.MYSQL);
         ContactVoipDAOInterface contactVoipDAO = daoFactory.getContactVoipDAO();
+        boolean sessionOK=false;
+        HttpSession CustomerSession = request.getSession(false);
+        
+        //recupere les informations dans customer
+              if (CustomerSession!=null) {
+                  sessionOK=true;
+                if (CustomerSession.getAttribute("Customer")!=null) {
+                    sessionOK=true;
+                    CustomerTO customerObject =(CustomerTO)CustomerSession.getAttribute("Customer");
+                    if (customerObject.getValid()) {
+                        sessionOK=true;
 
         try{
-        int id=1;
+        int id= customerObject.getId();
         LinkedList listeContact = new LinkedList <ContactVoipTO>();
         ListIterator<ContactVoipTO> indice;
         ContactVoipTO contact;
@@ -89,6 +98,8 @@ import="java.util.*"
         System.err.println("<h3>Vous n'avez pas de contact</h3>");
 	e.printStackTrace();		
                             }
-
-
+                        }
+                    }
+                   }
+                  
 %>
