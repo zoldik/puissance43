@@ -189,7 +189,7 @@
                         // 3 : client VoD + Voip
                         // 6 : client internet + Voip                        
                         // 7 : client Triple play            
-                        //if (!(accountLevel == 2 || accountLevel == 3 || accountLevel == 6 || accountLevel == 7)) {
+                        if (!(accountLevel == 2 || accountLevel == 3 || accountLevel == 6 || accountLevel == 7)) {
         %>
         <h2>Souscrire à une offre Vod</h2>
         
@@ -233,7 +233,7 @@
             </tr>
             <%
                             }//Fin du while  
-                        //} //Fin du if accountLevel
+                        } //Fin du if accountLevel
                     } //Fin du if getValid
 
                 } //Fin du if Attribut customer
