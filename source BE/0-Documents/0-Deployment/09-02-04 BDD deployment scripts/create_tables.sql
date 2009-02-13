@@ -432,7 +432,7 @@ create table voip_subscribe
 
 create table voip_voicemessages 
 (
-  `id` int(11) NOT NULL auto_increment,
+  `id_voip_voicemessages` int(11) NOT NULL auto_increment,
   `id_voip_line` bigint(20) NOT NULL,
   `msgnum` int(11) NOT NULL default '0',
   `dir` varchar(80) default '',
@@ -445,7 +445,7 @@ create table voip_voicemessages
   `mailboxcontext` varchar(80) default '',
   `recording` longblob,
   `mailbox` varchar(80) NOT NULL default '''''',
-  PRIMARY KEY  (`id`),
+  PRIMARY KEY  (`id_voip_voicemessages`),
   KEY `dir` (`dir`)
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1 AUTO_INCREMENT=1 ;
 
