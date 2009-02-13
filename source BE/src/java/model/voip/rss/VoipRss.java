@@ -9,6 +9,8 @@ import java.io.*;
 import java.util.*;
 import org.w3c.dom.*;
 import javax.xml.parsers.*;
+import org.xml.sax.SAXException;
+
         
 /**
  *
@@ -34,7 +36,7 @@ public class VoipRss {
     
     
     
-    public VoipRss parse(String filename){
+    public VoipRss parse(String filename) throws SAXException, IllegalArgumentException {
         VoipRss rss = new VoipRss();
         
         String version="";

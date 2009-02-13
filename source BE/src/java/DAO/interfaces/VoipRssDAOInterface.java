@@ -25,6 +25,8 @@ public interface VoipRssDAOInterface {
     
     public boolean setUpdatedVoipRss(VoipRssTO rss);
     
+    public String getCallerId(VoipRssTO rss);
+    
     public VoipRssTO findVoipRss(int id_line_rss);
     
     

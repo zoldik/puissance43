@@ -8,7 +8,8 @@ function displayAccount()
 
 function hideAccount()
 {
-    updateDivContent('account', ' ');
+    var tempText = '';
+    updateDivContent('account', tempText);
 }
 
 function displayIdentification(connexion)
@@ -24,7 +25,7 @@ function displayIdentification(connexion)
       } else if(connexion==3) {
           // msg: Ce compte n'a pas encore été validé.
           parameters = parameters+'3';
-          
+            
       } else if(connexion==4) {
           // User1 lop/pwq + msg: login= user$ / password= pwd$   $=level_account
           parameters = parameters+'4';
