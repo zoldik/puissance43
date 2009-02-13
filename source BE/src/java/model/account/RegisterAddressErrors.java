@@ -64,7 +64,7 @@ public class RegisterAddressErrors {
         }
         
         //obligatory field
-        if (addressTO.getPostalCode() == "" || addressTO.getPostalCode().length() > 15) {
+        if (addressTO.getPostalCode() == "" || addressTO.getPostalCode().length() > 5 || isIntNumber(addressTO.getPostalCode().toString())==false) {
             this.errorPostalCode = 1;
             error = true;
         }
@@ -92,5 +92,14 @@ public class RegisterAddressErrors {
         return error;
     }
 
+
+private boolean isIntNumber(String num){
+    try{
+        Integer.parseInt(num);
+    } catch(NumberFormatException nfe) {
+        return false;
+    }
+    return true;
+}
 
 }
