@@ -29,6 +29,7 @@ public class MySqlDAOFactory extends DAOFactory {
     private static LineDAOInterface lineDAO = null;
     private static VodSubscribeDAOInterface vodSubscribeDAO = null;
     private static VoipSubscribeDAOInterface voipSubscribeDAO = null;
+    private static VoipRssDAOInterface voipRssDAO = null;
     
     //*********************
     //STATIC METHODS TO GET THE DAO OBJECTS 
@@ -85,4 +86,10 @@ public class MySqlDAOFactory extends DAOFactory {
         return voipSubscribeDAO;
     }
       
+    public VoipRssDAOInterface getVoipRssDAO() {
+        if (voipRssDAO == null) {
+            voipRssDAO = new VoipRssMySqlDAO();
+        }
+        return voipRssDAO;
+    }
 }

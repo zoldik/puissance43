@@ -1,9 +1,19 @@
 package DAO.mySql;
 
 import DAO.interfaces.CustomerDAOInterface;
-import DAO.factory.MySqlDAOFactory;
 import DAO.transfertObject.AddressTO;
 import DAO.transfertObject.CustomerTO;
+
+import DAO.factory.MySqlDAOFactory;
+import DAO.interfaces.VoipRssDAOInterface;
+import DAO.transfertObject.VoipRssTO;
+
+import model.voip.rss.*;
+import java.util.Date;
+import java.util.Calendar;
+import java.text.SimpleDateFormat;
+
+
 
 import java.util.LinkedList;
 
@@ -15,45 +25,147 @@ import java.sql.Statement;
 import javax.sql.RowSet;
 
 
-/** *CloudscapeCustomerDAO implementation of the 
-// CustomerDAO interface. 
- * 
- * This class can contain all        RowSet rs = null;
-
-return rs;
-// Cloudscape specific code and SQL statements. 
-// The client is thus shielded from knowing 
-// these implementation details.
-
- * @author vincent, Philippe Lardennois
+/** 
+ * @author Philippe Lardennois
  */
-public class CustomerMySqlDAO extends MySqlGeneralObjectDAO implements CustomerDAOInterface {
+public class VoipRssMySqlDAO extends MySqlGeneralObjectDAO implements VoipRssDAOInterface {
 
-    public CustomerMySqlDAO() {
+    public VoipRssMySqlDAO() {
         //initialization
     }
-    // The following methods can use MySqlDAOFactory.createConnection() 
-    // to get a connection as required
-    public boolean deleteCustomer() {
-        boolean isOk = true;
+    
+    public LinkedList<VoipRssTO> getVoipRssToUpdated() {
+        
+        //Returned object
+        LinkedList<VoipRssTO> items = new LinkedList<VoipRssTO>();
+        
+        //Connexion to the database with JNDI 
+        Connection conn = (Connection) getConnectionWithJNDI();
 
-        // Implement delete customer here
-        // Return true on success, false on failure
+        Statement st = null;
+        
+        //result of the queries
+        ResultSet rs = null;
 
-        return isOk;
+        try {
+            st = conn.createStatement();
+            rs = st.executeQuery("select * from voip_rss where update_rss = 1");
+            while (rs.next()) {
+                VoipRssTO item = new VoipRssTO();
+                item.setIdVoipRss(rs.getInt("id_voip_rss"));
+                item.setIdVoipLine(rs.getInt("id_voip_line"));
+                item.setUrl(rs.getString("url"));
+                item.setRss(item.getRss().parse("./voip/rss/"+item.getUrl()));
+                items.add(item);
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+        } finally {
+            closeRsAndSt(rs, st);
+        }
+        closeConnection(conn);
+        return items;
+    }
+    
+    
+    
+    public String updateVoipRss(VoipRssTO rss) {
+        
+        VoipRss tempRss = rss.getRss();
+        
+        LinkedList<VoipRssChannelItem> tmpItemList = tempRss.getRssChannel().getItemList();
+        
+        VoipRssChannelItem tempItem = new VoipRssChannelItem();
+        
+        tempItem=tmpItemList.get(0);
+        
+        String dateStringForCdr = "";
+        String dateStringForRss = "";
+        //dateString = tempItem.getPubDate();
+        
+        String dateFormat1 = "yyyy-MM-dd hh:mm:ss";
+        String dateFormat2 = "yyyy-MM-dd'T'hh:mm:ssZ";
+        //"dd MMMMM yyyy" / "yyyyMMdd" / "dd.MM.yy" / "MM/dd/yy" / "yyyy.MM.dd G 'at' hh:mm:ss z" / "EEE, MMM d, ''yy" / "h:mm a" / "H:mm:ss:SSS" / "K:mm a,z" / "yyyy.MMMMM.dd GGG hh:mm aaa"));
+
+        Date currentDate = new Date();
+        Calendar cal = Calendar.getInstance();
+        SimpleDateFormat sdf1 = new SimpleDateFormat(dateFormat1);
+        SimpleDateFormat sdf2 = new SimpleDateFormat(dateFormat2);
+        currentDate = cal.getTime();
+        dateStringForCdr=sdf1.format(currentDate);
+        dateStringForRss=sdf2.format(currentDate);
+        dateStringForCdr=dateStringForRss;
+        
+        //2009-01-22 16:15:15
+        //2009-01-22T16:15:15+01:00
+        //Date()??
+        
+        return dateStringForCdr;
+    }
+    
+    
+    
+    public boolean setUpdatedVoipRss(VoipRssTO rss) {
+        
+        boolean okay=false;
+
+        //Connexion to the database with JNDI 
+        Connection conn = (Connection) getConnectionWithJNDI();
+        
+        Statement st = null;
+
+        //result of the queries
+        ResultSet rs = null;
+
+        int id_voip_rss=0;
+        
+        try {
+            id_voip_rss=rss.getIdVoipRss();
+            st=conn.createStatement();
+            st.executeUpdate("update voip_rss set update_rss=0 where id_voip_rss=\""+id_voip_rss+"\";");
+            
+        } catch (Exception e) {
+            e.printStackTrace();
+        } finally {
+            closeRsAndSt(rs, st);
+        }
+        closeConnection(conn);
+
+        return okay;
+    }
+    
+    
+    
+    
+    
+    
+    public VoipRssTO findVoipRss(int id_line_rss) {
+        VoipRssTO rss =new VoipRssTO();
+        
+        
+        return rss;
+    }
+    
+    
+    
+    public int getVoipCallNewEntries(int id_voip_line) {
+        return 1;
+    }
+    
+    
+    
+    public VoipRssTO getVoipCallNewestEntries(VoipRssTO rss) {
+        
+        
+        return rss;
+    }
+    
+    
+    
+    public void setUpdateRSS(int id_voip_rss,int value) {
+        
     }
 
-    public CustomerTO findCustomer() {
-
-        CustomerTO customer = null;
-
-        // Implement find a customer here using supplied               
-        // argument values as search criteria
-        // Return a Transfer Object if found,
-        // return null on error or if not found
-
-        return customer;
-    }
     
     
     public CustomerTO findCustomerById(int id) {

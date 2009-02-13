@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="UTF-8"?> 
+<rss version="2.0">
+   <channel>
+      <title>Flux VoIP Ligne 6007</title>
+      <link>http://redneck.fr</link>
+      <description>Tout Internet et plus sur redneck.fr</description>
+      <language>fr</language>
+      <copyright>redneck.fr</copyright>
+      <generator>RSS 2.0 generation class</generator>
+      <item>
+         <title>Appel reçu: 03 20 30 40 50</title>
+         <link>http://redneck.fr/index.jsp?Connexion=</link>
+         <description>Vous avez manqué un appel du 03 20 30 40 50, Mardi 10 février 2009 à 11h30</description>
+         <author>voip@redneck.fr</author>
+         <guid>http://www.20minutes.fr/article/281008/Monde-Climat-l-appel-du-pied-de-Ban-Ki-moon-a-l-administration-Obama.php</guid>
+         <pubDate>2009-01-22 16:15:15</pubDate>
+         <source url="http://www.20minutes.fr/rss/une.xml">20minutes.fr</source>
+      </item>
+      <item>
+         <title>Lutte contre le changement climatique: un consensus se dégage au sommet de l'Union européenne </title>
+         <link>http://www.20minutes.fr/article/281000/Monde-Lutte-contre-le-changement-climatique-un-consensus-se-degage-au-sommet-de-l-Union-europeenne.php</link>
+         <description><![CDATA[ENVIRONNEMENT - Un accord sur la répartition des efforts entre les 27 pays pour mettre en oeuvre le plan européen semble en bonne voie...]]></description>
+         <author>no-reply@20minutes.fr</author>
+         <guid>http://www.20minutes.fr/article/281000/Monde-Lutte-contre-le-changement-climatique-un-consensus-se-degage-au-sommet-de-l-Union-europeenne.php</guid>
+         <pubDate>2008-12-11T20:55:53+01:00</pubDate>
+         <source url="http://www.20minutes.fr/rss/une.xml">20minutes.fr</source>
+      </item>
+      <item>
+         <title>Femmes, diversité, ouverture: le casse-tête du remaniement</title>
+         <link>http://www.20minutes.fr/article/280960/France-Femmes-diversite-ouverture-le-casse-tete-du-remaniement.php</link>
+         <description><![CDATA[POLITIQUE - Tout le monde en parle, mais sa date est sans cesse repoussée. En fait, il semble avoir déjà commencé...]]></description>
+         <author>no-reply@20minutes.fr</author>
+         <guid>http://www.20minutes.fr/article/280960/France-Femmes-diversite-ouverture-le-casse-tete-du-remaniement.php</guid>
+         <pubDate>2008-12-11T18:39:25+01:00</pubDate>
+         <source url="http://www.20minutes.fr/rss/une.xml">20minutes.fr</source>
+      </item>
+      <item>
+         <title>Nouveaux remous autour de la réforme de l'audiovisuel public</title>
+         <link>http://www.20minutes.fr/article/281002/Media-Nouveaux-remous-autour-de-la-reforme-de-l-audiovisuel-public.php</link>
+         <description><![CDATA[TELEVISION  Une tribune publiée dans «Le Monde», un appel dans «le Nouvel Observateur»...]]></description>
+         <author>no-reply@20minutes.fr</author>
+         <guid>http://www.20minutes.fr/article/281002/Media-Nouveaux-remous-autour-de-la-reforme-de-l-audiovisuel-public.php</guid>
+         <pubDate>2008-12-11T20:50:10+01:00</pubDate>
+         <source url="http://www.20minutes.fr/rss/une.xml">20minutes.fr</source>
+      </item>
+      <item>
+         <title>Ben Arfa dégomme l'OL</title>
+         <link>http://www.20minutes.fr/article/281004/Sport-Ben-Arfa-degomme-l-OL.php</link>
+         <description><![CDATA[FOOT -  Dirigeants radins, supporters mollassons: le Marseillais se lâche sur son ancien club...]]></description>
+         <author>no-reply@20minutes.fr</author>
+         <guid>http://www.20minutes.fr/article/281004/Sport-Ben-Arfa-degomme-l-OL.php</guid>
+         <pubDate>2008-12-11T20:44:43+01:00</pubDate>
+         <source url="http://www.20minutes.fr/rss/une.xml">20minutes.fr</source>
+      </item>
+   </channel>
+</rss>
