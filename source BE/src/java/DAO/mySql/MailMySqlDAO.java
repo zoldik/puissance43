@@ -1,26 +1,67 @@
 package DAO.mySql;
 
+import DAO.interfaces.MailDAOInterface;
 import java.sql.Connection;
 import java.sql.ResultSet;
 import java.sql.SQLException;
-import DAO.mySql.ConnectionMailDatabase;
 import java.sql.Statement;
+
+import javax.sql.DataSource;
+
+import javax.naming.Context;
+import javax.naming.InitialContext;
 
 
 /**
  * Contient les requêtes pour la partie gestion mail
  * @author Baudet Aurélien
  */
-public class MailDAO {
+public class MailMySqlDAO implements MailDAOInterface {
 
-    public static boolean insert(String mail, String pw) {
-        boolean okay = true;
-        Statement stmt;
-        ConnectionMailDatabase connexion = new ConnectionMailDatabase();
+    /** Connect to the main database (RedNeck Mail database)
+     * init uses service JNDI
+     * @return Statement
+     */
+    public Connection getMailConnectionWithJNDI()  {
+        Connection conn = null;
+        if (conn == null) {
+            try {
+                Context initCtx = new InitialContext();
+                DataSource ds = (DataSource) initCtx.lookup("java:RedNeckMail");
+                conn = ds.getConnection();
+            } catch (Exception e) {
+                System.out.println("Connection issue : ");
+                e.printStackTrace();
+            }
+            System.out.println("Success connection \n");
+        }
+        return conn;
+    }
+
+    /**  Close the BDD's connection
+     * close uses the service JNDI.     * 
+     */
+    public void closeMailConnection(Connection conn) {
         try {
-            stmt = connexion.getMailConn().createStatement();
+            conn.close();
+        } catch (Exception e) {
+            System.out.println("\n Impossible de se déconnecter de la base de donnée\n");
+            e.printStackTrace();
+        }
+    }
+
+    public boolean insert(String mail, String pw) {
+        boolean okay = true;
+
+        Statement stmt;
+
+        Connection conn = (Connection) getMailConnectionWithJNDI();
+
+        try {
+            stmt = conn.createStatement();
             ResultSet rs = null;
             rs = stmt.executeQuery("select * from compte where login=\"" + mail + "\"");
+
             if (rs.next() == true) {
                 okay = false;
             } else {
@@ -32,19 +73,21 @@ public class MailDAO {
             okay = false;
         }
         try {
-            connexion.closeMail();
+            closeMailConnection(conn);
         } catch (Exception e3) {
             System.out.println("Erreur fermeture" + e3);
         }
         return okay;
     }
 
-    public static boolean delete(String mail, String pw) {
+    public boolean delete(String mail, String pw) {
         boolean okay = true;
+
         Statement stmt;
-        ConnectionMailDatabase connexion = new ConnectionMailDatabase();
+
+        Connection conn = (Connection) getMailConnectionWithJNDI();
         try {
-            stmt = connexion.getMailConn().createStatement();
+            stmt = conn.createStatement();
             ResultSet rs = null;
             rs = stmt.executeQuery("select * from compte where login=\"" + mail + "\" and motdepasse=\"" + pw + "\"");
             if (rs.next() == true) {
@@ -58,7 +101,7 @@ public class MailDAO {
             okay = false;
         }
         try {
-            connexion.closeMail();
+            closeMailConnection(conn);
         } catch (Exception e3) {
             System.out.println("Erreur fermeture" + e3);
         }

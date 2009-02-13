@@ -27,6 +27,7 @@ public class MySqlDAOFactory extends DAOFactory {
     private static InternetSubscribeDAOInterface internetSubscribeDAO = null;
     private static ItemDAOInterface itemDAO = null;
     private static LineDAOInterface lineDAO = null;
+    private static MailDAOInterface mailDAO = null;
     private static VodSubscribeDAOInterface vodSubscribeDAO = null;
     private static VoipSubscribeDAOInterface voipSubscribeDAO = null;
     private static VoipRssDAOInterface voipRssDAO = null;
@@ -71,6 +72,14 @@ public class MySqlDAOFactory extends DAOFactory {
         }
         return lineDAO;
     }
+    
+    public MailDAOInterface getMailDAO() {
+        // MySqlCustomerDAO implements CustomerDAO 
+        if (mailDAO == null) {
+            mailDAO = new MailMySqlDAO();
+        }
+        return mailDAO;
+    }    
 
     public VodSubscribeDAOInterface getVodSubscribeDAO() {
         if (vodSubscribeDAO == null) {
