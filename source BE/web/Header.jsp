@@ -19,7 +19,9 @@
                     if (customerObject.getValid()) {
                         sessionOK=true;
                         int level = customerObject.getAccountLevel();
-                        if (level>=0 && level<9) {%>
+                        if (level>=0 && level<9) {
+                                
+                                %>
                         <div class="menu">
                             <table align="center">
                                 <tr>
@@ -30,6 +32,13 @@
                                     <a class="onglet" href="#" onmouseover="fonctionContenu(<%= level%>,'Assistance'); fonctionClean('Assistance'); fonctionMenu('Assistance'); return false;"><div id="Assistance">Assistance</div></a>
                                     <a class="onglet" href="#" onmouseover="fonctionContenu(<%= level%>,'Magasin'); fonctionClean('Magasin'); fonctionMenu('Magasin'); return false;"><div id="Magasin">Magasin</div></a>
                                     <a class="onglet" href="#" onmouseover="fonctionContenu(<%= level%>,'NetworkSolutions'); fonctionClean('NetworkSolutions'); fonctionMenu('NetworkSolutions'); return false;"><div id="NetworkSolutions">NetSolutions</div></a>
+                                    <% 
+                                    if (level==8) {
+                                    %>
+                                        <a class="onglet" href="#" onmouseover="fonctionContenu(<%= level%>,'Admin'); fonctionClean('Admin'); fonctionMenu('Admin'); return false;"><div id="Admin">Admin</div></a>
+                                    <%
+                                    }
+                                    %>
                                     <div class="spacer" align="center"></div> <!-- permet le retour à la ligne à la fin des boites float -->
                                 </tr>
                             </table>

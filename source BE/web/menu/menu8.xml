@@ -8,7 +8,6 @@
     </Compte>
     <VoIP name="VoIP">
         <link name="Compte" url="0"/>
-        <link name="Admin" url="voip/admin/admin.jsp"/>
         <link name="Répertoire" url="voip/repertoire.jsp"/>
         <link name="Annuaire" url="voip/annuaire.jsp"/>
         <link name="ZoIPer" url="voip/telechargement.jsp"/>
@@ -29,4 +28,8 @@
     <NetworkSolutions name="NetworkSolutions">
         <link name="Solutions" url="" />
     </NetworkSolutions>
+    <Admin name="Admin">
+        <link name="VoIP" url="voip/admin/admin.jsp"/>
+        <link name="Abonnement" url="AddSubscribes.jsp" />
+    </Admin>
 </root>
