@@ -44,6 +44,9 @@ public class Authentification extends javax.servlet.http.HttpServlet {
                                 if  (level>=0 && level<9){
                                     if (customer.getValid()) {
                                         session.setAttribute("Customer",customer);
+
+                                        // J BEVE 13 Feb 2009 Utile pour VOD CustomerID (nous n avons pas d objet CustomerTO)
+                                        session.setAttribute("CustomerID",customer.getId());
                                         //Si on a la permission, on accède à la suite
                                         response.sendRedirect("./index.jsp?Connexion=1");
                                     } else {
