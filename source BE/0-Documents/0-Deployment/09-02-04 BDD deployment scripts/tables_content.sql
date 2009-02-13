@@ -47,7 +47,7 @@ VALUES
 
 INSERT INTO `voip_rss` (
 `id_voip_rss` ,
-`id_voidline` ,
+`id_voip_line` ,
 `url` ,
 `update_rss`
 ) VALUES
