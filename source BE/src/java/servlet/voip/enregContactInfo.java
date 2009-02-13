@@ -47,9 +47,20 @@ public class enregContactInfo extends javax.servlet.http.HttpServlet {
 
        try{
        
- 
-       int id_voip=1; // à récup dans la session
-       int id_line=1; // à récup dans la session
+        boolean sessionOK=false;
+        HttpSession CustomerSession = request.getSession(false);
+        
+        //recupere les informations dans customer
+              if (CustomerSession!=null) {
+                  sessionOK=true;
+                if (CustomerSession.getAttribute("Customer")!=null) {
+                    sessionOK=true;
+                    CustomerTO customerObject =(CustomerTO)CustomerSession.getAttribute("Customer");
+                    if (customerObject.getValid()) {
+                        sessionOK=true;
+                        
+       int id_voip=customerObject.getId(); 
+       int id_line=1; // valeur par défaut
        String Titre = request.getParameter("titre");
        out.println(Titre);
        String Categorie = request.getParameter("categorie");
@@ -64,7 +75,7 @@ public class enregContactInfo extends javax.servlet.http.HttpServlet {
        out.println("enregistrement réussi");
        response.sendRedirect(response.encodeRedirectURL("voip/repertoire.jsp"));
       
-       
+       }}  }    
 
         }  
         catch (Exception e){
