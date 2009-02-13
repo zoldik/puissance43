@@ -50,7 +50,7 @@
                                <tr>
                                     <td align="right"><label for="password"> Mot de passe :</label></td>
                                     <td align="left"><input type="password" id="password" name="password" class="LoginBox" <%= pwd%>  /></td>
-                                    <td align="left"><input type="submit" value="Connexion" name="Connexion" /></td>
+                                    <td align="left"><input type="submit" value="Connexion" name="Connexion" /> <input type="button" onclick="hideAccount();" value="X" name="X" /></td>
                                 </tr>
                                 <tr class="subAccount">
                                     <td align="right"><%=message1%></td>
