@@ -20,18 +20,31 @@ function displayIdentification(connexion)
     var parameters ='';
     if (connexion!=1) {
       parameters = '?Connexion=';
+      
       if (connexion==2) {
+          // msg: Connexion refusée
           parameters = parameters+'2';
+          
       } else if(connexion==3) {
+          // msg: Ce compte n'a pas encore été validé.
           parameters = parameters+'3';
+          
       } else if(connexion==4) {
+          // User1 lop/pwq + msg: login= user$ / password= pwd$   $=level_account
           parameters = parameters+'4';
+          
       } else if(connexion==5) {
+          // msg: Vous devez créer préalablement un compte pour pouvoir vous abonner.
           parameters = parameters+'5';
+          
       } else if(connexion==99) {
+          // msg: Connexion requise pour accès à la page
           parameters = parameters+'99';
+          
       } else if(connexion==404) {
+          // msg: Connexion 404 inconnue
           parameters = parameters+'404';
+          
       } else {
           parameters ='';
       }

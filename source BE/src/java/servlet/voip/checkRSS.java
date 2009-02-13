@@ -10,8 +10,8 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
-import DAO.factory.*;
-import DAO.interfaces.*;
+import DAO.factory.DAOFactory;
+import DAO.interfaces.VoipRssDAOInterface;
 import DAO.transfertObject.*;
 
 /**
@@ -30,13 +30,54 @@ public class checkRSS extends HttpServlet {
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
     throws ServletException, IOException {
         try{
-            CustomerTO customer = new CustomerTO();
+            VoipRssTO voipRss = new VoipRssTO();
                         
             DAOFactory daoFactory = DAOFactory.getDAOFactory(DAOFactory.MYSQL);
 
-            CustomerDAOInterface customerDAO = daoFactory.getCustomerDAO();
+            VoipRssDAOInterface VoipRssDAO = daoFactory.getVoipRssDAO();
             
+            LinkedList<VoipRssTO> listVoipRssUpdated = new LinkedList<VoipRssTO>();
             
+            listVoipRssUpdated = VoipRssDAO.getVoipRssToUpdated();
+            
+            String answer ="";
+            
+            if (listVoipRssUpdated==null) {
+                response.sendRedirect("./index.jsp?Connexion=else1");
+            } else {
+                if (listVoipRssUpdated!=new LinkedList<VoipRssTO>()) {
+                    
+                    int i=0;
+                    LinkedList<VoipRssTO> tmpItemList = listVoipRssUpdated;
+                    Iterator<VoipRssTO> iter = tmpItemList.listIterator(0);
+                    VoipRssTO tempItem = new VoipRssTO();
+                    while (iter.hasNext()) {
+                        i++;
+                        tempItem = iter.next();
+                        
+                        String Datenow =  VoipRssDAO.updateVoipRss(tempItem);
+                        //if(VoipRssDAO.updateVoipRss(tempItem)) {
+                            
+                            answer+="R"+i+"=OK#"+Datenow;
+                            
+                            //VoipRssDAO.setUpdatedVoipRss(tempItem);
+                            
+                        //} else {
+                        //    answer+="R"+i+"=KO#";
+                        //}
+                        
+                        
+                    }
+                    
+                    
+                    
+                    response.sendRedirect("./index.jsp?"+answer);
+                    
+                    
+                } else {
+                    response.sendRedirect("./index.jsp?Connexion=else2");
+                }
+            }
             
             
         } catch (Exception e) {

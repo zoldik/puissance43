@@ -22,7 +22,7 @@
                        fonctionJS="displayIdentification(2);";
                    } else if (Connexion==1) {
                        fonctionJS="displayAccount();";
-                   }else if (Connexion==3) {
+                   } else if (Connexion==3) {
                        fonctionJS="displayIdentification(3);";
                    } else {
                        fonctionJS="displayIdentification(404);";

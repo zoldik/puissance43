@@ -6,7 +6,7 @@ package DAO.transfertObject;
 
 /**Customer is a model class.
  * contains name,surname,log,pw,mail,sexe,born,fixe,gsm,protect,key1,key2
- * @author Baudet Aurélien
+ * @author Baudet Aurélien, Philippe Lardennois
  */
 public class CustomerTO {
     //******************
