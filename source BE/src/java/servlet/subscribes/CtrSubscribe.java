@@ -1,4 +1,4 @@
-package servlet.account;
+package servlet.subscribes;
 
 import DAO.factory.DAOFactory;
 import DAO.interfaces.CustomerDAOInterface;
@@ -34,6 +34,12 @@ public class CtrSubscribe extends HttpServlet {
      */
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
+        
+        if (request.getParameter("addSubscribe") != null){
+            if (request.getParameter("addSubscribe") ==  "internet"){
+                addInternetSubscribe(request, response);
+            }
+        }
 
         if (request.getParameter("idInternet") != null) {
             updateInternetSubscribe(request, response);
@@ -49,11 +55,17 @@ public class CtrSubscribe extends HttpServlet {
         
         }
     
+        
+    private void addInternetSubscribe(HttpServletRequest request, HttpServletResponse response) throws IOException{
+        HttpSession session = request.getSession();
 
+        response.setContentType("text/html;charset=UTF-8");
+        PrintWriter out = response.getWriter();
+    }
+    
     private void updateInternetSubscribe(HttpServletRequest request, HttpServletResponse response) throws IOException {
 
         HttpSession session = request.getSession();
-
 
         response.setContentType("text/html;charset=UTF-8");
         PrintWriter out = response.getWriter();

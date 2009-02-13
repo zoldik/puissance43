@@ -5,7 +5,7 @@ import java.net.*;
 import java.util.*;
 import javax.servlet.*;
 import javax.servlet.http.*;
-import model.database.MailDAO;
+import DAO.mySql.MailDAO;
 
 
 /**
