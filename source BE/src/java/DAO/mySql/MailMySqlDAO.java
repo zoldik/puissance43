@@ -65,7 +65,7 @@ public class MailMySqlDAO implements MailDAOInterface {
             if (rs.next() == true) {
                 okay = false;
             } else {
-                stmt.executeUpdate("insert into compte (login,motdepasse,emplacement) values (\"" + mail + "\",\"" + pw + "\",\"/home/vmail/RedNeck\")");
+                stmt.executeUpdate("insert into compte (login,motdepasse,emplacement) values (\""+mail+"@RedNeck.fr\",\"" + pw + "\",\"/home/vmail/RedNeck/"+mail+"/\")");
                 okay = true;
             }
         } catch (Exception e) {

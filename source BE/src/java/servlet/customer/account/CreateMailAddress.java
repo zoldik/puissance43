@@ -35,7 +35,7 @@ public class CreateMailAddress extends javax.servlet.http.HttpServlet {
                         Mail mail = new Mail();
                         mail.setSubject("Bienvenu sur la messagerie RedNeck");
                         mail.setContent("Voici un récapitulatif de vos identifiants :\nAdresse mail : " +request.getParameter("mailAddress") +
-                                        "\nMot de passe : " + request.getParameter("password"));
+                                        "@RedNeck.fr\nMot de passe : " + request.getParameter("password"));
 
                         mail.setAddress(request.getParameter("mailAddress"));
                         try {
@@ -43,7 +43,7 @@ public class CreateMailAddress extends javax.servlet.http.HttpServlet {
                         } catch (Exception ex) {System.out.print(ex);}
                         
                         
-                        response.sendRedirect("CreateMailAddress.jsp");
+                        response.sendRedirect("index.jsp");
                    }
                 catch (Exception e){
 			System.err.println("Erreur ! ! !");
