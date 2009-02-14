@@ -365,7 +365,7 @@
     <servlet-mapping>
         <servlet-name>Validate</servlet-name>
         <url-pattern>/Validate</url-pattern>
-    </servlet-mapping>   
+    </servlet-mapping>
     <!-- /Servlet-->
     <!-- JSP -->
     <servlet>
