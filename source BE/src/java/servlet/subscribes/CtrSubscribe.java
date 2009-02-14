@@ -194,7 +194,7 @@ public class CtrSubscribe extends HttpServlet {
         writer.println("</html");
          */
 
-        response.sendRedirect("./AddSubscribes.jsp");
+        response.sendRedirect("./HandleSubscribes.jsp");
     }
     //zzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzz
     private void addVoipSubscribe(HttpServletRequest request, HttpServletResponse response) throws IOException {
@@ -225,7 +225,7 @@ public class CtrSubscribe extends HttpServlet {
         writer.println("</html");
          */
 
-        response.sendRedirect("./AddSubscribes.jsp");
+        response.sendRedirect("./HandleSubscribes.jsp");
     }
     //zzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzz
     private void addVodSubscribe(HttpServletRequest request, HttpServletResponse response) throws IOException {
@@ -256,7 +256,7 @@ public class CtrSubscribe extends HttpServlet {
         writer.println("</html");
          */
 
-        response.sendRedirect("./AddSubscribes.jsp");
+        response.sendRedirect("./HandleSubscribes.jsp");
     }
     //zzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzz
     //DELETE DELETE DELETE DELETE DELETE DELETE DELETE DELETE
@@ -277,6 +277,8 @@ public class CtrSubscribe extends HttpServlet {
         writer.println(error);
         writer.println("</body>");
         writer.println("</html");
+
+        response.sendRedirect("./HandleSubscribes.jsp");
     }
 
     //zzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzz
@@ -297,6 +299,7 @@ public class CtrSubscribe extends HttpServlet {
         writer.println("</body>");
         writer.println("</html");
 
+        response.sendRedirect("./HandleSubscribes.jsp");
     }
 
     //zzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzz
@@ -316,11 +319,16 @@ public class CtrSubscribe extends HttpServlet {
         writer.println(error);
         writer.println("</body>");
         writer.println("</html");
+
+        response.sendRedirect("./HandleSubscribes.jsp");
     }
     //zzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzz
     //VALIDATE VALIDATE VALIDATE VALIDATE VALIDATE VALIDATE VALIDATE
     //zzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzz
     private void valInternetSubscribe(HttpServletRequest request, HttpServletResponse response) throws IOException {
+        
+        
+        
     }
 
     //zzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzz
@@ -351,19 +359,17 @@ public class CtrSubscribe extends HttpServlet {
             DAOFactory daoFactory = DAOFactory.getDAOFactory(DAOFactory.MYSQL);
             CustomerDAOInterface customerDAO = daoFactory.getCustomerDAO();
 
-            String error = customerDAO.updateCustomerInternetSubscribe(idCustomer, idIS);
+            String error = customerDAO.updateCustomerStateInternetSubscribe(idCustomer);
+
+            String error2 = customerDAO.updateCustomerInternetSubscribe(idCustomer, idIS);
 
             try {
                 //TODO output your page here
-                out.println("<html>");
-                out.println("<head>");
-                out.println("<title>Servlet CtrSubscribe</title>");
-                out.println("</head>");
+                out.println("<html>");                
                 out.println("<body>");
-                out.println("<h1>" + error + ", votre demande d'abonnement a bien été transmise à notre service clientèle :</h1>");
-
-                out.println("<h1>" + idInternetSubscribe + "</h1>");
-
+                out.println("<h1>" + error + ", votre demande de souscription à l'abonnement Internet n°" + idInternetSubscribe +
+                        " a bien été transmise à notre service clientèle. Vous receverez un mail de confirmation lorque l'un de nos agent aura activé votre abonnement</h1>");
+                out.println(error2);
                 out.println("</body>");
                 out.println("</html>");
 
@@ -397,17 +403,15 @@ public class CtrSubscribe extends HttpServlet {
 
             String error = customerDAO.updateCustomerVoipSubscribe(idCustomer, idIS);
 
+            String error2 = customerDAO.updateCustomerStateVoipSubscribe(idCustomer);
+
             try {
                 //TODO output your page here
-                out.println("<html>");
-                out.println("<head>");
-                out.println("<title>Servlet CtrSubscribe</title>");
-                out.println("</head>");
+                out.println("<html>");                
                 out.println("<body>");
-                out.println("<h1>" + error + ", votre demande d'abonnement a bien été transmise à notre service clientèle :</h1>");
-
-                out.println("<h1>" + idVoip + "</h1>");
-
+                out.println("<h1>" + error + ", votre demande de souscription à l'abonnement Voip n°" + idVoip +
+                        " a bien été transmise à notre service clientèle. Vous receverez un mail de confirmation lorque l'un de nos agent aura activé votre abonnement</h1>");
+                out.println(error2);
                 out.println("</body>");
                 out.println("</html>");
 
@@ -441,17 +445,15 @@ public class CtrSubscribe extends HttpServlet {
 
             String error = customerDAO.updateCustomerVodSubscribe(idCustomer, idIS);
 
+            String error2 = customerDAO.updateCustomerStateVodSubscribe(idCustomer);
+
             try {
                 //TODO output your page here
                 out.println("<html>");
-                out.println("<head>");
-                out.println("<title>Servlet CtrSubscribe</title>");
-                out.println("</head>");
                 out.println("<body>");
-                out.println("<h1>" + error + ", votre demande d'abonnement a bien été transmise à notre service clientèle :</h1>");
-
-                out.println("<h1>" + idVod + "</h1>");
-
+                out.println("<h1>" + error + ", votre demande de souscription à l'abonnement Vod n°" + idVod +
+                        " a bien été transmise à notre service clientèle. Vous receverez un mail de confirmation lorque l'un de nos agent aura activé votre abonnement</h1>");
+                out.println(error2);
                 out.println("</body>");
                 out.println("</html>");
 

@@ -21,10 +21,10 @@ public interface CustomerDAOInterface {
     public CustomerTO findCustomer();
 
     public CustomerTO findCustomer(String login, String password);
-    
+
     public CustomerTO findCustomerById(int id);
 
-    public CustomerTO findCustomerByLogin(String login);    
+    public CustomerTO findCustomerByLogin(String login);
 
     public String insertCustomer(CustomerTO customerTO, AddressTO addressTO);
 
@@ -36,15 +36,27 @@ public interface CustomerDAOInterface {
 
     public RowSet selectAllCustomersRS();
 
+    public LinkedList<CustomerTO> selectAllCustomersInInternetState0();
+    
+    public LinkedList<CustomerTO> selectAllCustomersInVoipState0();
+    
+    public LinkedList<CustomerTO> selectAllCustomersInVodState0();
+        
     public LinkedList<CustomerTO> selectAllCustomersTO();
-
+    
     public boolean updateCustomer();
-    
+
     public String updateCustomerInternetSubscribe(int idCustomer, int idInternetSubscribe);
-    
-    public String updateCustomerVoipSubscribe(int idCustomer, int idVoipSubscribe); 
-    
-    public String updateCustomerVodSubscribe(int idCustomer, int idVodSubscribe); 
+
+    public String updateCustomerStateInternetSubscribe(int idCustomer);
+
+    public String updateCustomerStateVoipSubscribe(int idCustomer);
+
+    public String updateCustomerStateVodSubscribe(int idCustomer);
+
+    public String updateCustomerVoipSubscribe(int idCustomer, int idVoipSubscribe);
+
+    public String updateCustomerVodSubscribe(int idCustomer, int idVodSubscribe);
 
     public boolean validAccount(int id);
 }
