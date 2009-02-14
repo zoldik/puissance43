@@ -20,7 +20,6 @@
         <load-on-startup>2</load-on-startup>
     </servlet>
     <!--STRUTS-->
-    
     <servlet>
         <servlet-name>enregModContactInfo</servlet-name>
         <servlet-class>servlet.voip.enregModContactInfo</servlet-class>
@@ -69,15 +68,6 @@
     <!--zzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzz-->
     <!--JSP-->
     <servlet>
-        <servlet-name>AddSubscribes.jsp</servlet-name>
-        <jsp-file>/subscribes/admin/AddSubscribes.jsp</jsp-file>
-    </servlet>
-    <servlet-mapping>
-        <servlet-name>AddSubscribes.jsp</servlet-name>
-        <url-pattern>/AddSubscribes.jsp</url-pattern>
-    </servlet-mapping>
-    <!--zzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzz-->
-    <servlet>
         <servlet-name>AdvancedSearch.jsp</servlet-name>
         <jsp-file>/shop/ViewCart/AdvancedSearch.jsp</jsp-file>
     </servlet>
@@ -111,6 +101,15 @@
     <servlet-mapping>
         <servlet-name>DisplayItems.jsp</servlet-name>
         <url-pattern>/DisplayItems.jsp</url-pattern>
+    </servlet-mapping>    
+    <!--zzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzz-->
+    <servlet>
+        <servlet-name>HandleSubscribes.jsp</servlet-name>
+        <jsp-file>/subscribes/admin/HandleSubscribes.jsp</jsp-file>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>HandleSubscribes.jsp</servlet-name>
+        <url-pattern>/HandleSubscribes.jsp</url-pattern>
     </servlet-mapping>    
     <!--zzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzz-->
     <servlet>
