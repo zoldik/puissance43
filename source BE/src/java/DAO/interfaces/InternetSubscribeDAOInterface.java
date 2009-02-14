@@ -9,6 +9,8 @@ import java.util.ArrayList;
  */
 public interface InternetSubscribeDAOInterface {
 
+    public String deleteById(int id);
+    
     public String insertInternetSubscribe(InternetSubscribeTO internetSubscribeTO);
 
     public ArrayList<InternetSubscribeTO> selectAllInternetSubscribeTOs();

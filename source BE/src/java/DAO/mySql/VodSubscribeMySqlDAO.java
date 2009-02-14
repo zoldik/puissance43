@@ -13,6 +13,30 @@ import java.util.LinkedList;
  * @author vincent
  */
 public class VodSubscribeMySqlDAO extends MySqlGeneralObjectDAO implements VodSubscribeDAOInterface {
+    
+     public String deleteById(int id) {
+         //Return object
+        String error = "pas d'erreur";
+
+        //Connexion to the database with JNDI 
+        Connection conn = (Connection) getConnectionWithJNDI();
+
+        //transaction or sequence of queries
+        Statement st = null;
+                
+        try
+        {
+            st=conn.createStatement();
+            st.executeUpdate("DELETE FROM `vod_subscribe` WHERE `id_vod_subscribe` ="+id+";");             
+        }
+        catch(SQLException e)
+        {
+             error = e.toString();            
+        }
+        closeConnection(conn);
+        
+        return error;
+    }
 
     public String insertVodSubscribe(VodSubscribeTO vodSubscribeTO) {
          //Return object
