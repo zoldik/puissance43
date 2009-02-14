@@ -113,7 +113,6 @@ public class CtrSubscribe extends HttpServlet {
         //VALIDATE VALIDATE VALIDATE VALIDATE VALIDATE VALIDATE VALIDATE
         //zzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzz
 
-
         if (request.getParameter("valSubscribe") != null) {
 
             String valSubscribe = request.getParameter("valSubscribe");
@@ -268,7 +267,7 @@ public class CtrSubscribe extends HttpServlet {
         InternetSubscribeDAOInterface internetSubscribeDAO = daoFactory.getInternetSubscribeDAO();
 
         String error = internetSubscribeDAO.deleteById(Integer.parseInt(idInternet));
-
+        /*
         response.setContentType("text/html");
         PrintWriter writer = response.getWriter();
         writer.println("<html>");
@@ -277,7 +276,9 @@ public class CtrSubscribe extends HttpServlet {
         writer.println(error);
         writer.println("</body>");
         writer.println("</html");
+        */
 
+         
         response.sendRedirect("./HandleSubscribes.jsp");
     }
 
@@ -289,7 +290,8 @@ public class CtrSubscribe extends HttpServlet {
         VoipSubscribeDAOInterface voipSubscribeDAO = daoFactory.getVoipSubscribeDAO();
 
         String error = voipSubscribeDAO.deleteById(Integer.parseInt(idVoip));
-
+        
+        /*
         response.setContentType("text/html");
         PrintWriter writer = response.getWriter();
         writer.println("<html>");
@@ -298,7 +300,8 @@ public class CtrSubscribe extends HttpServlet {
         writer.println(error);
         writer.println("</body>");
         writer.println("</html");
-
+        */
+        
         response.sendRedirect("./HandleSubscribes.jsp");
     }
 
@@ -310,7 +313,8 @@ public class CtrSubscribe extends HttpServlet {
         VodSubscribeDAOInterface vodSubscribeDAO = daoFactory.getVodSubscribeDAO();
 
         String error = vodSubscribeDAO.deleteById(Integer.parseInt(idVod));
-
+        
+        /*
         response.setContentType("text/html");
         PrintWriter writer = response.getWriter();
         writer.println("<html>");
@@ -319,24 +323,77 @@ public class CtrSubscribe extends HttpServlet {
         writer.println(error);
         writer.println("</body>");
         writer.println("</html");
-
+        */
         response.sendRedirect("./HandleSubscribes.jsp");
     }
     //zzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzz
     //VALIDATE VALIDATE VALIDATE VALIDATE VALIDATE VALIDATE VALIDATE
     //zzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzz
     private void valInternetSubscribe(HttpServletRequest request, HttpServletResponse response) throws IOException {
+
+        DAOFactory daoFactory = DAOFactory.getDAOFactory(DAOFactory.MYSQL);
+        CustomerDAOInterface customerDAO = daoFactory.getCustomerDAO();
+
+        String idCustomerInternet = request.getParameter("idCustomerInternet");
+        int idCustomer = Integer.parseInt(idCustomerInternet);
+
+        String error = customerDAO.updateCustomerStateInternetSubscribe(idCustomer, 1);
         
+        response.setContentType("text/html");
+        PrintWriter writer = response.getWriter();
+        writer.println("<html>");
+        writer.println("<body>");
+        writer.println("<h1>valInternetSubscribe</h1>");
+        writer.println(error);
+        writer.println("</body>");
+        writer.println("</html");
         
-        
+        response.sendRedirect("./HandleSubscribes.jsp");
     }
 
     //zzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzz
     private void valVoipSubscribe(HttpServletRequest request, HttpServletResponse response) throws IOException {
+        DAOFactory daoFactory = DAOFactory.getDAOFactory(DAOFactory.MYSQL);
+        CustomerDAOInterface customerDAO = daoFactory.getCustomerDAO();
+
+        String idCustomerVoip = request.getParameter("idCustomerVoip");
+        int idCustomer = Integer.parseInt(idCustomerVoip);
+
+        String error = customerDAO.updateCustomerStateVoipSubscribe(idCustomer, 1);
+        
+        response.setContentType("text/html");
+        PrintWriter writer = response.getWriter();
+        writer.println("<html>");
+        writer.println("<body>");
+        writer.println("<h1>valVoipSubscribe</h1>");
+        writer.println(error);
+        writer.println("</body>");
+        writer.println("</html");
+                
+        response.sendRedirect("./HandleSubscribes.jsp");
     }
 
     //zzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzz
     private void valVodSubscribe(HttpServletRequest request, HttpServletResponse response) throws IOException {
+        DAOFactory daoFactory = DAOFactory.getDAOFactory(DAOFactory.MYSQL);
+        CustomerDAOInterface customerDAO = daoFactory.getCustomerDAO();
+
+        String idCustomerVod = request.getParameter("idCustomerVod");
+        int idCustomer = Integer.parseInt(idCustomerVod);
+
+        String error = customerDAO.updateCustomerStateVodSubscribe(idCustomer, 1);
+        
+        response.setContentType("text/html");
+        PrintWriter writer = response.getWriter();
+        writer.println("<html>");
+        writer.println("<body>");
+        writer.println("<h1>valVodSubscribe</h1>");
+        writer.println(error);
+        writer.println("</body>");
+        writer.println("</html");
+        
+        
+        response.sendRedirect("./HandleSubscribes.jsp");
     }
     //zzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzz
     //SUBSCRIBE SUBSCRIBE SUBSCRIBE SUBSCRIBE SUBSCRIBE SUBSCRIBE SUBSCRIBE 
@@ -359,13 +416,13 @@ public class CtrSubscribe extends HttpServlet {
             DAOFactory daoFactory = DAOFactory.getDAOFactory(DAOFactory.MYSQL);
             CustomerDAOInterface customerDAO = daoFactory.getCustomerDAO();
 
-            String error = customerDAO.updateCustomerStateInternetSubscribe(idCustomer);
+            String error = customerDAO.updateCustomerStateInternetSubscribe(idCustomer, 0);
 
             String error2 = customerDAO.updateCustomerInternetSubscribe(idCustomer, idIS);
 
             try {
                 //TODO output your page here
-                out.println("<html>");                
+                out.println("<html>");
                 out.println("<body>");
                 out.println("<h1>" + error + ", votre demande de souscription à l'abonnement Internet n°" + idInternetSubscribe +
                         " a bien été transmise à notre service clientèle. Vous receverez un mail de confirmation lorque l'un de nos agent aura activé votre abonnement</h1>");
@@ -403,11 +460,11 @@ public class CtrSubscribe extends HttpServlet {
 
             String error = customerDAO.updateCustomerVoipSubscribe(idCustomer, idIS);
 
-            String error2 = customerDAO.updateCustomerStateVoipSubscribe(idCustomer);
+            String error2 = customerDAO.updateCustomerStateVoipSubscribe(idCustomer, 0);
 
             try {
                 //TODO output your page here
-                out.println("<html>");                
+                out.println("<html>");
                 out.println("<body>");
                 out.println("<h1>" + error + ", votre demande de souscription à l'abonnement Voip n°" + idVoip +
                         " a bien été transmise à notre service clientèle. Vous receverez un mail de confirmation lorque l'un de nos agent aura activé votre abonnement</h1>");
@@ -445,7 +502,7 @@ public class CtrSubscribe extends HttpServlet {
 
             String error = customerDAO.updateCustomerVodSubscribe(idCustomer, idIS);
 
-            String error2 = customerDAO.updateCustomerStateVodSubscribe(idCustomer);
+            String error2 = customerDAO.updateCustomerStateVodSubscribe(idCustomer, 0);
 
             try {
                 //TODO output your page here

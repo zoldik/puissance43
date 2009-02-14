@@ -555,7 +555,7 @@ public class CustomerMySqlDAO extends MySqlGeneralObjectDAO implements CustomerD
                 customerTO.setId(Integer.parseInt(rs.getString("id_customer")));
                 customerTO.setFirstName(rs.getString("first_name"));
                 customerTO.setLastName(rs.getString("last_name"));
-                customerTO.setIdInternetSubscribe(Integer.parseInt(rs.getString("id_voip_subscribe")));
+                customerTO.setIdVoipSubscribe(Integer.parseInt(rs.getString("id_voip_subscribe")));
                 //customerTO.setStateInternetSubscribe(Integer.parseInt(rs.getString("state_internet_subscribe")));
                 
                 customerTOs.add(customerTO);
@@ -596,7 +596,7 @@ public class CustomerMySqlDAO extends MySqlGeneralObjectDAO implements CustomerD
                 customerTO.setId(Integer.parseInt(rs.getString("id_customer")));
                 customerTO.setFirstName(rs.getString("first_name"));
                 customerTO.setLastName(rs.getString("last_name"));
-                customerTO.setIdInternetSubscribe(Integer.parseInt(rs.getString("id_vod_subscribe")));
+                customerTO.setIdVodSubscribe(Integer.parseInt(rs.getString("id_vod_subscribe")));
                 //customerTO.setStateInternetSubscribe(Integer.parseInt(rs.getString("state_internet_subscribe")));
                 
                 customerTOs.add(customerTO);
@@ -651,7 +651,7 @@ public class CustomerMySqlDAO extends MySqlGeneralObjectDAO implements CustomerD
         return error;
     }
 
-    public String updateCustomerStateInternetSubscribe(int idCustomer) {
+    public String updateCustomerStateInternetSubscribe(int idCustomer, int state) {
         //Return object
         String error = "pas d'erreur";
 
@@ -661,7 +661,7 @@ public class CustomerMySqlDAO extends MySqlGeneralObjectDAO implements CustomerD
         //transaction or sequence of queries
         Statement st = null;
 
-        String update = "UPDATE `customer` SET `state_internet_subscribe` = '0' WHERE `id_customer` =" +
+        String update = "UPDATE `customer` SET `state_internet_subscribe` = '" + state + "' WHERE `id_customer` =" +
                 idCustomer + " LIMIT 1 ;";
 
         try {
@@ -677,7 +677,7 @@ public class CustomerMySqlDAO extends MySqlGeneralObjectDAO implements CustomerD
         return error;
     }
 
-    public String updateCustomerStateVoipSubscribe(int idCustomer) {
+    public String updateCustomerStateVoipSubscribe(int idCustomer, int state) {
         //Return object
         String error = "pas d'erreur";
 
@@ -687,7 +687,7 @@ public class CustomerMySqlDAO extends MySqlGeneralObjectDAO implements CustomerD
         //transaction or sequence of queries
         Statement st = null;
 
-        String update = "UPDATE `customer` SET `state_voip_subscribe` = '0' WHERE `id_customer` =" +
+        String update = "UPDATE `customer` SET `state_voip_subscribe` = '"+ state +"' WHERE `id_customer` =" +
                 idCustomer + " LIMIT 1 ;";
 
         try {
@@ -703,7 +703,7 @@ public class CustomerMySqlDAO extends MySqlGeneralObjectDAO implements CustomerD
         return error;
     }
 
-    public String updateCustomerStateVodSubscribe(int idCustomer) {
+    public String updateCustomerStateVodSubscribe(int idCustomer, int state) {
         //Return object
         String error = "pas d'erreur";
 
@@ -713,7 +713,7 @@ public class CustomerMySqlDAO extends MySqlGeneralObjectDAO implements CustomerD
         //transaction or sequence of queries
         Statement st = null;
 
-        String update = "UPDATE `customer` SET `state_vod_subscribe` = '0' WHERE `id_customer` =" +
+        String update = "UPDATE `customer` SET `state_vod_subscribe` = '" + state + "' WHERE `id_customer` =" +
                 idCustomer + " LIMIT 1 ;";
 
         try {

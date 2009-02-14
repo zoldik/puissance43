@@ -48,11 +48,11 @@ public interface CustomerDAOInterface {
 
     public String updateCustomerInternetSubscribe(int idCustomer, int idInternetSubscribe);
 
-    public String updateCustomerStateInternetSubscribe(int idCustomer);
+    public String updateCustomerStateInternetSubscribe(int idCustomer, int state);
 
-    public String updateCustomerStateVoipSubscribe(int idCustomer);
+    public String updateCustomerStateVoipSubscribe(int idCustomer, int state);
 
-    public String updateCustomerStateVodSubscribe(int idCustomer);
+    public String updateCustomerStateVodSubscribe(int idCustomer, int state);
 
     public String updateCustomerVoipSubscribe(int idCustomer, int idVoipSubscribe);
 
