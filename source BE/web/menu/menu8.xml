@@ -30,6 +30,6 @@
     </NetworkSolutions>
     <Admin name="Admin">
         <link name="VoIP" url="voip/admin/admin.jsp"/>
-        <link name="Abonnement" url="AddSubscribes.jsp" />
+        <link name="Abonnement" url="HandleSubscribes.jsp" />
     </Admin>
 </root>
