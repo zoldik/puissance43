@@ -7,9 +7,7 @@ import javax.servlet.*;
 import javax.servlet.http.*;
 
 import DAO.factory.DAOFactory;
-import DAO.factory.MySqlDAOFactory;
 import DAO.interfaces.CustomerDAOInterface;
-import DAO.mySql.CustomerMySqlDAO;
 import DAO.transfertObject.AddressTO;
 import DAO.transfertObject.CustomerTO;
 
@@ -113,7 +111,7 @@ public class CtrAccount extends javax.servlet.http.HttpServlet {
 
                 response.sendRedirect("CreateCustomerAccount.jsp");
             } else {
-
+                
                 //Put in the BDD
                 String error = customerDAO.insertCustomer(customerTO, addressTO);
                 
@@ -129,13 +127,14 @@ public class CtrAccount extends javax.servlet.http.HttpServlet {
                 writer.println("</body>");
                 writer.println("</html");
                  */
-                
+                CustomerTO customer = new CustomerTO();
+                customer = customerDAO.findCustomer(customerTO.getLogin(),customerTO.getPassword());
                 //Send confirmation mail
                 Mail mail = new Mail();
-                mail.setSubject("Bienvenu sur ProjectRSS");
-                mail.setContent("Voici un récapitulatif de vos identifiants :\nLogin : " + customerTO.getLogin() +
+                mail.setSubject("Bienvenu sur ");
+                mail.setContent("Voici un récapitulatif de vos identifiants :\nLogin : " +customerTO.getLogin() +
                         "\nMot de passe : " + customerTO.getPassword() +
-                        "\nPour valider votre compte, veuillez vous rendre à la page suivante :\n http://localhost:8080/ProjetRSS/Validation.jsp?Creation=inProgress&compte=" + customerTO.getId());
+                        "\nPour valider votre compte, veuillez vous rendre à la page suivante :\n http://web.RedNeck.fr/Source_BE/Validation.jsp?Creation=inProgress&compte=" + customer.getId());
                 //userMail.content="test";
                 mail.setAddress(customerTO.getMail());
                 try {
