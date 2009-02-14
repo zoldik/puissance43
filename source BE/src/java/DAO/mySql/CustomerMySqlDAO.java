@@ -446,7 +446,7 @@ public class CustomerMySqlDAO extends MySqlGeneralObjectDAO implements CustomerD
     }
 
     public LinkedList<CustomerTO> selectAllCustomersTO() {
-        
+
         LinkedList<CustomerTO> customerTOs = new LinkedList<CustomerTO>();
 
         Connection conn = (Connection) getConnectionWithJNDI();
@@ -490,6 +490,130 @@ public class CustomerMySqlDAO extends MySqlGeneralObjectDAO implements CustomerD
         return customerTOs;
     }
 
+    public LinkedList<CustomerTO> selectAllCustomersInInternetState0() {
+        //Returned object
+        LinkedList<CustomerTO> customerTOs = new LinkedList<CustomerTO>();
+
+        //Connexion to the database with JNDI 
+        Connection conn = (Connection) getConnectionWithJNDI();
+
+        //transaction or sequence of queries
+        Statement st = null;
+
+        //result of the queries
+        ResultSet rs = null;
+
+        try {
+
+            st = conn.createStatement();
+            rs = st.executeQuery("SELECT * FROM `customer` WHERE `state_internet_subscribe` =0");
+            
+            while (rs.next()) {
+                CustomerTO customerTO = new CustomerTO();
+
+                customerTO.setId(Integer.parseInt(rs.getString("id_customer")));
+                customerTO.setFirstName(rs.getString("first_name"));
+                customerTO.setLastName(rs.getString("last_name"));
+                customerTO.setIdInternetSubscribe(Integer.parseInt(rs.getString("id_internet_subscribe")));
+                //customerTO.setStateInternetSubscribe(Integer.parseInt(rs.getString("state_internet_subscribe")));
+                
+                customerTOs.add(customerTO);
+            
+            }//Fin du while            
+
+        } catch (Exception e) {
+            e.printStackTrace();
+
+        } finally {
+            closeRsAndSt(rs, st);
+        }
+        closeConnection(conn);
+        return customerTOs;
+    }
+
+    public LinkedList<CustomerTO> selectAllCustomersInVoipState0() {
+         //Returned object
+        LinkedList<CustomerTO> customerTOs = new LinkedList<CustomerTO>();
+
+        //Connexion to the database with JNDI 
+        Connection conn = (Connection) getConnectionWithJNDI();
+
+        //transaction or sequence of queries
+        Statement st = null;
+
+        //result of the queries
+        ResultSet rs = null;
+
+        try {
+
+            st = conn.createStatement();
+            rs = st.executeQuery("SELECT * FROM `customer` WHERE `state_voip_subscribe` =0");
+            
+            while (rs.next()) {
+                CustomerTO customerTO = new CustomerTO();
+
+                customerTO.setId(Integer.parseInt(rs.getString("id_customer")));
+                customerTO.setFirstName(rs.getString("first_name"));
+                customerTO.setLastName(rs.getString("last_name"));
+                customerTO.setIdInternetSubscribe(Integer.parseInt(rs.getString("id_voip_subscribe")));
+                //customerTO.setStateInternetSubscribe(Integer.parseInt(rs.getString("state_internet_subscribe")));
+                
+                customerTOs.add(customerTO);
+            
+            }//Fin du while            
+
+        } catch (Exception e) {
+            e.printStackTrace();
+
+        } finally {
+            closeRsAndSt(rs, st);
+        }
+        closeConnection(conn);
+        return customerTOs;
+    }
+
+    public LinkedList<CustomerTO> selectAllCustomersInVodState0() {
+        //Returned object
+        LinkedList<CustomerTO> customerTOs = new LinkedList<CustomerTO>();
+
+        //Connexion to the database with JNDI 
+        Connection conn = (Connection) getConnectionWithJNDI();
+
+        //transaction or sequence of queries
+        Statement st = null;
+
+        //result of the queries
+        ResultSet rs = null;
+
+        try {
+
+            st = conn.createStatement();
+            rs = st.executeQuery("SELECT * FROM `customer` WHERE `state_vod_subscribe` =0");
+            
+            while (rs.next()) {
+                CustomerTO customerTO = new CustomerTO();
+
+                customerTO.setId(Integer.parseInt(rs.getString("id_customer")));
+                customerTO.setFirstName(rs.getString("first_name"));
+                customerTO.setLastName(rs.getString("last_name"));
+                customerTO.setIdInternetSubscribe(Integer.parseInt(rs.getString("id_vod_subscribe")));
+                //customerTO.setStateInternetSubscribe(Integer.parseInt(rs.getString("state_internet_subscribe")));
+                
+                customerTOs.add(customerTO);
+            
+            }//Fin du while            
+
+        } catch (Exception e) {
+            e.printStackTrace();
+
+        } finally {
+            closeRsAndSt(rs, st);
+        }
+        closeConnection(conn);
+        return customerTOs;
+        
+    }
+
     public boolean updateCustomer() {
         boolean isOk = true;
         // implement update record here using data
@@ -523,13 +647,91 @@ public class CustomerMySqlDAO extends MySqlGeneralObjectDAO implements CustomerD
         }
 
         closeConnection(conn);
-          
+
         return error;
     }
-    
-     public String updateCustomerVoipSubscribe(int idCustomer, int idVoipSubscribe) {
 
-        //int error = 0;
+    public String updateCustomerStateInternetSubscribe(int idCustomer) {
+        //Return object
+        String error = "pas d'erreur";
+
+        //Connexion to the database with JNDI 
+        Connection conn = (Connection) getConnectionWithJNDI();
+
+        //transaction or sequence of queries
+        Statement st = null;
+
+        String update = "UPDATE `customer` SET `state_internet_subscribe` = '0' WHERE `id_customer` =" +
+                idCustomer + " LIMIT 1 ;";
+
+        try {
+            st = conn.createStatement();
+            st.executeUpdate(update);
+        } catch (SQLException e) {
+            System.out.println("SqlException : " + e);
+            error = e.toString();
+        }
+
+        closeConnection(conn);
+
+        return error;
+    }
+
+    public String updateCustomerStateVoipSubscribe(int idCustomer) {
+        //Return object
+        String error = "pas d'erreur";
+
+        //Connexion to the database with JNDI 
+        Connection conn = (Connection) getConnectionWithJNDI();
+
+        //transaction or sequence of queries
+        Statement st = null;
+
+        String update = "UPDATE `customer` SET `state_voip_subscribe` = '0' WHERE `id_customer` =" +
+                idCustomer + " LIMIT 1 ;";
+
+        try {
+            st = conn.createStatement();
+            st.executeUpdate(update);
+        } catch (SQLException e) {
+            System.out.println("SqlException : " + e);
+            error = e.toString();
+        }
+
+        closeConnection(conn);
+
+        return error;
+    }
+
+    public String updateCustomerStateVodSubscribe(int idCustomer) {
+        //Return object
+        String error = "pas d'erreur";
+
+        //Connexion to the database with JNDI 
+        Connection conn = (Connection) getConnectionWithJNDI();
+
+        //transaction or sequence of queries
+        Statement st = null;
+
+        String update = "UPDATE `customer` SET `state_vod_subscribe` = '0' WHERE `id_customer` =" +
+                idCustomer + " LIMIT 1 ;";
+
+        try {
+            st = conn.createStatement();
+            st.executeUpdate(update);
+        } catch (SQLException e) {
+            System.out.println("SqlException : " + e);
+            error = e.toString();
+        }
+
+        closeConnection(conn);
+
+        return error;
+    }
+
+    public String updateCustomerVoipSubscribe(int idCustomer, int idVoipSubscribe) {
+
+        //Return object
         String error = "pas d'erreur";
 
         //Connexion to the database with JNDI 
@@ -550,13 +752,13 @@ public class CustomerMySqlDAO extends MySqlGeneralObjectDAO implements CustomerD
         }
 
         closeConnection(conn);
-          
+
         return error;
     }
-     
-      public String updateCustomerVodSubscribe(int idCustomer, int idVodSubscribe) {
 
-        //int error = 0;
+    public String updateCustomerVodSubscribe(int idCustomer, int idVodSubscribe) {
+
+        //Return object
         String error = "pas d'erreur";
 
         //Connexion to the database with JNDI 
@@ -577,7 +779,7 @@ public class CustomerMySqlDAO extends MySqlGeneralObjectDAO implements CustomerD
         }
 
         closeConnection(conn);
-          
+
         return error;
     }
 

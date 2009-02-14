@@ -13,6 +13,9 @@ public class CustomerTO {
     // ATTRIBUTES
     //******************    
     private int id;
+    private int idInternetSubscribe;
+    private int idVoipSubscribe;
+    private int idVodSubscribe;   
     private String firstName;
     private String lastName;
     private String login;
@@ -24,9 +27,11 @@ public class CustomerTO {
     private String cellPhone;
     private String profession;
     private String company;
-    private int account_level;
+    private int accountLevel;
     private boolean valid;
-
+    private int stateInternetSubscribe;
+    private int stateVoipSubscribe;
+    private int stateVodSubscribe;
     
     public CustomerTO() {
         this.id=0;
@@ -41,7 +46,7 @@ public class CustomerTO {
         this.cellPhone="";
         this.profession="";
         this.company="";
-        this.account_level=0;
+        this.accountLevel=0;
         this.valid=false;
     }
     
@@ -49,7 +54,7 @@ public class CustomerTO {
     //GETTERS
     //******************
     public int getAccountLevel() {
-        return account_level;
+        return accountLevel;
     }
 
     public String getBirthday() {
@@ -104,12 +109,35 @@ public class CustomerTO {
         return valid;
     }
     
-    
+    public int getIdInternetSubscribe() {
+        return idInternetSubscribe;
+    }
+
+    public int getIdVodSubscribe() {
+        return idVodSubscribe;
+    }
+
+    public int getIdVoipSubscribe() {
+        return idVoipSubscribe;
+    }
+
+    public int getStateInternetSubscribe() {
+        return stateInternetSubscribe;
+    }
+
+    public int getStateVodSubscribe() {
+        return stateVodSubscribe;
+    }
+
+    public int getStateVoipSubscribe() {
+        return stateVoipSubscribe;
+    }
+
     //******************
     //SETTERS
     //******************
     public void setAccountLevel(int account_level) {
-        this.account_level = account_level;
+        this.accountLevel = account_level;
     }
 
     public void setBirthday(String birthday) {
@@ -163,4 +191,30 @@ public class CustomerTO {
     public void setValid(boolean valid) {
         this.valid = valid;
     }
+
+    public void setIdInternetSubscribe(int idInternetSubscribe) {
+        this.idInternetSubscribe = idInternetSubscribe;
+    }
+
+    public void setIdVodSubscribe(int idVodSubscribe) {
+        this.idVodSubscribe = idVodSubscribe;
+    }
+
+    public void setIdVoipSubscribe(int idVoipSubscribe) {
+        this.idVoipSubscribe = idVoipSubscribe;
+    }
+
+    public void setStateInternetSubscribe(int stateInternetSubscribe) {
+        this.stateInternetSubscribe = stateInternetSubscribe;
+    }
+
+    public void setStateVodSubscribe(int stateVodSubscribe) {
+        this.stateVodSubscribe = stateVodSubscribe;
+    }
+
+    public void setStateVoipSubscribe(int stateVoipSubscribe) {
+        this.stateVoipSubscribe = stateVoipSubscribe;
+    }
+    
+    
 }
