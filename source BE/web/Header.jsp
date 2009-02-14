@@ -72,7 +72,7 @@
                                     <a class="onglet" href="./checkRSS" ><div id="RSS">Test VoIP RSS</div></a>
                                     <a class="onglet" href="#" onclick="fonctionOpenPage('accueil.jsp');" onmouseover="fonctionHeader('Compte'); fonctionClean('Compte'); fonctionMenu('Compte'); return false;"><div id="Compte">Compte</div></a>
                                     <a class="onglet" href="#" onmouseover="fonctionHeader('VOD'); fonctionClean('VOD'); fonctionMenu('VOD'); return false;"><div id="VOD">VOD</div></a>
-                                    <a class="onglet" href="#" onclick="fonctionOpenPage('voip/voip.jsp');" onmouseover="fonctionHeader('VoIP'); fonctionClean('VoIP'); fonctionMenu('VoIP'); return false;"><div id="VoIP">VoIP</div></a>
+                                    <a class="onglet" href="#" onmouseover="fonctionHeader('VoIP'); fonctionClean('VoIP'); fonctionMenu('VoIP'); return false;"><div id="VoIP">VoIP</div></a>
                                     <a class="onglet" href="#" onmouseover="fonctionHeader('Assistance'); fonctionClean('Assistance'); fonctionMenu('Assistance'); return false;"><div id="Assistance">Assistance</div></a>
                                     <a class="onglet" href="#" onmouseover="fonctionHeader('Magasin'); fonctionClean('Magasin'); fonctionMenu('Magasin'); return false;"><div id="Magasin">Magasin</div></a>
                                     <a class="onglet" href="#" onmouseover="fonctionHeader('NetworkSolutions'); fonctionClean('NetworkSolutions'); fonctionMenu('NetworkSolutions'); return false;"><div id="NetworkSolutions">NetSolutions</div></a>

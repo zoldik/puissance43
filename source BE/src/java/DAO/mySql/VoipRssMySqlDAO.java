@@ -1,6 +1,5 @@
 package DAO.mySql;
 
-import DAO.interfaces.CustomerDAOInterface;
 import DAO.transfertObject.AddressTO;
 import DAO.transfertObject.CustomerTO;
 
@@ -12,6 +11,18 @@ import model.voip.rss.*;
 import java.util.Date;
 import java.util.Calendar;
 import java.text.SimpleDateFormat;
+
+import java.io.File;
+import org.w3c.dom.Document;
+import java.text.ParsePosition;
+import javax.xml.transform.Result;
+import javax.xml.transform.Source;
+import javax.xml.transform.dom.DOMSource;
+import javax.xml.transform.Transformer;
+import javax.xml.transform.TransformerFactory;
+import javax.xml.transform.TransformerException;
+import javax.xml.transform.TransformerConfigurationException;
+import javax.xml.transform.stream.StreamResult;
 
 
 
@@ -34,6 +45,7 @@ public class VoipRssMySqlDAO extends MySqlGeneralObjectDAO implements VoipRssDAO
         //initialization
     }
     
+    
     public LinkedList<VoipRssTO> getVoipRssToUpdated() {
         
         //Returned object
@@ -55,7 +67,7 @@ public class VoipRssMySqlDAO extends MySqlGeneralObjectDAO implements VoipRssDAO
                 item.setIdVoipRss(rs.getInt("id_voip_rss"));
                 item.setIdVoipLine(rs.getInt("id_voip_line"));
                 item.setUrl(rs.getString("url"));
-                item.setRss(item.getRss().parse("./voip/rss/"+item.getUrl()));
+                //item.setRss(item.getRss().parse("./voip/rss/"+item.getUrl()));
                 items.add(item);
             }
         } catch (Exception e) {
@@ -69,20 +81,16 @@ public class VoipRssMySqlDAO extends MySqlGeneralObjectDAO implements VoipRssDAO
     
     
     
-    public String updateVoipRss(VoipRssTO rss) {
+    public String buildVoipRss(VoipRssTO rss) {
         
-        VoipRss tempRss = rss.getRss();
+        // boolean
+        //VoipRss tempRss = rss.getRss();
+        //LinkedList<VoipRssChannelItem> tmpItemList = tempRss.getRssChannel().getItemList();
+        //VoipRssChannelItem tempItem = new VoipRssChannelItem();
+        //tempItem=tmpItemList.get(0);
         
-        int id_voip_line = rss.getIdVoipLine();
-        
-                
-        LinkedList<VoipRssChannelItem> tmpItemList = tempRss.getRssChannel().getItemList();
-        
-        VoipRssChannelItem tempItem = new VoipRssChannelItem();
-        
-        tempItem=tmpItemList.get(0);
-        
-        String currentDateStringForCdr = "";
+
+        /* String currentDateStringForCdr = "";
         String currentDateStringForRss = "";
         String currentDateMinusFiveMinStringForCdr = "";
         //dateString = tempItem.getPubDate();
@@ -107,10 +115,13 @@ public class VoipRssMySqlDAO extends MySqlGeneralObjectDAO implements VoipRssDAO
         currentDateStringForCdr = sdf1.format(currentDate);
         currentDateMinusFiveMinStringForCdr = sdf1.format(currentDateMinusFiveMin);
         currentDateStringForRss=sdf2.format(currentDate);
-        
+        */
         //2009-01-22 16:15:15
         //2009-01-22T16:15:15+01:00
         //Date()??
+        
+        //int id_voip_line = rss.getIdVoipLine();
+        
         
         //Connexion to the database with JNDI 
         Connection conn = (Connection) getConnectionWithJNDI();
@@ -121,15 +132,37 @@ public class VoipRssMySqlDAO extends MySqlGeneralObjectDAO implements VoipRssDAO
         ResultSet rs = null;
         
         String callerid = getCallerId(rss);
-        String calldate =callerid;
+        String hostname = "redneck.fr";
+        String answer = "";
+        
         try {            
             st=conn.createStatement();
-            rs = st.executeQuery("select * from cdr where dst=\""+callerid+"\" order by calldate desc;");
-            while (rs.next()) {
-                calldate=rs.getString("calldate");
-                //if (currentDate>currentDateMinusFiveMin) {
+            rs = st.executeQuery("select * from cdr where dst=\""+callerid+"\" and (disposition=\"BUSY\" OR disposition=\"NO ANSWER\" ) order by calldate desc;");
+            for (int i=0; i<10; i++ ) {
+                String calldate = "";
+                String callerSource = "";
+                String disposition="";
+                if (rs.next()) {
+                    calldate = rs.getString("calldate");
+                    callerSource = rs.getString("src");
+                    disposition = rs.getString("disposition");
+                    String dateFormat1 = "yyyy-MM-dd hh:mm:ss";
+                    SimpleDateFormat sdf1 = new SimpleDateFormat(dateFormat1);
+                    ParsePosition pos = new ParsePosition(0);
                     
-                //}211
+                    VoipRssChannelItem channelItem = new VoipRssChannelItem();
+                    //channelItem.setTitle("http://www."+hostname);
+                    channelItem.setLink("http://www."+hostname+"/index.jsp?Connexion=");
+                    //channelItem.setDescription("http://www."+hostname);
+                    channelItem.setAuthor("voip@"+hostname);
+                    channelItem.setGuid("http://www."+hostname);
+                    
+                    //channelItem.setPubDate("http://www."+hostname);
+                    //channelItem.setSource("http://www."+hostname);
+                } else {
+                    i=10;
+                }
+                answer+=calldate+"&src="+callerSource+"&dst="+callerid;
             }
             
             
@@ -141,7 +174,39 @@ public class VoipRssMySqlDAO extends MySqlGeneralObjectDAO implements VoipRssDAO
         }
         closeConnection(conn);
         
-        return calldate;
+        
+        
+        
+        
+        
+        
+        
+        String filename = rss.getUrl();
+        
+        Document doc = null;
+        
+        // This method writes a DOM document to a file
+        //public static void writeXmlFile(Document doc, String filename) {
+            try {
+                // Prepare the DOM document for writing
+                Source source = new DOMSource(doc);
+
+                // Prepare the output file
+                File file = new File(filename);
+                Result result = new StreamResult(file);
+
+                // Write the DOM document to the file
+                Transformer xformer = TransformerFactory.newInstance().newTransformer();
+                xformer.transform(source, result);
+            } catch (TransformerConfigurationException e) {
+                e.printStackTrace();
+            } catch (TransformerException e) {
+                e.printStackTrace();
+            }
+        
+        
+
+        return answer;
     }
     
     

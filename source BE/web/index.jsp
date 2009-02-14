@@ -35,7 +35,7 @@
         <title>Red Neck Industries</title>
         <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
     </head>
-    <body onload="displayHeader();<%= fonctionJS %>">
+    <body onload="displayHeader();<%= fonctionJS%>">
         
         <div id="header"></div>
         <div id="account"></div>
