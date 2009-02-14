@@ -134,7 +134,7 @@ public class CtrAccount extends javax.servlet.http.HttpServlet {
                 mail.setSubject("Bienvenu sur ");
                 mail.setContent("Voici un récapitulatif de vos identifiants :\nLogin : " +customerTO.getLogin() +
                         "\nMot de passe : " + customerTO.getPassword() +
-                        "\nPour valider votre compte, veuillez vous rendre à la page suivante :\n http://web.RedNeck.fr/Source_BE/Validation.jsp?Creation=inProgress&compte=" + customer.getId());
+                        "\nPour valider votre compte, veuillez vous rendre à la page suivante :\n http://web.RedNeck.fr/source_BE/account/AccountValidation.jsp?Creation=inProgress&compte=" + customer.getId());
                 //userMail.content="test";
                 mail.setAddress(customerTO.getMail());
                 try {
