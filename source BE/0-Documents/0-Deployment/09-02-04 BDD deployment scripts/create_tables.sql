@@ -94,6 +94,9 @@ create table customer
    account_level        smallint, 
    valid                varchar(20),
    vod_debit            float(8,2),
+   state_internet_subscribe int,
+   state_voip_subscribe     int,
+   state_vod_subscribe      int,
    unique (`login`),
    primary key (id_customer)
 );
