@@ -366,6 +366,14 @@
         <servlet-name>Validate</servlet-name>
         <url-pattern>/Validate</url-pattern>
     </servlet-mapping>
+    <servlet>
+        <servlet-name>ViewBill</servlet-name>
+        <servlet-class>servlet.customer.account.ViewBill</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>ViewBill</servlet-name>
+        <url-pattern>/ViewBill</url-pattern>
+    </servlet-mapping>
     <!-- /Servlet-->
     <!-- JSP -->
     <servlet>
