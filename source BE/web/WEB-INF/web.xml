@@ -378,6 +378,5 @@
     </servlet-mapping>
     <!-- /JSP -->
     <!-- /AURELIEN BAUDET -->
-    
-    InternetSubscribe
+      
 </web-app>
