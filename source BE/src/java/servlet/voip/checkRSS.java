@@ -30,8 +30,7 @@ public class checkRSS extends HttpServlet {
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
     throws ServletException, IOException {
         try{
-            VoipRssTO voipRss = new VoipRssTO();
-                        
+                      
             DAOFactory daoFactory = DAOFactory.getDAOFactory(DAOFactory.MYSQL);
 
             VoipRssDAOInterface VoipRssDAO = daoFactory.getVoipRssDAO();
@@ -56,18 +55,15 @@ public class checkRSS extends HttpServlet {
                         i++;
                         tempItem = iter.next();
                         
-                        String Datenow =  VoipRssDAO.buildVoipRss(tempItem);
+                        boolean resultBuild = false;
+                        resultBuild = VoipRssDAO.buildVoipRss(tempItem);
                         
-                        //if(VoipRssDAO.updateVoipRss(tempItem)) {
-                            
-                            answer+="#R"+i+"="+Datenow;
-                            
-                            //VoipRssDAO.setUpdatedVoipRss(tempItem);
-                            
-                        //} else {
-                        //    answer+="R"+i+"=KO#";
-                        //}
-                        
+                        if (resultBuild) {
+                            VoipRssDAO.setUpdatedVoipRss(tempItem);
+                            answer+="#R"+tempItem.getIdVoipRss()+"=OK";
+                        } else {
+                            answer+="#R"+tempItem.getIdVoipRss()+"=KO";
+                        }
                         
                     }
                     
