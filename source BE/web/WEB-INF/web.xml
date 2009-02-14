@@ -155,6 +155,15 @@
     <servlet-mapping>
         <servlet-name>SubscribesDisconnect.jsp</servlet-name>
         <url-pattern>/SubscribesDisconnect.jsp</url-pattern>
+    </servlet-mapping>    
+     <!--zzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzz-->
+    <servlet>
+        <servlet-name>SubscribesDisconnect2.jsp</servlet-name>
+        <jsp-file>/subscribes/SubscribesDisconnect2.jsp</jsp-file>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>SubscribesDisconnect2.jsp</servlet-name>
+        <url-pattern>/SubscribesDisconnect2.jsp</url-pattern>
     </servlet-mapping>        
     <!--zzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzz-->
     <servlet>

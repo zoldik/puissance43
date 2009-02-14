@@ -10,13 +10,12 @@
 <%@ page import="DAO.factory.*, DAO.transfertObject.InternetSubscribeTO, DAO.interfaces.InternetSubscribeDAOInterface" %>
 <%@ page import="DAO.transfertObject.VoipSubscribeTO, DAO.interfaces.VoipSubscribeDAOInterface" %>
 <%@ page import="DAO.transfertObject.VodSubscribeTO, DAO.interfaces.VodSubscribeDAOInterface" %>
-<%@ page import="DAO.transfertObject.CustomerTO" %>
+<%@ page import="DAO.transfertObject.CustomerTO, DAO.interfaces.CustomerDAOInterface" %>
 
 <html>
     <head>
         
         <script language="JavaScript" src="javascripts/ajax_register_core.js"></script>
-        <script language="JavaScript" src="javascripts/ajax_register_functionsTest.js"></script>
         
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <title>JSP Page</title>
@@ -66,7 +65,7 @@
                     <tr align="left">
                         <td></td>
                         <td>
-                            <input type="submit" name="AddInternetSubscribe" value="Créer" />
+                            <input type="submit" name="AddInternetSubscribe" value="Ajouter" />
                             <input type="hidden" name="addSubscribe" value="internet"/>
                         </td>      
                         <!--<div id='formAddInternet'><td>Abonnement internet ajouté</td></div>-->
@@ -109,7 +108,7 @@
                     <tr align="left">
                         <td></td>
                         <td>
-                            <input type="submit" name="AddVoipSubscribe" value="Créer"/>
+                            <input type="submit" name="AddVoipSubscribe" value="Ajouter"/>
                             <input type="hidden" name="addSubscribe" value="voip" />
                         </td>                 
                     </tr>
@@ -152,7 +151,7 @@
                     <tr align="left">
                         <td></td>
                         <td>
-                            <input type="submit" name="AddVodSubscribe" value="Créer"/>
+                            <input type="submit" name="AddVodSubscribe" value="Ajouter"/>
                             <input type="hidden" name="addSubscribe" value="vod" />
                         </td>                 
                     </tr>
@@ -337,29 +336,34 @@
                 <tr style="color:white">
                     <tr>
                         <th>N°</th>
-                        <th>Nom</th>
-                        <th>Description</th>          
-                        <th>Prix (parMois)</th>
-                        <th>Debit</th>                
-                        <th>Supprimer</th>
+                        <th>Prénom</th>
+                        <th>Nom</th>          
+                        <th>State</th> 
+                        <th>Abonnement</th>
+                        <th>Valider</th>
                     </tr>          
                 </tr>                     
                 
                 <%
-            Iterator itVal = internetSubscribeTOs.iterator();
+
+            CustomerDAOInterface customerDAO = daoFactory.getCustomerDAO();
+
+            LinkedList<CustomerTO> customerTOs = customerDAO.selectAllCustomersInInternetState0();
+
+            Iterator itVal = customerTOs.iterator();
             while (itVal.hasNext()) {
-                InternetSubscribeTO internetSubscribeTO = (InternetSubscribeTO) itVal.next();
+                CustomerTO customerTO = (CustomerTO) itVal.next();
                 %>
                 
-                <tr><td><%=internetSubscribeTO.getId()%></td>
-                    <td><%=internetSubscribeTO.getNameSubscribe()%></td>
-                    <td><%=internetSubscribeTO.getDescriptionSubscribe()%></td>            
-                    <td><%=internetSubscribeTO.getPrice()%></td>
-                    <td><%=internetSubscribeTO.getRate()%></td>
+                <tr><td><%=customerTO.getId()%></td>
+                    <td><%=customerTO.getFirstName()%></td>
+                    <td><%=customerTO.getLastName()%></td>            
+                    <td><%=customerTO.getStateInternetSubscribe()%></td>
+                    <td><%=customerTO.getIdInternetSubscribe()%></td>                    
                     <td><form method='post' action="CtrSubscribe">
                             <input type='submit' value="Valider">
                             <input type="hidden" name="valSubscribe" value="internet" />
-                            <input type='hidden' name='idInternet' value='<%=internetSubscribeTO.getId()%>'>                        
+                            <input type='hidden' name='idInternet' value='<%=customerTO.getId()%>'>                        
                     </form></td>
                     
                     <%
@@ -383,29 +387,32 @@
                 <tr style="color:white">
                     <tr>
                         <th>N°</th>
-                        <th>Nom</th>
-                        <th>Description</th> 
-                        <th>Type</th> 
-                        <th>Prix (parMois)</th>                                       
-                        <th>Supprimer</th>
+                        <th>Prénom</th>
+                        <th>Nom</th>          
+                        <th>State</th> 
+                        <th>Abonnement</th>
+                        <th>Valider</th>
                     </tr>          
                 </tr>                     
                 
-                <%
-            Iterator itVoipVal = voipSubscribeTOs.iterator();
-            while (itVoipVal.hasNext()) {
-                VoipSubscribeTO voipSubscribeTO = (VoipSubscribeTO) itVoipVal.next();
+                <%           
+
+            customerTOs = customerDAO.selectAllCustomersInVoipState0();
+
+            Iterator itValVoip = customerTOs.iterator();
+            while (itValVoip.hasNext()) {
+                CustomerTO customerTO = (CustomerTO) itValVoip.next();
                 %>
                 
-                <tr><td><%=voipSubscribeTO.getId()%></td>
-                    <td><%=voipSubscribeTO.getName()%></td>
-                    <td><%=voipSubscribeTO.getDescription()%></td>            
-                    <td><%=voipSubscribeTO.getType()%></td>
-                    <td><%=voipSubscribeTO.getPrice()%></td>                    
+                <tr><td><%=customerTO.getId()%></td>
+                    <td><%=customerTO.getFirstName()%></td>
+                    <td><%=customerTO.getLastName()%></td>            
+                    <td><%=customerTO.getStateVoipSubscribe()%></td>
+                    <td><%=customerTO.getIdVoipSubscribe()%></td>                    
                     <td><form method='post' action="CtrSubscribe">
                             <input type='submit' value="Valider">
                             <input type="hidden" name="valSubscribe" value="voip" />
-                            <input type='hidden' name='idVoip' value='<%=voipSubscribeTO.getId()%>'>                        
+                            <input type='hidden' name='idInternet' value='<%=customerTO.getId()%>'>                        
                     </form></td>
                     
                     <%
@@ -426,34 +433,37 @@
         
         <div id='formValVod' style='visibility: hidden'>
             
-            <table width="100%" border="1">
+             <table width="100%" border="1">
                 
                 <tr style="color:white">
                     <tr>
                         <th>N°</th>
-                        <th>Nom</th>
-                        <th>Description</th> 
-                        <th>Type</th> 
-                        <th>Prix (parMois)</th>                                       
-                        <th>Supprimer</th>
+                        <th>Prénom</th>
+                        <th>Nom</th>          
+                        <th>State</th> 
+                        <th>Abonnement</th>
+                        <th>Valider</th>
                     </tr>          
                 </tr>                     
                 
-                <%
-            Iterator itVodVal = vodSubscribeTOs.iterator();
-            while (itVodVal.hasNext()) {
-                VodSubscribeTO vodSubscribeTO = (VodSubscribeTO) itVodVal.next();
+                <%           
+
+            customerTOs = customerDAO.selectAllCustomersInVodState0();
+
+            Iterator itValVod = customerTOs.iterator();
+            while (itValVod.hasNext()) {
+                CustomerTO customerTO = (CustomerTO) itValVod.next();
                 %>
                 
-                <tr><td><%=vodSubscribeTO.getId()%></td>
-                    <td><%=vodSubscribeTO.getName()%></td>
-                    <td><%=vodSubscribeTO.getDescription()%></td>            
-                    <td><%=vodSubscribeTO.getType()%></td>
-                    <td><%=vodSubscribeTO.getPrice()%></td>                    
+                <tr><td><%=customerTO.getId()%></td>
+                    <td><%=customerTO.getFirstName()%></td>
+                    <td><%=customerTO.getLastName()%></td>            
+                    <td><%=customerTO.getStateVodSubscribe()%></td>
+                    <td><%=customerTO.getIdVodSubscribe()%></td>                    
                     <td><form method='post' action="CtrSubscribe">
                             <input type='submit' value="Valider">
                             <input type="hidden" name="valSubscribe" value="vod" />
-                            <input type='hidden' name='idVod' value='<%=vodSubscribeTO.getId()%>'>                        
+                            <input type='hidden' name='idInternet' value='<%=customerTO.getId()%>'>                        
                     </form></td>
                     
                     <%
