@@ -121,7 +121,7 @@ public class VoipRssMySqlDAO extends MySqlGeneralObjectDAO implements VoipRssDAO
         boolean suite=false;
         try {            
             st=conn.createStatement();
-            rs = st.executeQuery("select * from cdr where dst=\""+callerid+"\" and (disposition=\"BUSY\" OR disposition=\"NO ANSWER\" ) order by calldate desc;");
+            rs = st.executeQuery("select * from cdr where dst=\""+callerid+"\" and ( lastapp=\"VoiceMail\" OR disposition=\"BUSY\" OR disposition=\"NO ANSWER\" ) order by calldate desc;");
             
             for (int i=0; i<10; i++ ) {
                 String calldate = "";
@@ -212,6 +212,7 @@ public class VoipRssMySqlDAO extends MySqlGeneralObjectDAO implements VoipRssDAO
             try {
                 filename = rss.getUrl();
                 File tmpFile = new File(filename);
+                String pathFile = tmpFile.getAbsolutePath();
                 //FileOutputStream(tmpFile);
                 Writer output = new BufferedWriter(new FileWriter(tmpFile));
                 try {
