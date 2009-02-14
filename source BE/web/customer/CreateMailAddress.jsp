@@ -21,6 +21,7 @@
            <tr align="center">
                <td>Adresse Mail :</td>
                 <td><input type="text" name="mailAddress" align="center" /><div id="name"></div></td>
+                <td> @RedNeck.fr</td>
             </tr>
             <tr align="left">
                 <td>Mot de passe :</td>

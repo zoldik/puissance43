@@ -376,6 +376,22 @@
         <servlet-name>CreateMailAddress.jsp</servlet-name>
         <url-pattern>/CreateMailAddress.jsp</url-pattern>
     </servlet-mapping>
+    <servlet>
+        <servlet-name>AccountValidation.jsp</servlet-name>
+        <jsp-file>/account/AccountValidation.jsp</jsp-file>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>AccountValidation.jsp</servlet-name>
+        <url-pattern>/AccountValidation.jsp</url-pattern>
+    </servlet-mapping>
+    <servlet>
+        <servlet-name>Webmail.jsp</servlet-name>
+        <jsp-file>/customer/Webmail.jsp</jsp-file>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>Webmail.jsp</servlet-name>
+        <url-pattern>/Webmail.jsp</url-pattern>
+    </servlet-mapping>
     <!-- /JSP -->
     <!-- /AURELIEN BAUDET -->
       
