@@ -339,6 +339,9 @@ public class CtrSubscribe extends HttpServlet {
 
         String error = customerDAO.updateCustomerStateInternetSubscribe(idCustomer, 1);
         
+        //4 : internet
+        String error2 = customerDAO.updateCustomerAccountLevel(idCustomer, 4);
+        
         response.setContentType("text/html");
         PrintWriter writer = response.getWriter();
         writer.println("<html>");
@@ -361,6 +364,10 @@ public class CtrSubscribe extends HttpServlet {
 
         String error = customerDAO.updateCustomerStateVoipSubscribe(idCustomer, 1);
         
+        //1 : voip 
+        String error2 = customerDAO.updateCustomerAccountLevel(idCustomer, 1);
+        
+        
         response.setContentType("text/html");
         PrintWriter writer = response.getWriter();
         writer.println("<html>");
@@ -382,6 +389,9 @@ public class CtrSubscribe extends HttpServlet {
         int idCustomer = Integer.parseInt(idCustomerVod);
 
         String error = customerDAO.updateCustomerStateVodSubscribe(idCustomer, 1);
+        
+        //2 : vod
+        String error2 = customerDAO.updateCustomerAccountLevel(idCustomer, 2);        
         
         response.setContentType("text/html");
         PrintWriter writer = response.getWriter();

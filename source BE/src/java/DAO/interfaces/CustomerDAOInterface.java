@@ -45,6 +45,8 @@ public interface CustomerDAOInterface {
     public LinkedList<CustomerTO> selectAllCustomersTO();
     
     public boolean updateCustomer();
+    
+    public String updateCustomerAccountLevel(int idCustomer, int level);
 
     public String updateCustomerInternetSubscribe(int idCustomer, int idInternetSubscribe);
 
