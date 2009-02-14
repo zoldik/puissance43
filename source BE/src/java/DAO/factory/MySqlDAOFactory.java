@@ -31,6 +31,7 @@ public class MySqlDAOFactory extends DAOFactory {
     private static VodSubscribeDAOInterface vodSubscribeDAO = null;
     private static VoipSubscribeDAOInterface voipSubscribeDAO = null;
     private static VoipRssDAOInterface voipRssDAO = null;
+    private static CustomerBillDAOInterface customerBillDAO = null; 
     
     //*********************
     //STATIC METHODS TO GET THE DAO OBJECTS 
@@ -100,5 +101,13 @@ public class MySqlDAOFactory extends DAOFactory {
             voipRssDAO = new VoipRssMySqlDAO();
         }
         return voipRssDAO;
+    }
+    
+    public CustomerBillDAOInterface getCustomerBillDAO() {
+        // MySql CustomerBillDAO implements CustomerDAO 
+        if (customerBillDAO == null) {
+            customerBillDAO = new CustomerBillMySqlDAO();
+        }
+        return customerBillDAO;
     }
 }
