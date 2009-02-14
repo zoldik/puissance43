@@ -18,14 +18,17 @@ import javax.sql.RowSet;
  * @author Philipe Lardennois
  */
 public interface VoipRssDAOInterface {
+    
 
     public LinkedList<VoipRssTO> getVoipRssToUpdated();
     
-    public String updateVoipRss(VoipRssTO rss);
+    public String buildVoipRss(VoipRssTO rss);
     
     public boolean setUpdatedVoipRss(VoipRssTO rss);
     
     public String getCallerId(VoipRssTO rss);
+    
+    
     
     public VoipRssTO findVoipRss(int id_line_rss);
     

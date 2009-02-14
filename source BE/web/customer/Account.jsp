@@ -31,7 +31,7 @@
                             case 5: {colorFAI="green";colorVoIP="green";colorVOD="white";} break;
                             case 6: {colorFAI="green";colorVoIP="white";colorVOD="green";} break;
                             case 7: {colorFAI="green";colorVoIP="green";colorVOD="green";} break;
-                            case 8: {colorFAI="white";colorVoIP="orange";colorVOD="white";} break;
+                            case 8: {colorFAI="orange";colorVoIP="orange";colorVOD="orange";} break;
                             default: {colorFAI="white";colorVoIP="white";colorVOD="white";} break;
                         }
                         colorFAI=" style=\"background-color:"+colorFAI+";border:1px solid black\" ";

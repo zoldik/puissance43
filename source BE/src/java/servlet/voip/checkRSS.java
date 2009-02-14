@@ -47,6 +47,7 @@ public class checkRSS extends HttpServlet {
             } else {
                 if (listVoipRssUpdated!=new LinkedList<VoipRssTO>()) {
                     
+                    
                     int i=0;
                     LinkedList<VoipRssTO> tmpItemList = listVoipRssUpdated;
                     Iterator<VoipRssTO> iter = tmpItemList.listIterator(0);
@@ -55,10 +56,11 @@ public class checkRSS extends HttpServlet {
                         i++;
                         tempItem = iter.next();
                         
-                        String Datenow =  VoipRssDAO.updateVoipRss(tempItem);
+                        String Datenow =  VoipRssDAO.buildVoipRss(tempItem);
+                        
                         //if(VoipRssDAO.updateVoipRss(tempItem)) {
                             
-                            answer+="R"+i+"=OK#"+Datenow;
+                            answer+="#R"+i+"="+Datenow;
                             
                             //VoipRssDAO.setUpdatedVoipRss(tempItem);
                             
