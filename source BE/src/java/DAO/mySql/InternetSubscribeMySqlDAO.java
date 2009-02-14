@@ -15,6 +15,30 @@ import java.util.ArrayList;
  */
 public class InternetSubscribeMySqlDAO extends MySqlGeneralObjectDAO implements InternetSubscribeDAOInterface {
 
+    public String deleteById(int id) {
+        //Return object
+        String error = "pas d'erreur";
+
+        //Connexion to the database with JNDI 
+        Connection conn = (Connection) getConnectionWithJNDI();
+
+        //transaction or sequence of queries
+        Statement st = null;
+                
+        try
+        {
+            st=conn.createStatement();
+            st.executeUpdate("DELETE FROM `internet_subscribe` WHERE `id_internet_subscribe` ="+id+";");
+        }
+        catch(SQLException e)
+        {
+             error = e.toString();            
+        }
+        closeConnection(conn);
+        
+        return error;
+    }
+    
     public String insertInternetSubscribe(InternetSubscribeTO internetSubscribeTO) {
         //Return object
         String error = "pas d'erreur";
@@ -88,4 +112,6 @@ public class InternetSubscribeMySqlDAO extends MySqlGeneralObjectDAO implements 
         closeConnection(conn);
         return internetSubscribes;
     }
+
+    
 }

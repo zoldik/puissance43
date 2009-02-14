@@ -14,6 +14,30 @@ import java.util.LinkedList;
  */
 public class VoipSubscribeMySqlDAO extends MySqlGeneralObjectDAO implements VoipSubscribeDAOInterface {
 
+    public String deleteById(int id) {
+         //Return object
+        String error = "pas d'erreur";
+
+        //Connexion to the database with JNDI 
+        Connection conn = (Connection) getConnectionWithJNDI();
+
+        //transaction or sequence of queries
+        Statement st = null;
+                
+        try
+        {
+            st=conn.createStatement();
+            st.executeUpdate("DELETE FROM `voip_subscribe` WHERE `id_voip_subscribe` ="+id+";");             
+        }
+        catch(SQLException e)
+        {
+             error = e.toString();            
+        }
+        closeConnection(conn);
+        
+        return error;
+    }
+    
     public String insertVoipSubscribe(VoipSubscribeTO voipSubscribeTO) {
         //Return object
         String error = "pas d'erreur";
@@ -91,5 +115,5 @@ public class VoipSubscribeMySqlDAO extends MySqlGeneralObjectDAO implements Voip
         closeConnection(conn);
 
         return voipSubscribeTOs;
-    }
+    }    
 }
