@@ -16,6 +16,7 @@
     <head>
         
         <script language="JavaScript" src="javascripts/ajax_register_core.js"></script>
+        <script language="JavaScript" src="javascripts/ajax_register_functionsTest.js"></script>
         
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <title>JSP Page</title>
