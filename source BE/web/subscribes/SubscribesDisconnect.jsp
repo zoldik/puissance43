@@ -21,8 +21,6 @@
         
         <!--Le bouton s'abonner-->       
             <%
-            String button_sabonne = "<input type=\'button\' onclick=\"displayIdentification(5);\" value=\"S\'abonner\">";
-
             HttpSession customerSession = request.getSession(false);
 
             if (customerSession != null) {
@@ -30,8 +28,7 @@
                     CustomerTO customerObject = (CustomerTO) customerSession.getAttribute("Customer");
                     if (customerObject.getValid()) {
                         int level = customerObject.getAccountLevel();
-                        if (level >= 0 && level < 9) {
-                            button_sabonne = "<input type='submit' value=\"S\'abonner\">";
+                        if (level >= 0 && level < 9) {                            
                         }
                     }
                 }
@@ -71,8 +68,8 @@
                 <td><%=internetSubscribeTO.getDescriptionSubscribe()%></td>            
                 <td><%=internetSubscribeTO.getPrice()%></td>
                 <td><%=internetSubscribeTO.getRate()%></td>
-                <td><form method='post' action="CtrSubscribe">
-                        <%= button_sabonne%>
+                <td><form method='get' action="./SubscribesDisconnect2.jsp">
+                        <input type='submit' value="S'abonner">
                         <input type='hidden' name='idInternet' value='<%=internetSubscribeTO.getId()%>'>                        
                 </form></td>
             </tr>
@@ -123,8 +120,8 @@
                 <td><%=voipSubscribeTO.getDescription()%></td>            
                 <td><%=voipSubscribeTO.getType()%></td>
                 <td><%=voipSubscribeTO.getPrice()%></td>                
-                <td><form method='post' action="CtrSubscribe">
-                        <%= button_sabonne%>
+                <td><form method='get' action="./SubscribesDisconnect2.jsp">
+                        <input type='submit' value="S'abonner">
                         <input type='hidden' name='idVoip' value='<%=voipSubscribeTO.getId()%>'>                       
                 </form></td>
             </tr>
@@ -175,8 +172,8 @@
                 <td><%=vodSubscribeTO.getDescription()%></td>            
                 <td><%=vodSubscribeTO.getType()%></td>
                 <td><%=vodSubscribeTO.getPrice()%></td>                 
-                <td><form method='post' action="CtrSubscribe">
-                        <%= button_sabonne%>
+                <td><form method='post' action="./SubscribesDisconnect2.jsp">
+                        <input type='submit' value="S'abonner">
                         <input type='hidden' name='idVod' value='<%=vodSubscribeTO.getId()%>'>                       
                 </form></td>
             </tr>
