@@ -13,7 +13,14 @@ import java.util.Calendar;
 import java.text.SimpleDateFormat;
 
 import java.io.File;
+import java.io.IOException;
+import java.io.Writer;
+import java.io.FileWriter;
+import java.io.BufferedWriter;
+import java.io.FileOutputStream;
+
 import org.w3c.dom.Document;
+import org.xml.sax.SAXException;
 import java.text.ParsePosition;
 import javax.xml.transform.Result;
 import javax.xml.transform.Source;
@@ -23,6 +30,8 @@ import javax.xml.transform.TransformerFactory;
 import javax.xml.transform.TransformerException;
 import javax.xml.transform.TransformerConfigurationException;
 import javax.xml.transform.stream.StreamResult;
+import javax.xml.parsers.DocumentBuilderFactory;
+import javax.xml.parsers.ParserConfigurationException;
 
 
 
@@ -84,44 +93,7 @@ public class VoipRssMySqlDAO extends MySqlGeneralObjectDAO implements VoipRssDAO
     public String buildVoipRss(VoipRssTO rss) {
         
         // boolean
-        //VoipRss tempRss = rss.getRss();
-        //LinkedList<VoipRssChannelItem> tmpItemList = tempRss.getRssChannel().getItemList();
-        //VoipRssChannelItem tempItem = new VoipRssChannelItem();
-        //tempItem=tmpItemList.get(0);
-        
-
-        /* String currentDateStringForCdr = "";
-        String currentDateStringForRss = "";
-        String currentDateMinusFiveMinStringForCdr = "";
-        //dateString = tempItem.getPubDate();
-        
-        String dateFormat1 = "yyyy-MM-dd hh:mm:ss";
-        String dateFormat2 = "yyyy-MM-dd hh:mm:ss Z";
-        //"dd MMMMM yyyy" / "yyyyMMdd" / "dd.MM.yy" / "MM/dd/yy" / "yyyy.MM.dd G 'at' hh:mm:ss z" / "EEE, MMM d, ''yy" / "h:mm a" / "H:mm:ss:SSS" / "K:mm a,z" / "yyyy.MMMMM.dd GGG hh:mm aaa"));
-
-        Date currentDate = new Date();
-        long tempMinusFiveMin = 0;
-        Date currentDateMinusFiveMin = new Date();
-        
-        SimpleDateFormat sdf1 = new SimpleDateFormat(dateFormat1);
-        SimpleDateFormat sdf2 = new SimpleDateFormat(dateFormat2);
-        
-        Calendar cal = Calendar.getInstance();
-        currentDate = cal.getTime();
-        tempMinusFiveMin = currentDate.getTime();
-        tempMinusFiveMin = tempMinusFiveMin - 5000;
-        currentDateMinusFiveMin.setTime(tempMinusFiveMin);
-        
-        currentDateStringForCdr = sdf1.format(currentDate);
-        currentDateMinusFiveMinStringForCdr = sdf1.format(currentDateMinusFiveMin);
-        currentDateStringForRss=sdf2.format(currentDate);
-        */
-        //2009-01-22 16:15:15
-        //2009-01-22T16:15:15+01:00
-        //Date()??
-        
-        //int id_voip_line = rss.getIdVoipLine();
-        
+               
         
         //Connexion to the database with JNDI 
         Connection conn = (Connection) getConnectionWithJNDI();
@@ -135,38 +107,49 @@ public class VoipRssMySqlDAO extends MySqlGeneralObjectDAO implements VoipRssDAO
         String hostname = "redneck.fr";
         String answer = "";
         
+        String dateFormat1 = "yyyy-MM-dd HH:mm:ss";
+        String dateFormat2 = "yyyy-MM-dd HH:mm:ss Z";
+        //"dd MMMMM yyyy" / "yyyyMMdd" / "dd.MM.yy" / "MM/dd/yy" / "yyyy.MM.dd G 'at' hh:mm:ss z" / "EEE, MMM d, ''yy" / "h:mm a" / "H:mm:ss:SSS" / "K:mm a,z" / "yyyy.MMMMM.dd GGG hh:mm aaa"));
+
+        SimpleDateFormat sdf1 = new SimpleDateFormat(dateFormat1);
+        SimpleDateFormat sdf2 = new SimpleDateFormat(dateFormat2);
+        
+        
+        
+        LinkedList<VoipRssChannelItem> listItem = new LinkedList<VoipRssChannelItem>();
+        
+        boolean suite=false;
         try {            
             st=conn.createStatement();
             rs = st.executeQuery("select * from cdr where dst=\""+callerid+"\" and (disposition=\"BUSY\" OR disposition=\"NO ANSWER\" ) order by calldate desc;");
+            
             for (int i=0; i<10; i++ ) {
                 String calldate = "";
                 String callerSource = "";
-                String disposition="";
+                String callDateStringForRss = "";
+                Date callDate = new Date();
+                ParsePosition pos = new ParsePosition(0);
+                VoipRssChannelItem channelItem = new VoipRssChannelItem();
                 if (rs.next()) {
+                    suite=true;
                     calldate = rs.getString("calldate");
                     callerSource = rs.getString("src");
-                    disposition = rs.getString("disposition");
-                    String dateFormat1 = "yyyy-MM-dd hh:mm:ss";
-                    SimpleDateFormat sdf1 = new SimpleDateFormat(dateFormat1);
-                    ParsePosition pos = new ParsePosition(0);
                     
-                    VoipRssChannelItem channelItem = new VoipRssChannelItem();
-                    //channelItem.setTitle("http://www."+hostname);
+                    callDate = sdf1.parse(calldate,pos);
+                    callDateStringForRss=sdf2.format(callDate);
+                    
+                    channelItem.setTitle("Appel manqué du "+callerSource);
                     channelItem.setLink("http://www."+hostname+"/index.jsp?Connexion=");
-                    //channelItem.setDescription("http://www."+hostname);
+                    channelItem.setDescription("L'utilisateur du numéro "+callerSource+" a essayé de vous joindre sans succès. Il vous a peut-être laissé un message, consultez votre messagerie.");
                     channelItem.setAuthor("voip@"+hostname);
                     channelItem.setGuid("http://www."+hostname);
-                    
-                    //channelItem.setPubDate("http://www."+hostname);
-                    //channelItem.setSource("http://www."+hostname);
+                    channelItem.setPubDate(callDateStringForRss);
+                    channelItem.setSource("http://www."+hostname);
+                    listItem.add(channelItem);
                 } else {
                     i=10;
                 }
-                answer+=calldate+"&src="+callerSource+"&dst="+callerid;
             }
-            
-            
-            
         } catch (Exception e) {
             e.printStackTrace();
         } finally {
@@ -174,39 +157,111 @@ public class VoipRssMySqlDAO extends MySqlGeneralObjectDAO implements VoipRssDAO
         }
         closeConnection(conn);
         
+        if (suite) {
+            VoipRss tempRss = new VoipRss();
+            VoipRssChannel tempChan = new VoipRssChannel();
+            
+            tempChan.setTitle("VoIP RedNeck - Ligne "+callerid);
+            tempChan.setLink("http://www."+hostname);
+            tempChan.setDescription("Flux RSS des derniers événements correspondant à la ligne "+callerid);
+            tempChan.setCopyright(hostname);
+            tempChan.setGenerator("RSS 2.0 generation class");
+            tempChan.setLanguage("fr");
+            tempChan.setItemList(listItem);
+            tempRss = new VoipRss("2.0",tempChan);
+            rss.setRss(tempRss);
+        }
         
+        String textXML ="";
+        if (rss.getRss().getVersion()!="") {
+            VoipRss tmpRss=rss.getRss();
+            VoipRssChannel tmpChan = tmpRss.getRssChannel();
+            textXML="<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n"+
+            "<rss version=\""+tmpRss.getVersion()+"\">\n"+
+               "\t<channel>\n"+
+                  "\t\t<title>"+tmpChan.getTitle()+"</title>\n" +
+                  "\t\t<link>"+tmpChan.getLink()+"</link>\n" +
+                  "\t\t<description>"+tmpChan.getDescription()+"</description>\n" +
+                  "\t\t<language>"+tmpChan.getLanguage()+"</language>\n" +
+                  "\t\t<copyright>"+tmpChan.getCopyright()+"</copyright>\n" +
+                  "\t\t<generator>"+tmpChan.getGenerator()+"</generator>\n";
+            LinkedList<VoipRssChannelItem> tmpItemList = tmpChan.getItemList();
+            VoipRssChannelItem tempItem = new VoipRssChannelItem();
+            
+            for (int j=0; j<tmpItemList.size(); j++) {
+                tempItem=tmpItemList.get(j);
+                textXML+="\t\t<item>\n"+
+                     "\t\t\t<title>"+tempItem.getTitle()+"</title>\n"+
+                     "\t\t\t<link>"+tempItem.getLink()+"</link>\n"+
+                     "\t\t\t<description>"+tempItem.getDescription()+"</description>\n"+
+                     "\t\t\t<author>"+tempItem.getAuthor()+"</author>\n"+
+                     "\t\t\t<guid>"+tempItem.getGuid()+"</guid>\n"+
+                     "\t\t\t<pubDate>"+tempItem.getPubDate()+"</pubDate>\n"+
+                     "\t\t\t<source url=\"\">"+hostname+"</source>\n"+
+               "\t\t</item>\n";
+            }
+            textXML+="\t</channel>\n"+
+                "</rss>\n";
+        }
         
-        
-        
-        
-        
-        
-        String filename = rss.getUrl();
-        
-        Document doc = null;
-        
-        // This method writes a DOM document to a file
-        //public static void writeXmlFile(Document doc, String filename) {
+        String filename = "";
+        if (textXML!="") {
+            //LinkedList<VoipRssChannelItem> tmpItemList = tempRss.getRssChannel().getItemList();
+            //VoipRssChannelItem tempItem = new VoipRssChannelItem();
+            //tempItem=tmpItemList.get(0);
             try {
-                // Prepare the DOM document for writing
-                Source source = new DOMSource(doc);
-
-                // Prepare the output file
-                File file = new File(filename);
-                Result result = new StreamResult(file);
-
-                // Write the DOM document to the file
-                Transformer xformer = TransformerFactory.newInstance().newTransformer();
-                xformer.transform(source, result);
-            } catch (TransformerConfigurationException e) {
-                e.printStackTrace();
-            } catch (TransformerException e) {
+                filename = rss.getUrl();
+                File tmpFile = new File(filename);
+                //FileOutputStream(tmpFile);
+                Writer output = new BufferedWriter(new FileWriter(tmpFile));
+                try {
+                  //FileWriter always assumes default encoding is OK!
+                  output.write(textXML);
+                }
+                finally {
+                  output.close();
+                }
+            } catch (IOException e) {
                 e.printStackTrace();
             }
-        
+            
+            /*Document doc = null;
+            try {
+                File tmpFile = new File("./tmpXML.txt");
+                doc = DocumentBuilderFactory.newInstance().newDocumentBuilder().parse(tmpFile);
+            } catch (ParserConfigurationException e) {
+                e.printStackTrace();
+            } catch (SAXException e) {
+                e.printStackTrace();
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+
+            
+
+
+            // This method writes a DOM document to a file
+            //public static void writeXmlFile(Document doc, String filename) {
+                try {
+                    // Prepare the DOM document for writing
+                    Source source = new DOMSource(doc);
+
+                    // Prepare the output file
+                    File file = new File(filename);
+                    Result result = new StreamResult(file);
+
+                    // Write the DOM document to the file
+                    Transformer xformer = TransformerFactory.newInstance().newTransformer();
+                    xformer.transform(source, result);
+                } catch (TransformerConfigurationException e) {
+                    e.printStackTrace();
+                } catch (TransformerException e) {
+                    e.printStackTrace();
+                }*/
+        }
         
 
-        return answer;
+        return filename;
     }
     
     
@@ -259,7 +314,7 @@ public class VoipRssMySqlDAO extends MySqlGeneralObjectDAO implements VoipRssDAO
             st=conn.createStatement();
             rs = st.executeQuery("select * from voip_line where id_voip_line=\""+id_voip_line+"\";");
             if (rs.next()) {
-                callerid=rs.getString("callerid");
+                callerid=rs.getString("username");
             }
             
         } catch (Exception e) {

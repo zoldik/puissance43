@@ -25,7 +25,7 @@ public class VoipRss {
     
     
     public VoipRss() {
-        this.version = new String();
+        this.version = "";
         this.channel = new VoipRssChannel();
     }
     
