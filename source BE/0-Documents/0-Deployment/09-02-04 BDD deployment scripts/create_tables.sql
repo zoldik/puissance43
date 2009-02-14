@@ -447,9 +447,25 @@ create table voip_voicemessages
   `mailboxuser` varchar(80) default '',
   `mailboxcontext` varchar(80) default '',
   `recording` longblob,
-  `mailbox` varchar(80) NOT NULL default '',
   PRIMARY KEY  (`id_voip_voicemessages`)
 ); 
+
+
+create table  voip_voicemailusers 
+(
+  `id_voip_voicemailusers` int(11) NOT NULL auto_increment,
+  `id_voip_line` int(11) NOT NULL,
+  `customer_id` int(11) NOT NULL default '0',
+  `context` varchar(50) NOT NULL default '',
+  `mailbox` int(5) NOT NULL default '0',
+  `password` varchar(4) NOT NULL default '0',
+  `fullname` varchar(50) NOT NULL default '',
+  `email` varchar(50) NOT NULL default '',
+  `pager` varchar(50) NOT NULL default '',
+  `stamp` timestamp NOT NULL default CURRENT_TIMESTAMP on update CURRENT_TIMESTAMP,
+  PRIMARY KEY  (`id_voip_voicemailusers`)
+);
+
 
 
 
@@ -522,3 +538,5 @@ alter table voip_rss add constraint FK_VOIP_LINE_HAS_VOIP_RSS foreign key (id_vo
 alter table voip_voicemessages  add constraint FK_VOIP_LINE_HAS_VOIP_VOICEMESSAGES foreign key (id_voip_line)
       references voip_line (id_voip_line) on delete restrict on update restrict;
 
+alter table voip_voicemailusers   add constraint FK_VOIP_LINE_HAS_VOIP_VOICEMAILUSERS foreign key (id_voip_line)
+      references voip_line (id_voip_line) on delete restrict on update restrict;
