@@ -120,7 +120,7 @@ public class VoipRssChannel {
         this.docs=docs;
     }
 
-    public void setVersion(LinkedList<VoipRssChannelItem> itemList) {
+    public void setItemList(LinkedList<VoipRssChannelItem> itemList) {
         this.itemList=itemList;
     }
 
