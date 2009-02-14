@@ -9,6 +9,13 @@ import javax.servlet.*;
 import javax.servlet.http.*;
 import DAO.mySql.MailMySqlDAO;
 
+import model.account.Mail;
+import model.account.RegisterAddressErrors;
+import model.account.RegisterCustomerErrors;
+
+import java.util.logging.Level;
+import java.util.logging.Logger;
+
 
 /**
  *
@@ -24,6 +31,18 @@ public class CreateMailAddress extends javax.servlet.http.HttpServlet {
                         MailDAOInterface mailDAO = daoFactory.getMailDAO();
                     
                         mailDAO.insert(request.getParameter("mailAddress"), request.getParameter("password"));
+                        
+                        Mail mail = new Mail();
+                        mail.setSubject("Bienvenu sur la messagerie RedNeck");
+                        mail.setContent("Voici un récapitulatif de vos identifiants :\nAdresse mail : " +request.getParameter("mailAddress") +
+                                        "\nMot de passe : " + request.getParameter("password"));
+
+                        mail.setAddress(request.getParameter("mailAddress"));
+                        try {
+                            mail.sendMail();
+                        } catch (Exception ex) {System.out.print(ex);}
+                        
+                        
                         response.sendRedirect("CreateMailAddress.jsp");
                    }
                 catch (Exception e){
