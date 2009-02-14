@@ -12,13 +12,12 @@ INSERT INTO `item` (`id_item`, `name`, `type`, `description`, `unit_price`, `sto
 (6, 'hub b', 'hub', 'RJ45', 32, 130),
 (7, 'hub c', 'hub', 'RJ45', 33, 140);
 
-
-
-
 INSERT INTO `customer` (
 `id_customer` , 
 `id_address` ,
 `id_internet_subscribe` ,
+`id_voip_subscribe` ,
+`id_vod_subscribe` ,
 `first_name` ,
 `last_name` ,
 `login` ,
@@ -31,19 +30,26 @@ INSERT INTO `customer` (
 `profession` ,
 `company` ,
 `account_level` ,
-`valid`
-)
-VALUES
-(99 ,'',NULL ,'Compte','non validé','user','pwd','albert.einstein@redneck.fr','M', '19/03/1950','03 20 00 76 43','06 12 58 37 29','physicien','relativeCoporation',0,0),
-(100 ,'',NULL ,'Utilisateur','sans abonnement','user0','pwd0','albert.einstein@redneck.fr','M', '19/03/1950','03 20 00 76 43','06 12 58 37 29','physicien','relativeCoporation',0,1),
-(101 ,'',NULL ,'Utilisateur','VoIP','user1','pwd1','albert.einstein@redneck.fr','M', '19/03/1950','03 20 00 76 43','06 12 58 37 29','physicien','relativeCoporation',1,1),
-(102 ,'',NULL ,'Utilisateur','VOD','user2','pwd2','albert.einstein@redneck.fr','M', '19/03/1950','03 20 00 76 43','06 12 58 37 29','physicien','relativeCoporation',2,1),
-(103 ,'',NULL ,'Utilisateur','VOD+VoIP','user3','pwd3','albert.einstein@redneck.fr','M', '19/03/1950','03 20 00 76 43','06 12 58 37 29','physicien','relativeCoporation',3,1),
-(104 ,'',NULL ,'Utilisateur','FAI','user4','pwd4','albert.einstein@redneck.fr','M', '19/03/1950','03 20 00 76 43','06 12 58 37 29','physicien','relativeCoporation',4,1),
-(105 ,'',NULL ,'Utilisateur','FAI+VoIP','user5','pwd5','albert.einstein@redneck.fr','M', '19/03/1950','03 20 00 76 43','06 12 58 37 29','physicien','relativeCoporation',5,1),
-(106 ,'',NULL ,'Utilisateur','FAI+VOD','user6','pwd6','albert.einstein@redneck.fr','M', '19/03/1950','03 20 00 76 43','06 12 58 37 29','physicien','relativeCoporation',6,1),
-(107 ,'',NULL ,'Utilisateur','TriplePlay','user7','pwd7','albert.einstein@redneck.fr','M', '19/03/1950','03 20 00 76 43','06 12 58 37 29','physicien','relativeCoporation',7,1),
-(108 ,'',NULL ,'Admin','VoIP','admin1','admin1','admin1@redneck.fr','M', '19/03/1950','03 20 00 76 43','06 12 58 37 29','physicien','relativeCoporation',8,1);
+`valid` ,
+`state_internet_subscribe` ,
+`state_voip_subscribe` ,
+`state_vod_subscribe`
+) VALUES
+(99 ,'',NULL,NULL,NULL ,'Compte','non validé','user','pwd','albert.einstein@redneck.fr','M', '19/03/1950','03 20 00 76 43','06 12 58 37 29','physicien','relativeCoporation',0,0,NULL,NULL,NULL),
+(100 ,'',NULL,NULL,NULL ,'Utilisateur','sans abonnement','user0','pwd0','albert.einstein@redneck.fr','M', '19/03/1950','03 20 00 76 43','06 12 58 37 29','physicien','relativeCoporation',0,1,NULL,NULL,NULL),
+(101 ,'',NULL,NULL,NULL ,'Utilisateur','VoIP','user1','pwd1','albert.einstein@redneck.fr','M', '19/03/1950','03 20 00 76 43','06 12 58 37 29','physicien','relativeCoporation',1,1,NULL,NULL,NULL),
+(102 ,'',NULL,NULL,NULL ,'Utilisateur','VOD','user2','pwd2','albert.einstein@redneck.fr','M', '19/03/1950','03 20 00 76 43','06 12 58 37 29','physicien','relativeCoporation',2,1,NULL,NULL,NULL),
+(103 ,'',NULL,NULL,NULL ,'Utilisateur','VOD+VoIP','user3','pwd3','albert.einstein@redneck.fr','M', '19/03/1950','03 20 00 76 43','06 12 58 37 29','physicien','relativeCoporation',3,1,NULL,NULL,NULL),
+(104 ,'',NULL,NULL,NULL ,'Utilisateur','FAI','user4','pwd4','albert.einstein@redneck.fr','M', '19/03/1950','03 20 00 76 43','06 12 58 37 29','physicien','relativeCoporation',4,1,NULL,NULL,NULL),
+(105 ,'',NULL,NULL,NULL ,'Utilisateur','FAI+VoIP','user5','pwd5','albert.einstein@redneck.fr','M', '19/03/1950','03 20 00 76 43','06 12 58 37 29','physicien','relativeCoporation',5,1,NULL,NULL,NULL),
+(106 ,'',NULL,NULL,NULL ,'Utilisateur','FAI+VOD','user6','pwd6','albert.einstein@redneck.fr','M', '19/03/1950','03 20 00 76 43','06 12 58 37 29','physicien','relativeCoporation',6,1,NULL,NULL,NULL),
+(107 ,'',NULL,NULL,NULL ,'Utilisateur','TriplePlay','user7','pwd7','albert.einstein@redneck.fr','M', '19/03/1950','03 20 00 76 43','06 12 58 37 29','physicien','relativeCoporation',7,1,NULL,NULL,NULL),
+(108 ,'',NULL,NULL,NULL ,'Admin','VoIP','admin1','admin1','admin1@redneck.fr','M', '19/03/1950','03 20 00 76 43','06 12 58 37 29','physicien','relativeCoporation',8,1,NULL,NULL,NULL),
+(109 ,'',NULL,NULL,NULL ,'Utilisateur','ss ab attente ab Internet','user0>4','pwd0>4','albert.einstein@redneck.fr','M', '19/03/1950','03 20 00 76 43','06 12 58 37 29','physicien','relativeCoporation',0,1,0,NULL,NULL),
+(110 ,'',NULL,NULL,NULL ,'Utilisateur','ss ab attente ab Voip','user0>1','pwd0>1','albert.einstein@redneck.fr','M', '19/03/1950','03 20 00 76 43','06 12 58 37 29','physicien','relativeCoporation',0,1,NULL,0,NULL),
+(111 ,'',NULL,NULL,NULL ,'Utilisateur','ss ab attente ab Vod','user0>2','pwd0>2','albert.einstein@redneck.fr','M', '19/03/1950','03 20 00 76 43','06 12 58 37 29','physicien','relativeCoporation',0,1,NULL,NULL,0);
+
+
 
 INSERT INTO `voip_rss` (
 `id_voip_rss` ,
