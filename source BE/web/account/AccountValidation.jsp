@@ -22,7 +22,7 @@ if(request.getParameter("Creation").compareTo("inProgress")==0)
 %>
 
 
-<form name="Validation" action="./Validate" method="POST">
+<form name="Validation" method="POST" action="./Validate">
     <table align="center" >
         <td><input type="hidden" value="<%= id %>" name="account"/></td>
 	<td><input type="submit" value="Valider le compte" name="validation" /></td>  
