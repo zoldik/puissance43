@@ -507,7 +507,7 @@ public class CustomerMySqlDAO extends MySqlGeneralObjectDAO implements CustomerD
 
             st = conn.createStatement();
             rs = st.executeQuery("SELECT * FROM `customer` WHERE `state_internet_subscribe` =0");
-            
+
             while (rs.next()) {
                 CustomerTO customerTO = new CustomerTO();
 
@@ -516,9 +516,9 @@ public class CustomerMySqlDAO extends MySqlGeneralObjectDAO implements CustomerD
                 customerTO.setLastName(rs.getString("last_name"));
                 customerTO.setIdInternetSubscribe(Integer.parseInt(rs.getString("id_internet_subscribe")));
                 //customerTO.setStateInternetSubscribe(Integer.parseInt(rs.getString("state_internet_subscribe")));
-                
+
                 customerTOs.add(customerTO);
-            
+
             }//Fin du while            
 
         } catch (Exception e) {
@@ -532,7 +532,7 @@ public class CustomerMySqlDAO extends MySqlGeneralObjectDAO implements CustomerD
     }
 
     public LinkedList<CustomerTO> selectAllCustomersInVoipState0() {
-         //Returned object
+        //Returned object
         LinkedList<CustomerTO> customerTOs = new LinkedList<CustomerTO>();
 
         //Connexion to the database with JNDI 
@@ -548,7 +548,7 @@ public class CustomerMySqlDAO extends MySqlGeneralObjectDAO implements CustomerD
 
             st = conn.createStatement();
             rs = st.executeQuery("SELECT * FROM `customer` WHERE `state_voip_subscribe` =0");
-            
+
             while (rs.next()) {
                 CustomerTO customerTO = new CustomerTO();
 
@@ -557,9 +557,9 @@ public class CustomerMySqlDAO extends MySqlGeneralObjectDAO implements CustomerD
                 customerTO.setLastName(rs.getString("last_name"));
                 customerTO.setIdVoipSubscribe(Integer.parseInt(rs.getString("id_voip_subscribe")));
                 //customerTO.setStateInternetSubscribe(Integer.parseInt(rs.getString("state_internet_subscribe")));
-                
+
                 customerTOs.add(customerTO);
-            
+
             }//Fin du while            
 
         } catch (Exception e) {
@@ -589,7 +589,7 @@ public class CustomerMySqlDAO extends MySqlGeneralObjectDAO implements CustomerD
 
             st = conn.createStatement();
             rs = st.executeQuery("SELECT * FROM `customer` WHERE `state_vod_subscribe` =0");
-            
+
             while (rs.next()) {
                 CustomerTO customerTO = new CustomerTO();
 
@@ -598,9 +598,9 @@ public class CustomerMySqlDAO extends MySqlGeneralObjectDAO implements CustomerD
                 customerTO.setLastName(rs.getString("last_name"));
                 customerTO.setIdVodSubscribe(Integer.parseInt(rs.getString("id_vod_subscribe")));
                 //customerTO.setStateInternetSubscribe(Integer.parseInt(rs.getString("state_internet_subscribe")));
-                
+
                 customerTOs.add(customerTO);
-            
+
             }//Fin du while            
 
         } catch (Exception e) {
@@ -611,7 +611,7 @@ public class CustomerMySqlDAO extends MySqlGeneralObjectDAO implements CustomerD
         }
         closeConnection(conn);
         return customerTOs;
-        
+
     }
 
     public boolean updateCustomer() {
@@ -622,6 +622,52 @@ public class CustomerMySqlDAO extends MySqlGeneralObjectDAO implements CustomerD
         // error
 
         return isOk;
+    }
+
+    public String updateCustomerAccountLevel(int idCustomer, int level) {
+        //Returned object
+        String error = "pas d'erreur";
+
+        //Connexion to the database with JNDI 
+        Connection conn = (Connection) getConnectionWithJNDI();
+
+        //transaction or sequence of queries
+        Statement st = null;
+
+        //result of the queries
+        ResultSet rs = null;
+
+        int accountLevel = 0;
+
+        try {
+            st = conn.createStatement();
+            rs = st.executeQuery("SELECT `account_level` FROM `customer`");
+
+            accountLevel = Integer.parseInt(rs.getString("account_level"));
+
+        } catch (Exception e) {
+            e.printStackTrace();
+
+        } finally {
+            closeRsAndSt(rs, st);
+        }
+
+        accountLevel += level;
+        
+        String update = "UPDATE `RedNeck`.`customer` SET `account_level` = '" + accountLevel + "' WHERE `customer`.`id_customer` =" +
+                idCustomer + " LIMIT 1 ;";
+
+        try {
+            st = conn.createStatement();
+            st.executeUpdate(update);
+        } catch (SQLException e) {
+            System.out.println("SqlException : " + e);
+            error = e.toString();
+        }
+
+        closeConnection(conn);
+
+        return error;
     }
 
     public String updateCustomerInternetSubscribe(int idCustomer, int idInternetSubscribe) {
@@ -687,7 +733,7 @@ public class CustomerMySqlDAO extends MySqlGeneralObjectDAO implements CustomerD
         //transaction or sequence of queries
         Statement st = null;
 
-        String update = "UPDATE `customer` SET `state_voip_subscribe` = '"+ state +"' WHERE `id_customer` =" +
+        String update = "UPDATE `customer` SET `state_voip_subscribe` = '" + state + "' WHERE `id_customer` =" +
                 idCustomer + " LIMIT 1 ;";
 
         try {
