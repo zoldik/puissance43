@@ -23,6 +23,11 @@
 			<h3>Compte</h3>
 			<p> commentaire :</p>
 			<ul>
+				<li>
+                                    <form name="viewBill" action="./ViewBill" method="POST">
+                                         <input type="submit" value="Aperçu factures" name="Connexion" />
+                                    </form>
+                                </li>
 				<li><a href="page1.html">Lien</a></li>
 				<li><a href="page1.html">Lien</a></li>
 				<li><a href="page1.html">Lien</a></li>
