@@ -78,6 +78,8 @@ drop table if exists voip_line;
 
 drop table if exists voip_voicemessages;
 
+drop table if exists voip_voicemailusers;
+
 drop table if exists voip_rss;
 
 drop table if exists voip_subscribe;
