@@ -92,7 +92,7 @@ create table customer
    profession           varchar(20),
    company              varchar(20),
    account_level        smallint, 
-  `valid`               varchar(20) NOT NULL default 'FALSE',
+   valid                int(1) NOT NULL default '0',
    vod_debit            float(8,2),
    state_internet_subscribe int,
    state_voip_subscribe     int,
