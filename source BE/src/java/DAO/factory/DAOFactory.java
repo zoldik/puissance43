@@ -37,6 +37,8 @@ public abstract class DAOFactory {
     
     public abstract VoipRssDAOInterface getVoipRssDAO();
     
+    public abstract CustomerBillDAOInterface getCustomerBillDAO();
+    
     //***********************    
     
     public static DAOFactory getDAOFactory(
