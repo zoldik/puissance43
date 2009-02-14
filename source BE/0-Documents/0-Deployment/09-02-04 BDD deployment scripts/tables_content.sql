@@ -57,9 +57,17 @@ INSERT INTO `voip_rss` (
 `url` ,
 `update_rss`
 ) VALUES
-(1, 1, 'rss_voip_line_6008.xml', 1 ),
-(2, 3, 'rss_voip_line_6006.xml', 0 ),
-(3, 6, 'rss_voip_line_6026.xml', 1 );
+(1, 3, 'rss_voip_line_6008.xml', 1 ),
+(2, 5, 'rss_voip_line_6020.xml', 0 ),
+(3, 4, 'rss_voip_line_6021.xml', 1 );
+
+INSERT INTO `voip_line` (`id_voip_line`, `id_customer`, `name`, `host`, `call-limit`, `type`, `accountcode`, `amaflags`, `callgroup`, `callerid`, `cancallforward`, `canreinvite`, `context`, `defaultip`, `dtmfmode`, `fromuser`, `fromdomain`, `insecure`, `language`, `mailbox`, `md5secret`, `deny`, `permit`, `mask`, `musiconhold`, `pickupgroup`, `qualify`, `regexten`, `restrictcid`, `rtptimeout`, `rtpholdtimeout`, `secret`, `setvar`, `disallow`, `allow`, `fullcontact`, `ipaddr`, `port`, `regserver`, `regseconds`, `username`, `nat`, `visible`) VALUES
+(1, 1, '4000', 'dynamic', NULL, 'friend', NULL, NULL, NULL, '"francois kan" <4000>', NULL, NULL, 'DLPN_VOIP', NULL, 'rfc2833', NULL, NULL, NULL, 'fr', '4000', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, '1234', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, '4000', 'no', 0),
+(2, 1, '4001', 'dynamic', NULL, 'friend', NULL, NULL, NULL, '"valerie kan" <4000>', NULL, NULL, 'DLPN_voip', NULL, 'rfc2833', NULL, NULL, NULL, 'fr', '4001', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, '1234', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, '4001', 'no', 0),
+(3, 101, '6008', 'dynamic', NULL, 'friend', NULL, NULL, NULL, '"Utilisateur VoIP" <6008>', NULL, NULL, 'DLPN_VOIP', NULL, 'rfc2833', NULL, NULL, NULL, 'fr', '6008', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, '1234', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, '6008', 'no', 0),
+(4, 105, '6021', 'dynamic', NULL, 'friend', NULL, NULL, NULL, '"Utilisateur FAIVoIP" <6021>', NULL, NULL, 'DLPN_voip', NULL, 'rfc2833', NULL, NULL, NULL, 'fr', '6021', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, '1234', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, '6021', 'no', 0),
+(5, 107, '6020', 'dynamic', NULL, 'friend', NULL, NULL, NULL, '"Utilisateur TriplePlay" <6020>', NULL, NULL, 'DLPN_VOIP', NULL, 'rfc2833', NULL, NULL, NULL, 'fr', '6020', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, '1234', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, '6020', 'no', 0);
+
 
 
 INSERT INTO `internet_subscribe` (
@@ -247,11 +255,6 @@ INSERT INTO `VOD_CATEGORY` (`ID`, `NAME`) VALUES
 
 INSERT INTO `VOD_USER` (`ID`, `id_customer`,`LOGIN`,`PASSWORD`,`EMAIL`) VALUES
 (1, 1, 'isen', 'isen', 'isen@isen.fr');
-
-
-INSERT INTO `voip_line` (`id_voip_line`, `id_customer`, `name`, `host`, `call-limit`, `type`, `accountcode`, `amaflags`, `callgroup`, `callerid`, `cancallforward`, `canreinvite`, `context`, `defaultip`, `dtmfmode`, `fromuser`, `fromdomain`, `insecure`, `language`, `mailbox`, `md5secret`, `deny`, `permit`, `mask`, `musiconhold`, `pickupgroup`, `qualify`, `regexten`, `restrictcid`, `rtptimeout`, `rtpholdtimeout`, `secret`, `setvar`, `disallow`, `allow`, `fullcontact`, `ipaddr`, `port`, `regserver`, `regseconds`, `username`, `nat`, `visible`) VALUES
-(1, 1, '4000', 'dynamic', NULL, 'friend', NULL, NULL, '1', '"francois kan" <4000>', NULL, NULL, 'DLPN_VoIP', NULL, 'rfc2833', NULL, NULL, NULL, 'fr', '4000', NULL, NULL, NULL, NULL, NULL, '1', 'yes', NULL, NULL, NULL, NULL, '1234', NULL, NULL, NULL, 'sip:4000@127.0.0.1:5061;rinstance=26d02e067e377948;transport=UDP', '127.0.0.1', 5061, '', 1234621742, '4000', 'yes', 0),
-(2, 1, '4001', 'dynamic', NULL, 'friend', NULL, NULL, '1', '"valerie kan" <4000>', NULL, NULL, 'DLPN_VoIP', NULL, 'rfc2833', NULL, NULL, NULL, 'fr', '4001', NULL, NULL, NULL, NULL, NULL, '1', 'yes', NULL, NULL, NULL, NULL, '1234', NULL, NULL, NULL, '', '0.0.0.0', 0, '', 1234618084, '4001', 'no', 0);
 
 
 INSERT INTO `voip_voicemailusers` (`id_voip_voicemailusers`, `id_voip_line`, `customer_id`, `context`, `mailbox`, `password`, `fullname`, `email`, `pager`, `stamp`) VALUES
