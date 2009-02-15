@@ -37,6 +37,9 @@ public class ViewBill extends javax.servlet.http.HttpServlet {
                         CustomerTO customer = new CustomerTO() ;
                         customer = customerDAO.findCustomerById(idCustomer);
                         
+                        AddressTO Address = new AddressTO() ;
+                        Address = customerDAO.findCustomerAddressById(customer.getIdaddress());
+                        
                         //response.sendRedirect("accueil.jsp");
                         PrintWriter out = response.getWriter();
                         out.println("<html>");
@@ -44,8 +47,9 @@ public class ViewBill extends javax.servlet.http.HttpServlet {
                         int i=0;
                         while (i<BillList.size())
                         {
+                            int j=i+1;
                             CustomerBillTO temp = (CustomerBillTO)BillList.get(i);
-                            out.println("Facture numéro : "+temp.getBillId()+"<br>"+customer.getFirstName()+"<br>"+customer.getLastName()+"<br>Montant FAI : "+temp.getFaiAmount()+"<br>Montant VOD : "+temp.getVodAmount()+"<br>Montant VoIP : "+temp.getVoipAmount()+"<br>Montant total : "+temp.getAmount()+"<br><br>");
+                            out.println("<b>Facture n° : </b>"+j+"<br><br><i>"+customer.getFirstName()+"<br>"+customer.getLastName()+"</i><br><br>Montant FAI : "+temp.getFaiAmount()+"<br>Montant VOD : "+temp.getVodAmount()+"<br>Montant VoIP : "+temp.getVoipAmount()+"<br><b>Montant total : "+temp.getAmount()+"</b><br><br><i>Adresse Facturation :</i><br>"+Address.getStreet()+"<br>"+Address.getPostalCode()+" "+Address.getCity()+"<br>"+Address.getCountry()+"<br><br><br>");
                             i=i+1;
                         }
                         out.println("</body>");
