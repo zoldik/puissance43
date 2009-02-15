@@ -127,6 +127,7 @@ public class CtrAccount extends javax.servlet.http.HttpServlet {
                 writer.println("</body>");
                 writer.println("</html");
                  */
+                
                 CustomerTO customer = new CustomerTO();
                 customer = customerDAO.findCustomer(customerTO.getLogin(),customerTO.getPassword());
                 //Send confirmation mail
