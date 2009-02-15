@@ -41,6 +41,7 @@ public class CtrSubscribe extends HttpServlet {
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
 
+        /*
         response.setContentType("text/html");
         PrintWriter writer = response.getWriter();
         writer.println("<html>");
@@ -48,7 +49,7 @@ public class CtrSubscribe extends HttpServlet {
         writer.println("<h1>POST</h1>");
         writer.println("</body>");
         writer.println("</html");
-
+         */
 
         //zzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzz
         //ADD ADD ADD ADD ADD ADD ADD ADD ADD ADD ADD ADD ADD ADD 
@@ -60,13 +61,6 @@ public class CtrSubscribe extends HttpServlet {
             String addSubscribe = request.getParameter("addSubscribe");
 
             if (addSubscribe.equals("internet")) {
-                /*
-                writer.println("<html>");
-                writer.println("<body>");
-                writer.println("<h1>dans le if internet</h1>");
-                writer.println("</body>");
-                writer.println("</html");
-                 */
                 addInternetSubscribe(request, response);
             }
             if (addSubscribe.equals("voip")) {
@@ -90,13 +84,6 @@ public class CtrSubscribe extends HttpServlet {
             String delSubscribe = request.getParameter("delSubscribe");
 
             if (delSubscribe.equals("internet")) {
-                /*
-                writer.println("<html>");
-                writer.println("<body>");
-                writer.println("<h1>dans le if internet</h1>");
-                writer.println("</body>");
-                writer.println("</html");
-                 */
                 delInternetSubscribe(request, response);
             }
             if (delSubscribe.equals("voip")) {
@@ -118,13 +105,6 @@ public class CtrSubscribe extends HttpServlet {
             String valSubscribe = request.getParameter("valSubscribe");
 
             if (valSubscribe.equals("internet")) {
-                /*
-                writer.println("<html>");
-                writer.println("<body>");
-                writer.println("<h1>dans le if internet</h1>");
-                writer.println("</body>");
-                writer.println("</html");
-                 */
                 valInternetSubscribe(request, response);
             }
             if (valSubscribe.equals("voip")) {
@@ -267,7 +247,7 @@ public class CtrSubscribe extends HttpServlet {
         InternetSubscribeDAOInterface internetSubscribeDAO = daoFactory.getInternetSubscribeDAO();
 
         String error = internetSubscribeDAO.deleteById(Integer.parseInt(idInternet));
-        /*
+
         response.setContentType("text/html");
         PrintWriter writer = response.getWriter();
         writer.println("<html>");
@@ -276,10 +256,10 @@ public class CtrSubscribe extends HttpServlet {
         writer.println(error);
         writer.println("</body>");
         writer.println("</html");
-        */
 
-         
-        response.sendRedirect("./HandleSubscribes.jsp");
+
+
+    //response.sendRedirect("./HandleSubscribes.jsp");
     }
 
     //zzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzz
@@ -290,8 +270,8 @@ public class CtrSubscribe extends HttpServlet {
         VoipSubscribeDAOInterface voipSubscribeDAO = daoFactory.getVoipSubscribeDAO();
 
         String error = voipSubscribeDAO.deleteById(Integer.parseInt(idVoip));
-        
-        /*
+
+
         response.setContentType("text/html");
         PrintWriter writer = response.getWriter();
         writer.println("<html>");
@@ -300,9 +280,9 @@ public class CtrSubscribe extends HttpServlet {
         writer.println(error);
         writer.println("</body>");
         writer.println("</html");
-        */
-        
-        response.sendRedirect("./HandleSubscribes.jsp");
+
+
+    //response.sendRedirect("./HandleSubscribes.jsp");
     }
 
     //zzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzz
@@ -313,8 +293,8 @@ public class CtrSubscribe extends HttpServlet {
         VodSubscribeDAOInterface vodSubscribeDAO = daoFactory.getVodSubscribeDAO();
 
         String error = vodSubscribeDAO.deleteById(Integer.parseInt(idVod));
-        
-        /*
+
+
         response.setContentType("text/html");
         PrintWriter writer = response.getWriter();
         writer.println("<html>");
@@ -323,8 +303,8 @@ public class CtrSubscribe extends HttpServlet {
         writer.println(error);
         writer.println("</body>");
         writer.println("</html");
-        */
-        response.sendRedirect("./HandleSubscribes.jsp");
+
+    //response.sendRedirect("./HandleSubscribes.jsp");
     }
     //zzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzz
     //VALIDATE VALIDATE VALIDATE VALIDATE VALIDATE VALIDATE VALIDATE
@@ -338,24 +318,27 @@ public class CtrSubscribe extends HttpServlet {
         int idCustomer = Integer.parseInt(idCustomerInternet);
 
         String error = customerDAO.updateCustomerStateInternetSubscribe(idCustomer, 1);
-        
+
         //4 : internet
         String error2 = customerDAO.updateCustomerAccountLevel(idCustomer, 4);
-        
+
         response.setContentType("text/html");
         PrintWriter writer = response.getWriter();
         writer.println("<html>");
         writer.println("<body>");
         writer.println("<h1>valInternetSubscribe</h1>");
         writer.println(error);
+        writer.println(error2);
         writer.println("</body>");
         writer.println("</html");
-        
+
         response.sendRedirect("./HandleSubscribes.jsp");
     }
 
     //zzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzz
     private void valVoipSubscribe(HttpServletRequest request, HttpServletResponse response) throws IOException {
+
+
         DAOFactory daoFactory = DAOFactory.getDAOFactory(DAOFactory.MYSQL);
         CustomerDAOInterface customerDAO = daoFactory.getCustomerDAO();
 
@@ -363,25 +346,28 @@ public class CtrSubscribe extends HttpServlet {
         int idCustomer = Integer.parseInt(idCustomerVoip);
 
         String error = customerDAO.updateCustomerStateVoipSubscribe(idCustomer, 1);
-        
+
         //1 : voip 
         String error2 = customerDAO.updateCustomerAccountLevel(idCustomer, 1);
-        
-        
+
+
         response.setContentType("text/html");
         PrintWriter writer = response.getWriter();
         writer.println("<html>");
         writer.println("<body>");
         writer.println("<h1>valVoipSubscribe</h1>");
         writer.println(error);
+        writer.println(error2);
         writer.println("</body>");
         writer.println("</html");
-                
+
         response.sendRedirect("./HandleSubscribes.jsp");
     }
 
     //zzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzz
     private void valVodSubscribe(HttpServletRequest request, HttpServletResponse response) throws IOException {
+
+
         DAOFactory daoFactory = DAOFactory.getDAOFactory(DAOFactory.MYSQL);
         CustomerDAOInterface customerDAO = daoFactory.getCustomerDAO();
 
@@ -389,20 +375,21 @@ public class CtrSubscribe extends HttpServlet {
         int idCustomer = Integer.parseInt(idCustomerVod);
 
         String error = customerDAO.updateCustomerStateVodSubscribe(idCustomer, 1);
-        
+
         //2 : vod
-        String error2 = customerDAO.updateCustomerAccountLevel(idCustomer, 2);        
-        
+        String error2 = customerDAO.updateCustomerAccountLevel(idCustomer, 2);
+
         response.setContentType("text/html");
         PrintWriter writer = response.getWriter();
         writer.println("<html>");
         writer.println("<body>");
         writer.println("<h1>valVodSubscribe</h1>");
         writer.println(error);
+        writer.println(error2);
         writer.println("</body>");
         writer.println("</html");
-        
-        
+
+
         response.sendRedirect("./HandleSubscribes.jsp");
     }
     //zzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzz
@@ -434,9 +421,10 @@ public class CtrSubscribe extends HttpServlet {
                 //TODO output your page here
                 out.println("<html>");
                 out.println("<body>");
-                out.println("<h1>" + error + ", votre demande de souscription à l'abonnement Internet n°" + idInternetSubscribe +
-                        " a bien été transmise à notre service clientèle. Vous receverez un mail de confirmation lorque l'un de nos agent aura activé votre abonnement</h1>");
-                out.println(error2);
+                out.println("<h2>Votre demande de souscription à l'abonnement Internet n°" + idInternetSubscribe +
+                        " a bien été transmise à notre service clientèle.\n " +
+                        "Vous recevrez un mail de confirmation lorsque l'un de nos agents aura activé votre abonnement.</h2>");
+                //out.println(error2);
                 out.println("</body>");
                 out.println("</html>");
 
@@ -476,9 +464,10 @@ public class CtrSubscribe extends HttpServlet {
                 //TODO output your page here
                 out.println("<html>");
                 out.println("<body>");
-                out.println("<h1>" + error + ", votre demande de souscription à l'abonnement Voip n°" + idVoip +
-                        " a bien été transmise à notre service clientèle. Vous receverez un mail de confirmation lorque l'un de nos agent aura activé votre abonnement</h1>");
-                out.println(error2);
+                out.println("<h2>Votre demande de souscription à l'abonnement Voip n°" + idVoip +
+                        " a bien été transmise à notre service clientèle.\n" +
+                        " Vous recevrez un mail de confirmation lorque l'un de nos agents aura activé votre abonnement.</h2>");
+                //out.println(error2);
                 out.println("</body>");
                 out.println("</html>");
 
@@ -518,17 +507,16 @@ public class CtrSubscribe extends HttpServlet {
                 //TODO output your page here
                 out.println("<html>");
                 out.println("<body>");
-                out.println("<h1>" + error + ", votre demande de souscription à l'abonnement Vod n°" + idVod +
-                        " a bien été transmise à notre service clientèle. Vous receverez un mail de confirmation lorque l'un de nos agent aura activé votre abonnement</h1>");
-                out.println(error2);
+                out.println("<h2>Votre demande de souscription à l'abonnement Vod n°" + idVod +
+                        " a bien été transmise à notre service clientèle.\n " +
+                        "Vous recevrez un mail de confirmation lorque l'un de nos agents aura activé votre abonnement.</h2>");
+                //out.println(error2);
                 out.println("</body>");
                 out.println("</html>");
 
             } finally {
                 out.close();
             }
-
-
         } //Fin du if idInternet
 
     }

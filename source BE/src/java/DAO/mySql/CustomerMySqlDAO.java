@@ -641,12 +641,15 @@ public class CustomerMySqlDAO extends MySqlGeneralObjectDAO implements CustomerD
 
         try {
             st = conn.createStatement();
-            rs = st.executeQuery("SELECT `account_level` FROM `customer`");
+            rs = st.executeQuery("SELECT `account_level` FROM `customer` WHERE `customer`.`id_customer` =" +
+                idCustomer + ";");
 
+            rs.next();
+            
             accountLevel = Integer.parseInt(rs.getString("account_level"));
 
-        } catch (Exception e) {
-            e.printStackTrace();
+        } catch (SQLException e) {
+            error = e.toString();
 
         } finally {
             closeRsAndSt(rs, st);
@@ -662,7 +665,7 @@ public class CustomerMySqlDAO extends MySqlGeneralObjectDAO implements CustomerD
             st.executeUpdate(update);
         } catch (SQLException e) {
             System.out.println("SqlException : " + e);
-            error = e.toString();
+            e.toString();
         }
 
         closeConnection(conn);

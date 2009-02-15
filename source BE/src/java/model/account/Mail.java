@@ -102,6 +102,7 @@ public class Mail {
         
     }
 
+     
     /**Envoi de mail via serveur SMTP non sécurisé ou local
      * @throws java.lang.Exception
      */
@@ -109,8 +110,8 @@ public class Mail {
     Properties props = new Properties();
     props.setProperty("mail.transport.protocol", "smtp");
     props.setProperty("mail.host", "195.83.8.35");
-    props.setProperty("mail.user", "");
-    props.setProperty("mail.password", "");
+    props.setProperty("mail.user", "p49038");
+    props.setProperty("mail.password", "GWvnvBIF");
     
     Session mailSession = Session.getDefaultInstance(props, null);
     Transport transport = mailSession.getTransport();
@@ -126,6 +127,7 @@ public class Mail {
     message.getRecipients(Message.RecipientType.TO));
     transport.close();
     }*/
+     
     public static void main(String[] args) throws Exception {
         /*Mail test=new Mail();
         test.subject="test";
