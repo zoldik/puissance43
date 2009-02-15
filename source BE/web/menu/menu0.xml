@@ -6,11 +6,9 @@
         <link name="Abonnement" url="Subscribes.jsp"/>
     </Compte>
     <VoIP name="VoIP">
-        <link name="Annuaire" url="voip/annuaire.jsp"/>
-        <link name="Abonnement" url="1"/>
+        <link name="Annuaire" url="voip/annuaire.jsp"/>        
     </VoIP>
-    <VOD name="VOD">
-        <link name="Abonnement" url="1"/>
+    <VOD name="VOD">        
     </VOD>
     <Assistance name="Assistance">
         <link name="Assistance"  url="" />

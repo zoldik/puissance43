@@ -5,14 +5,12 @@
         <link name="Webmail" url="customer/Webmail.jsp"/>
         <link name="Gestion" url="GestionCompte.jsp"/>
         <link name="Suppression" url="SuppressionCompte.jsp"/>
-        <link name="Abonnement" url="1"/>
+        <link name="Abonnement" url="Subscribes.jsp"/>
     </Compte>
     <VoIP name="VoIP">
-        <link name="Annuaire" url="voip/annuaire.jsp"/>
-        <link name="Abonnement" url="1"/>
+        <link name="Annuaire" url="voip/annuaire.jsp"/>        
     </VoIP>
-    <VOD name="VOD">
-        <link name="Abonnement" url="1"/>
+    <VOD name="VOD">        
     </VOD>
     <Assistance name="Assistance">
         <link name="Assistance FAI"  url="custom/FAIAssistance.jsp" />

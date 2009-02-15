@@ -2,13 +2,13 @@
 <!-- Menu FAI + VOD -->
 <root>
     <Compte name="Compte">
+        <link name="Abonnement" url="Subscribes.jsp"/>
         <link name="Webmail" url="customer/Webmail.jsp"/>
         <link name="Gestion" url="GestionCompte.jsp"/>
         <link name="Suppression" url="SuppressionCompte.jsp"/>
     </Compte>
     <VoIP name="VoIP">
-        <link name="Annuaire" url="voip/annuaire.jsp"/>
-        <link name="Abonnement" url="1"/>
+        <link name="Annuaire" url="voip/annuaire.jsp"/>        
     </VoIP>
     <VOD name="VOD">
         <link name="VOD" url="2"/>

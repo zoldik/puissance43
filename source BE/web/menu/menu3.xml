@@ -2,7 +2,7 @@
 <!-- Menu VOD+VoIP -->
 <root>
     <Compte name="Compte">
-        <link name="Abonnements" url="1"/>
+        <link name="Abonnements" url="Subscribes.jsp"/>
         <link name="Gestion" url="GestionCompte.jsp"/>
         <link name="Suppression" url="SuppressionCompte.jsp"/>
     </Compte>

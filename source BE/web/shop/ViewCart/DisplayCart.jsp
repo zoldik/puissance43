@@ -93,6 +93,18 @@ if(cartRow.getQuantity()==0){
         <br><br>
                 
         <table><tr><td>Total price of the cart : </td><td><%=cart.computeTotalPrice()%></td></tr></table>
+        
+        
+        <!--Passer à la commande-->
+        
+        
+        <td><form method='post' action="CtrCart">
+                    <input type='submit' value='+'>
+                    <input type='hidden' name='id' value='customer'>
+                    <input type="hidden" name='actionCart' value='increment'>
+                    </form></td>                
+                <td><form method='post' action="CtrCart">   
+        
           
 <% 
     }//Fin du else
