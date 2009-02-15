@@ -10,6 +10,7 @@
 <%@ page import="java.util.*" %>
 <%@ page import="model.shop.*" %>
 <%@ page import="DAO.transfertObject.ItemTO" %>
+<%@ page import="DAO.transfertObject.CustomerTO" %>
 
 <html>
     <head>
@@ -96,6 +97,22 @@ if(cartRow.getQuantity()==0){
         
         
         <!--Passer à la commande-->
+          <%
+            
+            if (session != null) {
+                if (session.getAttribute("Customer") != null) {
+                    CustomerTO customerObject = (CustomerTO) session.getAttribute("Customer");
+                %>
+        <form method='post' action="">
+            
+        </form>
+
+                  <%                                           
+                } else {
+                    
+                }
+            } //Fin du if session
+            %>
         
         
         <td><form method='post' action="CtrCart">
