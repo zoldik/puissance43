@@ -3,17 +3,6 @@ package DAO.factory;
 import DAO.interfaces.*;
 import DAO.mySql.*;
 
-import DAO.transfertObject.InternetSubscribeTO;
-import java.sql.Connection;
-import java.sql.ResultSet;
-import java.sql.SQLException;
-import java.sql.Statement;
-
-import javax.sql.DataSource;
-
-import javax.naming.Context;
-import javax.naming.InitialContext;
-
 /**
  *
  * @author vincent
@@ -22,6 +11,7 @@ public class MySqlDAOFactory extends DAOFactory {
     //*********************
     //STATIC ATTRIBUTES
     //*********************    
+    private static AddressDAOInterface addressDAO = null;
     private static ContactVoipDAOInterface contactVoipDAO = null;    
     private static CustomerDAOInterface customerDAO = null;    
     private static InternetSubscribeDAOInterface internetSubscribeDAO = null;
@@ -36,6 +26,14 @@ public class MySqlDAOFactory extends DAOFactory {
     //*********************
     //STATIC METHODS TO GET THE DAO OBJECTS 
     //*********************       
+    
+    public AddressDAOInterface getAddressDAO() {
+        if (addressDAO == null) {
+            addressDAO = new AddressMySqlDAO();
+        }
+        return addressDAO;
+    }
+    
     public ContactVoipDAOInterface getContactVoipDAO() {
         // MySqlContactVoipDAO implements ContactVoipDAO 
         if (contactVoipDAO == null) {
