@@ -11,7 +11,7 @@ import javax.servlet.http.HttpServletResponse;
  *
  * @author vincent
  */
-public class CtrShop extends HttpServlet {
+public class CtrOrder extends HttpServlet {
        
     /** 
     * Handles the HTTP <code>GET</code> method.
