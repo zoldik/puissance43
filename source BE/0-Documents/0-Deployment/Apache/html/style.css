@@ -1,4 +1,4 @@
-body {background-color:red; color:black;} /* page rouge avec une police noire */
+body {color:black;} /* page rouge avec une police noire */
 
 .menu { /* boite qui contient le menu (les onglets) */
     border-top:solid 2px black ; /* crée le trait noir au dessus des onglets */
