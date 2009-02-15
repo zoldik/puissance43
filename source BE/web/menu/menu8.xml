@@ -3,6 +3,7 @@
 <root>
     <Compte name="Compte">
         <link name="Abonnement" url="Subscribes.jsp"/>
+        <link name="Webmail" url="customer/Webmail.jsp"/>
         <link name="Gestion" url="GestionCompte.jsp"/>
         <link name="Suppression" url="SuppressionCompte.jsp"/>
     </Compte>
@@ -11,10 +12,11 @@
         <link name="Répertoire" url="voip/repertoire.jsp"/>
         <link name="Annuaire" url="voip/annuaire.jsp"/>
         <link name="ZoIPer" url="voip/telechargement.jsp"/>
+        <link name="RSS" url="voip/rss.jsp"/>
         <link name="Support" url="voip/support.jsp"/>
     </VoIP>
     <VOD name="VOD">
-        <link name="Abonnement" url="1"/>
+        <link name="VOD" url="2"/>
     </VOD>
     <Assistance name="Assistance">
         <link name="FAI"  url="custom/FAIAssistance.jsp" />
