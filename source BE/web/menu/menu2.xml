@@ -10,10 +10,10 @@
         <link name="Annuaire" url="voip/annuaire.jsp"/>        
     </VoIP>
     <VOD name="VOD">
-        <link name="VOD" url="http://192.168.1.214:8080/VOD"/>
+        <link name="Site VOD" url="vod/vod.jsp"/>
     </VOD>
     <Assistance name="Assistance">
-        <link name="Assistance"  url="" />
+        <link name="VOD"  url="" />
     </Assistance>
     <Magasin name="Magasin">
         <link name="Search" url="Search.jsp" />

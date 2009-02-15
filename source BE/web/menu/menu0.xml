@@ -11,7 +11,9 @@
     <VOD name="VOD">        
     </VOD>
     <Assistance name="Assistance">
-        <link name="Assistance"  url="" />
+        <link name="FAI"  url="custom/FAIAssistance.jsp" />
+        <link name="VoIP"  url="voip/support.jsp" />
+        <link name="VOD"  url="" />
     </Assistance>
     <Magasin name="Magasin">
         <link name="Search" url="Search.jsp" />
