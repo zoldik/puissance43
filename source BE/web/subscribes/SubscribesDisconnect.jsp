@@ -19,7 +19,7 @@
     </head>
     <body>
         
-        <!--Le bouton s'abonner-->       
+             
             <%
             HttpSession customerSession = request.getSession(false);
 
