@@ -14,7 +14,7 @@
         <link name="Abonnement" url="SubscribesDisconnect.jsp"/>
     </VOD>
     <Assistance name="Assistance">
-        <link name="Assistance"  url="" />
+        <link name="Assistance"  url="0" />
     </Assistance>
     <Magasin name="Magasin">
         <link name="Search" url="Search.jsp" />
