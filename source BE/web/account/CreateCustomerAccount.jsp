@@ -72,7 +72,7 @@
                     </tr>
                     
                     
-                    <tr align="left"><td><a style="color:<%if (errorC.getErrorLastName() == 1) {out.print("#FF0000");}%>">* nom (15 caractères max) : </a></td>
+                    <tr align="left"><td><a style="color:<%if (errorC.getErrorLastName() == 1) {out.print("#FF0000");}%>">* Nom (15 caractères max) : </a></td>
                         <td><input type="text" name="lastName" value="<%if (customerTO.getLastName() != null) {out.print(customerTO.getLastName());}%>"onKeyUp=verifLength(this.value,"lastName","15") align="left" />
                         <div id="lastName"></div></td>
                     </tr>
@@ -121,7 +121,7 @@
                     
                     
                     <tr align="left">
-                        <td><a style="color:<%if (errorC.getErrorCellPhone() == 1) {out.print("#FF0000");}%>">Téléphone gsm : </a></td>
+                        <td><a style="color:<%if (errorC.getErrorCellPhone() == 1) {out.print("#FF0000");}%>">Téléphone Portable : </a></td>
                         <td><input type="text" name="cellPhone" onKeyUp=verifLength(this.value,"cellPhone","20") align="left" />
                         <div id="cellPhone"></div></td>
                     </tr>
