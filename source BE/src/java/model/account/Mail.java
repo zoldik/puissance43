@@ -79,6 +79,7 @@ public class Mail {
         props.put("mail.smtp.socketFactory.fallback", "false");
         props.setProperty("mail.smtp.quitwait", "false");
 
+        
         Session session = Session.getInstance(props,
                 new javax.mail.Authenticator() {
 
@@ -86,6 +87,7 @@ public class Mail {
                         return new PasswordAuthentication("group8.projectrss@gmail.com", "==ProjectRSS");
                     }
                 });
+         
 
         MimeMessage message = new MimeMessage(session);
         message.setSender(new InternetAddress(sender));
@@ -97,7 +99,7 @@ public class Mail {
             message.setRecipient(Message.RecipientType.TO, new InternetAddress(this.address));
         }
         Transport.send(message);
-
+        
     }
 
     /**Envoi de mail via serveur SMTP non sécurisé ou local
