@@ -29,25 +29,18 @@
 
             HttpSession customerSession = request.getSession(false);
 
-            //if (customerSession != null) {
-            //if (customerSession.getAttribute("Customer") != null) {
             CustomerTO customerTO = (CustomerTO) customerSession.getAttribute("Customer");
+            
             int idAddress = customerTO.getIdAddress();
             DAOFactory daoFactory = DAOFactory.getDAOFactory(DAOFactory.MYSQL);
             AddressDAOInterface addressDAO = daoFactory.getAddressDAO();
 
             AddressTO addressTO = addressDAO.findAddressById(idAddress);
-            //}
-            //}
-
-
-
-
+            
         %>        
-        <h2><%=addressTO.getStreet()%></h2>
-
+        
         <table>
-            <tr align="left"><td><h2 align='left'>Adresse :</h2></td></tr>
+            <tr align="left"><td><h2 align='left'>Adresse de livraison :</h2></td></tr>
             
             
             <tr align="left">
@@ -96,11 +89,13 @@
             
             <!--zzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzz-->
                     
-                    
+            
             <tr>
                 <td></td>
-                <td align="left">                            
-                    <input type="submit" value="Valider l'addresse de livraison" />
+                <td align="left">
+                    <form method="post" action="./ConfirmationOrder.jsp">
+                    <input type="submit" value="Valider l'adresse de livraison" />
+                    </form>
                 </td>
             </tr>
             

@@ -17,7 +17,7 @@
         <h2>Hello World!</h2>
     </body>
     
-    <form name="billdownload" action="./billtopdf" method="POST">
+    <form name="billdownload" action="./ViewBill" method="POST">
       <div id="register">  
         <table>
             <tr>
