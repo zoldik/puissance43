@@ -38,7 +38,7 @@ public class ViewBill extends javax.servlet.http.HttpServlet {
                         customer = customerDAO.findCustomerById(idCustomer);
                         
                         AddressTO Address = new AddressTO() ;
-                        Address = customerDAO.findCustomerAddressById(customer.getIdaddress());
+                        Address = customerDAO.findCustomerAddressById(customer.getIdAddress());
                         
                         //response.sendRedirect("accueil.jsp");
                         PrintWriter out = response.getWriter();

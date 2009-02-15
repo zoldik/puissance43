@@ -32,12 +32,15 @@ public class AddressMySqlDAO extends MySqlGeneralObjectDAO implements AddressDAO
             pSt = conn.prepareStatement("SELECT * FROM `address` WHERE `id_address` = ? ;");
             pSt.setString(1, idInteger.toString());
             rs = pSt.executeQuery();
+
+            rs.next();
+
+            address.setStreet(rs.getString("street"));
+            address.setPostalCode(rs.getString("postal_code"));
+            address.setCity(rs.getString("city"));
+            address.setCountry(rs.getString("country"));
+            address.setTypeAddress(rs.getString("type_address"));
             
-                address.setStreet(rs.getString("first_name"));
-                address.setPostalCode(rs.getString("last_name"));
-                address.setCity(rs.getString("login"));
-                address.setCountry(rs.getString("password"));
-                address.setTypeAddress(rs.getString("mail"));
         } catch (SQLException e) {
             e.toString();
         } finally {
@@ -47,5 +50,4 @@ public class AddressMySqlDAO extends MySqlGeneralObjectDAO implements AddressDAO
 
         return address;
     }
-
 }
