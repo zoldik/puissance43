@@ -14,10 +14,11 @@
         <title>VoIP admin</title>
     </head>
     <body>
-        <h2>VoIP admin</h2>
-        <a href="./reporting.jsp">Reporting</a><br/>
-        <a href="./ligneManagement.jsp">Ligne Management</a><br/>
-        <a href="./userManagement.jsp">User Management</a><br/>
+        <h2 align="center">VoIP admin</h2>
+        <br/>
+        <a href="./reporting.jsp"><h3 align="center">Consulter le reporting d'appel</h3></a>
+        <a href="./ligneManagement.jsp"><h3 align="center">Gérer les lignes VoIP</h3></a>
+        <a href="./userManagement.jsp"><h3 align="center">Gérer les Utilisateurs VoIP</h3></a>
         
     </body>
 </html>

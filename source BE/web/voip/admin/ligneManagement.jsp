@@ -5,9 +5,21 @@
 --%>
 
 <%@page contentType="text/html" pageEncoding="UTF-8"
-import = "model.database.*"
-import = "model.voip.*"
-import = "java.util.*"
+import="model.voip.Annuaire"
+import="model.voip.RowAnnuaire"
+
+import="model.voip.Annuaire"
+import="model.voip.RowAnnuaire"
+import="DAO.interfaces.LineDAOInterface"
+import="DAO.interfaces.CustomerDAOInterface"
+import="DAO.transfertObject.LineTO"
+import="DAO.transfertObject.CustomerTO"
+import="DAO.factory.DAOFactory"
+import="DAO.factory.MySqlDAOFactory"
+import="DAO.transfertObject.CustomerTO"
+
+import="java.util.*"
+
 %>
 <!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"
    "http://www.w3.org/TR/html4/loose.dtd">
@@ -34,10 +46,7 @@ import = "java.util.*"
 
         <!-- Actions -->
         <input type="button" value="DELETE"/>
-        <form method='post' action="./ligneManagement/addVoipLigne.jsp">
-                 <input type="submit" value="ADD" />
-        </form>
-            
+
         <!-- titles -->
         <tr style="color:white">
             <td> </td>
@@ -55,13 +64,16 @@ import = "java.util.*"
         
         <!-- Contents -->
         <%
-            LinkedList<VoipLigne> voipLignes = new LinkedList <VoipLigne>();
-            ListIterator<VoipLigne> indice;
-            VoipLigne vl = new VoipLigne();
+            DAOFactory daoFactory = DAOFactory.getDAOFactory(DAOFactory.MYSQL);
+            LineDAOInterface LineDAO = daoFactory.getLineDAO();
             
-            voipLignes = VoipLigneDAO.extractAllVoipLigne();
-            indice = voipLignes.listIterator();
-            
+            //selectionne les numeros
+            LinkedList<LineTO> lines1 = new LinkedList <LineTO>();
+            ListIterator<LineTO> indice;
+            LineTO vl = new LineTO();
+            lines1 = LineDAO.selectAllLineTO();
+            indice = lines1.listIterator();
+ 
             while (indice.hasNext()){
                 vl = indice.next();
         %>

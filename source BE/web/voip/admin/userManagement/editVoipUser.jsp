@@ -5,9 +5,15 @@
 --%>
 
 <%@page contentType="text/html" pageEncoding="UTF-8"
-import="model.database.*"
-import="model.voip.*"
 import="java.util.*"
+import="DAO.interfaces.LineDAOInterface"
+import="DAO.interfaces.CustomerDAOInterface"
+import="DAO.transfertObject.LineTO"
+import="DAO.transfertObject.CustomerTO"
+import="DAO.factory.DAOFactory"
+import="DAO.factory.MySqlDAOFactory"
+import="DAO.transfertObject.CustomerTO"
+import="model.voip.*"
 %>
 <!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"
    "http://www.w3.org/TR/html4/loose.dtd">
@@ -27,14 +33,29 @@ import="java.util.*"
         <h3>Informations générales sur l'utilisateur</h3>
         
         <% String id = request.getParameter("id");
-        VoipUser vu = VoipUserDAO.extractVoipUserbyId(id);
+        
+        DAOFactory daoFactory = DAOFactory.getDAOFactory(DAOFactory.MYSQL);
+        CustomerDAOInterface customerDAO = daoFactory.getCustomerDAO();
+        
+        CustomerTO customer = new CustomerTO();
+        customer = customerDAO.findCustomerById( Integer.parseInt(id) );  
         %>
 
-        Login : <%= vu.getlogin() %> <br/>
+        Login : <%= customer.getLogin() %> <br/>
         
-        Niveau  : <%= vu.getaccountlevel() %> <br/>
+        Nom : <%= customer.getLastName() %> <br/>
         
-        Activation : <%= vu.getisactivated() %> <br/>
+        Prenom : <%= customer.getFirstName() %> <br/>
+        
+        Societe : <%= customer.getCompany() %> <br/>
+        
+        <br/>
+        
+        Niveau d'administration : <%= customer.getAccountLevel() %> <br/>
+        
+        Souscription a un abonnement VoIP : <%= customer.getIdVoipSubscribe() %> <br/>
+        
+        Activation de l'abonnement VoIP: <%= customer.getStateVoipSubscribe() %><br/>
         
         
         <!-- LINES Information-->
@@ -62,13 +83,15 @@ import="java.util.*"
         </tr>
 
         <%
-            LinkedList<VoipLigne> voipLignes = new LinkedList <VoipLigne>();
-            ListIterator<VoipLigne> indice;
-            VoipLigne vl = new VoipLigne();
+            LineDAOInterface LineDAO = daoFactory.getLineDAO();
             
-            voipLignes = VoipLigneDAO.extractAllVoipLigne();
-            indice = voipLignes.listIterator();
-            
+            //selectionne les numeros
+            LinkedList<LineTO> lines = new LinkedList <LineTO>();
+            ListIterator<LineTO> indice;
+            LineTO vl = new LineTO();
+            lines = LineDAO.findLineByAttribute("id_customer", id);
+            indice = lines.listIterator();
+ 
             while (indice.hasNext()){
                 vl = indice.next();
         %>
@@ -85,14 +108,14 @@ import="java.util.*"
             <td> <%=vl.getvisible() %> </td>
             
             <td> <!--edit button-->
-                 <form method='post' action="./ligneManagement/editVoipLigne.jsp">
+                 <form method='post' action="../ligneManagement/editVoipLigne.jsp">
                  <input type="submit" value="edit" />
                  <input type='hidden' name='id' value="<%=vl.getid() %>"/>
                  <!--input type="hidden" name='action' value='edit'-->
                  </form>
                  </td>
             <td> <!--delete button-->
-                 <form method='post' action="./ligneManagement/deleteVoipLigne.jsp">
+                 <form method='post' action="../ligneManagement/deleteVoipLigne.jsp">
                  <input type="submit" value="delete" />
                  <input type='hidden' name='id' value="<%=vl.getid() %>">
                  <input type='hidden' name='name' value="<%=vl.getname() %>">
