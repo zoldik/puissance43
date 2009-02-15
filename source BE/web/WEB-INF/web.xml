@@ -54,6 +54,15 @@
         <servlet-name>CtrSearch</servlet-name>
         <url-pattern>/CtrSearch</url-pattern>
     </servlet-mapping> 
+     <!--zzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzz-->
+    <servlet>
+        <servlet-name>CtrShop</servlet-name>
+        <servlet-class>servlet.shop.CtrShop</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>CtrShop</servlet-name>
+        <url-pattern>/CtrShop</url-pattern>
+    </servlet-mapping> 
     <!--zzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzz-->
     <servlet>
         <servlet-name>CtrSubscribe</servlet-name>
@@ -84,6 +93,15 @@
         <servlet-name>CreateCustomerAccount.jsp</servlet-name>
         <url-pattern>/CreateCustomerAccount.jsp</url-pattern>
     </servlet-mapping>
+     <!--zzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzz-->
+    <servlet>
+        <servlet-name>DisconnectOrder.jsp</servlet-name>
+        <jsp-file>/shop/order/DisconnectOrder.jsp</jsp-file>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>DisconnectOrder.jsp</servlet-name>
+        <url-pattern>/DisconnectOrder.jsp</url-pattern>
+    </servlet-mapping>   
     <!--zzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzz-->
     <servlet>
         <servlet-name>DisplayCart.jsp</servlet-name>
