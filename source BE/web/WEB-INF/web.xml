@@ -32,6 +32,10 @@
         <servlet-name>CtrAccount</servlet-name>
         <servlet-class>servlet.account.CtrAccount</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>CtrShop</servlet-name>
+        <servlet-class>servlet.shop.CtrShop</servlet-class>
+    </servlet>
     <servlet-mapping>
         <servlet-name>CtrAccount</servlet-name>
         <url-pattern>/CtrAccount</url-pattern>
@@ -55,14 +59,6 @@
         <url-pattern>/CtrSearch</url-pattern>
     </servlet-mapping> 
      <!--zzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzz-->
-    <servlet>
-        <servlet-name>CtrShop</servlet-name>
-        <servlet-class>servlet.shop.CtrShop</servlet-class>
-    </servlet>
-    <servlet-mapping>
-        <servlet-name>CtrShop</servlet-name>
-        <url-pattern>/CtrShop</url-pattern>
-    </servlet-mapping> 
     <!--zzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzz-->
     <servlet>
         <servlet-name>CtrSubscribe</servlet-name>
@@ -76,6 +72,15 @@
     <!--zzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzz-->
     <!--zzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzz-->
     <!--JSP-->
+    <servlet>
+        <servlet-name>AddressOrder.jsp</servlet-name>
+        <jsp-file>/shop/order/AddressOrder.jsp</jsp-file>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>AddressOrder.jsp</servlet-name>
+        <url-pattern>/AddressOrder.jsp</url-pattern>
+    </servlet-mapping>
+    <!--zzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzz-->
     <servlet>
         <servlet-name>AdvancedSearch.jsp</servlet-name>
         <jsp-file>/shop/cart/AdvancedSearch.jsp</jsp-file>
@@ -333,6 +338,10 @@
         <servlet-name>enregModContactInfo</servlet-name>
         <url-pattern>/enregModContactInfo</url-pattern>
     </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>CtrShop</servlet-name>
+        <url-pattern>/CtrShop</url-pattern>
+    </servlet-mapping>
     <session-config>
         <session-timeout>
             30
@@ -420,5 +429,4 @@
     </servlet-mapping>
     <!-- /JSP -->
     <!-- /AURELIEN BAUDET -->
-      
 </web-app>

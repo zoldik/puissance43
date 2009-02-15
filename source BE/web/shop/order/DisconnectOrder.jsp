@@ -1,12 +1,11 @@
 <%-- 
-    Document   : DisconnectOrder
-    Created on : 15 févr. 2009, 14:41:02
+    Document   : SubscribesDisconnect2
+    Created on : 14 févr. 2009, 10:49:28
     Author     : vincent
 --%>
 
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
-<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"
-   "http://www.w3.org/TR/html4/loose.dtd">
+<%@ page import="java.util.*" %>
 
 <html>
     <head>
@@ -14,6 +13,10 @@
         <title>JSP Page</title>
     </head>
     <body>
-        <h2>Hello World!</h2>
+        <h2>Pour pouvoir commander, il faut auparavant être connecté !</h2>
+        <br><br><br>
+        
+        <h2>identifiez vous ou créez un compte en cliquant <a href="./CreateCustomerAccount.jsp">ici</a></h2>
+            
     </body>
 </html>

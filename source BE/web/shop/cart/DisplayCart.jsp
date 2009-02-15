@@ -6,7 +6,7 @@
 
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"
-   "http://www.w3.org/TR/html4/loose.dtd">
+"http://www.w3.org/TR/html4/loose.dtd">
 <%@ page import="java.util.*" %>
 <%@ page import="model.shop.*" %>
 <%@ page import="DAO.transfertObject.ItemTO" %>
@@ -18,73 +18,71 @@
         <title>JSP Page</title>
     </head>
     <body>
-      <h1>Cart Page</h1>
-      <h3>Your cart :</h3>
-<%      
-        Cart cart = (Cart)session.getAttribute("cart");    
-        
-        //Do the Customer have a empty cart 
-        if ((cart==null)||(cart.getCartRows().isEmpty())){
-            //Yes, return your cart is empty        
+        <h1>Cart Page</h1>
+        <h3>Your cart :</h3>
+        <%
+            Cart cart = (Cart) session.getAttribute("cart");
+
+            //Do the Customer have a empty cart 
+            if ((cart == null) || (cart.getCartRows().isEmpty())) {
+                //Yes, return your cart is empty        
 %>
         <h3>Sorry, your cart is empty, return to the precedent page</h3>
-<% }else{%>
-      <table border="1">
-          <tr>          
-          <th>Name</th>
-          <th>Type</th>          
-          <th>Description</th>          
-          <th>Price(Euro)</th>
-          <th>DeleteItem</th>
-          <th>Quantity</th>
-          <th>+</th>
-          <th>-</th>
-          <th>TotatRow(Euro)</th>
-          </tr>          
-
-<%      
-        ArrayList<CartRow> cartRows = (ArrayList<CartRow>)cart.getCartRows();
-        Iterator it = cartRows.iterator();
-        while(it.hasNext()){
-        CartRow cartRow = (CartRow) it.next();
-        ItemTO item = cartRow.getItem();
-%>
+        <% } else {%>
+        <table border="1">
+            <tr>          
+                <th>Name</th>
+                <th>Type</th>          
+                <th>Description</th>          
+                <th>Price(Euro)</th>
+                <th>DeleteItem</th>
+                <th>Quantity</th>
+                <th>+</th>
+                <th>-</th>
+                <th>TotatRow(Euro)</th>
+            </tr>          
+            
+            <%
+            ArrayList<CartRow> cartRows = (ArrayList<CartRow>) cart.getCartRows();
+            Iterator it = cartRows.iterator();
+            while (it.hasNext()) {
+                CartRow cartRow = (CartRow) it.next();
+                ItemTO item = cartRow.getItem();
+            %>
             <tr><td><%=item.getName()%></td>
                 <td><%=item.getType()%></td>            
                 <td><%=item.getDescription()%></td>
                 <td><%=item.getUnitPrice()%> Euros</td>
                 <td><form method='post' action="CtrCart">
-                    <input type='submit' value='Delete Item'>
-                    <input type='hidden' name='id' value='<%=item.getId()%>'>
-                    <input type="hidden" name='actionCart' value='delete'>
-                    </form></td>
+                        <input type='submit' value='Delete Item'>
+                        <input type='hidden' name='id' value='<%=item.getId()%>'>
+                        <input type="hidden" name='actionCart' value='delete'>
+                </form></td>
                 <td><%=cartRow.getQuantity()%></td>
                 <td><form method='post' action="CtrCart">
-                    <input type='submit' value='+'>
-                    <input type='hidden' name='id' value='<%=item.getId()%>'>
-                    <input type="hidden" name='actionCart' value='increment'>
-                    </form></td>                
+                        <input type='submit' value='+'>
+                        <input type='hidden' name='id' value='<%=item.getId()%>'>
+                        <input type="hidden" name='actionCart' value='increment'>
+                </form></td>                
                 <td><form method='post' action="CtrCart">                 
-<%
-if(cartRow.getQuantity()==0){
-%>
-                    <input type='submit' value='-' disabled>
-<%    
-} else {
-%>
-                    <input type='submit' value='-' >
-<%
-}
-%>
-                    <input type='hidden' name='id'  value='<%=item.getId()%>'>
-                    <input type="hidden" name='actionCart' value='decrement'>
-                    </form></td>
+                        <%
+                if (cartRow.getQuantity() == 0) {
+                        %>
+                        <input type='submit' value='-' disabled>
+                        <%                    } else {
+                        %>
+                        <input type='submit' value='-' >
+                        <%            }
+                        %>
+                        <input type='hidden' name='id'  value='<%=item.getId()%>'>
+                        <input type="hidden" name='actionCart' value='decrement'>
+                </form></td>
                 <td><%= cartRow.computeTotalPrice()%> Euros</td>
             </tr>
-<%
+            <%
             }//Fin du while    
 %>                       
-           
+            
         </table>   
         
         <br><br>
@@ -92,39 +90,37 @@ if(cartRow.getQuantity()==0){
         <table><tr><td>Number of items contain in the cart : </td><td><%=cart.computeNumberOfItems()%></td></tr></table>
         
         <br><br>
-                
+        
         <table><tr><td>Total price of the cart : </td><td><%=cart.computeTotalPrice()%></td></tr></table>
         
         
         <!--Passer à la commande-->
           <%
-            
+
             if (session != null) {
                 if (session.getAttribute("Customer") != null) {
                     CustomerTO customerObject = (CustomerTO) session.getAttribute("Customer");
                 %>
-        <form method='post' action="">
-            
+    
+        <form method='post' action="AddressOrder.jsp">
+            <input type='submit' value='Commander'>                    
         </form>
-
-                  <%                                           
+        
+        <%
                 } else {
-                    
-                }
+        %>
+        
+        <form method='post' action="DisconnectOrder.jsp">
+            <input type='submit' value='Commander'>                    
+        </form>        
+        
+        <%                }
             } //Fin du if session
-            %>
+%>
         
         
-        <td><form method='post' action="CtrCart">
-                    <input type='submit' value='+'>
-                    <input type='hidden' name='id' value='customer'>
-                    <input type="hidden" name='actionCart' value='increment'>
-                    </form></td>                
-                <td><form method='post' action="CtrCart">   
-        
-          
-<% 
-    }//Fin du else
+        <%
+            }//Fin du else
 %>     
         
     </body>
