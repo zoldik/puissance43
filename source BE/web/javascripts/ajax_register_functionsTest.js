@@ -57,7 +57,7 @@ function levelPassword(password,div)
             updateDivContent(div, '<span style="color:#0000cc"><FONT SIZE=1>Medium security password</font></span>');
         else if(password.length>12 && password.length<15)
         //#90EE90>>Light green
-            updateDivContent(div, '<span style="color:#90EE90"><FONT SIZE=1>High security password</font></span>');
+            updateDivContent(div, '<span style="color:#008000"><FONT SIZE=1>High security password</font></span>');
         else if(password.length==15)
         //#008000>>Green
             updateDivContent(div, '<span style="color:#008000"><FONT SIZE=1>Highest security password</font></span>');
