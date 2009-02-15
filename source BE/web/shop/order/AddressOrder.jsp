@@ -29,24 +29,31 @@
 
             HttpSession customerSession = request.getSession(false);
 
-            if (customerSession != null) {
-                if (customerSession.getAttribute("Customer") != null) {
-                    CustomerTO customerTO = (CustomerTO) customerSession.getAttribute("Customer");
-                    int idCustomer = customerTO.getId();
-                }
-            }
-
+            //if (customerSession != null) {
+            //if (customerSession.getAttribute("Customer") != null) {
+            CustomerTO customerTO = (CustomerTO) customerSession.getAttribute("Customer");
+            int idAddress = customerTO.getIdAddress();
             DAOFactory daoFactory = DAOFactory.getDAOFactory(DAOFactory.MYSQL);
             AddressDAOInterface addressDAO = daoFactory.getAddressDAO();
 
-            AddressTO addressTO = addressDAO.findAddressById(idCustomer);
+            AddressTO addressTO = addressDAO.findAddressById(idAddress);
+            //}
+            //}
+
+
+
+
         %>        
+        <h2><%=addressTO.getStreet()%></h2>
+
         <table>
             <tr align="left"><td><h2 align='left'>Adresse :</h2></td></tr>
             
             
             <tr align="left">
-                <td><a style="color:#FF0000">* Rue : </a></td>
+                <td><a style="color:<%if (errorA.getErrorStreet() == 1) {
+                out.print("#FF0000");
+            }%>">* Rue : </a></td>
                 <td><input type="text" name="street" value="<%if (addressTO.getStreet() != null) {
                 out.print(addressTO.getStreet());
             }%>" onKeyUp=verifLength(this.value,"street","20") align="left" />
@@ -93,7 +100,7 @@
             <tr>
                 <td></td>
                 <td align="left">                            
-                    <input type="submit" value="Créer" name="Connexion" />
+                    <input type="submit" value="Valider l'addresse de livraison" />
                 </td>
             </tr>
             
