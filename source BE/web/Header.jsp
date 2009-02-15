@@ -68,7 +68,7 @@
                             <div class="menu">
                             <table align="center">
                                 <tr>
-                                    <a class="onglet" href="#" onclick="displayIdentification(4);" ><div id="Connexion">Connexion</div></a>
+                                    <a class="onglet" href="#" onclick="displayIdentification(1);" ><div id="Connexion">Connexion</div></a>
                                     <a class="onglet" href="#" onclick="fonctionOpenPage('accueil.jsp');" onmouseover="fonctionHeader('Compte'); fonctionClean('Compte'); fonctionMenu('Compte'); return false;"><div id="Compte">Compte</div></a>
                                     <a class="onglet" href="#" onmouseover="fonctionHeader('VOD'); fonctionClean('VOD'); fonctionMenu('VOD'); return false;"><div id="VOD">VOD</div></a>
                                     <a class="onglet" href="#" onmouseover="fonctionHeader('VoIP'); fonctionClean('VoIP'); fonctionMenu('VoIP'); return false;"><div id="VoIP">VoIP</div></a>

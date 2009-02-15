@@ -51,8 +51,8 @@
                                <tr>
                                     <td align="center" <%=colorVoIP%> >VoIP</td>
                                     <td align="right">Nous sommes le </td>
-                                    <td align="left"><%= new java.util.Date() %>,</td>
-                                    <td align="left">vous avez X message(s)</td>
+                                    <td align="left"><%= new java.util.Date() %></td>
+                                    <td align="left"></td>
                                     <td>&nbsp;</td>
                                 </tr>
                                 <tr>

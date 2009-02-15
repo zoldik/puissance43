@@ -42,7 +42,7 @@ public class checkRSS extends HttpServlet {
             String answer ="";
             
             if (listVoipRssUpdated==null) {
-                response.sendRedirect("./index.jsp?Connexion=else1");
+                //response.sendRedirect("./index.jsp?Connexion=else1");
             } else {
                 if (listVoipRssUpdated!=new LinkedList<VoipRssTO>()) {
                     
@@ -69,11 +69,11 @@ public class checkRSS extends HttpServlet {
                     
                     
                     
-                    response.sendRedirect("./index.jsp?"+answer);
+                    //response.sendRedirect("./index.jsp?"+answer);
                     
                     
                 } else {
-                    response.sendRedirect("./index.jsp?Connexion=else2");
+                    //response.sendRedirect("./index.jsp?Connexion=else2");
                 }
             }
             
