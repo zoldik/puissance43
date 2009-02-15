@@ -34,8 +34,17 @@
             LinkedList<String> listNames = new LinkedList<String>();
             //listNames = VoipRssDAO.getName(customerObject.getId());
             
+            VoipRssTO tempVoipRssTO = new VoipRssTO();
+            
+            tempVoipRssTO = VoipRssDAO.getVoipRss(2);
+            
+            File tempFile = new File(tempVoipRssTO.getUrl());
+            String tmpPath = "#";
+            tempFile.getAbsolutePath();
                 
         %>
+        
+        <%= tmpPath%>
         
 
         <%

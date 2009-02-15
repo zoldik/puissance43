@@ -32,6 +32,40 @@ public class VoipRssMySqlDAO extends MySqlGeneralObjectDAO implements VoipRssDAO
         //initialization
     }
     
+        public VoipRssTO getVoipRss(int id_voip_line) {
+        
+        VoipRssTO item = new VoipRssTO();
+        
+        //Connexion to the database with JNDI 
+        Connection conn = (Connection) getConnectionWithJNDI();
+
+        Statement st = null;
+        
+        //result of the queries
+        ResultSet rs = null;
+        
+        
+
+        try {
+            st = conn.createStatement();
+            rs = st.executeQuery("select * from voip_rss where id_voip_line=\""+id_voip_line+"\"");
+            if (rs.next()) {
+                    
+                
+                item.setIdVoipRss(rs.getInt("id_voip_rss"));
+                item.setIdVoipLine(rs.getInt("id_voip_line"));
+                item.setUrl(rs.getString("url"));
+            }
+                
+        } catch (Exception e) {
+            e.printStackTrace();
+        } finally {
+            closeRsAndSt(rs, st);
+        }
+        closeConnection(conn);
+        return item;
+    }
+    
     
     public LinkedList<VoipRssTO> getVoipRssToUpdated() {
         
