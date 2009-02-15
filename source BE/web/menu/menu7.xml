@@ -2,6 +2,7 @@
 <!-- Menu FAI+VOD+VoIP -->
 <root>
     <Compte name="Compte">
+        <link name="Abonnement" url="Subscribes.jsp"/>
         <link name="Webmail" url="customer/Webmail.jsp"/>
         <link name="Gestion" url="GestionCompte.jsp"/>
         <link name="Suppression" url="SuppressionCompte.jsp"/>

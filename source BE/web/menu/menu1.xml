@@ -4,6 +4,7 @@
     <Compte name="Compte">
         <link name="Gestion" url="GestionCompte.jsp"/>
         <link name="Suppression" url="SuppressionCompte.jsp"/>
+        <link name="Abonnement" url="Subscribes.jsp"/>
     </Compte>
     <VoIP name="VoIP">
         <link name="Compte" url="0"/>
@@ -13,8 +14,7 @@
         <link name="RSS" url="voip/rss.jsp"/>
         <link name="Support" url="voip/support.jsp"/>
     </VoIP>
-    <VOD name="VOD">
-        <link name="Abonnement" url="1"/>
+    <VOD name="VOD">        
     </VOD>
     <Assistance name="Assistance">
         <link name="Assistance"  url="" />

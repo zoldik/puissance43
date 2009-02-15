@@ -13,11 +13,10 @@
         <title>JSP Page</title>
     </head>
     <body>
-        <h2>Pour pouvoir souscrire à un de nos abonnements, il faut auparavant être connecté</h2>
+        <h2>Pour pouvoir souscrire à un de nos abonnements, il faut auparavant être connecté !</h2>
         <br><br><br>
-        <h2>pour vous identifier, cliquez <a href="./Header.jsp">ici</a></h2>        
-        <br><br><br>
-        <h2>pour créer un compte, cliquez <a href="./CreateCustomerAccount.jsp">ici</a></h2>
+        
+        <h2>identifiez vous ou créez un compte en cliquant <a href="./CreateCustomerAccount.jsp">ici</a></h2>
             
     </body>
 </html>
