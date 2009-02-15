@@ -24,7 +24,11 @@
         <servlet-name>enregModContactInfo</servlet-name>
         <servlet-class>servlet.voip.enregModContactInfo</servlet-class>
     </servlet>    
-    
+    <servlet>
+        <servlet-name>createAnnuaire</servlet-name>
+        <servlet-class>servlet.voip.createAnnuaire</servlet-class>
+        </servlet>
+        
         
     <!--VINCENT DESTAILLEUR -->    
     <!--Servlet-->
@@ -32,15 +36,11 @@
         <servlet-name>CtrAccount</servlet-name>
         <servlet-class>servlet.account.CtrAccount</servlet-class>
     </servlet>
-    <servlet>
-        <servlet-name>CtrShop</servlet-name>
-        <servlet-class>servlet.shop.CtrShop</servlet-class>
-    </servlet>
-    <servlet><servlet-name>createAnnuaire</servlet-name><servlet-class>servlet.voip.createAnnuaire</servlet-class></servlet><servlet-mapping>
+    <servlet-mapping>    
         <servlet-name>CtrAccount</servlet-name>
         <url-pattern>/CtrAccount</url-pattern>
     </servlet-mapping>
-    <!--zzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzz-->
+    <!--zzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzz-->    
     <servlet>
         <servlet-name>CtrCart</servlet-name>
         <servlet-class>servlet.shop.CtrCart</servlet-class>
@@ -51,6 +51,15 @@
     </servlet-mapping>
     <!--zzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzz-->
     <servlet>
+        <servlet-name>CtrOrder</servlet-name>
+        <servlet-class>servlet.shop.CtrOrder</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>CtrOrder</servlet-name>
+        <url-pattern>/CtrOrder</url-pattern>
+    </servlet-mapping>    
+    <!--zzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzz-->    
+    <servlet>
         <servlet-name>CtrSearch</servlet-name>
         <servlet-class>servlet.shop.CtrSearch</servlet-class>
     </servlet>
@@ -58,7 +67,6 @@
         <servlet-name>CtrSearch</servlet-name>
         <url-pattern>/CtrSearch</url-pattern>
     </servlet-mapping> 
-     <!--zzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzz-->
     <!--zzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzz-->
     <servlet>
         <servlet-name>CtrSubscribe</servlet-name>
