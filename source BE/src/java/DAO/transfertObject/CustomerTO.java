@@ -13,7 +13,7 @@ public class CustomerTO {
     // ATTRIBUTES
     //******************    
     private int id;
-    private int id_address;
+    private int idAddress;
     private int idInternetSubscribe;
     private int idVoipSubscribe;
     private int idVodSubscribe;   
@@ -36,7 +36,7 @@ public class CustomerTO {
        
     public CustomerTO() {
         this.id=0;
-        this.id_address=0;
+        this.idAddress=0;
         this.firstName="";
         this.lastName="";
         this.login="";
@@ -135,8 +135,8 @@ public class CustomerTO {
         return stateVoipSubscribe;
     }
     
-    public int getIdaddress() {
-        return id_address;
+    public int getIdAddress() {
+        return idAddress;
     }
 
     //******************
@@ -222,8 +222,8 @@ public class CustomerTO {
         this.stateVoipSubscribe = stateVoipSubscribe;
     }
 
-    public void setIdaddress(int id_address) {
-        this.id_address = id_address;
+    public void setIdAddress(int idAddress) {
+        this.idAddress = idAddress;
     }
        
 }

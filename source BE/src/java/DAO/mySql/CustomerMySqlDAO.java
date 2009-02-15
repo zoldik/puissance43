@@ -1,7 +1,6 @@
 package DAO.mySql;
 
 import DAO.interfaces.CustomerDAOInterface;
-import DAO.factory.MySqlDAOFactory;
 import DAO.transfertObject.AddressTO;
 import DAO.transfertObject.CustomerTO;
 
@@ -115,7 +114,7 @@ public class CustomerMySqlDAO extends MySqlGeneralObjectDAO implements CustomerD
 
             if (okay) {
                 customer.setId(rs.getInt("id_customer"));
-                customer.setIdaddress(rs.getInt("id_address"));
+                customer.setIdAddress(rs.getInt("id_address"));
                 customer.setFirstName(rs.getString("first_name"));
                 customer.setLastName(rs.getString("last_name"));
                 customer.setLogin(rs.getString("login"));
