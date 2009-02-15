@@ -48,10 +48,11 @@ create table command
    id_command           bigint not null auto_increment,
    id_transport         bigint not null,
    id_address           bigint not null,
-   amount_command       float(8,2),
-   state_of_process     varchar(16),
-   date_command         date,
-   date_shipping        date,
+   amount_order         float(8,2),
+   number_of_items      int,
+   state_of_process     int,
+   date_command         varchar(20),
+   date_shipping        varchar(20),
    primary key (id_command)
 );
 
