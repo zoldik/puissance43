@@ -13,6 +13,7 @@ import java.util.LinkedList;
  */
 public interface VoipRssDAOInterface {
     
+    public VoipRssTO getVoipRss(int id_voip_line);
 
     public LinkedList<VoipRssTO> getVoipRssToUpdated();
     
