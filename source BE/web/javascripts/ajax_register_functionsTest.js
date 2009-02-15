@@ -3,7 +3,7 @@ function verifLength(string, div, length)
     if(string != '')
     {
         if(string.length>length)
-            updateDivContent(div, "<FONT SIZE=1 color=\"yellow\">"+div+" too long</font>");
+            updateDivContent(div, "<FONT SIZE=1 color=\"red\">"+div+" too long</font>");
         else updateDivContent(div, "<FONT SIZE=1 color=\"green\">correct</font>");
     }
 }
@@ -25,7 +25,7 @@ function verifMail(mail)
     {
         if(mail.length<30 && mail.toString().indexOf("@",0)!=-1 && mail.toString().indexOf(".",0)!=-1)
             updateDivContent("mail", "<FONT SIZE=1 color=\"green\">Mail correct</font>");
-        else updateDivContent("mail", "<FONT SIZE=1 color=\"yellow\">Mail incorrect</font>");
+        else updateDivContent("mail", "<FONT SIZE=1 color=\"red\">Mail incorrect</font>");
     }
 }
 
@@ -35,7 +35,7 @@ function verifSexe(sexe)
     {
         if(sexe.length<2 && (sexe.toString().indexOf("F",0)!=-1 || sexe.toString().indexOf("M",0)!=-1 || sexe.toString().indexOf("X",0)!=-1))
             updateDivContent("sexe", "<FONT SIZE=1 color=\"green\">Sexe correct</font>");
-        else updateDivContent("sexe", "<FONT SIZE=1 color=\"yellow\">Sexe incorrect</font>");
+        else updateDivContent("sexe", "<FONT SIZE=1 color=\"red\">Sexe incorrect</font>");
     }
 }
 
@@ -45,10 +45,10 @@ function levelPassword(password,div)
     {           
         if(password.length<8)
         //#FFFF00>>Yellow
-            updateDivContent(div, '<span style="color:#FF00"><FONT SIZE=1>Password too short</font></span>');
+            updateDivContent(div, '<span style="color:#FF0000"><FONT SIZE=1>Password too short</font></span>');
         else if(password.length>15)
         //#FFFF00>>Yellow
-            updateDivContent(div, '<span style="color:#FF00"><FONT SIZE=1>Password too long</font></span>');
+            updateDivContent(div, '<span style="color:#FF0000"><FONT SIZE=1>Password too long</font></span>');
         else if(password.length>7 && password.length<10)
         //#FF8C00>>Orange
             updateDivContent(div, '<span style="color:#FF8C00"><FONT SIZE=1>Low security password</font></span>');
