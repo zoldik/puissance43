@@ -304,7 +304,6 @@
                         <th>N°</th>
                         <th>Prénom</th>
                         <th>Nom</th>          
-                        <th>State</th> 
                         <th>Abonnement</th>
                         <th>Valider</th>
                     </tr>          
@@ -324,7 +323,6 @@
                 <tr><td><%=customerTO.getId()%></td>
                     <td><%=customerTO.getFirstName()%></td>
                     <td><%=customerTO.getLastName()%></td>            
-                    <td><%=customerTO.getStateInternetSubscribe()%></td>
                     <td><%=customerTO.getIdInternetSubscribe()%></td>                    
                     <td><form method='post' action="CtrSubscribe">
                             <input type='submit' value="Valider">
@@ -350,7 +348,6 @@
                         <th>N°</th>
                         <th>Prénom</th>
                         <th>Nom</th>          
-                        <th>State</th> 
                         <th>Abonnement</th>
                         <th>Valider</th>
                     </tr>          
@@ -368,7 +365,6 @@
                 <tr><td><%=customerTO.getId()%></td>
                     <td><%=customerTO.getFirstName()%></td>
                     <td><%=customerTO.getLastName()%></td>            
-                    <td><%=customerTO.getStateVoipSubscribe()%></td>
                     <td><%=customerTO.getIdVoipSubscribe()%></td>                    
                     <td><form method='post' action="CtrSubscribe">
                             <input type='submit' value="Valider">
@@ -394,7 +390,6 @@
                         <th>N°</th>
                         <th>Prénom</th>
                         <th>Nom</th>          
-                        <th>State</th> 
                         <th>Abonnement</th>
                         <th>Valider</th>
                     </tr>          
@@ -412,7 +407,6 @@
                 <tr><td><%=customerTO.getId()%></td>
                     <td><%=customerTO.getFirstName()%></td>
                     <td><%=customerTO.getLastName()%></td>            
-                    <td><%=customerTO.getStateVodSubscribe()%></td>
                     <td><%=customerTO.getIdVodSubscribe()%></td>                    
                     <td><form method='post' action="CtrSubscribe">
                             <input type='submit' value="Valider">
