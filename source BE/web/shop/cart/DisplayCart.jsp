@@ -17,9 +17,8 @@
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <title>JSP Page</title>
     </head>
-    <body>
-        <h1>Cart Page</h1>
-        <h3>Your cart :</h3>
+    <body>        
+        <h1>Votre panier :</h1>
         <%
             Cart cart = (Cart) session.getAttribute("cart");
 
@@ -27,19 +26,19 @@
             if ((cart == null) || (cart.getCartRows().isEmpty())) {
                 //Yes, return your cart is empty        
 %>
-        <h3>Sorry, your cart is empty, return to the precedent page</h3>
+        <h3>Désolé, votre panier est vide ! retourner à la page précédente</h3>
         <% } else {%>
         <table border="1">
             <tr>          
-                <th>Name</th>
+                <th>Equipement</th>
                 <th>Type</th>          
                 <th>Description</th>          
-                <th>Price(Euro)</th>
-                <th>DeleteItem</th>
-                <th>Quantity</th>
+                <th>Prix(Euro)</th>
+                <th>Supprimer</th>
+                <th>Quantité</th>
                 <th>+</th>
                 <th>-</th>
-                <th>TotatRow(Euro)</th>
+                <th>Prix total(Euro)</th>
             </tr>          
             
             <%
@@ -54,7 +53,7 @@
                 <td><%=item.getDescription()%></td>
                 <td><%=item.getUnitPrice()%> Euros</td>
                 <td><form method='post' action="CtrCart">
-                        <input type='submit' value='Delete Item'>
+                        <input type='submit' value='Supprimer'>
                         <input type='hidden' name='id' value='<%=item.getId()%>'>
                         <input type="hidden" name='actionCart' value='delete'>
                 </form></td>
@@ -87,14 +86,15 @@
         
         <br><br>
         
-        <table><tr><td>Number of items contain in the cart : </td><td><%=cart.computeNumberOfItems()%></td></tr></table>
+        <table><tr><td>Nombre total d'équipements :</td><td><%=cart.computeNumberOfItems()%></td></tr></table>
         
         <br><br>
         
-        <table><tr><td>Total price of the cart : </td><td><%=cart.computeTotalPrice()%></td></tr></table>
+        <table><tr><td>Prix total du panier : </td><td><%=cart.computeTotalPrice()%> Euros</td></tr></table>
         
+        <br><br>
         
-        <!--Passer à la commande-->
+        <!--Passer à la commande si le client est connecté sinon page de redirection-->
           <%
 
             if (session != null) {

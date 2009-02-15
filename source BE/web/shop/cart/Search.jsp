@@ -12,11 +12,11 @@
 <html>
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-        <title>JSP Page</title>
+        <title>Search</title>
     </head>
     <body>
         <table>
-            <tr><td>Click here to display all the items of the shop : </td>
+            <tr><td>Accèder à l'ensemble des équipements de notre catalogue : </td>
                 <td><form method="post" action="CtrSearch">
                         <input type="submit" value="Go">
                         <input type="hidden" name='typeSearch' value='searchAll'>
@@ -27,7 +27,7 @@
         <br><br>
         
         <table>
-            <tr><td>Fast Search By Type :</td>
+            <tr><td>Rechercher des équipements par type :</td>
                 <form method="post" action="CtrSearch">
                     <td><select name="type">
                             <option>routeur</option>
@@ -43,7 +43,7 @@
         <br><br>
         
         <table>    
-            <tr><td>See your current cart : </td>
+            <tr><td>Voir votre panier : </td>
                 <td><form name="ButtonCart" action="./DisplayCart.jsp" >
                         <input type="submit" value="Panier" />  
                 </form></td>
