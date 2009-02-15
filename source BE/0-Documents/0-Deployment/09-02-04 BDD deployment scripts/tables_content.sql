@@ -1,5 +1,16 @@
 SET NAMES 'utf8';
 
+ INSERT INTO `RedNeck`.`bill` (
+`id_bill` ,
+`id_customer` ,
+`price` ,
+`bill_fai` ,
+`bill_vod` ,
+`bill_voip`
+) VALUES 
+('', '100', '40', NULL , 'abonnement vod', NULL); 
+
+
 INSERT INTO `RedNeck`.`address` (
 `id_address` ,
 `street` ,
