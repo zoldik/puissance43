@@ -45,10 +45,10 @@ function levelPassword(password,div)
     {           
         if(password.length<8)
         //#FFFF00>>Yellow
-            updateDivContent(div, '<span style="color:#FFFF00"><FONT SIZE=1>Password too short</font></span>');
+            updateDivContent(div, '<span style="color:#FF00"><FONT SIZE=1>Password too short</font></span>');
         else if(password.length>15)
         //#FFFF00>>Yellow
-            updateDivContent(div, '<span style="color:#FFFF00"><FONT SIZE=1>Password too long</font></span>');
+            updateDivContent(div, '<span style="color:#FF00"><FONT SIZE=1>Password too long</font></span>');
         else if(password.length>7 && password.length<10)
         //#FF8C00>>Orange
             updateDivContent(div, '<span style="color:#FF8C00"><FONT SIZE=1>Low security password</font></span>');
