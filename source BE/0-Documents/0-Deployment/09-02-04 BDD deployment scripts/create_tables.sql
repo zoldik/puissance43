@@ -12,7 +12,7 @@ create table address
 
 create table bill
 (
-   id_bill              bigint not null,
+   id_bill              bigint not null auto_increment,
    id_customer          bigint not null,
    price                float(8,2),
    bill_fai             float(8,2),
@@ -45,7 +45,7 @@ CREATE TABLE cdr
 
 create table command
 (
-   id_command           bigint not null,
+   id_command           bigint not null auto_increment,
    id_transport         bigint not null,
    id_address           bigint not null,
    amount_command       float(8,2),
