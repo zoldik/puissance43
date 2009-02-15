@@ -1,5 +1,16 @@
 SET NAMES 'utf8';
 
+INSERT INTO `RedNeck`.`address` (
+`id_address` ,
+`street` ,
+`postal_code` ,
+`city` ,
+`country` ,
+`type_address`
+)
+VALUES 
+(NULL , '11, rue Paul', '59000', 'Lille', 'France', NULL);
+
 
 
 
@@ -11,6 +22,9 @@ INSERT INTO `item` (`id_item`, `name`, `type`, `description`, `unit_price`, `sto
 (5, 'hub a', 'hub', 'USB', 31, 120),
 (6, 'hub b', 'hub', 'RJ45', 32, 130),
 (7, 'hub c', 'hub', 'RJ45', 33, 140);
+
+
+
 
 INSERT INTO `customer` (
 `id_customer` , 
