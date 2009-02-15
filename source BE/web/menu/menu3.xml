@@ -15,10 +15,11 @@
         <link name="Support" url="voip/support.jsp"/>
     </VoIP>
     <VOD name="VOD">
-        <link name="VOD" url="2"/>
+        <link name="Site VOD" url="vod/vod.jsp"/>
     </VOD>
     <Assistance name="Assistance">
-        <link name="Assistance"  url="" />
+        <link name="VOD"  url="" />
+        <link name="VoIP"  url="voip/support.jsp" />
     </Assistance>
     <Magasin name="Magasin">
         <link name="Search" url="Search.jsp" />

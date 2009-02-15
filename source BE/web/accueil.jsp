@@ -21,29 +21,24 @@
             <td>
 		<div id="compte" class="box" onclick="javascript:location.href='./compte/compte.jsp'">
 			<h3>Compte</h3>
-			<p> commentaire :</p>
 			<ul>
-				<li>
-                                    <form name="viewBill" action="./ViewBill" method="POST">
-                                         <input type="submit" value="Aperçu factures" name="Connexion" />
-                                    </form>
-                                </li>
-				<li><a href="page1.html">Lien</a></li>
-				<li><a href="page1.html">Lien</a></li>
-				<li><a href="page1.html">Lien</a></li>
+                                <li><a href="CreateCustomerAccount.jsp">Création</a></li>
+				<li><a href="SubscribesDisconnect.jsp">Abonnement</a></li>
+                                <li><a href="./ViewBill">Factures</a></li>
+				<li><a href="#">Résiliation</a></li>
 			</ul>
-
 		</div>
             </td>
             <td>
 		<div id="voip" class="box" onclick="javascript:location.href='./voip/voip.jsp'">
-			<h3>Telephonie</h3>
-			<p>  commentaire :</p>
+			<h3>Téléphonie</h3>
 			<ul>
-				<li><a href="./voip/moncompte.jsp">Mon compte</a></li>
+                                <li><a href="SubscribesDisconnect.jsp">Abonnement</a></li>
+                                <li><a href="./voip/moncompte.jsp">Mon compte</a></li>
                                 <li><a href="./voip/annuaire.jsp">Annuaire</a></li>
+                                <li><a href="./voip/rss.jsp">Flux RSS</a></li>
 				<li><a href="./voip/support.jsp">Support</a></li>
-				<li><a href="./voip/admin/admin.jsp">Administration</a></li>
+                                <li><a href="./voip/admin/admin.jsp">Administration</a></li>
 			</ul>
 		</div>
             </td>
@@ -51,23 +46,20 @@
 	<tr>
             <td>
 		<div id="vod" class="box" onclick="javascript:location.href='./vod/vod.jsp'">
-			<h3>Video</h3>
-			<p>  commentaire :</p>
+			<h3>Video à la demande</h3>
 			<ul>
-				<li><a href="page1.html">Lien</a></li>
-				<li><a href="page1.html">Lien</a></li>
-				<li><a href="page1.html">Lien</a></li>
+                                <li><a href="SubscribesDisconnect.jsp">Abonnement</a></li>
 			</ul>
 		</div>
             </td>
             <td>
-                <div id="equipement" class="box" onclick="javascript:location.href='./equipement/equipement.jsp'">
-			<h3>Equipement</h3>
-			<p>  commentaire :</p>
+                <div id="equipement" class="box" onclick="javascript:location.href='./Search.jsp'">
+			<h3>Magasin</h3>
 			<ul>
-				<li><a href="page1.html">Lien</a></li>
-				<li><a href="page1.html">Lien</a></li>
-				<li><a href="page1.html">Lien</a></li>
+				<li><a href="Search.jsp">Search</a></li>
+				<li><a href="AdvancedSearch.jsp">AdvancedSearch</a></li>
+				<li><a href="DisplayCart.jsp">Cart</a></li>                                
+				<li><a href="Order.jsp">Order</a></li>
 			</ul>
             
 		</div>
