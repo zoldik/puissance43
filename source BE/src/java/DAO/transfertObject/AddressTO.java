@@ -21,7 +21,7 @@ public class AddressTO {
     private String country;
     
     //If it's a customer's address or a delivery address
-    private String type_address;   
+    private String typeAddress;   
     
     //******************
     //GETTERS
@@ -46,8 +46,8 @@ public class AddressTO {
         return street;
     }
 
-    public String getType_address() {
-        return type_address;
+    public String getTypeAddress() {
+        return typeAddress;
     }   
     
     //******************
@@ -73,8 +73,8 @@ public class AddressTO {
         this.street = street;
     }
 
-    public void setType_address(String type_address) {
-        this.type_address = type_address;
+    public void setTypeAddress(String type_address) {
+        this.typeAddress = type_address;
     }    
     
 }
