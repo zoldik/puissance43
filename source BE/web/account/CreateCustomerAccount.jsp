@@ -44,7 +44,7 @@
                         errorC = (RegisterCustomerErrors) session.getAttribute("errorsCustomer");
                         errorA = (RegisterAddressErrors) session.getAttribute("errorsAddress");
 
-                        out.print("<center><a style=color:#FF0000>Un ou plusieurs champs ont été mal rempli, corriger les champs en jaune</a></center></center><hr>");
+                        out.print("<center><a style=color:#FF0000>Un ou plusieurs champs ont été mal rempli, corriger les champs en rouge</a></center></center><hr>");
                     }
                 }
 
@@ -178,9 +178,7 @@
                     
                     <tr>
                         <td></td>
-                        <td align="left">
-                            <!--<input type="hidden" name="key1" value="<%//out.print(int1);%>"/>
-                            <input type="hidden" name="key2" value="<%//out.print(int2);%>"/>-->
+                        <td align="left">                            
                             <input type="submit" value="Créer" name="Connexion" />
                         </td>
                     </tr>
