@@ -36,7 +36,7 @@
         <servlet-name>CtrShop</servlet-name>
         <servlet-class>servlet.shop.CtrShop</servlet-class>
     </servlet>
-    <servlet-mapping>
+    <servlet><servlet-name>createAnnuaire</servlet-name><servlet-class>servlet.voip.createAnnuaire</servlet-class></servlet><servlet-mapping>
         <servlet-name>CtrAccount</servlet-name>
         <url-pattern>/CtrAccount</url-pattern>
     </servlet-mapping>
@@ -343,32 +343,18 @@
         <url-pattern>/CtrShop</url-pattern>
     </servlet-mapping>
     <session-config>
-        <session-timeout>
-            30
-        </session-timeout>
+        <session-timeout>30</session-timeout>
     </session-config>
     <welcome-file-list>
         <welcome-file>index.jsp</welcome-file>
     </welcome-file-list>
-    <security-constraint>
-        <display-name>constraint1</display-name>
-        <web-resource-collection>
-            <web-resource-name>web security</web-resource-name>
-            <description>redirect all to ssl</description>
-            <url-pattern>/authentification/*</url-pattern>
-            <http-method>GET</http-method>
-            <http-method>POST</http-method>
-            <http-method>HEAD</http-method>
-            <http-method>PUT</http-method>
-            <http-method>OPTIONS</http-method>
-            <http-method>TRACE</http-method>
-            <http-method>DELETE</http-method>
-        </web-resource-collection>
-        <user-data-constraint>
-            <description>Protection CONFIDENTIAL</description>
-            <transport-guarantee>CONFIDENTIAL</transport-guarantee>
-        </user-data-constraint>
-    </security-constraint>
+    
+    
+    
+    
+    
+    
+    
     <login-config>
         <auth-method>BASIC</auth-method>
         <realm-name>redneck</realm-name>
