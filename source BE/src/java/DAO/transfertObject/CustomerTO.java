@@ -13,6 +13,7 @@ public class CustomerTO {
     // ATTRIBUTES
     //******************    
     private int id;
+    private int id_address;
     private int idInternetSubscribe;
     private int idVoipSubscribe;
     private int idVodSubscribe;   
@@ -32,9 +33,10 @@ public class CustomerTO {
     private int stateInternetSubscribe;
     private int stateVoipSubscribe;
     private int stateVodSubscribe;
-    
+       
     public CustomerTO() {
         this.id=0;
+        this.id_address=0;
         this.firstName="";
         this.lastName="";
         this.login="";
@@ -132,6 +134,10 @@ public class CustomerTO {
     public int getStateVoipSubscribe() {
         return stateVoipSubscribe;
     }
+    
+    public int getIdaddress() {
+        return id_address;
+    }
 
     //******************
     //SETTERS
@@ -215,6 +221,9 @@ public class CustomerTO {
     public void setStateVoipSubscribe(int stateVoipSubscribe) {
         this.stateVoipSubscribe = stateVoipSubscribe;
     }
-    
-    
+
+    public void setIdaddress(int id_address) {
+        this.id_address = id_address;
+    }
+       
 }

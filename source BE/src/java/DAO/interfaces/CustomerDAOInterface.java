@@ -61,4 +61,6 @@ public interface CustomerDAOInterface {
     public String updateCustomerVodSubscribe(int idCustomer, int idVodSubscribe);
 
     public boolean validAccount(int id);
+    
+    public AddressTO findCustomerAddressById(int id);
 }
