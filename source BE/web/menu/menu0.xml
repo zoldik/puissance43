@@ -16,10 +16,8 @@
         <link name="VOD"  url="" />
     </Assistance>
     <Magasin name="Magasin">
-        <link name="Search" url="Search.jsp" />
-        <link name="AdvancedSearch" url="AdvancedSearch.jsp" />
-        <link name="Cart" url="DisplayCart.jsp" />
-        <link name="Order" url="Order.jsp" />
+        <link name="Equipements" url="Search.jsp" />        
+        <link name="Panier" url="DisplayCart.jsp" />        
     </Magasin>
     <NetworkSolutions name="NetworkSolutions">
         <link name="Solutions" url="" />

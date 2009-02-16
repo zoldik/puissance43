@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!-- Menu FAI + VoIP -->
 <root>
-    <Compte name="Compte">
-        <link name="Abonnement" url="Subscribes.jsp"/>
+    <Compte name="Compte">        
         <link name="Webmail" url="customer/Webmail.jsp"/>
         <link name="Gestion" url="GestionCompte.jsp"/>
         <link name="Suppression" url="SuppressionCompte.jsp"/>
+        <link name="Abonnement" url="Subscribes.jsp"/>
     </Compte>
     <VoIP name="VoIP">
         <link name="Compte" url="0"/>
@@ -22,10 +22,8 @@
         <link name="VoIP"  url="voip/support.jsp" />
     </Assistance>
     <Magasin name="Magasin">
-        <link name="Search" url="Search.jsp" />
-        <link name="AdvancedSearch" url="AdvancedSearch.jsp" />
-        <link name="Cart" url="DisplayCart.jsp" />
-        <link name="Order" url="Order.jsp" />
+        <link name="Equipements" url="Search.jsp" />
+        <link name="Panier" url="DisplayCart.jsp" />        
     </Magasin>
     <NetworkSolutions name="NetworkSolutions">
         <link name="Solutions" url="" />

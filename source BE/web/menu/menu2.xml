@@ -1,10 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!-- Menu VOD -->
 <root>
-    <Compte name="Compte">
-        <link name="Abonnements" url="Subscribes.jsp"/>
+    <Compte name="Compte">        
         <link name="Gestion" url="GestionCompte.jsp"/>
         <link name="Suppression" url="SuppressionCompte.jsp"/>
+        <link name="Abonnements" url="Subscribes.jsp"/>
     </Compte>
     <VoIP name="VoIP">
         <link name="Annuaire" url="voip/annuaire.jsp"/>        
@@ -16,10 +16,8 @@
         <link name="VOD"  url="" />
     </Assistance>
     <Magasin name="Magasin">
-        <link name="Search" url="Search.jsp" />
-        <link name="AdvancedSearch" url="AdvancedSearch.jsp" />
-        <link name="Cart" url="DisplayCart.jsp" />
-        <link name="Order" url="Order.jsp" />
+        <link name="Equipements" url="Search.jsp" />
+        <link name="Panier" url="DisplayCart.jsp" />        
     </Magasin>
     <NetworkSolutions name="NetworkSolutions">
         <link name="Solutions" url="" />

@@ -2,9 +2,9 @@
 <!-- Menu visiteur -->
 <root>
     <Compte name="Compte">
-        <link name="Création" url="CreateCustomerAccount.jsp" />
-        <link name="Abonnement" url="SubscribesDisconnect.jsp"/>
+        <link name="Création" url="CreateCustomerAccount.jsp" />        
         <link name="Résiliation" url="0"/>
+        <link name="Abonnement" url="SubscribesDisconnect.jsp"/>
     </Compte>
     <VoIP name="VoIP">
         <link name="Annuaire" url="voip/annuaire.jsp"/>
@@ -17,10 +17,8 @@
         <link name="Assistance"  url="0" />
     </Assistance>
     <Magasin name="Magasin">
-        <link name="Search" url="Search.jsp" />
-        <link name="AdvancedSearch" url="AdvancedSearch.jsp" />
-        <link name="Cart" url="DisplayCart.jsp" />
-        <link name="Order" url="Order.jsp" />
+        <link name="Equipements" url="Search.jsp" />
+        <link name="Panier" url="DisplayCart.jsp" />        
     </Magasin>
     <NetworkSolutions name="NetworkSolutions">
         <link name="Solutions" url="" />
