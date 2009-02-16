@@ -184,10 +184,7 @@ public class CustomerMySqlDAO extends MySqlGeneralObjectDAO implements CustomerD
 
     public String insertCustomer(CustomerTO customerTO, AddressTO addressTO) {
 
-        //Implement insert customer here.
-
-        //Return object
-        //int error = 0;
+        //Return object        
         String error = "pas d'erreur";
 
         //Connexion to the database with JNDI 

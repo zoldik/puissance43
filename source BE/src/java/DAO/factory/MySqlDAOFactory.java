@@ -18,6 +18,7 @@ public class MySqlDAOFactory extends DAOFactory {
     private static ItemDAOInterface itemDAO = null;
     private static LineDAOInterface lineDAO = null;
     private static MailDAOInterface mailDAO = null;
+    private static OrderDAOInterface orderDAO = null;
     private static VodSubscribeDAOInterface vodSubscribeDAO = null;
     private static VoipSubscribeDAOInterface voipSubscribeDAO = null;
     private static VoipRssDAOInterface voipRssDAO = null;
@@ -79,6 +80,13 @@ public class MySqlDAOFactory extends DAOFactory {
         }
         return mailDAO;
     }    
+    
+    public OrderDAOInterface getOrderDAO(){
+        if (orderDAO == null) {
+            orderDAO = new OrderMySqlDAO();
+        }
+        return orderDAO;
+    }
 
     public VodSubscribeDAOInterface getVodSubscribeDAO() {
         if (vodSubscribeDAO == null) {
