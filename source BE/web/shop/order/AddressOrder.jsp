@@ -23,10 +23,6 @@
         
         <%
 
-            RegisterCustomerErrors errorC = new RegisterCustomerErrors();
-            RegisterAddressErrors errorA = new RegisterAddressErrors();
-
-
             HttpSession customerSession = request.getSession(false);
 
             CustomerTO customerTO = (CustomerTO) customerSession.getAttribute("Customer");
@@ -44,51 +40,61 @@
             
             
             <tr align="left">
-                <td><a style="color:<%if (errorA.getErrorStreet() == 1) {
-                out.print("#FF0000");
-            }%>">* Rue : </a></td>
-                <td><input type="text" name="street" value="<%if (addressTO.getStreet() != null) {
+                <td><a>* Rue : </a></td>
+                <td><input type="text" disabled name="street" value="<%if (addressTO.getStreet() != null) {
                 out.print(addressTO.getStreet());
-            }%>" onKeyUp=verifLength(this.value,"street","20") align="left" />
-                <div id="street"></div></td>
+            }%>" align="left" />                
             </tr>
             
             
             <tr align="left">
-                <td><a style="color:<%if (errorA.getErrorPostalCode() == 1) {
-                out.print("#FF0000");
-            }%>">* Code postal : </a></td>
-                <td><input type="text" name="postalCode" value="<%if (addressTO.getPostalCode() != null) {
+                <td><a>* Code postal : </a></td>
+                <td><input type="text" name="postalCode" disabled value="<%if (addressTO.getPostalCode() != null) {
                 out.print(addressTO.getPostalCode());
-            }%>" onKeyUp=verifCP(this.value) align="left" />
-                <div id="CP"></div></td>
+            }%>" align="left" />                
             </tr>
             
             
             <tr align="left">
-                <td><a style="color:<%if (errorA.getErrorCity() == 1) {
-                out.print("#FF0000");
-            }%>">* Ville : </a></td>
-                <td><input type="text" name="city" value="<%if (addressTO.getCity() != null) {
+                <td><a>* Ville : </a></td>
+                <td><input type="text" name="city" disabled value="<%if (addressTO.getCity() != null) {
                 out.print(addressTO.getCity());
-            }%>" onKeyUp=verifLength(this.value,"city","20") align="left" />
-                <div id="city"></div></td>
+            }%>" align="left" />                
             </tr>
             
             
             <tr align="left">
-                <td><a style="color:<%if (errorA.getErrorCountry() == 1) {
-                out.print("#FF0000");
-            }%>">* Pays : </a></td>
-                <td><input type="text" name="country" value="<%if (addressTO.getCountry() != null) {
+                <td><a>* Pays : </a></td>
+                <td><input type="text" name="country" disabled value="<%if (addressTO.getCountry() != null) {
                 out.print(addressTO.getCountry());
-            }%>" onKeyUp=verifLength(this.value,"country","20") align="left" />
+            }%>" align="left" />
                 <div id="country"></div></td>
             </tr>
             
             
             <!--zzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzz-->
                     
+            
+            <tr>
+                <td></td>
+                <td align="left">
+                    <form method="post" action="./DeliveryAddressOrder.jsp">
+                    <input type="submit" value="Changer l'adresse de livraison" />
+                    </form>
+                </td>
+            </tr>
+            
+            
+            
+            <!--zzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzz-->
+            
+            
+                    <% 
+        //Pour pouvoir passer l'adresse à la servlet
+        session.setAttribute("deliveryAddress", addressTO); 
+                    
+                %>
+
             
             <tr>
                 <td></td>

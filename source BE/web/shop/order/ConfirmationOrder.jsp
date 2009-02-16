@@ -26,9 +26,8 @@
 
             DAOFactory daoFactory = DAOFactory.getDAOFactory(DAOFactory.MYSQL);
             AddressDAOInterface addressDAO = daoFactory.getAddressDAO();
-
-            int idAddress = customerTO.getIdAddress();
-            AddressTO addressTO = addressDAO.findAddressById(idAddress);
+                        
+            AddressTO addressTO = (AddressTO) session.getAttribute("deliveryAddress");
 
             Cart cart = (Cart) customerSession.getAttribute("cart");
 
@@ -86,6 +85,7 @@
         
         <!--zzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzz-->
         <!--Facturation-->
+        <form method='post' action="CtrOrder">
         <table>
             <tr><td><h2 align='left'>Facturation : </h2></td></tr>
             
@@ -106,13 +106,13 @@
             
             
             <tr align="left"><td>Montant de la commande :</td>
-                <td><input type="text" disabled value="<% out.print(totalPrice);%> Euros" align="left"/>
+                <td><input type="text" name="totalPrice" disabled value="<% out.print(totalPrice);%> Euros" align="left"/>
                 
             </tr>
             
             
             <tr align="left"><td>Nombre d'articles :</td>
-                <td><input type="text" disabled value="<% out.print(numberOfItems);%>" align="left"/></td>
+                <td><input type="text" name="numberOfItems" disabled value="<% out.print(numberOfItems);%>" align="left"/></td>
                 
             </tr>         
         </table>
@@ -162,7 +162,8 @@
                     
                 %>
         
-        <form method='post' action="CtrOrder">            
+        
+            <input type="hidden" name="confirmationOrder" value="oui" />
             <input type='submit' value='Passer la commande'>                    
         </form>        
         
