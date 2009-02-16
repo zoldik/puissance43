@@ -24,6 +24,8 @@ create table bill
 
 CREATE TABLE cdr 
 (
+  `id_voip_call` bigint not null auto_increment,
+  `id_voip_line` bigint not null,
   `calldate` datetime NOT NULL default '0000-00-00 00:00:00',
   `clid` varchar(80) NOT NULL default '',
   `src` varchar(80) NOT NULL default '',
@@ -320,35 +322,6 @@ CREATE TABLE `VOD_VIDEO_IN_PLAYLIST`
 );
 
 
-
-
-
-
-
-create table voip_call
-(
-   id_voip_call         bigint not null auto_increment,
-   id_voip_line         bigint not null,
-   calldate             datetime,
-   clid                 varchar(80),
-   src                  varchar(80),
-   dst                  varchar(80),
-   dcontext             varchar(80),
-   channel              varchar(80),
-   dstchannel           varchar(80),
-   lastapp              varchar(80),
-   lastdata             varchar(80),
-   duration             int,
-   billsec              int,
-   disposition          varchar(45),
-   amaflags             varchar(13),
-   accountcode          varchar(20),
-   uniqueid             varchar(32),
-   userfield            varchar(255),
-   primary key (id_voip_call)
-);
-
-
 create table voip_contact
 (
    id_voip_contact      bigint not null auto_increment,
@@ -524,7 +497,7 @@ alter table possede_mail_addresse add constraint FK_POSSEDE_MAIL_ADDRESSE2 forei
 alter table VOD_USER add constraint FK_VOD_USER_HAS_CUSTOMER foreign key (id_customer)
       references customer (id_customer) on delete restrict on update restrict;
 
-alter table voip_call add constraint FK_VOIP_LINE_HAS_VOIP_CALL foreign key (id_voip_line)
+alter table cdr constraint FK_VOIP_LINE_HAS_CDR foreign key (id_voip_line)
       references voip_line (id_voip_line) on delete restrict on update restrict;
 
 alter table voip_contact add constraint FK_VOIP_LINE_HAS_VOIP_CONTACT foreign key (id_voip_line)
