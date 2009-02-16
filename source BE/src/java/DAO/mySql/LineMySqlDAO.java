@@ -227,51 +227,52 @@ public class LineMySqlDAO extends MySqlGeneralObjectDAO implements LineDAOInterf
         Statement st = null;
         ResultSet rs = null;
         
-        String insert= "UPDATE voip_line SET " +
-                "id_customer=\""+customerid+"\"," +
-                "name=\""+name+"\"," +
-                "host=\""+host+"\"," +
-                "nat=\""+nat+"\"," +
-                "type=\""+type+"\"," +
-                "accountcode=\""+accountcode+"\"," +
-                "amaflags=\""+amaflags+"\"," +
-                "`call-limit`=\""+calllimit+"\"," +
-                "callgroup=\""+callgroup+"\"," +
-                "callerid=\""+callerid+"\"," +
-                "cancallforward=\""+cancallforward+"\"," +
-                "canreinvite=\""+canreinvite+"\"," +
-                "context=\""+context+"\"," +
-                "defaultip=\""+defaultip+"\"," +
-                "dtmfmode=\""+dtmfmode+"\"," +
-                "fromuser=\""+fromuser+"\"," +
-                "fromdomain=\""+fromdomain+"\"," +
-                "insecure=\""+insecure+"\"," +
-                "language=\""+language+"\"," +
-                "mailbox=\""+mailbox+"\"," +
-                "md5secret=\""+md5secret+"\"," +
-                "deny=\""+deny+"\"," +
-                "permit=\""+permit+"\"," +
-                "mask=\""+mask+"\"," +
-                "musiconhold=\""+musiconhold+"\"," +
-                "pickupgroup=\""+pickupgroup+"\"," +
-                "qualify=\""+qualify+"\"," +
-                "regexten=\""+regexten+"\"," +
-                "restrictcid=\""+restrictcid+"\"," +
-                "rtptimeout=\""+rtptimeout+"\"," +
-                "rtpholdtimeout=\""+rtpholdtimeout+"\"," +
-                "secret=\""+secret+"\"," +
-                "setvar=\""+setvar+"\"," +
-                "disallow=\""+disallow+"\"," +
-                "allow=\""+allow+"\"," +
-                "fullcontact=\""+fullcontact+"\"," +
-                "ipaddr=\""+ipaddr+"\"," +
-                "port=\""+port+"\"," +
-                "regserver=\""+regserver+"\"," +
-                "regseconds=\""+regseconds+"\"," +
-                "username=\""+username+"\"," +
-                "visible=\""+visible+"\" " +
+        String insert= "UPDATE voip_line SET id_voip_line=\""+id+"\"";
                 
-                "WHERE id_voip_line=\""+id+"\";";
+                if ( !( customerid==null || customerid=="" )) insert+=",id_customer=\""+customerid+"\"";
+                if ( !( name==null || name=="" )) insert+=",name=\""+name+"\"";
+                if ( !( host==null || host=="" )) insert+=",host=\""+host+"\"";
+                if ( !( nat==null || nat=="" )) insert+=",nat=\""+nat+"\"";
+                if ( !( type==null || type=="" )) insert+=",type=\""+type+"\"";
+                if ( !( accountcode==null || accountcode=="" )) insert+=",accountcode=\""+accountcode+"\"";
+                if ( !( amaflags==null || amaflags=="" )) insert+=",amaflags=\""+amaflags+"\"";
+                if ( !( calllimit==null || calllimit=="" )) insert+=",`call-limit`=\""+calllimit+"\"";
+                if ( !( callgroup==null || callgroup=="" )) insert+=",callgroup=\""+callgroup+"\"";
+                if ( !( callerid==null || callerid=="" )) insert+=",callerid=\""+callerid+"\"";
+                if ( !( cancallforward==null || cancallforward=="" )) insert+=",cancallforward=\""+cancallforward+"\"";
+                if ( !( canreinvite==null || canreinvite=="" )) insert+=",canreinvite=\""+canreinvite+"\"";
+                if ( !( context==null || context=="" )) insert+=",context=\""+context+"\"";
+                if ( !( defaultip==null || defaultip=="" )) insert+=",defaultip=\""+defaultip+"\"";
+                if ( !( dtmfmode==null || dtmfmode=="" )) insert+=",dtmfmode=\""+dtmfmode+"\"";
+                if ( !( fromuser==null || fromuser=="" )) insert+=",fromuser=\""+fromuser+"\"";
+                if ( !( fromdomain==null || fromdomain=="" )) insert+=",fromdomain=\""+fromdomain+"\"";
+                if ( !( insecure==null || insecure=="" )) insert+=",insecure=\""+insecure+"\"";
+                if ( !( language==null || language=="" )) insert+=",language=\""+language+"\"";
+                if ( !( mailbox==null || mailbox=="" )) insert+=",mailbox=\""+mailbox+"\"";
+                if ( !( md5secret==null || md5secret=="" )) insert+=",md5secret=\""+md5secret+"\"";
+                if ( !( deny==null || deny=="" )) insert+=",deny=\""+deny+"\"";
+                if ( !( permit==null || permit=="" )) insert+=",permit=\""+permit+"\"";
+                if ( !( mask==null || mask=="" )) insert+=",mask=\""+mask+"\"";
+                if ( !( musiconhold==null || musiconhold=="" )) insert+=",musiconhold=\""+musiconhold+"\"";
+                if ( !( pickupgroup==null || pickupgroup=="" )) insert+=",pickupgroup=\""+pickupgroup+"\"";
+                if ( !( qualify==null || qualify=="" )) insert+=",qualify=\""+qualify+"\"";
+                if ( !( regexten==null || regexten=="" )) insert+=",regexten=\""+regexten+"\"";
+                if ( !( restrictcid==null || restrictcid=="" )) insert+=",restrictcid=\""+restrictcid+"\"";
+                if ( !( rtptimeout==null || rtptimeout=="" )) insert+=",rtptimeout=\""+rtptimeout+"\"";
+                if ( !( rtpholdtimeout==null || rtpholdtimeout=="" )) insert+=",rtpholdtimeout=\""+rtpholdtimeout+"\"";
+                if ( !( secret==null || secret=="" )) insert+=",secret=\""+secret+"\"";
+                if ( !( setvar==null || setvar=="" )) insert+=",setvar=\""+setvar+"\"";
+                if ( !( disallow==null || disallow=="" )) insert+=",disallow=\""+disallow+"\"";
+                if ( !( allow==null || allow=="" )) insert+=",allow=\""+allow+"\"";
+                if ( !( fullcontact==null || fullcontact=="" )) insert+=",fullcontact=\""+fullcontact+"\"";
+                if ( !( ipaddr==null || ipaddr=="" )) insert+=",ipaddr=\""+ipaddr+"\"";
+                if ( !( port==null || port=="" )) insert+=",port=\""+port+"\"";
+                if ( !( regserver==null || regserver=="" )) insert+=",regserver=\""+regserver+"\"";
+                if ( !( regseconds==null || regseconds=="" )) insert+=",regseconds=\""+regseconds+"\"";
+                if ( !( username==null || username=="" )) insert+=",username=\""+username+"\"";
+                if ( !( visible==null || visible=="" )) insert+=",visible=\""+visible+"\"";
+                
+                insert+=" WHERE id_voip_line=\""+id+"\";";
         
         System.out.println(insert);
         
