@@ -7,6 +7,7 @@ package servlet.voip;
 
 import DAO.interfaces.CustomerDAOInterface;
 import DAO.factory.DAOFactory;
+import DAO.transfertObject.CustomerTO;
 
 import java.io.IOException;
 import java.io.PrintWriter;
@@ -23,11 +24,17 @@ public class doVoipUser extends HttpServlet {
    
     
     
-    private boolean add(HttpServletRequest request,HttpServletResponse response) {
+    private boolean add(String id) {
         DAOFactory daoFactory = DAOFactory.getDAOFactory(DAOFactory.MYSQL);
         CustomerDAOInterface CustomerDAO = daoFactory.getCustomerDAO();
         
-        return true;
+      CustomerTO cu = CustomerDAO.findCustomerById( Integer.parseInt(id));
+      int newAccountLevel = cu.getAccountLevel()+1 ;
+      if ( CustomerDAO.updateCustomerAccountLevel(Integer.parseInt(id),newAccountLevel).compareTo("pas d'erreur" ) == 0 ) {
+          return true;
+      }else{
+          return false;
+      }
     }
     
     
@@ -35,15 +42,21 @@ public class doVoipUser extends HttpServlet {
         DAOFactory daoFactory = DAOFactory.getDAOFactory(DAOFactory.MYSQL);
         CustomerDAOInterface CustomerDAO = daoFactory.getCustomerDAO();
         
-        return true;
+        return false;
     }
     
     
     private boolean delete(String id) {
       DAOFactory daoFactory = DAOFactory.getDAOFactory(DAOFactory.MYSQL);
       CustomerDAOInterface CustomerDAO = daoFactory.getCustomerDAO();
-        
-        return true;
+      
+      CustomerTO cu = CustomerDAO.findCustomerById( Integer.parseInt(id));
+      int newAccountLevel = cu.getAccountLevel()-1 ;
+      if ( CustomerDAO.updateCustomerAccountLevel(Integer.parseInt(id),newAccountLevel).compareTo("pas d'erreur" ) == 0 ) {
+          return true;
+      }else{
+          return false;
+      }
     }
     /** 
     * Processes requests for both HTTP <code>GET</code> and <code>POST</code> methods.
@@ -60,7 +73,7 @@ public class doVoipUser extends HttpServlet {
            if ( request.getParameter("action").compareTo("add") == 0){
                String id = request.getParameter("id");
                
-                if ( add(request,response) == true) {
+                if ( add(id) == true) {
                     out.println("<p align=\"center\">Add successfull !<br/>");
                 }else{
                     out.println("<p align=\"center\">Add failed !<br/>");  
@@ -93,10 +106,7 @@ public class doVoipUser extends HttpServlet {
                 out.println( "<a href=\"./voip/admin/userManagement.jsp\">back</a></p>" );
                
            }
-            
-            
-            
-            
+
         } finally { 
             out.close();
         }
