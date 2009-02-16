@@ -29,20 +29,10 @@
             <td>Numero de ligne</td><td><input type="text" name="name" ></td>
         </tr>
         <tr>
-            <td>Numero de messagerie</td><td><input type="text" name="mailbox"></td>
-        </tr>
-        <tr>
             <td>Groupe</td><td><input type="text" name="callgroup"></td>
         </tr>
         <tr>
-            <td>Pickup group</td><td><input type="text" name="pickupgroup"></td>
-        </tr>
-        
-        <tr>
             <td>Presentation de l'appelant</td><td><input type="text" name="callerid"></td>
-        </tr>
-        <tr>
-            <td>Adresse IP par defaut</td><td><input type="text" name="defaultip"></td>
         </tr>
         <tr>
             <td>Langue</td><td><input type="text" name="language"></td>

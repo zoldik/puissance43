@@ -62,6 +62,9 @@ import="java.util.*"
         
         <h4>Ligne <%= vl.getname() %> :</h4>
         
+        
+        <form method="post" action="../doVoipLigne">
+         
         <table>
         <tr>    
         <td>mot de passe </td>
@@ -96,7 +99,16 @@ import="java.util.*"
          <td>Musique d'attente </td>
          <td><input type="text" name="musiconhold" value="<%= vl.getmusiconhold() %>" ></td>
          </tr>
+         <tr>
+             <td>
+             <input type="submit" name="editclient" value="Modifier"/>
+             <input type="hidden" name="id" value="<%= vl.getid() %>" />
+             </td>
+         </tr>
+         
         </table>
+        
+        </form>
 
 
         <%}}}}%>
