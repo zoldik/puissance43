@@ -131,11 +131,15 @@
             </tr>          
             
             <%
+            ArrayList<Integer> idItems = new ArrayList<Integer>();
+                        
             ArrayList<CartRow> cartRows = (ArrayList<CartRow>) cart.getCartRows();
             Iterator it = cartRows.iterator();
             while (it.hasNext()) {
                 CartRow cartRow = (CartRow) it.next();
                 ItemTO item = cartRow.getItem();
+                
+                idItems.add(new Integer(item.getId()));
             %>
             <tr><td><%=item.getName()%></td>
                 <td><%=item.getType()%></td>            
@@ -152,7 +156,13 @@
         
         <br>
         
-        <form method='post' action="CtrOrder">
+        <% 
+        //Pour pouvoir passer les items à la servlet
+        session.setAttribute("idItems", idItems); 
+                    
+                %>
+        
+        <form method='post' action="CtrOrder">            
             <input type='submit' value='Passer la commande'>                    
         </form>        
         
