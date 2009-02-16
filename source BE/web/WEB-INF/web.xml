@@ -23,11 +23,11 @@
     <servlet>
         <servlet-name>enregModContactInfo</servlet-name>
         <servlet-class>servlet.voip.enregModContactInfo</servlet-class>
-    </servlet>    
+    </servlet>
     <servlet>
         <servlet-name>createAnnuaire</servlet-name>
         <servlet-class>servlet.voip.createAnnuaire</servlet-class>
-        </servlet>
+    </servlet>
         
         
     <!--VINCENT DESTAILLEUR -->    
@@ -36,11 +36,11 @@
         <servlet-name>CtrAccount</servlet-name>
         <servlet-class>servlet.account.CtrAccount</servlet-class>
     </servlet>
-    <servlet-mapping>    
+    <servlet-mapping>
         <servlet-name>CtrAccount</servlet-name>
         <url-pattern>/CtrAccount</url-pattern>
     </servlet-mapping>
-    <!--zzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzz-->    
+    <!--zzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzz-->
     <servlet>
         <servlet-name>CtrCart</servlet-name>
         <servlet-class>servlet.shop.CtrCart</servlet-class>
@@ -58,7 +58,7 @@
         <servlet-name>CtrOrder</servlet-name>
         <url-pattern>/CtrOrder</url-pattern>
     </servlet-mapping>    
-    <!--zzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzz-->    
+    <!--zzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzz-->
     <servlet>
         <servlet-name>CtrSearch</servlet-name>
         <servlet-class>servlet.shop.CtrSearch</servlet-class>
@@ -115,7 +115,7 @@
         <servlet-name>ConfirmationOrder.jsp</servlet-name>
         <url-pattern>/ConfirmationOrder.jsp</url-pattern>
     </servlet-mapping>
-     <!--zzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzz-->   
+     <!--zzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzz-->
     <servlet>
         <servlet-name>DisconnectOrder.jsp</servlet-name>
         <jsp-file>/shop/order/DisconnectOrder.jsp</jsp-file>
@@ -347,31 +347,18 @@
         <servlet-name>doVoipUser</servlet-name>
         <url-pattern>/doVoipUser</url-pattern>
     </servlet-mapping>
-    <servlet-mapping>
-        <servlet-name>CtrSubscribe</servlet-name>
-        <url-pattern>/CtrSubscribe</url-pattern>
-    </servlet-mapping>
+    
     <servlet-mapping>
         <servlet-name>enregModContactInfo</servlet-name>
         <url-pattern>/enregModContactInfo</url-pattern>
     </servlet-mapping>
-    <servlet-mapping>
-        <servlet-name>CtrShop</servlet-name>
-        <url-pattern>/CtrShop</url-pattern>
-    </servlet-mapping>
+    
     <session-config>
         <session-timeout>30</session-timeout>
     </session-config>
     <welcome-file-list>
         <welcome-file>index.jsp</welcome-file>
     </welcome-file-list>
-    
-    
-    
-    
-    
-    
-    
     <login-config>
         <auth-method>BASIC</auth-method>
         <realm-name>redneck</realm-name>
