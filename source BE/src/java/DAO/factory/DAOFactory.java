@@ -33,6 +33,8 @@ public abstract class DAOFactory {
     
     public abstract MailDAOInterface getMailDAO();
     
+    public abstract OrderDAOInterface getOrderDAO();
+    
     public abstract VodSubscribeDAOInterface getVodSubscribeDAO();
     
     public abstract VoipSubscribeDAOInterface getVoipSubscribeDAO();
