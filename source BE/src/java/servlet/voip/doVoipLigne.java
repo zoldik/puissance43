@@ -5,17 +5,8 @@
 
 package servlet.voip;
 
-import model.voip.*;
-
-import model.voip.Annuaire;
-import model.voip.RowAnnuaire;
 import DAO.interfaces.LineDAOInterface;
-import DAO.interfaces.CustomerDAOInterface;
-import DAO.transfertObject.LineTO;
-import DAO.transfertObject.CustomerTO;
 import DAO.factory.DAOFactory;
-import DAO.factory.MySqlDAOFactory;
-import DAO.transfertObject.CustomerTO;
 
 import java.io.IOException;
 import java.io.PrintWriter;
@@ -34,13 +25,56 @@ public class doVoipLigne extends HttpServlet {
     
     private boolean add(HttpServletRequest request,HttpServletResponse response) {
 
-        VoipLigne vl = new VoipLigne();
-        
-        
+      String customerid = request.getParameter("customerid");
+      String name = request.getParameter("name"); 
+      String host = "dynamic";
+      String nat = "no";
+      String type = "friend";
+      String accountcode = "";
+      String amaflags = "";
+      String calllimit = "";
+      String callgroup = request.getParameter("callgroup");
+      String callerid = request.getParameter("callerid");
+      String cancallforward = "";
+      String canreinvite = "";
+      String context = "DLPN_VoIP";
+      String defaultip = request.getParameter("defaultip");
+      String dtmfmode = "rfc2833";
+      String fromuser = "";
+      String fromdomain = "";
+      String insecure = "";
+      String language = request.getParameter("language");
+      String mailbox = request.getParameter("mailbox");
+      String md5secret = "";
+      String deny = "";
+      String permit = "";
+      String mask = "";
+      String musiconhold = "";
+      String pickupgroup = request.getParameter("pickupgroup");
+      String qualify = "yes";
+      String regexten = "";
+      String restrictcid = "";
+      String rtptimeout = "";
+      String rtpholdtimeout = "";
+      String secret = "0000";
+      String setvar = "";
+      String disallow = "";
+      String allow = "";
+      String fullcontact = "";
+      String ipaddr = "";
+      String port = "";
+      String regserver = "";
+      String regseconds = "";
+      String username = request.getParameter("name");
+      String visible = "1";
 
-        //return VoipLigneDAO.insertfull(vl);
-        return false;
-    }
+        
+      DAOFactory daoFactory = DAOFactory.getDAOFactory(DAOFactory.MYSQL);
+      LineDAOInterface LineDAO = daoFactory.getLineDAO();
+      
+      return LineDAO.insertLine(name,host,nat,type,accountcode,amaflags,calllimit,callgroup,callerid,cancallforward,canreinvite,context,defaultip,dtmfmode,fromuser,fromdomain,insecure,language,mailbox,md5secret,deny,permit,mask,musiconhold,pickupgroup,qualify,regexten,restrictcid,rtptimeout,rtpholdtimeout,secret,setvar,disallow,allow,fullcontact,ipaddr,port,regserver,regseconds,username,visible,customerid);
+    }    
+
     
     private boolean edit(HttpServletRequest request,HttpServletResponse response) {
        
@@ -88,16 +122,18 @@ public class doVoipLigne extends HttpServlet {
       String regseconds = request.getParameter("regseconds");
       String username = request.getParameter("username");
       String visible = request.getParameter("visible");
-      String id_customer = request.getParameter("customerid");
       
       DAOFactory daoFactory = DAOFactory.getDAOFactory(DAOFactory.MYSQL);
       LineDAOInterface LineDAO = daoFactory.getLineDAO();
       
-      return LineDAO.updateLineById(id,name,host,nat,type,accountcode,amaflags,calllimit,callgroup,callerid,cancallforward,canreinvite,context,defaultip,dtmfmode,fromuser,fromdomain,insecure,language,mailbox,md5secret,deny,permit,mask,musiconhold,pickupgroup,qualify,regexten,restrictcid,rtptimeout,rtpholdtimeout,secret,setvar,disallow,allow,fullcontact,ipaddr,port,regserver,regseconds,username,visible,customerid,id_customer);
+      return LineDAO.updateLineById(id,name,host,nat,type,accountcode,amaflags,calllimit,callgroup,callerid,cancallforward,canreinvite,context,defaultip,dtmfmode,fromuser,fromdomain,insecure,language,mailbox,md5secret,deny,permit,mask,musiconhold,pickupgroup,qualify,regexten,restrictcid,rtptimeout,rtpholdtimeout,secret,setvar,disallow,allow,fullcontact,ipaddr,port,regserver,regseconds,username,visible,customerid);
     }
     
     private boolean delete(String id) {
-            return true;//VoipLigneDAO.deleteLigneById(id);
+      DAOFactory daoFactory = DAOFactory.getDAOFactory(DAOFactory.MYSQL);
+      LineDAOInterface LineDAO = daoFactory.getLineDAO();
+        
+      return LineDAO.deleteLine(id);
     }
     
 
@@ -124,7 +160,7 @@ public class doVoipLigne extends HttpServlet {
                 }else{
                     out.println("<p align=\"center\">Add failed !<br/>");  
                 }
-                out.println( "<a href=\"./voip/admin/ligneManagement.jsp\">back</a></p>" );
+                out.println( "<a href=\"./voip/admin/userManagement.jsp\">back</a></p>" );
                
            }
            
@@ -137,7 +173,7 @@ public class doVoipLigne extends HttpServlet {
                 }else{
                     out.println("<p align=\"center\">Edit failed !<br/>");  
                 }
-                out.println( "<a href=\"./voip/admin/ligneManagement.jsp\">back</a></p>" );
+                out.println( "<a href=\"./voip/admin/userManagement.jsp\">back</a></p>" );
            }
            
            //-- Delete action
@@ -149,7 +185,7 @@ public class doVoipLigne extends HttpServlet {
                 }else{
                     out.println("<p align=\"center\">Delete failed !<br/>");  
                 }
-                out.println( "<a href=\"./voip/admin/ligneManagement.jsp\">back</a></p>" );
+                out.println( "<a href=\"./voip/admin/userManagement.jsp\">back</a></p>" );
                
            }
            

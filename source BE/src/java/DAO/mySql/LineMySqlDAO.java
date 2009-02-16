@@ -24,7 +24,7 @@ import java.sql.Statement;
  */
 public class LineMySqlDAO extends MySqlGeneralObjectDAO implements LineDAOInterface  {
     
-    public boolean insertLine(String id,String name,String host,String nat,String type,String accountcode,String amaflags,String calllimit,String callgroup,String callerid,String cancallforward,String canreinvite,String context,String defaultip,String dtmfmode,String fromuser,String fromdomain,String insecure,String language,String mailbox,String md5secret,String deny,String permit,String mask,String musiconhold,String pickupgroup,String qualify,String regexten,String restrictcid,String rtptimeout,String rtpholdtimeout,String secret,String setvar,String disallow,String allow,String fullcontact,String ipaddr,String port,String regserver,String regseconds,String username,Boolean visible,String customerid,String id_customer){
+    public boolean insertLine(String name,String host,String nat,String type,String accountcode,String amaflags,String calllimit,String callgroup,String callerid,String cancallforward,String canreinvite,String context,String defaultip,String dtmfmode,String fromuser,String fromdomain,String insecure,String language,String mailbox,String md5secret,String deny,String permit,String mask,String musiconhold,String pickupgroup,String qualify,String regexten,String restrictcid,String rtptimeout,String rtpholdtimeout,String secret,String setvar,String disallow,String allow,String fullcontact,String ipaddr,String port,String regserver,String regseconds,String username,String visible,String customerid){
 
         boolean okay = true;
                     
@@ -36,11 +36,7 @@ public class LineMySqlDAO extends MySqlGeneralObjectDAO implements LineDAOInterf
         String values="values (\""+name+"\",\""+visible+"\"";
         
         System.out.println(insert);
-        
-        if ( !( id==null || id=="" )) {
-            insert+=",id";
-            values+=",\""+id+"\"";
-        }        
+            
         if ( !( host==null || host=="" )) {
             insert+=",host";
             values+=",\""+host+"\"";
@@ -202,10 +198,6 @@ public class LineMySqlDAO extends MySqlGeneralObjectDAO implements LineDAOInterf
             insert+=",id_customer";
             values+=",\""+customerid+"\"";
         }  
-        if ( !( id_customer==null || id_customer=="" )) {
-            insert+=",id_customer";
-            values+=",\""+id_customer+"\"";
-        }  
 
         insert+=") "+values+");";
         
@@ -214,7 +206,7 @@ public class LineMySqlDAO extends MySqlGeneralObjectDAO implements LineDAOInterf
         try
         {
             st=conn.createStatement();
-            rs = st.executeQuery(insert);
+            st.executeUpdate(insert);
             
         } catch (Exception e) {
             System.out.println("Exception" + e);
@@ -227,7 +219,7 @@ public class LineMySqlDAO extends MySqlGeneralObjectDAO implements LineDAOInterf
         return okay;
     }
 
-    public boolean updateLineById(String id,String name,String host,String nat,String type,String accountcode,String amaflags,String calllimit,String callgroup,String callerid,String cancallforward,String canreinvite,String context,String defaultip,String dtmfmode,String fromuser,String fromdomain,String insecure,String language,String mailbox,String md5secret,String deny,String permit,String mask,String musiconhold,String pickupgroup,String qualify,String regexten,String restrictcid,String rtptimeout,String rtpholdtimeout,String secret,String setvar,String disallow,String allow,String fullcontact,String ipaddr,String port,String regserver,String regseconds,String username,String visible,String customerid,String id_customer){
+    public boolean updateLineById(String id,String name,String host,String nat,String type,String accountcode,String amaflags,String calllimit,String callgroup,String callerid,String cancallforward,String canreinvite,String context,String defaultip,String dtmfmode,String fromuser,String fromdomain,String insecure,String language,String mailbox,String md5secret,String deny,String permit,String mask,String musiconhold,String pickupgroup,String qualify,String regexten,String restrictcid,String rtptimeout,String rtpholdtimeout,String secret,String setvar,String disallow,String allow,String fullcontact,String ipaddr,String port,String regserver,String regseconds,String username,String visible,String customerid){
 
         boolean okay = true;
                     
@@ -236,7 +228,7 @@ public class LineMySqlDAO extends MySqlGeneralObjectDAO implements LineDAOInterf
         ResultSet rs = null;
         
         String insert= "UPDATE voip_line SET " +
-                "id_customer=\""+id_customer+"\"," +
+                "id_customer=\""+customerid+"\"," +
                 "name=\""+name+"\"," +
                 "host=\""+host+"\"," +
                 "nat=\""+nat+"\"," +
