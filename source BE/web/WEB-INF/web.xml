@@ -215,15 +215,6 @@
         <url-pattern>/SubscribesDisconnect2.jsp</url-pattern>
     </servlet-mapping>        
     <!--zzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzz-->
-    <servlet>
-        <servlet-name>VerifLogin.jsp</servlet-name>
-        <jsp-file>/account/VerifLogin.jsp</jsp-file>
-    </servlet>
-    <servlet-mapping>
-        <servlet-name>VerifLogin.jsp</servlet-name>
-        <url-pattern>/VerifLogin.jsp</url-pattern>
-    </servlet-mapping>       
-    <!--JSP-->    
     <!--VINCENT DESTAILLEUR -->
     
     <!--PHILIPPE LARDENNOIS -->

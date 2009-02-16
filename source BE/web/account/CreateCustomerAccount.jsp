@@ -80,7 +80,7 @@
                     
                     <tr align="left">
                         <td><a style="color:<%if (errorC.getErrorLogin() == 1) {out.print("#FF0000");}%>">* Nom d'utilisateur (15 caractères max) : </a></td>
-                        <td><input type="text" name="login" value="<%if (customerTO.getLogin() != null) {out.print(customerTO.getLogin());}%>" onKeyUp=verifLogin(this.value) align="left"/>
+                        <td><input type="text" name="login" value="<%if (customerTO.getLogin() != null) {out.print(customerTO.getLogin());}%>" align="left"/>
                         <div id="freeLogin"></div></td>
                     </tr>
                     

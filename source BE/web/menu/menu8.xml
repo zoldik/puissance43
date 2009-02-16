@@ -16,7 +16,7 @@
         <link name="Support" url="voip/support.jsp"/>
     </VoIP>
     <VOD name="VOD">
-        <link name="VOD" url="2"/>
+        <link name="Site VOD" url="vod/vod.jsp"/>
     </VOD>
     <Assistance name="Assistance">
         <link name="FAI"  url="custom/FAIAssistance.jsp" />
