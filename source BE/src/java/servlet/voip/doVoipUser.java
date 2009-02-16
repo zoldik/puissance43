@@ -5,6 +5,9 @@
 
 package servlet.voip;
 
+import DAO.interfaces.CustomerDAOInterface;
+import DAO.factory.DAOFactory;
+
 import java.io.IOException;
 import java.io.PrintWriter;
 import javax.servlet.ServletException;
@@ -18,6 +21,30 @@ import javax.servlet.http.HttpServletResponse;
  */
 public class doVoipUser extends HttpServlet {
    
+    
+    
+    private boolean add(HttpServletRequest request,HttpServletResponse response) {
+        DAOFactory daoFactory = DAOFactory.getDAOFactory(DAOFactory.MYSQL);
+        CustomerDAOInterface CustomerDAO = daoFactory.getCustomerDAO();
+        
+        return true;
+    }
+    
+    
+    private boolean edit(HttpServletRequest request,HttpServletResponse response) {
+        DAOFactory daoFactory = DAOFactory.getDAOFactory(DAOFactory.MYSQL);
+        CustomerDAOInterface CustomerDAO = daoFactory.getCustomerDAO();
+        
+        return true;
+    }
+    
+    
+    private boolean delete(String id) {
+      DAOFactory daoFactory = DAOFactory.getDAOFactory(DAOFactory.MYSQL);
+      CustomerDAOInterface CustomerDAO = daoFactory.getCustomerDAO();
+        
+        return true;
+    }
     /** 
     * Processes requests for both HTTP <code>GET</code> and <code>POST</code> methods.
     * @param request servlet request
@@ -29,7 +56,43 @@ public class doVoipUser extends HttpServlet {
         PrintWriter out = response.getWriter();
         try {
 
-            
+                       //-- Add action
+           if ( request.getParameter("action").compareTo("add") == 0){
+               String id = request.getParameter("id");
+               
+                if ( add(request,response) == true) {
+                    out.println("<p align=\"center\">Add successfull !<br/>");
+                }else{
+                    out.println("<p align=\"center\">Add failed !<br/>");  
+                }
+                out.println( "<a href=\"./voip/admin/userManagement.jsp\">back</a></p>" );
+               
+           }
+           
+           //-- Edit action
+           if ( request.getParameter("action").compareTo("edit") == 0){
+               String id = request.getParameter("id");
+               
+                if ( edit(request,response) == true) {
+                    out.println("<p align=\"center\">Edit successfull !<br/>");
+                }else{
+                    out.println("<p align=\"center\">Edit failed !<br/>");  
+                }
+                out.println( "<a href=\"./voip/admin/userManagement.jsp\">back</a></p>" );
+           }
+           
+           //-- Delete action
+           if ( request.getParameter("action").compareTo("delete") == 0){
+               String id = request.getParameter("id");
+               
+                if ( delete(id) == true) {
+                    out.println("<p align=\"center\">Delete successfull !<br/>");
+                }else{
+                    out.println("<p align=\"center\">Delete failed !<br/>");  
+                }
+                out.println( "<a href=\"./voip/admin/userManagement.jsp\">back</a></p>" );
+               
+           }
             
             
             
