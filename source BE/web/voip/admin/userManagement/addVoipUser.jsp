@@ -19,7 +19,7 @@
         <table align="center" >
         <form>
             <tr>
-                <td  align="right">Login abonné FAI : </td><td><input type="text"/></td>
+                <td  align="right">Login abonné FAI : </td><td><input type="text" name="id" /></td>
             </tr>
             <tr>
                 <td align="right">Administrateur </td><td><input type="checkbox" name="admin"/></td>
