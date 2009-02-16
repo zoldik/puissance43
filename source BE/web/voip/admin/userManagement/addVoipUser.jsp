@@ -22,7 +22,7 @@
                 <td  align="right">Login abonné FAI : </td><td><input type="text"/></td>
             </tr>
             <tr>
-                <td align="right">Niveau d'administration : </td><td><input type="text" /></td>
+                <td align="right">Administrateur </td><td><input type="checkbox" name="admin"/></td>
             </tr>
             <td></td><td><input type="submit" name="submit" value="annuler">
             <input type="submit" name="submit" value="valider"></td>

@@ -45,11 +45,9 @@ import="java.util.*"
         <table bgcolor="black">
 
         <!-- Actions -->
-        <input type="button" value="DELETE"/>
 
         <!-- titles -->
         <tr style="color:white">
-            <td> </td>
             <td> Id </td>
             <td> Name </td>
             <td> Username </td>
@@ -78,8 +76,7 @@ import="java.util.*"
                 vl = indice.next();
         %>
         
-        <tr bgcolor="white">
-            <td> <input type="checkbox" name="<%=vl.getid() %>"/> </td>            
+        <tr bgcolor="white">   
            
             <td> <%=vl.getid() %> </td>
             <td> <%=vl.getname() %> </td>

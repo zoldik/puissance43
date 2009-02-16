@@ -14,40 +14,50 @@
         <title>VoIP admin - Add VoIP Ligne</title>
     </head>
     <body>
-        <h2>VoIP admin - Add VoIP Ligne</h2>
-        <a href="../ligneManagement.jsp">back</a>
+        <h2 align="center">VoIP admin - Add VoIP Ligne</h2>
+        
+        
         
         <form method="post" action="../../../doVoipLigne">
+        <table align="center">
+            
+        <tr>
+            <td>id customer <%= request.getParameter("customerid")%> <input type="hidden" name="customerid" value="<%= request.getParameter("customerid")%>"/></td>
+        </tr>
+
+        <tr>
+            <td>Numero de ligne</td><td><input type="text" name="name" ></td>
+        </tr>
+        <tr>
+            <td>Numero de messagerie</td><td><input type="text" name="mailbox"></td>
+        </tr>
+        <tr>
+            <td>Groupe</td><td><input type="text" name="callgroup"></td>
+        </tr>
+        <tr>
+            <td>Pickup group</td><td><input type="text" name="pickupgroup"></td>
+        </tr>
         
-        <table>
         <tr>
-            <td>Name</td><td><input type="text" name="name" ></td>
+            <td>Presentation de l'appelant</td><td><input type="text" name="callerid"></td>
         </tr>
         <tr>
-            <td>Username</td><td><input type="text" name="username"></td>
+            <td>Adresse IP par defaut</td><td><input type="text" name="defaultip"></td>
         </tr>
         <tr>
-            <td>Mailbox</td><td><input type="text" name="mailbox"></td>
-        </tr>
-        <tr>
-            <td>Context</td><td><input type="text" name="context"></td>
-        </tr>
-        <tr>
-            <td>Type</td><td><input type="text" name="type"></td>
-        </tr>
-        <tr>
-            <td>Host</td><td><input type="text" name="host"></td>
+            <td>Langue</td><td><input type="text" name="language"></td>
         </tr>
         <tr>
             <td>
             <input type="submit" value="submit" name="submit"/>
             <input type='hidden' name='action' value="add">
+            <a href="../userManagement.jsp">retour</a>
             </td>
         </tr>
+        
         </table>
         
         </form>
-        <a href="../ligneManagement.jsp">back</a>
         
     
     </body>

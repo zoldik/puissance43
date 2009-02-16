@@ -28,7 +28,7 @@ import="model.voip.*"
         
         
         <%
-            ListUser lu = new ListUser();
+            ListUser listUser = new ListUser();
         
             DAOFactory daoFactory = DAOFactory.getDAOFactory(DAOFactory.MYSQL);
             CustomerDAOInterface CustomerDAO = daoFactory.getCustomerDAO();
@@ -44,7 +44,7 @@ import="model.voip.*"
             while (indice.hasNext()){
                 vcustomer = indice.next();
                 //regarde le levelaccount
-                if( vcustomer.getValid() == true){
+                if( (vcustomer.getAccountLevel()==7 || vcustomer.getAccountLevel()==5 || vcustomer.getAccountLevel()==3 || vcustomer.getAccountLevel()==1 )){
                     
                     //recupere les informations dans customer                    
                     RowListUser rl = new RowListUser();
@@ -67,15 +67,10 @@ import="model.voip.*"
                            rl.addNumber(vline);
                        }
                     }
-                    lu.addRow(rl);
+                    listUser.addRow(rl);
                 }
             }
-            //Register annuaire in a Session
-            session = request.getSession(true);
-            session.setAttribute("listUser", lu);
-        
         %>
-        <% ListUser listUser = (ListUser)session.getAttribute("listUser"); %>
 
         
         <h2>VoIP admin - VoIP User Management</h2>
