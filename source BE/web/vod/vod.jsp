@@ -6,7 +6,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
 <meta http-equiv="content-type" content="text/html; charset=UTF-8" />
-<meta http-equiv="refresh" content="0; url=http://192.168.1.238:8080/VOD" />
+<meta http-equiv="refresh" content="0; url=http://192.168.1.214:8080/videoplayer" />
 </head>
 
 </html>
