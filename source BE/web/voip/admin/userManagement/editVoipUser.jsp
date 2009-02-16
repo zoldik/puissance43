@@ -21,16 +21,9 @@ import="model.voip.*"
 <html>
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-        <title>VoIP Admin - Edit User</title>
+        <title>VoIP Admin - Edit User </title>
     </head>
     <body>
-        
-        <h2>VoIP Admin - Edit User</h2>
-        <br/>
-        
-        <!-- GENERAL Information -->
-        
-        <h3>Informations générales sur l'utilisateur</h3>
         
         <% String id = request.getParameter("id");
         
@@ -40,6 +33,16 @@ import="model.voip.*"
         CustomerTO customer = new CustomerTO();
         customer = customerDAO.findCustomerById( Integer.parseInt(id) );  
         %>
+        
+        
+        <h2>VoIP Admin - Edit User <%= customer.getLogin() %></h2>
+        <br/>
+        
+        <!-- GENERAL Information -->
+        
+        <h3>Informations générales sur l'utilisateur</h3>
+        
+
 
         Login : <%= customer.getLogin() %> <br/>
         
@@ -64,7 +67,7 @@ import="model.voip.*"
         
         <form method="post" action="../ligneManagement/addVoipLigne.jsp">
              <input type="submit" value="+"> Ouvrir une nouvelle ligne
-            <input type="hidden" value="<%= id %>">
+            <input type="hidden" value="<%= id %>" name="customerid">
         </form>
          <br/>
          

@@ -37,15 +37,11 @@ import="model.voip.*"
         %>
 
 
-        <h2>VoIP admin - Edit the VoIP ligne</h2>
+        <h2 align="center">VoIP admin - Edit the VoIP ligne</h2>
 
-        <h4>Detail</h4>
         
-        
-        
-        <form methode="get" action="../../../doVoipLigne">
-        
-        <table>
+        <form methode="get" action="../../../doVoipLigne">        
+        <table align="center">
             <tr><td>id <%= vl.getid()%> <input type="hidden" name="id" value="<%= vl.getid()%>"/></td></tr>
             <tr><td>id customer <%= vl.getcustomerid()%> <input type="hidden" name="customerid" value="<%= vl.getcustomerid()%>"/></td></tr>
             
@@ -184,12 +180,6 @@ import="model.voip.*"
         </table>
         
         </form> 
-  
-        
-        
-        
-        
-        
-        
+
     </body>
 </html>

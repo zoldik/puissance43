@@ -16,28 +16,17 @@
     <body>
         <h2>Mon Compte</h2>
         
-        Détail de mon compte : <br/>
+        Liste de mes lignes VoIP <br/>
         
+       
         
-        
         <br/>
         <br/>
         <br/>
-        <br/>
-        <br/>
-        <br/>
-        <a href="./moncompte.jsp">Mes options</a><br/>
         
         <a href="./historique.jsp">Consulter l'historique de mes appels</a><br/>        
-        
         <a href="./repertoire.jsp">Consulter mon répertoire</a><br/>
-
         <a href="./rss.jsp">Flux RSS</a><br/>
-        
-        
-        
-        
-        
         
     </body>
 </html>
