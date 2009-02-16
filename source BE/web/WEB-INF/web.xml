@@ -117,6 +117,15 @@
     </servlet-mapping>
      <!--zzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzz-->
     <servlet>
+        <servlet-name>DeliveryAddressOrder.jsp</servlet-name>
+        <jsp-file>/shop/order/DeliveryAddressOrder.jsp</jsp-file>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>DeliveryAddressOrder.jsp</servlet-name>
+        <url-pattern>/DeliveryAddressOrder.jsp</url-pattern>
+    </servlet-mapping>
+     <!--zzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzz-->
+    <servlet>
         <servlet-name>DisconnectOrder.jsp</servlet-name>
         <jsp-file>/shop/order/DisconnectOrder.jsp</jsp-file>
     </servlet>
@@ -347,12 +356,10 @@
         <servlet-name>doVoipUser</servlet-name>
         <url-pattern>/doVoipUser</url-pattern>
     </servlet-mapping>
-    
     <servlet-mapping>
         <servlet-name>enregModContactInfo</servlet-name>
         <url-pattern>/enregModContactInfo</url-pattern>
     </servlet-mapping>
-    
     <session-config>
         <session-timeout>30</session-timeout>
     </session-config>
