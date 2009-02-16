@@ -64,7 +64,7 @@ public class Mail {
     /**Envoi de mail via serveur SMTP sécurisé
      * @throws java.lang.Exception
      */
-    public void sendMail() throws Exception {
+    /*public void sendMail() throws Exception {
         String mailhost = "smtp.gmail.com";
         String sender = "group8.projectrss@gmail.com";
         Security.addProvider(new com.sun.net.ssl.internal.ssl.Provider());
@@ -100,18 +100,18 @@ public class Mail {
         }
         Transport.send(message);
         
-    }
+    }*/
 
      
     /**Envoi de mail via serveur SMTP non sécurisé ou local
      * @throws java.lang.Exception
      */
-    /*public void sendMail() throws Exception{
+    public void sendMail() throws Exception{
     Properties props = new Properties();
     props.setProperty("mail.transport.protocol", "smtp");
-    props.setProperty("mail.host", "195.83.8.35");
-    props.setProperty("mail.user", "p49038");
-    props.setProperty("mail.password", "GWvnvBIF");
+    props.setProperty("mail.host", "192.168.1.230");
+    props.setProperty("mail.user", "support@redneck.fr");
+    props.setProperty("mail.password", "support");
     
     Session mailSession = Session.getDefaultInstance(props, null);
     Transport transport = mailSession.getTransport();
@@ -123,10 +123,9 @@ public class Mail {
     new InternetAddress(this.address));
     
     transport.connect();
-    transport.sendMessage(message,
-    message.getRecipients(Message.RecipientType.TO));
+    transport.sendMessage(message,message.getRecipients(Message.RecipientType.TO));
     transport.close();
-    }*/
+    }
      
     public static void main(String[] args) throws Exception {
         /*Mail test=new Mail();
