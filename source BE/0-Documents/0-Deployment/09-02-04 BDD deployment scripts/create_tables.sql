@@ -25,7 +25,6 @@ create table bill
 CREATE TABLE cdr 
 (
   `id_voip_call` bigint not null auto_increment,
-  `id_voip_line` bigint not null,
   `calldate` datetime NOT NULL default '0000-00-00 00:00:00',
   `clid` varchar(80) NOT NULL default '',
   `src` varchar(80) NOT NULL default '',
@@ -41,7 +40,8 @@ CREATE TABLE cdr
   `amaflags` int(11) NOT NULL default '0',
   `accountcode` varchar(20) NOT NULL default '',
   `uniqueid` varchar(32) NOT NULL default '',
-  `userfield` varchar(255) NOT NULL default ''
+  `userfield` varchar(255) NOT NULL default '',
+    primary key (id_voip_call)
 );
 
 
@@ -496,9 +496,6 @@ alter table possede_mail_addresse add constraint FK_POSSEDE_MAIL_ADDRESSE2 forei
 
 alter table VOD_USER add constraint FK_VOD_USER_HAS_CUSTOMER foreign key (id_customer)
       references customer (id_customer) on delete restrict on update restrict;
-
-alter table cdr constraint FK_VOIP_LINE_HAS_CDR foreign key (id_voip_line)
-      references voip_line (id_voip_line) on delete restrict on update restrict;
 
 alter table voip_contact add constraint FK_VOIP_LINE_HAS_VOIP_CONTACT foreign key (id_voip_line)
       references voip_line (id_voip_line) on delete restrict on update restrict;
