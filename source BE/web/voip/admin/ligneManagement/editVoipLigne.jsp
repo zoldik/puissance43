@@ -66,7 +66,7 @@ import="model.voip.*"
             
             <tr><td>Numero de la ligne</td><td><input type="text" name="name" value="<%= vl.getname() %>" ></td></tr>
             <tr><td>Utilisateur</td><td><input type="text" name="username" value="<%= vl.getusername() %>" ></td></tr>
-            <tr><td>Mail</td><td><input type="text" name="mailbox" value="<%= vl.getmailbox()%>" ></td></tr>
+            <tr><td>Boite de messagerie</td><td><input type="text" name="mailbox" value="<%= vl.getmailbox()%>" ></td></tr>
             <tr>
                 <td>Langue :</td>
                 <td>
@@ -82,10 +82,7 @@ import="model.voip.*"
                      </select>
                 </td>
             </tr>
-             <tr><td>fullcontact</td><td><input type="text" name="fullcontact" value="<%= vl.getfullcontact()%>" ></td></tr>
-            
-            
-            
+                 
             <tr><td><h5> --- Paramètres sur les services : --- </h5></td></tr>
         
             <tr><td>Presentation de l'appelant</td><td><input type="text" name='callerid' value='<%= vl.getcallerid() %>' /></td></tr>
@@ -163,7 +160,8 @@ import="model.voip.*"
             <tr><td>disallow</td><td><input type="text" name="disallow" value="<%= vl.getdisallow()%>" ></td></tr>
             <tr><td>restrictcid</td><td><input type="text" name="restrictcid" value="<%= vl.getrestrictcid()%>" ></td></tr>
             <tr><td>setvar</td><td><input type="text" name="setvar" value="<%= vl.getsetvar()%>" ></td></tr>
-        
+            <tr><td>fullcontact</td><td><input type="text" name="fullcontact" value="<%= vl.getfullcontact()%>" ></td></tr>
+       
         
        
             <tr>
