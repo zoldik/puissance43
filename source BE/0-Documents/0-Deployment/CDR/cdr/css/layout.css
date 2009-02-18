@@ -76,7 +76,7 @@ body {
 	margin: 0;
 	padding: 0;
 	/* (The background color is specified elsewhere, so do a global replacement if it ever changes) */
-	background-color: #ff0000;
+	background-color: #ffffff;
 }
 
 a:link {
@@ -318,7 +318,7 @@ a[name] {
 #fedora-content > .fedora-corner-bottom { top: 0 }
 
 .fedora-corner-tl, .fedora-corner-tr, .fedora-corner-bl, .fedora-corner-br {
-	background-color: #ff0000;
+	background-color: #ffffff;
 	position: relative;
 	width: 19px;
 	height: 19px;
@@ -332,8 +332,8 @@ a[name] {
 .fedora-corner-tl, .fedora-corner-tr { top: 0px; }
 //.fedora-corner-bl, .fedora-corner-br { bottom: 0px; margin-top: -19px; /* Opera fix (part 1) */ top: -18px;}
 
-html>body .fedora-corner-tl { background: #ff0000 url("images/corner-tl.png") no-repeat left top; }
-html>body .fedora-corner-tr { background: #ff0000 url("images/corner-tr.png") no-repeat right top; }
+html>body .fedora-corner-tl { background: #ffffff url("images/corner-tl.png") no-repeat left top; }
+html>body .fedora-corner-tr { background: #ffffff url("images/corner-tr.png") no-repeat right top; }
 /*html>body .fedora-corner-bl { background: #d9d9d9 url("images/corner-bl.png") no-repeat left bottom; }
 html>body .fedora-corner-br { background: #d9d9d9 url("images/corner-br.png") no-repeat right bottom; }
 */
